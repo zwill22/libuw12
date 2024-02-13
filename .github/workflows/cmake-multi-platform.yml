@@ -21,7 +21,7 @@ jobs:
       - name: Update package list and install tbb
         shell: bash
         run: |
-          sudo apt update & sudo apt upgrade
+          sudo apt update
           sudo apt install libtbb-dev
 
   arma_setup:
