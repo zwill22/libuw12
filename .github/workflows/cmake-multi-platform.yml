@@ -79,8 +79,7 @@ jobs:
         echo "build-output-dir=${{ github.workspace }}/build" >> "$GITHUB_OUTPUT"
         echo "Operating system: ${{matrix.os}}"
         echo "Build type: ${{matrix.build_type}}"
-        echo "Compiler: ${{matrix.c_compiler}}
-        
+        echo "Compiler: ${{matrix.c_compiler}}"
 
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory.
