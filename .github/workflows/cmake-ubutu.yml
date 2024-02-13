@@ -36,6 +36,8 @@ jobs:
         run: |
           wget https://sourceforge.net/projects/arma/files/armadillo-12.8.0.tar.xz
           tar xf armadillo-12.8.0.tar.xz
+        env:
+          ARMADILLO_INCLUDE_DIRS="armadillo-12.8.0/include"
 
   build:
     runs-on: ubuntu-latest
