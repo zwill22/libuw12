@@ -32,7 +32,7 @@ if (USE_TBB OR SEARCH_PARALLEL)
     find_package(
             TBB
             CONFIG
-            REQUIRED
+            COMPONENTS
             tbbmalloc
             tbbmalloc_proxy
     )
