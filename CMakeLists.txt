@@ -135,7 +135,9 @@ if (ARMADILLO_FOUND)
         target_include_directories(arma INTERFACE ${TBB_INCLUDE_DIRS})
     endif ()
 
-    message(STATUS "Armadillo requires MKL to function, finding library...")
+    message(STATUS "Armadillo requires backend BLAS library to function")
+
+    message(STATUS "Searching for MKL, finding library...")
     set(MKL_LINK sdl)
     if (TBB_FOUND)
         set(MKL_THREADING tbb_thread)
@@ -145,7 +147,7 @@ if (ARMADILLO_FOUND)
         set(MKL_THREADING sequential)
     endif ()
 
-    find_package(MKL CONFIG REQUIRED)
+    find_package(MKL CONFIG)
     if (MKL_FOUND)
         message(STATUS "MKL library found")
         message(STATUS "MKL_VERSION: ${MKL_VERSION}")
@@ -153,7 +155,12 @@ if (ARMADILLO_FOUND)
 
         target_link_libraries(arma INTERFACE $<LINK_ONLY:MKL::MKL>)
     else ()
-        message(FATAL_ERROR "MKL not found")
+        message(STATUS "MKL not found, looking for alternative BLAS implementation...")
+        message(WARNING "MKL recommended, if possible please link to MKL!")
+
+        find_package(BLAS REQUIRED)
+
+        target_link_libraries(arma INTERFACE BLAS::BLAS)
     endif ()
 endif ()
 
@@ -204,8 +211,10 @@ endif ()
 
 if (USE_CATCH)
     if (FOUND_CATCH)
+        include(CTest)
+        include(Catch)
+
         enable_testing()
-        set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
         add_subdirectory(tests)
     endif ()
