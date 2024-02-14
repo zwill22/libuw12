@@ -55,13 +55,13 @@ std::string write_output_to_string(const std::function<void()> & function, std::
 }
 
 
-TEST_CASE("Print character line") {
+TEST_CASE("Test print - print_character_line") {
     const auto output = write_output_to_string([](){print_character_line('x', 10);});
 
     CHECK(output == "xxxxxxxxxx\n"); // TODO Check portability
 }
 
-TEST_CASE("Print header") {
+TEST_CASE("Test Print - print_header") {
     const auto header = write_output_to_string([](){print_header("This is a header");});
 
     std::string expected;
@@ -71,7 +71,7 @@ TEST_CASE("Print header") {
     CHECK(header == expected);
 }
 
-TEST_CASE("Print result") {
+TEST_CASE("Test Print - print_result") {
     CHECK_THROWS_WITH(
         print_result(
             "This is my result, my result is very long it needs explaining",

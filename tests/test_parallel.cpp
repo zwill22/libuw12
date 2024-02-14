@@ -10,7 +10,7 @@
 
 using namespace uw12::parallel;
 
-TEST_CASE("Parallel for test") {
+TEST_CASE("Test Parallel - parallel_for") {
 
     INFO("Check parallel for returns the same result in parallel and not");
 
@@ -37,7 +37,7 @@ TEST_CASE("Parallel for test") {
     }
 }
 
-TEST_CASE("Parallel sum test") {
+TEST_CASE("Test Parallel - parallel_sum") {
     constexpr size_t start = 0;
     constexpr size_t stop = 1000;
 
@@ -57,7 +57,7 @@ TEST_CASE("Parallel sum test") {
 
 }
 
-TEST_CASE("Parallel sum 2d test") {
+TEST_CASE("Test Parallel - parallel_sum_2d") {
     constexpr size_t start1 = 1;
     constexpr size_t stop1 = 200;
 
