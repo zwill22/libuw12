@@ -254,15 +254,19 @@ namespace uw12::linalg {
 
     /// Matrix dot product
     inline double dot(const Mat &mat1, const Mat &mat2) {
+        const auto n_col = n_cols(mat1);
+        if (n_col != n_cols(mat2)) {
+            throw std::logic_error("Matrices must have same number of columns");
+        }
+
+        if (n_rows(mat1) != n_rows(mat2)) {
+            throw std::logic_error("Matrices must have same number of rows");
+        }
 #ifdef USE_ARMA
         return arma::dot(mat1, mat2);
 #elif USE_EIGEN
-        const auto n = n_cols(mat1);
-        assert(n == n_cols(mat2));
-        assert(n_rows(mat1) == n_rows(mat2));
-
         double result = 0;
-        for (int i = 0; i < n; ++i) {
+        for (int i = 0; i < n_col; ++i) {
             result += mat1.col(i).dot(mat2.col(i));
         }
 
@@ -280,14 +284,14 @@ namespace uw12::linalg {
     /// \return Output matrix of size `n_row * n_col`
     inline Mat reshape(const Mat &mat, const size_t n_row, const size_t n_col,
                        const bool copy_data = false) {
-        assert(n_elem(mat) == n_row * n_col);
+        if (n_row * n_col != n_elem(mat)) {
+            throw std::logic_error("Reshaping a matrix must preserve total number of elements");
+        }
 #ifdef USE_ARMA
         constexpr bool strict = true;
 
-        // return arma::mat(const_cast<double *>(mat.memptr()), n_row, n_col,
-        //                  copy_data, strict); // CheckMem
+        return {const_cast<double *>(mat.memptr()), n_row, n_col, copy_data, strict}; // CheckMem
 
-        return arma::reshape(mat, n_row, n_col);
 #elif USE_EIGEN
         if (!copy_data) {
             return Eigen::Map<Mat>(const_cast<double *>(mat.data()), n_row, n_col);
@@ -312,13 +316,16 @@ namespace uw12::linalg {
     inline Mat reshape_col(const Mat &mat, const size_t col_idx,
                            const size_t n_row, const size_t n_col,
                            const bool copy_data = false) {
+        if (n_row * n_col != n_rows(mat)) {
+            throw std::logic_error("Reshaped column of a matrix must preserve number of elements");
+        }
+        if (col_idx >= n_cols(mat)) {
+            throw std::logic_error("Column index must be in matrix");
+        }
 #ifdef USE_ARMA
         constexpr bool strict = true;
 
-        // return arma::mat(const_cast<double *>(mat.colptr(col_idx)), n_row, n_col,
-        //                  copy_data, strict); // CheckMem
-
-        return arma::reshape(mat.col(col_idx), n_row, n_col);
+        return {const_cast<double *>(mat.colptr(col_idx)), n_row, n_col, copy_data, strict}; // CheckMem
 #elif USE_EIGEN
         if (!copy_data) {
             return Eigen::Map<Mat>(const_cast<double *>(mat.col(col_idx).data()),

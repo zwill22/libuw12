@@ -10,6 +10,8 @@
 
 using namespace uw12::parallel;
 
+constexpr auto margin = 1e-10;
+
 TEST_CASE("Test Parallel - parallel_for") {
 
     INFO("Check parallel for returns the same result in parallel and not");
@@ -33,7 +35,7 @@ TEST_CASE("Test Parallel - parallel_for") {
     parallel_for(0, n, func2, false);
 
     for (size_t i = 0; i < n; ++i) {
-        CHECK(values[i] == Catch::Approx(values2[i]));
+        CHECK_THAT(values[i], Catch::Matchers::WithinAbs(values2[i], margin));
     }
 }
 
@@ -53,7 +55,7 @@ TEST_CASE("Test Parallel - parallel_sum") {
     INFO("Parallel sum = " << parallel_result);
     INFO("Sequential sum = " << sequential_result);
 
-    REQUIRE(sequential_result == Catch::Approx(parallel_result));
+    REQUIRE_THAT(sequential_result, Catch::Matchers::WithinAbs(parallel_result, margin));
 
 }
 
@@ -76,5 +78,5 @@ TEST_CASE("Test Parallel - parallel_sum_2d") {
     INFO("Parallel sum = " << parallel_result);
     INFO("Sequential sum = " << sequential_result);
 
-    REQUIRE(sequential_result == Catch::Approx(parallel_result));
+    REQUIRE_THAT(sequential_result, Catch::Matchers::WithinAbs(parallel_result, margin));
 }

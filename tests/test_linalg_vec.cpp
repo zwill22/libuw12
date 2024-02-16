@@ -10,11 +10,13 @@
 
 using namespace uw12;
 
+constexpr auto margin = 1e-10;
+
 void check_equal(const linalg::Vec &vec, const std::vector<double> &vector) {
     REQUIRE(vector.size() == linalg::n_elem(vec));
 
     for (size_t i = 0; i < vector.size(); ++i) {
-        CHECK(vec[i] == Catch::Approx(vector[i]));
+        CHECK_THAT(vec[i], Catch::Matchers::WithinAbs(vector[i], margin));
     }
 }
 
@@ -157,13 +159,13 @@ TEST_CASE("Test linear algebra library - Test Vectors") {
 
     SECTION("Check max absolute value") {
         const auto vec = linalg::vec({1, 2, 3, 4, 5});
-        CHECK(linalg::max_abs(vec) == Catch::Approx(5));
+        CHECK_THAT(linalg::max_abs(vec), Catch::Matchers::WithinAbs(5, margin));
 
         const auto vec2 = linalg::vec({0, 0, 0, 0});
-        CHECK(linalg::max_abs(vec2) == Catch::Approx(0));
+        CHECK_THAT(linalg::max_abs(vec2), Catch::Matchers::WithinAbs(0, margin));
 
         const auto vec3 = linalg::vec({0, 1, -1, 2, -3});
-        CHECK(linalg::max_abs(vec3) == Catch::Approx(3));
+        CHECK_THAT(linalg::max_abs(vec3), Catch::Matchers::WithinAbs(3, margin));
     }
 }
 
@@ -212,135 +214,5 @@ TEST_CASE("Test linear algebra library - Test vector slicing") {
         check_equal(tail2, vector);
 
         CHECK_THROWS(linalg::tail(vec, 7));
-    }
-}
-
-TEST_CASE("Test linear algebra library - Test Matrix initialisation") {
-    SECTION("Test memory initialiser") {
-        std::vector<double> vector({1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12});
-
-        const auto n_elem = vector.size();
-
-        constexpr size_t n_row = 3;
-        constexpr size_t n_col = 4;
-
-        REQUIRE(n_row * n_col == n_elem);
-
-        const auto mat = linalg::mat(vector.data(), n_row, n_col, true);
-
-        CHECK(linalg::n_elem(mat) == n_elem);
-        CHECK(linalg::n_rows(mat) == n_row);
-        CHECK(linalg::n_cols(mat) == n_col);
-        CHECK_FALSE(linalg::is_square(mat));
-
-        for (size_t i = 0; i < n_elem; ++i) {
-            const size_t row_index = i % n_row;
-            const size_t col_index = i / n_row;
-            REQUIRE(row_index < n_row);
-            REQUIRE(col_index < n_col);
-
-            CHECK(linalg::elem(mat, row_index, col_index) == Catch::Approx(vector[i]));
-        }
-    }
-
-    SECTION("Check size initialiser") {
-        constexpr size_t n_row = 4;
-        constexpr size_t n_col = 3;
-        constexpr auto n_elem = n_row * n_col;
-
-        auto mat = linalg::mat(n_row, n_col);
-        CHECK(linalg::n_elem(mat) == n_elem);
-        CHECK(linalg::n_rows(mat) == n_row);
-        CHECK(linalg::n_cols(mat) == n_col);
-        CHECK_FALSE(linalg::is_square(mat));
-    }
-
-    SECTION("Test matrix of ones") {
-        constexpr size_t n_row = 3;
-        constexpr size_t n_col = 2;
-        constexpr auto n_elem = n_row * n_col;
-
-        const auto mat = linalg::ones(n_row, n_col);
-        CHECK(linalg::n_elem(mat) == n_elem);
-        CHECK(linalg::n_rows(mat) == n_row);
-        CHECK(linalg::n_cols(mat) == n_col);
-        CHECK_FALSE(linalg::is_square(mat));
-
-        for (size_t i = 0; i < linalg::n_elem(mat); ++i) {
-            const size_t row_index = i % n_row;
-            const size_t col_index = i / n_row;
-
-            REQUIRE(row_index < n_row);
-            REQUIRE(col_index < n_col);
-
-            CHECK(linalg::elem(mat, row_index, col_index) == Catch::Approx(1));
-        }
-    }
-
-    SECTION("Test matrix of ones") {
-        constexpr size_t n_rows = 5;
-        constexpr size_t n_cols = 9;
-        constexpr auto n_elem = n_rows * n_cols;
-
-        const auto mat = linalg::zeros(n_rows, n_cols);
-        CHECK(linalg::n_elem(mat) == n_elem);
-        CHECK(linalg::n_rows(mat) == n_rows);
-        CHECK(linalg::n_cols(mat) == n_cols);
-        CHECK_FALSE(linalg::is_square(mat));
-
-        for (size_t i = 0; i < linalg::n_elem(mat); ++i) {
-            const size_t row_index = i % n_rows;
-            const size_t col_index = i / n_rows;
-
-            REQUIRE(row_index < n_rows);
-            REQUIRE(col_index < n_cols);
-
-            CHECK(linalg::elem(mat, row_index, col_index) == Catch::Approx(0));
-        }
-    }
-
-    SECTION("Test identity matrix") {
-        constexpr size_t n = 11;
-
-        const auto mat = linalg::id(n);
-        REQUIRE(linalg::n_elem(mat) == n*n);
-        REQUIRE(linalg::n_rows(mat) == n);
-        REQUIRE(linalg::n_cols(mat) == n);
-        REQUIRE((linalg::is_square(mat)));
-
-        for (size_t i = 0; i < n * n; ++i) {
-            const size_t row_index = i % n;
-            const size_t col_index = i / n;
-
-            REQUIRE(row_index < n);
-            REQUIRE(col_index < n);
-
-            if (row_index == col_index) {
-                CHECK(linalg::elem(mat, row_index, col_index) == Catch::Approx(1));
-            } else {
-                CHECK(linalg::elem(mat, row_index, col_index) == Catch::Approx(0));
-            }
-        }
-    }
-
-
-    SECTION("Test random matrices") {
-        constexpr int seed = 22;
-
-        constexpr size_t n_row = 11;
-        constexpr size_t n_col = 7;
-
-        const auto mat = linalg::random(n_row, n_col, seed);
-        REQUIRE(linalg::n_elem(mat) == n_row * n_col);
-        REQUIRE(linalg::n_rows(mat) == n_row);
-        REQUIRE(linalg::n_cols(mat) == n_col);
-
-        const auto mat2 = linalg::random(n_row, n_col, seed);
-        for (int col_index = 0; col_index < n_col; ++col_index) {
-            for (int row_index = 0; row_index < n_row; ++row_index) {
-                CHECK(linalg::elem(mat, row_index, col_index) == Catch::Approx(linalg::elem(mat2, row_index, col_index)
-                ));
-            }
-        }
     }
 }
