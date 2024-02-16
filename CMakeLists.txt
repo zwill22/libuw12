@@ -159,8 +159,9 @@ if (ARMADILLO_FOUND)
         message(WARNING "MKL recommended, if possible please link to MKL!")
 
         find_package(BLAS REQUIRED)
+        find_package(LAPACK REQUIRED)
 
-        target_link_libraries(arma INTERFACE BLAS::BLAS)
+        target_link_libraries(arma INTERFACE BLAS::BLAS LAPACK::LAPACK)
     endif ()
 endif ()
 
