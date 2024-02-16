@@ -135,12 +135,30 @@ namespace uw12::linalg {
 #endif
     }
 
+    /// \brief Returns the (`row_index`, `col_index`) element of `mat`. (For testing)
+    /// \param mat Matrix
+    /// \param row_index
+    /// \param col_index
+    /// \return Element in position (`row_index`, `col_index`)
     inline double elem(const Mat &mat, const size_t row_index, const size_t col_index) {
 #ifdef USE_ARMA
         return mat(row_index, col_index);
 #elif USE_EIGEN
         return mat(row_index, col_index);
 #endif
+    }
+
+    /// \brief Sets the (`row_index`, `col_index`) element of `mat` to `value`. (For testing)
+    /// \param mat Matrix
+    /// \param row_index
+    /// \param col_index
+    /// \param value
+    inline void set_elem(Mat &mat, const size_t row_index, const size_t col_index, const double value) {
+        if (row_index >= n_rows(mat) || col_index >= n_cols(mat)) {
+            throw std::logic_error("Index outside scope of matrix");
+        }
+
+        mat(row_index, col_index) = value;
     }
 
     /// Initialise a matrix of size `n_row` by `n_col`
@@ -217,7 +235,9 @@ namespace uw12::linalg {
         return mat.is_symmetric(threshold);
 #elif USE_EIGEN
         const auto n = n_rows(mat);
-        assert(n == n_cols(mat));
+        if (n != n_cols(mat)) {
+            return false;
+        }
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < i; j++) {

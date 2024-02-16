@@ -230,4 +230,23 @@ TEST_CASE("Test linear algebra library - Test Matrix operations") {
             }
         }
     }
+
+    SECTION("Check symmetry") {
+        REQUIRE_FALSE(linalg::is_symmetric(mat1));
+
+        auto id = linalg::id(10);
+        REQUIRE((linalg::is_symmetric(id)));
+
+        linalg::set_elem(id, 4, 4, 6912);
+        REQUIRE(linalg::is_symmetric(id));
+
+        linalg::set_elem(id, 3, 6, 375.9);
+        REQUIRE_FALSE(linalg::is_symmetric(id));
+
+        linalg::set_elem(id, 6, 3, 375.9);
+        REQUIRE(linalg::is_symmetric(id));
+
+        REQUIRE_THROWS(linalg::set_elem(id, 4, 12, 32));
+        REQUIRE_THROWS(linalg::set_elem(id, 12, 3, 32));
+    }
 }
