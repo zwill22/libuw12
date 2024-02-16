@@ -242,12 +242,12 @@ namespace uw12::linalg {
 
     /// Element-wise product of two vectors (Schur-product)
     inline Vec schur(const Vec &vec1, const Vec &vec2) {
-#ifdef USE_ARMA
-        return vec1 % vec2;
-#elif USE_EIGEN
         if (n_elem(vec1) != n_elem(vec2)) {
             throw std::logic_error("Cannot calculate Schur product for vectors of different sizes");
         }
+#ifdef USE_ARMA
+        return vec1 % vec2;
+#elif USE_EIGEN
         return vec1.cwiseProduct(vec2);
 #endif
     }
@@ -368,9 +368,6 @@ namespace uw12::linalg {
     ///
     /// \return Sub-vector of size `n_row`
     inline Vec sub_vec(const Vec &vec, const size_t row1, const size_t n_row) {
-#ifdef USE_ARMA
-        return vec.subvec(row1, row1 + n_row - 1);
-#elif USE_EIGEN
         if (n_row > n_rows(vec)) {
             throw std::logic_error("sub vec cannot be larger than parent vec");
         }
@@ -381,6 +378,9 @@ namespace uw12::linalg {
             throw std::logic_error("Final index outside of parent vector range");
         }
 
+#ifdef USE_ARMA
+        return vec.subvec(row1, row1 + n_row - 1);
+#elif USE_EIGEN
         return vec.segment(row1, n_row);
 #endif
     }
@@ -470,12 +470,12 @@ namespace uw12::linalg {
     ///
     /// \return Sub-vector of first `n_row` of input vector
     inline Vec head(const Vec &vec, const size_t n_row) {
-#ifdef USE_ARMA
-        return vec.head(n_row);
-#elif USE_EIGEN
         if (n_row > n_elem(vec)) {
             throw std::logic_error("Cannot take more head rows from vector than total number of rows");
         }
+#ifdef USE_ARMA
+        return vec.head(n_row);
+#elif USE_EIGEN
         return vec.head(n_row);
 #endif
     }
@@ -487,12 +487,12 @@ namespace uw12::linalg {
     ///
     /// \return Sub-vector of last `n_row` of input vector
     inline Vec tail(const Vec &vec, const size_t n_row) {
-#ifdef USE_ARMA
-        return vec.tail(n_row);
-#elif USE_EIGEN
         if (n_row > n_elem(vec)) {
             throw std::logic_error("Cannot take more tail rows from vector than total number of rows");
         }
+#ifdef USE_ARMA
+        return vec.tail(n_row);
+#elif USE_EIGEN
         return vec.tail(n_row);
 #endif
     }
