@@ -371,6 +371,26 @@ namespace uw12::linalg {
 #endif
     }
 
+    /// Generate a random positive-definite square matrix of size `n_row * n_row`
+    inline Mat random_pd(const size_t n_row, const int seed) {
+        const Vec eigen = random(n_row, 1, seed) + ones(n_row);
+        Mat X = random(n_row, n_row, seed);
+
+#ifdef USE_ARMA
+        X = 0.5 * (X - X.t());
+
+        const Mat U = expmat(X);
+        return U * diagmat(eigen) * U.t();
+#elif USE_EIGEN
+        X = 0.5 * (X - X.transpose());
+
+        const Mat U = Eigen::exp(X.array());
+
+        return U * eigen.asDiagonal() * U.transpose();
+#endif
+    }
+
+
     /// Calculate the inverse of a symmetric positive definite matrix
     inline Mat inv_sym_pd(const Mat &mat) {
 #ifdef USE_ARMA

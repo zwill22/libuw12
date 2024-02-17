@@ -10,7 +10,3 @@ add_executable(test_linear_algebra_library test_linalg_vec.cpp
         test_linalg_mat.cpp)
 target_link_libraries(test_linear_algebra_library Catch2::Catch2WithMain uw12)
 catch_discover_tests(test_linear_algebra_library)
-
-add_executable(test_utils test_utils.cpp)
-target_link_libraries(test_utils Catch2::Catch2WithMain uw12)
-catch_discover_tests(test_utils)

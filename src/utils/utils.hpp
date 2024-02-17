@@ -11,15 +11,6 @@
 
 namespace uw12 {
 
-  /// Generate a random positive-definite square matrix of size `n_row * n_row`
-  inline linalg::Mat random_pd(const size_t n_row, const int seed) {
-    using namespace linalg;
-    const Vec eigen = random(n_row, 1, seed) + ones(n_row);
-    const Mat X = random(n_row, n_row, seed);
-
-    return X * transpose(X) + id(n_row);
-  }
-
 /// Matrix vector for storing multiple matrices in a single object
 using MatVec = std::vector<linalg::Mat>;
 

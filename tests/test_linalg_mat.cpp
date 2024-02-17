@@ -140,6 +140,20 @@ TEST_CASE("Test linear algebra library - Test Matrix initialisation") {
             }
         }
     }
+
+    SECTION("Test utils - Random positive definite matrices") {
+        constexpr size_t n = 12;
+        constexpr int seed = 22;
+
+        // Random positive definite symmetric matrix
+        const auto mat_pd = linalg::random_pd(n, seed);
+
+        REQUIRE(linalg::n_elem(mat_pd) == n * n);
+        REQUIRE(linalg::n_rows(mat_pd) == n);
+        REQUIRE(linalg::n_cols(mat_pd) == n);
+        REQUIRE(linalg::is_square(mat_pd));
+        CHECK(linalg::is_symmetric(mat_pd));
+    }
 }
 
 TEST_CASE("Test linear algebra library - Test Matrix operations") {
