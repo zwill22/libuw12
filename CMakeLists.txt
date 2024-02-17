@@ -59,7 +59,7 @@ if (USE_OPENMP OR SEARCH_PARALLEL)
 
     find_package(OpenMP)
     if (OpenMP_CXX_FOUND)
-      target_link_libraries(uw12 PUBLIC OpenMP::OpenMP__CXX)
+      target_link_libraries(uw12 PUBLIC OpenMP::OpenMP_CXX)
 
       set(SEARCH_PARALLEL OFF)
       add_compile_definitions(USE_OMP)
@@ -156,7 +156,6 @@ if (ARMADILLO_FOUND)
         target_link_libraries(arma INTERFACE $<LINK_ONLY:MKL::MKL>)
     else ()
         message(STATUS "MKL not found, looking for alternative BLAS implementation...")
-        message(WARNING "MKL recommended, if possible please link to MKL!")
 
         find_package(BLAS REQUIRED)
         find_package(LAPACK REQUIRED)
@@ -174,7 +173,6 @@ if (USE_EIGEN OR SEARCH_LINALG)
     if (TARGET Eigen3::Eigen)
         add_compile_definitions(USE_EIGEN)
         message(STATUS "Eigen3 found: ${Eigen3_DIR}")
-        message(WARNING "Eigen linear algebra library not properly tested")
 
         target_link_libraries(uw12 PUBLIC Eigen3::Eigen)
 
