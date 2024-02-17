@@ -42,7 +42,7 @@ jobs:
     - name: cache arma
       if: matrix.linalg_lib == 'arma'
       id: cache-arma
-      uses: actions/cache@v2
+      uses: actions/cache@v4
       with:
         path: ./armadillo-12.8.0
         key: ${{matrix.os}}-arma-12.8.0
@@ -72,7 +72,7 @@ jobs:
 
     - name: cache catch2
       id: cache-catch
-      uses: actions/cache@v2
+      uses: actions/cache@v4
       with:
         path: ./Catch2
         key: ${{matrix.os}}-Catch2-
