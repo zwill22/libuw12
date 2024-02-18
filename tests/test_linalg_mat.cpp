@@ -294,3 +294,195 @@ TEST_CASE("Test linear algebra library - Test Matrix operations") {
         REQUIRE_THROWS(linalg::set_elem(id, 12, 3, 32));
     }
 }
+
+TEST_CASE("Test Linear Algebra - Matrix slicing") {
+    constexpr size_t n_row = 15;
+    constexpr size_t n_col = 20;
+    const auto mat = linalg::random(n_row, n_col, seed);
+
+    SECTION("Submat") {
+        CHECK_THROWS(linalg::sub_mat(mat, 0, 0, n_row + 1, n_col));
+        CHECK_THROWS(linalg::sub_mat(mat, 0, 0, n_row + 1, n_col));
+
+
+        CHECK_THROWS(linalg::sub_mat(mat, n_row, 0, 1, n_col));
+        CHECK_THROWS(linalg::sub_mat(mat, 0, n_col, n_row, 1));
+
+        const auto mat2 = linalg::sub_mat(mat, 0, 0, n_row, n_col);
+        REQUIRE(linalg::n_rows(mat2) == n_row);
+        REQUIRE(linalg::n_cols(mat2) == n_col);
+        for (size_t col_index = 0; col_index < n_col; ++col_index) {
+            for (size_t row_index = 0; row_index < n_row; ++row_index) {
+                CHECK_THAT(linalg::elem(mat2, row_index, col_index),
+                    WithinAbs(linalg::elem(mat, row_index, col_index), margin));
+            }
+        }
+
+        const auto mat3 = linalg::sub_mat(mat, 2, 4, 6, 8);
+        REQUIRE(linalg::n_rows(mat3) == 6);
+        REQUIRE(linalg::n_cols(mat3) == 8);
+
+        for (int col_index = 0; col_index < 8; ++col_index) {
+            for (size_t row_index = 0; row_index < 6; ++row_index) {
+                CHECK_THAT(linalg::elem(mat3, row_index, col_index),
+                    WithinAbs(linalg::elem(mat, row_index + 2, col_index + 4), margin));
+            }
+        }
+    }
+
+    SECTION("Column") {
+        CHECK_THROWS(linalg::col(mat, n_col));
+
+        for (size_t col_index = 0; col_index < n_col; ++col_index) {
+            const auto col = linalg::col(mat, col_index);
+            REQUIRE(linalg::n_elem(col) == n_row);
+
+            for (size_t idx = 0; idx < n_row; ++idx) {
+                CHECK_THAT(linalg::elem(col, idx),
+                    WithinAbs(linalg::elem(mat, idx, col_index), margin));
+            }
+        }
+    }
+
+    SECTION("Row") {
+        CHECK_THROWS(linalg::row(mat, n_row));
+
+        for (size_t row_index = 0; row_index < n_row; ++row_index) {
+            const auto row = linalg::row(mat, row_index);
+            REQUIRE(linalg::n_elem(row) == n_col);
+
+            for (size_t idx = 0; idx < n_col; ++idx) {
+                CHECK_THAT(linalg::elem(row, 0, idx),
+                    WithinAbs(linalg::elem(mat, row_index, idx), margin));
+            }
+        }
+    }
+
+
+    SECTION("Rows") {
+        CHECK_THROWS(linalg::rows(mat, 0, n_row + 1));
+        CHECK_THROWS(linalg::rows(mat, n_row, 2));
+
+        const auto mat2 = linalg::rows(mat, 0, n_row);
+        REQUIRE(linalg::n_rows(mat2) == n_row);
+        REQUIRE(linalg::n_cols(mat2) == n_col);
+        for (size_t col_index = 0; col_index < n_col; ++col_index) {
+            for (size_t row_index = 0; row_index < n_row; ++row_index) {
+                CHECK_THAT(linalg::elem(mat2, row_index, col_index),
+                    WithinAbs(linalg::elem(mat, row_index, col_index), margin));
+            }
+        }
+
+        const auto mat3 = linalg::rows(mat, 2, 8);
+        REQUIRE(linalg::n_rows(mat3) == 8);
+        REQUIRE(linalg::n_cols(mat3) == n_col);
+
+        for (int col_index = 0; col_index < n_col; ++col_index) {
+            for (size_t row_index = 0; row_index < 8; ++row_index) {
+                CHECK_THAT(linalg::elem(mat3, row_index, col_index),
+                    WithinAbs(linalg::elem(mat, row_index + 2, col_index), margin));
+            }
+        }
+    }
+
+    SECTION("Head Cols") {
+        CHECK_THROWS(linalg::head_cols(mat, n_col + 1));
+
+        const auto mat2 = linalg::head_cols(mat, n_col);
+        REQUIRE(linalg::n_rows(mat2) == n_row);
+        REQUIRE(linalg::n_cols(mat2) == n_col);
+        for (size_t col_index = 0; col_index < n_col; ++col_index) {
+            for (size_t row_index = 0; row_index < n_row; ++row_index) {
+                CHECK_THAT(linalg::elem(mat2, row_index, col_index),
+                    WithinAbs(linalg::elem(mat, row_index, col_index), margin));
+            }
+        }
+
+        const auto mat3 = linalg::head_cols(mat, 5);
+        REQUIRE(linalg::n_rows(mat3) == n_row);
+        REQUIRE(linalg::n_cols(mat3) == 5);
+
+        for (int col_index = 0; col_index < 5; ++col_index) {
+            for (size_t row_index = 0; row_index < n_row; ++row_index) {
+                CHECK_THAT(linalg::elem(mat3, row_index, col_index),
+                    WithinAbs(linalg::elem(mat, row_index, col_index), margin));
+            }
+        }
+    }
+
+    SECTION("Tail Cols") {
+        CHECK_THROWS(linalg::tail_cols(mat, n_col + 1));
+
+        const auto mat2 = linalg::tail_cols(mat, n_col);
+        REQUIRE(linalg::n_rows(mat2) == n_row);
+        REQUIRE(linalg::n_cols(mat2) == n_col);
+        for (size_t col_index = 0; col_index < n_col; ++col_index) {
+            for (size_t row_index = 0; row_index < n_row; ++row_index) {
+                CHECK_THAT(linalg::elem(mat2, row_index, col_index),
+                    WithinAbs(linalg::elem(mat, row_index, col_index), margin));
+            }
+        }
+
+        const auto mat3 = linalg::tail_cols(mat, 5);
+        REQUIRE(linalg::n_rows(mat3) == n_row);
+        REQUIRE(linalg::n_cols(mat3) == 5);
+
+        for (int col_index = 0; col_index < 5; ++col_index) {
+            for (size_t row_index = 0; row_index < n_row; ++row_index) {
+                CHECK_THAT(linalg::elem(mat3, row_index, col_index),
+                    WithinAbs(linalg::elem(mat, row_index, col_index + n_col - 5), margin));
+            }
+        }
+    }
+
+        SECTION("Head Rows") {
+        CHECK_THROWS(linalg::head_rows(mat, n_row + 1));
+
+        const auto mat2 = linalg::head_rows(mat, n_row);
+        REQUIRE(linalg::n_rows(mat2) == n_row);
+        REQUIRE(linalg::n_cols(mat2) == n_col);
+        for (size_t col_index = 0; col_index < n_col; ++col_index) {
+            for (size_t row_index = 0; row_index < n_row; ++row_index) {
+                CHECK_THAT(linalg::elem(mat2, row_index, col_index),
+                    WithinAbs(linalg::elem(mat, row_index, col_index), margin));
+            }
+        }
+
+        const auto mat3 = linalg::head_rows(mat, 5);
+        REQUIRE(linalg::n_rows(mat3) == 5);
+        REQUIRE(linalg::n_cols(mat3) == n_col);
+
+        for (int col_index = 0; col_index < n_col; ++col_index) {
+            for (size_t row_index = 0; row_index < 5; ++row_index) {
+                CHECK_THAT(linalg::elem(mat3, row_index, col_index),
+                    WithinAbs(linalg::elem(mat, row_index, col_index), margin));
+            }
+        }
+    }
+
+    SECTION("Tail Rows") {
+        CHECK_THROWS(linalg::tail_rows(mat, n_row + 1));
+
+        const auto mat2 = linalg::tail_rows(mat, n_row);
+        REQUIRE(linalg::n_rows(mat2) == n_row);
+        REQUIRE(linalg::n_cols(mat2) == n_col);
+        for (size_t col_index = 0; col_index < n_col; ++col_index) {
+            for (size_t row_index = 0; row_index < n_row; ++row_index) {
+                CHECK_THAT(linalg::elem(mat2, row_index, col_index),
+                    WithinAbs(linalg::elem(mat, row_index, col_index), margin));
+            }
+        }
+
+        const auto mat3 = linalg::tail_rows(mat, 5);
+        REQUIRE(linalg::n_rows(mat3) == 5);
+        REQUIRE(linalg::n_cols(mat3) == n_col);
+
+        for (int col_index = 0; col_index < n_col; ++col_index) {
+            for (size_t row_index = 0; row_index < 5; ++row_index) {
+                CHECK_THAT(linalg::elem(mat3, row_index, col_index),
+                    WithinAbs(linalg::elem(mat, row_index + n_row - 5, col_index), margin));
+            }
+        }
+    }
+
+}

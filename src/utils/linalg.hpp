@@ -439,6 +439,18 @@ namespace uw12::linalg {
     /// \return Sub-matrix of size `n_row * n_col`
     inline Mat sub_mat(const Mat &mat, const size_t row1, const size_t col1,
                        const size_t n_row, const size_t n_col) {
+        if (row1 >= n_rows(mat)) {
+            throw std::logic_error("Start row not in parent matrix");
+        }
+        if (col1 >= n_cols(mat)) {
+            throw std::logic_error("Start column not in parent matrix");
+        }
+        if (row1 + n_row > n_rows(mat)) {
+            throw std::logic_error("submatrix row index must be in parent index");
+        }
+        if (col1 + n_col > n_cols(mat)) {
+            throw std::logic_error("submatrix column index must be in parent index");
+        }
 #ifdef USE_ARMA
         return mat.submat(row1, col1, arma::size(n_row, n_col));
 #elif USE_EIGEN
@@ -464,12 +476,13 @@ namespace uw12::linalg {
     /// \return Column vector corresponding to `col_idx` column of matrix `mat`
     inline Vec col(const Mat &mat, const size_t col_idx,
                    const bool copy_data = false) {
+        if (col_idx >= n_cols(mat)) {
+            throw std::logic_error("column index must be in parent matrix");
+        }
 #ifdef USE_ARMA
         const auto n_row = n_rows(mat);
 
-        // return reshape_col(mat, col_idx, n_row, 1, copy_data); // Checkmem
-
-        return mat.col(col_idx);
+        return reshape_col(mat, col_idx, n_row, 1, copy_data);
 #elif USE_EIGEN
         return mat.col(col_idx);
 #endif
@@ -482,6 +495,9 @@ namespace uw12::linalg {
     ///
     /// \return Matrix of size `1 * n_col` corresponding to `row_idx` row of `mat`
     inline Mat row(const Mat &mat, const size_t row_idx) {
+        if (row_idx >= n_rows(mat)) {
+            throw std::logic_error("row index must be in parent matrix");
+        }
 #ifdef USE_ARMA
         return mat.row(row_idx);
 #elif USE_EIGEN
@@ -497,13 +513,10 @@ namespace uw12::linalg {
     ///
     /// \return sub-matrix of the `n_row` rows of `mat`
     inline Mat rows(const Mat &mat, const size_t row_idx, const size_t n_row) {
-#ifdef USE_ARMA
-        return mat.rows(row_idx, row_idx + n_row - 1);
-#elif USE_EIGEN
         const auto n_col = n_cols(mat);
 
         return sub_mat(mat, row_idx, 0, n_row, n_col);
-#endif
+
     }
 
     /// \brief Get first `n_row` of vector `vec`
@@ -550,14 +563,15 @@ namespace uw12::linalg {
     inline Mat head_cols(const Mat &mat, const size_t n_col,
                          const bool copy_data = false) {
         const auto n_row = n_rows(mat);
+        if (n_col > n_cols(mat)) {
+            throw std::logic_error("Cannot have submatix with more columns than parent matrix");
+        }
 
 #ifdef USE_ARMA
         constexpr auto strict = true;
 
-        // return arma::mat(const_cast<double *>(mat.memptr()), n_row, n_col, copy_data,
-        //                  strict);
+        return {const_cast<double *>(mat.memptr()), n_row, n_col, copy_data, strict};
 
-        return mat.head_cols(n_col);
 #elif USE_EIGEN
         if (!copy_data) {
             return Eigen::Map<Mat>(const_cast<double *>(mat.data()), n_row, n_col);
@@ -576,6 +590,10 @@ namespace uw12::linalg {
     /// \return Sub-matrix of last `n_col` of `mat`
     inline Mat tail_cols(const Mat &mat, const size_t n_col,
                          const bool copy_data = false) {
+        if (n_col > n_cols(mat)) {
+            throw std::logic_error("Cannot have submatix with more columns than parent matrix");
+        }
+
         const auto n_row = n_rows(mat);
         const auto n_col_all = n_cols(mat);
 
@@ -585,9 +603,7 @@ namespace uw12::linalg {
 #ifdef USE_ARMA
         constexpr auto strict = true;
 
-        /*return arma::mat(const_cast<double *>(mat.colptr(col1)), n_row, n_col,
-                         copy_data, strict); // Checkmem*/
-        return mat.tail_cols(n_col);
+        return {const_cast<double *>(mat.colptr(col1)), n_row, n_col, copy_data, strict};
 
 #elif USE_EIGEN
         if (!copy_data) {
@@ -606,6 +622,9 @@ namespace uw12::linalg {
     ///
     /// \return Sub-matrix of first `n_row` of `mat`
     inline Mat head_rows(const Mat &mat, const size_t n_row) {
+        if (n_row > n_rows(mat)) {
+            throw std::logic_error("Cannot have submatix with more rows than parent matrix");
+        }
 #ifdef USE_ARMA
         return mat.head_rows(n_row);
 #elif USE_EIGEN
@@ -622,6 +641,9 @@ namespace uw12::linalg {
     ///
     /// \return Sub-matrix of last `n_row` of `mat`
     inline Mat tail_rows(const Mat &mat, const size_t n_row) {
+        if (n_row > n_rows(mat)) {
+            throw std::logic_error("Cannot have submatix with more rows than parent matrix");
+        }
 #ifdef USE_ARMA
         return mat.tail_rows(n_row);
 #elif USE_EIGEN
