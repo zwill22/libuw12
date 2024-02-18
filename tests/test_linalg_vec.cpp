@@ -51,7 +51,7 @@ std::vector<double> slice(
     return new_vector;
 }
 
-TEST_CASE("Test linear algebra library - Test Vectors") {
+TEST_CASE("Test linear algebra - Test Vectors") {
     SECTION("Test vector construction") {
         const std::vector vector = {0.1, 0.2, 0.3, 0.4, 0.5, 0.6};
         const auto n_elem = vector.size();
@@ -169,7 +169,7 @@ TEST_CASE("Test linear algebra library - Test Vectors") {
     }
 }
 
-TEST_CASE("Test linear algebra library - Test vector slicing") {
+TEST_CASE("Test linear algebra - Test vector slicing") {
     const std::vector<double> vector = {1, 2, 3, 4, 5, 6};
     const auto vec = linalg::vec(vector);
 

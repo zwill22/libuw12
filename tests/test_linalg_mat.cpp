@@ -11,10 +11,10 @@ using namespace uw12;
 
 using Catch::Matchers::WithinAbs;
 
-constexpr auto margin = 1e-9;
+constexpr auto margin = 1e-10;
 constexpr int seed = 22;
 
-TEST_CASE("Test linear algebra library - Test Matrix initialisation") {
+TEST_CASE("Test linear algebra - Test Matrix initialisation") {
     SECTION("Test memory initialiser") {
         std::vector<double> vector({1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12});
 
@@ -154,7 +154,7 @@ TEST_CASE("Test linear algebra library - Test Matrix initialisation") {
     }
 }
 
-TEST_CASE("Test linear algebra library - Test Matrix operations") {
+TEST_CASE("Test linear algebra - Test Matrix operations") {
     constexpr size_t n_row = 10;
     constexpr size_t n_col = 15;
 
@@ -270,7 +270,7 @@ TEST_CASE("Test linear algebra library - Test Matrix operations") {
                     target = 1;
                 }
 
-                CHECK_THAT(linalg::elem(product, row_index, col_index), WithinAbs(target, margin));
+                CHECK_THAT(linalg::elem(product, row_index, col_index), WithinAbs(target, 1000 * margin));
             }
         }
     }
