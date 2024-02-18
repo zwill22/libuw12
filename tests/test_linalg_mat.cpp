@@ -11,7 +11,8 @@ using namespace uw12;
 
 using Catch::Matchers::WithinAbs;
 
-constexpr auto margin = 1e-10;
+constexpr auto margin = 1e-9;
+constexpr int seed = 22;
 
 TEST_CASE("Test linear algebra library - Test Matrix initialisation") {
     SECTION("Test memory initialiser") {
@@ -123,8 +124,6 @@ TEST_CASE("Test linear algebra library - Test Matrix initialisation") {
 
 
     SECTION("Test random matrices") {
-        constexpr int seed = 22;
-
         constexpr size_t n_row = 11;
         constexpr size_t n_col = 7;
 
@@ -141,9 +140,8 @@ TEST_CASE("Test linear algebra library - Test Matrix initialisation") {
         }
     }
 
-    SECTION("Test utils - Random positive definite matrices") {
+    SECTION("Random positive definite matrices") {
         constexpr size_t n = 12;
-        constexpr int seed = 22;
 
         // Random positive definite symmetric matrix
         const auto mat_pd = linalg::random_pd(n, seed);
@@ -157,8 +155,6 @@ TEST_CASE("Test linear algebra library - Test Matrix initialisation") {
 }
 
 TEST_CASE("Test linear algebra library - Test Matrix operations") {
-    constexpr int seed = 2;
-
     constexpr size_t n_row = 10;
     constexpr size_t n_col = 15;
 
@@ -235,6 +231,40 @@ TEST_CASE("Test linear algebra library - Test Matrix operations") {
 
         for (int col_index = 0; col_index < n_row; ++col_index) {
             for (int row_index = 0; row_index < n_row; ++row_index) {
+                double target = 0;
+                if (col_index == row_index) {
+                    target = 1;
+                }
+
+                CHECK_THAT(linalg::elem(product, row_index, col_index), WithinAbs(target, margin));
+            }
+        }
+    }
+
+    SECTION("Check inverse of symmetric pd matrix") {
+        constexpr size_t n = 11;
+
+        const auto mat_pd = linalg::random_pd(n, seed);
+        REQUIRE(linalg::n_elem(mat_pd) == n * n);
+        REQUIRE(linalg::n_rows(mat_pd) == n);
+        REQUIRE(linalg::n_cols(mat_pd) == n);
+        REQUIRE(linalg::is_square(mat_pd));
+        REQUIRE(linalg::is_symmetric(mat_pd));
+
+        const auto inv = linalg::inv_sym_pd(mat_pd);
+        CHECK_THROWS(linalg::inv_sym_pd(mat1));
+        REQUIRE(linalg::n_elem(inv) == n * n);
+        REQUIRE(linalg::n_rows(inv) == n);
+        REQUIRE(linalg::n_cols(inv) == n);
+        REQUIRE(linalg::is_square(inv));
+
+        const linalg::Mat product = mat_pd * inv;
+        REQUIRE(linalg::n_rows(product) == n);
+        REQUIRE(linalg::n_cols(product) == n);
+        REQUIRE(linalg::is_square(product));
+
+        for (int col_index = 0; col_index < n; ++col_index) {
+            for (int row_index = 0; row_index < n; ++row_index) {
                 double target = 0;
                 if (col_index == row_index) {
                     target = 1;

@@ -396,6 +396,9 @@ namespace uw12::linalg {
 #ifdef USE_ARMA
         return inv_sympd(mat);
 #elif USE_EIGEN
+        if (!is_square(mat)) {
+            throw std::logic_error("Matrix is not square");
+        }
         return mat.inverse();
 #endif
     }
