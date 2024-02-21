@@ -667,8 +667,11 @@ namespace uw12::linalg {
 #endif
     }
 
-    /// Compute the trace of object `obj`
+    /// Compute the trace of matrix `mat`
     inline double trace(const Mat &mat) {
+        if (n_rows(mat) != n_cols(mat)) {
+            throw std::logic_error("Matrix not square");
+        }
 #ifdef USE_ARMA
         return arma::trace(mat);
 #elif USE_EIGEN
@@ -688,6 +691,12 @@ namespace uw12::linalg {
 
     /// Calculate the element-wise square-root of the input object
     inline Mat sqrt(const Mat &mat) {
+        for (size_t i = 0; i < n_cols(mat); ++i) {
+            const auto col = linalg::col(mat, i);
+            if (!all_positive(col)) {
+                throw std::logic_error("Cannot compute square root of negative elements");
+            }
+        }
 #ifdef USE_ARMA
         return arma::sqrt(mat);
 #elif USE_EIGEN
