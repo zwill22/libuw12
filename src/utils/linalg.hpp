@@ -823,6 +823,9 @@ namespace uw12::linalg {
     ///
     /// \return Matrix of size `n_row * n_col`
     inline Mat each_col(const Mat &mat, const Vec &vec) {
+        if (n_elem(vec) != n_rows(mat)) {
+            throw std::logic_error("size of vector does not match matrix");
+        }
 #ifdef USE_ARMA
         return mat.each_col() % vec;
 #elif USE_EIGEN
@@ -832,6 +835,9 @@ namespace uw12::linalg {
 
     /// Create a cube from two matrices
     inline Mat join_matrices(const Mat &mat1, const Mat &mat2) {
+        if (n_rows(mat1) != n_rows(mat2)) {
+            throw std::logic_error("matrices do not have the same number of rows");
+        }
 #ifdef USE_ARMA
         return join_horiz(mat1, mat2);
 #elif USE_EIGEN
@@ -879,66 +885,6 @@ namespace uw12::linalg {
         }
         return Eigen::Map<Mat>(values.data(), values.size() / rows, rows).transpose();
 #endif
-    }
-
-    /// \brief Generate a square symmetric matrix from a vector
-    ///
-    /// Generate a square symmetric matrix of size `n * n` from a vector of size
-    /// `n * (n+1) /2` where the elements are the lower triangular elements of the
-    /// output matrix in column major ordering. Inverse of `lower`.
-    ///
-    /// \param vec Vector of lower triangular elements of symmetric matrix
-    ///
-    /// \return Resulting symmetric matrix
-    inline Mat square(const Vec &vec) {
-        const auto n = n_elem(vec);
-        const auto n2 = static_cast<int>((std::sqrt(8 * n - 1)) / 2.0);
-
-        if (n2 * (n2 + 1) / 2 != n) {
-            throw std::logic_error("vector must be of length n(n+1)/2");
-        }
-
-        auto matrix = mat(n2, n2);
-        size_t ij = 0;
-        for (int i = 0; i < n2; ++i) {
-            for (int j = 0; j <= i; ++j) {
-                matrix(i, j) = vec(ij);
-                if (i != j) matrix(j, i) = vec(ij);
-                ij++;
-            }
-        }
-
-        assert(ij == n);
-
-        return matrix;
-    }
-
-    /// \brief Compress symmetric matrix into vector of lower triangular elements
-    ///
-    /// Store `n * n` symmetric matrix as a vector of lower triangular elements of
-    /// size `n * (n+1) /2`. Inverse of `square`.
-    ///
-    /// \param mat
-    /// \param factor
-    /// \return
-    inline Vec lower(const Mat &mat, const double factor = 1) {
-        const auto n = n_rows(mat);
-        if (!is_square(mat)) {
-            throw std::logic_error("matrix is not square");
-        }
-
-        Vec vec(n * (n + 1) / 2);
-        int ij = 0;
-        for (int i = 0; i < n; ++i) {
-            for (int j = 0; j < i; ++j) {
-                vec(ij++) = factor * mat(i, j);
-            }
-            vec(ij++) = mat(i, i);
-        }
-
-        assert(ij == n * (n + 1) / 2);
-
-        return vec;
     }
 
     /// \brief Eigen-decomposition of a symmetric/hermitian matrix
