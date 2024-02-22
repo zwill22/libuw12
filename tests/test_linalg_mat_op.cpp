@@ -5,7 +5,6 @@
 #include "../src/utils/linalg.hpp"
 
 #include "catch.hpp"
-#include <iostream>
 
 using namespace uw12;
 
