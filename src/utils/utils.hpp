@@ -210,7 +210,7 @@ namespace uw12::utils {
     /// \param fock A FockMatrixAndEnergy object
     ///
     /// \return Symmetric FockMatrixAndEnergy
-    inline FockMatrixAndEnergy symmetrise_fock(FockMatrixAndEnergy fock) {
+    inline FockMatrixAndEnergy symmetrise_fock(FockMatrixAndEnergy &fock) {
         const auto n_spin = spin_channels(fock.fock);
 
         for (size_t sigma = 0; sigma < n_spin; sigma++) {

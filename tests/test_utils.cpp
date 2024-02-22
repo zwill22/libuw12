@@ -113,3 +113,104 @@ TEST_CASE("Test utils - MatVec") {
          REQUIRE_THROWS(mat_vec + reverse);
     }
 }
+
+TEST_CASE("Test utils - Fock Matrix and Energy") {
+    constexpr auto n = 12;
+
+    const auto matrix = linalg::random(n, n, seed);
+
+    const FockMatrix fock = {matrix, matrix};
+    constexpr auto energy = -0.52;
+
+    const FockMatrixAndEnergy fock_energy = {fock, energy};
+
+    SECTION("Multiplication") {
+        constexpr auto factor = 32.6;
+
+        const auto fock2 = factor * fock_energy;
+        for (const auto &mat1: fock2.fock) {
+            const linalg::Mat mat2 = factor * matrix;
+            CHECK(linalg::nearly_equal(mat1, mat2, margin));
+        }
+        CHECK_THAT(fock2.energy, WithinAbs(factor * fock_energy.energy, margin));
+
+        const auto fock3 = fock_energy * factor;
+        for (const auto &mat1: fock3.fock) {
+            const linalg::Mat mat3 = factor * matrix;
+            CHECK(linalg::nearly_equal(mat1, mat3, margin));
+        }
+        CHECK_THAT(fock3.energy, WithinAbs(factor * fock_energy.energy, margin));
+
+    }
+
+    SECTION("Addition") {
+        const auto sum = fock_energy + fock_energy;
+        REQUIRE(sum.fock.size() == fock_energy.fock.size());
+
+        for (int i = 0; i < sum.fock.size(); ++i) {
+            const linalg::Mat target = fock_energy.fock[i] + fock_energy.fock[i];
+            CHECK(linalg::nearly_equal(sum.fock[i], target, margin));
+        }
+        CHECK_THAT(sum.energy, WithinAbs(fock_energy.energy * 2, margin));
+
+        const FockMatrixAndEnergy one = {{matrix}, -0.356};
+        REQUIRE_THROWS(fock_energy + one);
+
+        FockMatrixAndEnergy fock_matrix_and_energy = fock_energy;
+        fock_matrix_and_energy += fock_energy;
+        REQUIRE(fock_matrix_and_energy.fock.size() == sum.fock.size());
+
+        for (int i = 0; i < sum.fock.size(); ++i) {
+            CHECK(linalg::nearly_equal(sum.fock[i], fock_matrix_and_energy.fock[i], margin));
+        }
+        CHECK_THAT(sum.energy, WithinAbs(fock_matrix_and_energy.energy, margin));
+    }
+
+    SECTION("Symmetrise Fock") {
+        for (const auto &mat: fock_energy.fock) {
+            REQUIRE_FALSE(linalg::is_symmetric(mat));
+        }
+
+        auto fock_matrix_and_energy = fock_energy;
+
+        symmetrise_fock(fock_matrix_and_energy);
+
+        for (const auto &mat: fock_matrix_and_energy.fock) {
+            REQUIRE(linalg::is_symmetric(mat));
+        }
+        REQUIRE_THAT(fock_matrix_and_energy.energy, WithinAbs(fock_energy.energy, margin));
+
+        const auto fock_copy = fock_matrix_and_energy.fock;
+
+        symmetrise_fock(fock_matrix_and_energy);
+        REQUIRE(fock_matrix_and_energy.fock.size() == fock_copy.size());
+
+        for (int i = 0; i < fock_copy.size(); ++i) {
+            CHECK(linalg::nearly_equal(fock_copy[i], fock_matrix_and_energy.fock[i], margin));
+        }
+        CHECK_THAT(fock_matrix_and_energy.energy, WithinAbs(fock_energy.energy, margin));
+
+    }
+}
+
+TEST_CASE("Test utils - Template functions") {
+    SECTION("Nearly zero") {
+        CHECK(nearly_zero(0));
+        CHECK(nearly_zero(1e-16));
+        CHECK(nearly_zero(-1e-16));
+        CHECK_FALSE(nearly_zero(1));
+        CHECK_FALSE(nearly_zero(-1));
+    }
+
+    SECTION("Spin channels") {
+        const std::vector<double> vector0 = {};
+        const std::vector vector1 = {0.1};
+        const std::vector vector2 = {0.3, 0.4};
+        const std::vector vector3 = {0.5, 0.6, 0.7};
+
+        CHECK_THROWS(spin_channels(vector0));
+        CHECK(spin_channels(vector1) == 1);
+        CHECK(spin_channels(vector2) == 2);
+        CHECK_THROWS(spin_channels(vector3));
+    }
+}
