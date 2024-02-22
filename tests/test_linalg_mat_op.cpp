@@ -118,19 +118,22 @@ TEST_CASE("Test linear algebra - Test matrix manipulations") {
     }
 
     SECTION("Test sqrt") {
+        auto mat2 = linalg::random_pd(n_col, seed);
+
         for (size_t i = 0; i < n_col; ++i) {
-            const auto col = linalg::col(mat, i);
+            const auto col = linalg::col(mat2, i);
             REQUIRE(linalg::all_positive(col));
         }
 
-        const linalg::Mat neg = -1 * mat;
+        const linalg::Mat neg = -1 * mat2;
 
         REQUIRE_THROWS(linalg::sqrt(neg));
 
-        const auto sqrt = linalg::sqrt(mat);
-        for (size_t col_idx = 0; col_idx < n_row; ++col_idx) {
-            for (size_t row_idx = 0; row_idx < n_row; ++row_idx) {
-                double target = std::sqrt(linalg::elem(mat, row_idx, col_idx));
+        const auto sqrt = linalg::sqrt(mat2);
+
+        for (size_t col_idx = 0; col_idx < n_col; ++col_idx) {
+            for (size_t row_idx = 0; row_idx < n_col; ++row_idx) {
+                double target = std::sqrt(linalg::elem(mat2, row_idx, col_idx));
 
                 CHECK_THAT(linalg::elem(sqrt, row_idx, col_idx), WithinAbs(target, margin));
             }
