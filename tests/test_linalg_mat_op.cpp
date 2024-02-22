@@ -36,7 +36,7 @@ TEST_CASE("Test linear algebra - Test matrix properties") {
         for (size_t col_index = 0; col_index < n_col; ++col_index) {
             for (size_t row_index = 0; row_index < n_row; ++row_index) {
                 const auto elem = linalg::elem(mat, row_index, col_index);
-                total += elem*elem;
+                total += elem * elem;
                 if (const auto abs = std::abs(elem); abs > max_norm) {
                     max_norm = abs;
                 }
@@ -114,7 +114,6 @@ TEST_CASE("Test linear algebra - Test matrix manipulations") {
                 CHECK_THAT(linalg::elem(diagmat, row_idx, col_idx), WithinAbs(target, margin));
             }
         }
-
     }
 
     SECTION("Test sqrt") {

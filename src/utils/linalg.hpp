@@ -516,7 +516,6 @@ namespace uw12::linalg {
         const auto n_col = n_cols(mat);
 
         return sub_mat(mat, row_idx, 0, n_row, n_col);
-
     }
 
     /// \brief Get first `n_row` of vector `vec`
@@ -942,7 +941,6 @@ namespace uw12::linalg {
     inline std::pair<Vec, Mat> eigen_decomposition(
         const Mat &matrix, const double linear_dependency_threshold,
         const double eigen_ld_threshold) {
-
         const auto &[vals, vecs] = eigen_system(matrix);
 
         if (linear_dependency_threshold > 0 || eigen_ld_threshold > 0) {

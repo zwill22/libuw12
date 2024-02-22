@@ -170,7 +170,6 @@ TEST_CASE("Test linear algebra - Test Matrix operations") {
 
         CHECK_THROWS(linalg::dot(mat1, linalg::transpose(mat1)));
         CHECK_THROWS(linalg::dot(mat1, linalg::random(n_col, n_col, seed)));
-
     }
 
     SECTION("Check reshape") {
@@ -188,7 +187,8 @@ TEST_CASE("Test linear algebra - Test Matrix operations") {
             const size_t row_idx2 = i % n_row2;
             const size_t col_idx2 = i / n_row2;
 
-            CHECK_THAT(linalg::elem(mat1, row_idx1, col_idx1), WithinAbs(linalg::elem(mat2, row_idx2, col_idx2), margin));
+            CHECK_THAT(linalg::elem(mat1, row_idx1, col_idx1),
+                       WithinAbs(linalg::elem(mat2, row_idx2, col_idx2), margin));
         }
 
         CHECK_THROWS(linalg::reshape(mat1, n_row, n_col2));
@@ -207,7 +207,8 @@ TEST_CASE("Test linear algebra - Test Matrix operations") {
                 const size_t row_idx2 = idx % n_row2;
                 const size_t col_idx2 = idx / n_row2;
 
-                CHECK_THAT(linalg::elem(mat1, idx, col_idx), WithinAbs(linalg::elem(new_mat, row_idx2, col_idx2), margin));
+                CHECK_THAT(linalg::elem(mat1, idx, col_idx),
+                           WithinAbs(linalg::elem(new_mat, row_idx2, col_idx2), margin));
             }
         }
 
@@ -316,7 +317,7 @@ TEST_CASE("Test Linear Algebra - Matrix slicing") {
         for (int col_index = 0; col_index < 8; ++col_index) {
             for (size_t row_index = 0; row_index < 6; ++row_index) {
                 CHECK_THAT(linalg::elem(mat3, row_index, col_index),
-                    WithinAbs(linalg::elem(mat, row_index + 2, col_index + 4), margin));
+                           WithinAbs(linalg::elem(mat, row_index + 2, col_index + 4), margin));
             }
         }
     }
@@ -330,7 +331,7 @@ TEST_CASE("Test Linear Algebra - Matrix slicing") {
 
             for (size_t idx = 0; idx < n_row; ++idx) {
                 CHECK_THAT(linalg::elem(col, idx),
-                    WithinAbs(linalg::elem(mat, idx, col_index), margin));
+                           WithinAbs(linalg::elem(mat, idx, col_index), margin));
             }
         }
     }
@@ -344,7 +345,7 @@ TEST_CASE("Test Linear Algebra - Matrix slicing") {
 
             for (size_t idx = 0; idx < n_col; ++idx) {
                 CHECK_THAT(linalg::elem(row, 0, idx),
-                    WithinAbs(linalg::elem(mat, row_index, idx), margin));
+                           WithinAbs(linalg::elem(mat, row_index, idx), margin));
             }
         }
     }
@@ -366,7 +367,7 @@ TEST_CASE("Test Linear Algebra - Matrix slicing") {
         for (int col_index = 0; col_index < n_col; ++col_index) {
             for (size_t row_index = 0; row_index < 8; ++row_index) {
                 CHECK_THAT(linalg::elem(mat3, row_index, col_index),
-                    WithinAbs(linalg::elem(mat, row_index + 2, col_index), margin));
+                           WithinAbs(linalg::elem(mat, row_index + 2, col_index), margin));
             }
         }
     }
@@ -386,7 +387,7 @@ TEST_CASE("Test Linear Algebra - Matrix slicing") {
         for (int col_index = 0; col_index < 5; ++col_index) {
             for (size_t row_index = 0; row_index < n_row; ++row_index) {
                 CHECK_THAT(linalg::elem(mat3, row_index, col_index),
-                    WithinAbs(linalg::elem(mat, row_index, col_index), margin));
+                           WithinAbs(linalg::elem(mat, row_index, col_index), margin));
             }
         }
     }
@@ -406,12 +407,12 @@ TEST_CASE("Test Linear Algebra - Matrix slicing") {
         for (int col_index = 0; col_index < 5; ++col_index) {
             for (size_t row_index = 0; row_index < n_row; ++row_index) {
                 CHECK_THAT(linalg::elem(mat3, row_index, col_index),
-                    WithinAbs(linalg::elem(mat, row_index, col_index + n_col - 5), margin));
+                           WithinAbs(linalg::elem(mat, row_index, col_index + n_col - 5), margin));
             }
         }
     }
 
-        SECTION("Head Rows") {
+    SECTION("Head Rows") {
         CHECK_THROWS(linalg::head_rows(mat, n_row + 1));
 
         const auto mat2 = linalg::head_rows(mat, n_row);
@@ -426,7 +427,7 @@ TEST_CASE("Test Linear Algebra - Matrix slicing") {
         for (int col_index = 0; col_index < n_col; ++col_index) {
             for (size_t row_index = 0; row_index < 5; ++row_index) {
                 CHECK_THAT(linalg::elem(mat3, row_index, col_index),
-                    WithinAbs(linalg::elem(mat, row_index, col_index), margin));
+                           WithinAbs(linalg::elem(mat, row_index, col_index), margin));
             }
         }
     }
@@ -446,9 +447,8 @@ TEST_CASE("Test Linear Algebra - Matrix slicing") {
         for (int col_index = 0; col_index < n_col; ++col_index) {
             for (size_t row_index = 0; row_index < 5; ++row_index) {
                 CHECK_THAT(linalg::elem(mat3, row_index, col_index),
-                    WithinAbs(linalg::elem(mat, row_index + n_row - 5, col_index), margin));
+                           WithinAbs(linalg::elem(mat, row_index + n_row - 5, col_index), margin));
             }
         }
     }
-
 }

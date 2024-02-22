@@ -13,7 +13,6 @@ using namespace uw12::parallel;
 constexpr auto margin = 1e-10;
 
 TEST_CASE("Test Parallel - parallel_for") {
-
     INFO("Check parallel for returns the same result in parallel and not");
 
     constexpr size_t n = 10000;
@@ -46,7 +45,7 @@ TEST_CASE("Test Parallel - parallel_sum") {
     constexpr double identity = 0;
 
     const std::function func = [](const size_t val) -> double {
-      return std::sqrt(val);
+        return std::sqrt(val);
     };
 
     const auto parallel_result = parallel_sum(start, stop, identity, func, true);
@@ -56,7 +55,6 @@ TEST_CASE("Test Parallel - parallel_sum") {
     INFO("Sequential sum = " << sequential_result);
 
     REQUIRE_THAT(sequential_result, Catch::Matchers::WithinAbs(parallel_result, margin));
-
 }
 
 TEST_CASE("Test Parallel - parallel_sum_2d") {
@@ -69,7 +67,7 @@ TEST_CASE("Test Parallel - parallel_sum_2d") {
     constexpr double identity = 0;
 
     const std::function func = [](const size_t val, const size_t val2) -> double {
-        return std::sqrt(val/ val2);
+        return std::sqrt(val / val2);
     };
 
     const auto parallel_result = parallel_sum_2d(start1, stop1, start2, stop2, identity, func, true);

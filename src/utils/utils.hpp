@@ -109,7 +109,6 @@ namespace uw12::utils {
             }
 
             lhs[i] = lhs[i] + rhs[i];
-
         }
         return lhs;
     }
@@ -266,7 +265,7 @@ namespace uw12::utils {
                 const auto n_electron_per_orbital = (n_spin == 1) ? 2 : 1;
 
                 result.emplace_back(n_electron_per_orbital * C_sigma *
-                                 linalg::transpose(C_sigma));
+                                    linalg::transpose(C_sigma));
             }
         }
 
