@@ -9,7 +9,7 @@
 
 #include "linalg.hpp"
 
-namespace uw12 {
+namespace uw12::utils {
 
   /// \brief Generate a square symmetric matrix from a vector
   ///
@@ -20,9 +20,11 @@ namespace uw12 {
   /// \param vec Vector of lower triangular elements of symmetric matrix
   ///
   /// \return Resulting symmetric matrix
-  inline Mat square(const Vec &vec) {
+  inline linalg::Mat square(const linalg::Vec &vec) {
+    using namespace linalg;
+
     const auto n = n_elem(vec);
-    const auto n2 = static_cast<int>((std::sqrt(8 * n - 1)) / 2.0);
+    const auto n2 = static_cast<int>((std::sqrt(8 * n - 1)) / 2);
 
     if (n2 * (n2 + 1) / 2 != n) {
       throw std::logic_error("vector must be of length n(n+1)/2");
@@ -51,10 +53,15 @@ namespace uw12 {
   /// \param mat
   /// \param factor
   /// \return
-  inline Vec lower(const Mat &mat, const double factor = 1) {
+  inline linalg::Vec lower(const linalg::Mat &mat, const double factor = 1) {
+    using namespace linalg;
+
     const auto n = n_rows(mat);
     if (!is_square(mat)) {
       throw std::logic_error("matrix is not square");
+    }
+    if (!is_symmetric(mat)) {
+      throw std::logic_error("matrix is not symmetric");
     }
 
     Vec vec(n * (n + 1) / 2);
@@ -232,7 +239,7 @@ inline Orbitals freeze_core(const Orbitals &orbitals, const size_t n_core) {
 
 /// \brief Construct the density matrix from the (occupation weighted) Orbitals
 ///
-/// \param orbitals Orbitals object containing coefficients for each spin
+/// \param Co Orbitals object containing coefficients for each spin
 /// channel
 ///
 /// \return Density matrix for each spin channel
@@ -288,6 +295,6 @@ inline Orbitals occupation_weighted_orbitals(const Orbitals &orb,
   return result;
 }
 
-}  // namespace uw12
+}  // namespace uw12::utils
 
 #endif  // UW12_UTILS_HPP
