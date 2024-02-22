@@ -171,22 +171,19 @@ TEST_CASE("Test utils - Fock Matrix and Energy") {
             REQUIRE_FALSE(linalg::is_symmetric(mat));
         }
 
-        auto fock_matrix_and_energy = fock_energy;
-
-        symmetrise_fock(fock_matrix_and_energy);
+        const auto fock_matrix_and_energy = symmetrise_fock(fock_energy);
+        REQUIRE(fock_matrix_and_energy.fock.size() == fock_energy.fock.size());
 
         for (const auto &mat: fock_matrix_and_energy.fock) {
             REQUIRE(linalg::is_symmetric(mat));
         }
         REQUIRE_THAT(fock_matrix_and_energy.energy, WithinAbs(fock_energy.energy, margin));
 
-        const auto fock_copy = fock_matrix_and_energy.fock;
+        const auto fock_matrix_and_energy2 = symmetrise_fock(fock_matrix_and_energy);
+        REQUIRE(fock_matrix_and_energy.fock.size() == fock_matrix_and_energy2.fock.size());
 
-        symmetrise_fock(fock_matrix_and_energy);
-        REQUIRE(fock_matrix_and_energy.fock.size() == fock_copy.size());
-
-        for (int i = 0; i < fock_copy.size(); ++i) {
-            CHECK(linalg::nearly_equal(fock_copy[i], fock_matrix_and_energy.fock[i], margin));
+        for (int i = 0; i < fock_matrix_and_energy.fock.size(); ++i) {
+            CHECK(linalg::nearly_equal(fock_matrix_and_energy.fock[i], fock_matrix_and_energy2.fock[i], margin));
         }
         CHECK_THAT(fock_matrix_and_energy.energy, WithinAbs(fock_energy.energy, margin));
 
