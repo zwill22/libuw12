@@ -15,12 +15,10 @@ constexpr double margin = 1e-10;
 constexpr int seed = 22;
 
 TEST_CASE("Test utils - Matrix utils") {
-
     SECTION("Test square matrix") {
-
         constexpr size_t n = 6;
 
-        constexpr int n2 = n * (n+1) / 2;
+        constexpr int n2 = n * (n + 1) / 2;
 
         const linalg::Vec vec = linalg::random(n2, 1, seed);
 
@@ -59,13 +57,13 @@ TEST_CASE("Test utils - Matrix utils") {
 
         for (const auto factor: {1.0, 2.0, 3.5}) {
             const auto vec = lower(sq, factor);
-            constexpr int n2 = n * (n+1) / 2;
+            constexpr int n2 = n * (n + 1) / 2;
             REQUIRE(linalg::n_elem(vec) == n2);
 
             size_t col_idx = 0;
             size_t row_idx = 0;
             for (int i = 0; i < n2; ++i) {
-                const auto target = linalg::elem(vec, i) / (col_idx == row_idx ? 1.0: factor);
+                const auto target = linalg::elem(vec, i) / (col_idx == row_idx ? 1.0 : factor);
                 CHECK_THAT(linalg::elem(sq, row_idx, col_idx), WithinAbs(target, margin));
                 col_idx++;
                 if (col_idx > row_idx) {
@@ -82,7 +80,7 @@ TEST_CASE("Test utils - MatVec") {
 
     const auto mat2 = linalg::random(13, 16, seed);
 
-    const MatVec mat_vec = {&mat1, &mat2};
+    const MatVec mat_vec = {mat1, mat2};
 
     SECTION("Multiplication") {
         constexpr auto factor = 2;
@@ -97,5 +95,21 @@ TEST_CASE("Test utils - MatVec") {
             CHECK(linalg::nearly_equal(multiple[i], multiple2[i], margin));
             CHECK(linalg::nearly_equal(multiple[i], mat, margin));
         }
+    }
+
+    SECTION("Addition") {
+        const auto sum = mat_vec + mat_vec;
+        REQUIRE(mat_vec.size() == sum.size());
+
+         for (int i = 0; i < mat_vec.size(); ++i) {
+             const linalg::Mat target = mat_vec[i] + mat_vec[i];
+             CHECK(linalg::nearly_equal(sum[i], target, margin));
+         }
+
+         const auto one = MatVec({mat1});
+         REQUIRE_THROWS(mat_vec + one);
+
+         const auto reverse = MatVec({mat2, mat1});
+         REQUIRE_THROWS(mat_vec + reverse);
     }
 }
