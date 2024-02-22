@@ -165,3 +165,30 @@ TEST_CASE("Test linear algebra - Test matrix manipulations") {
         }
     }
 }
+
+TEST_CASE("Test linear algebra - Eigendecompositions") {
+    constexpr size_t n_row = 10;
+
+    REQUIRE_THROWS(linalg::eigen_system(linalg::random(n_row, n_row, seed)));
+    REQUIRE_THROWS(linalg::eigen_system(linalg::random(n_row, 4, seed)));
+
+    const auto mat = linalg::random_pd(n_row, seed);
+
+    const auto &[vals, vecs] = linalg::eigen_system(mat);
+
+    REQUIRE(linalg::n_rows(vals) == n_row);
+    REQUIRE(linalg::n_rows(vecs) == n_row);
+    REQUIRE(linalg::n_cols(vecs) == n_row);
+
+    const auto &[vals2, vecs2] = linalg::eigen_decomposition(mat, 0, 0);
+
+    CHECK(linalg::nearly_equal(vals, vals2, margin));
+    CHECK(linalg::nearly_equal(vecs, vecs2, margin));
+
+    const auto &[vals3, vecs3] = linalg::eigen_decomposition(mat, 1e-6, 1e-8);
+
+    REQUIRE(linalg::n_elem(vals3) == linalg::n_cols(vecs3));
+    REQUIRE(linalg::n_elem(vals3) <= linalg::n_elem(vals));
+}
+
+// TODO: Load csv test

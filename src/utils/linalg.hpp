@@ -942,9 +942,8 @@ namespace uw12::linalg {
     inline std::pair<Vec, Mat> eigen_decomposition(
         const Mat &matrix, const double linear_dependency_threshold,
         const double eigen_ld_threshold) {
-        const auto &eig = eigen_system(matrix);
-        const auto &vals = eig.first;
-        const auto &vecs = eig.second;
+
+        const auto &[vals, vecs] = eigen_system(matrix);
 
         if (linear_dependency_threshold > 0 || eigen_ld_threshold > 0) {
             const auto max_eig = max_abs(vals);
