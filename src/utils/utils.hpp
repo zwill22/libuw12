@@ -260,14 +260,12 @@ namespace uw12::utils {
         for (int sigma = 0; sigma < n_spin; ++sigma) {
             const auto &C_sigma = Co[sigma];
 
-            const auto n_occ = linalg::n_cols(C_sigma);
-
-            if (n_occ == 0) {
+            if (const auto n_occ = linalg::n_cols(C_sigma); n_occ == 0) {
                 result.push_back(linalg::zeros(nao, nao));
             } else {
                 const auto n_electron_per_orbital = (n_spin == 1) ? 2 : 1;
 
-                result.push_back(n_electron_per_orbital * C_sigma *
+                result.emplace_back(n_electron_per_orbital * C_sigma *
                                  linalg::transpose(C_sigma));
             }
         }
@@ -288,15 +286,14 @@ namespace uw12::utils {
         }
 
         Orbitals result(n_spin);
-        const auto oo_n_electron_per_orbital = (n_spin == 1) ? 0.5 : 1.0;
+        const auto n_electron_per_orbital = (n_spin == 1) ? 2 : 1;
         for (auto i = 0; i < n_spin; ++i) {
             if (!linalg::all_positive(occ[i])) {
                 throw std::runtime_error("occupations must be positive");
             }
             const auto n_occ = occ[i].size();
             const auto C_occ = linalg::head_cols(orb[i], n_occ);
-            const linalg::Vec weights =
-                    linalg::sqrt(occ[i] * oo_n_electron_per_orbital);
+            const linalg::Vec weights = linalg::sqrt(occ[i] / n_electron_per_orbital);
             result[i] = C_occ * linalg::diagmat(weights);
         }
 

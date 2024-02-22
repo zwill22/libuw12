@@ -101,16 +101,16 @@ TEST_CASE("Test utils - MatVec") {
         const auto sum = mat_vec + mat_vec;
         REQUIRE(mat_vec.size() == sum.size());
 
-         for (int i = 0; i < mat_vec.size(); ++i) {
-             const linalg::Mat target = mat_vec[i] + mat_vec[i];
-             CHECK(linalg::nearly_equal(sum[i], target, margin));
-         }
+        for (int i = 0; i < mat_vec.size(); ++i) {
+            const linalg::Mat target = mat_vec[i] + mat_vec[i];
+            CHECK(linalg::nearly_equal(sum[i], target, margin));
+        }
 
-         const auto one = MatVec({mat1});
-         REQUIRE_THROWS(mat_vec + one);
+        const auto one = MatVec({mat1});
+        REQUIRE_THROWS(mat_vec + one);
 
-         const auto reverse = MatVec({mat2, mat1});
-         REQUIRE_THROWS(mat_vec + reverse);
+        const auto reverse = MatVec({mat2, mat1});
+        REQUIRE_THROWS(mat_vec + reverse);
     }
 }
 
@@ -140,7 +140,6 @@ TEST_CASE("Test utils - Fock Matrix and Energy") {
             CHECK(linalg::nearly_equal(mat1, mat3, margin));
         }
         CHECK_THAT(fock3.energy, WithinAbs(factor * fock_energy.energy, margin));
-
     }
 
     SECTION("Addition") {
@@ -186,7 +185,6 @@ TEST_CASE("Test utils - Fock Matrix and Energy") {
             CHECK(linalg::nearly_equal(fock_matrix_and_energy.fock[i], fock_matrix_and_energy2.fock[i], margin));
         }
         CHECK_THAT(fock_matrix_and_energy.energy, WithinAbs(fock_energy.energy, margin));
-
     }
 }
 
@@ -209,5 +207,71 @@ TEST_CASE("Test utils - Template functions") {
         CHECK(spin_channels(vector1) == 1);
         CHECK(spin_channels(vector2) == 2);
         CHECK_THROWS(spin_channels(vector3));
+    }
+}
+
+TEST_CASE("Test utils - Orbitals") {
+    constexpr auto nao = 20;
+    constexpr auto n_orb = 4;
+    const auto mat = linalg::random(nao, n_orb, seed);
+
+    const Orbitals orbitals = {mat, mat};
+
+    const auto n_spin = spin_channels(orbitals);
+    REQUIRE(n_spin == 2);
+
+    SECTION("Freeze core") {
+        constexpr auto n_core = 1;
+
+        CHECK_THROWS(freeze_core(orbitals, 5));
+        REQUIRE(n_orb - n_core >= 0);
+
+        const auto frozen_orbitals = freeze_core(orbitals, n_core);
+        REQUIRE(spin_channels(frozen_orbitals) == n_spin);
+        for (const auto &orb: frozen_orbitals) {
+            CHECK(linalg::n_rows(orb) == nao);
+            CHECK(linalg::n_cols(orb) == n_orb - n_core);
+        }
+    }
+
+    SECTION("Construct density") {
+        const auto D = construct_density(orbitals);
+
+        REQUIRE(spin_channels(D) == n_spin);
+        for (const auto &d: D) {
+            CHECK(linalg::n_rows(d) == nao);
+            CHECK(linalg::n_cols(d) == nao);
+        }
+
+        const auto mat0 = linalg::mat(nao, 0);
+        const auto D0 = construct_density({mat0});
+        for (const auto &d0: D0) {
+            REQUIRE(linalg::n_rows(d0) == nao);
+            REQUIRE(linalg::n_cols(d0) == nao);
+            CHECK(linalg::nearly_equal(d0, linalg::zeros(nao, nao), margin));
+        }
+    }
+
+    SECTION("Occ weighted orbitals") {
+        constexpr auto n_occ = n_orb - 2;
+        const OccupationVector occ1 = linalg::ones(n_occ);
+        const Occupations occ = {occ1, occ1};
+
+        REQUIRE_THROWS(occupation_weighted_orbitals(orbitals, {occ1}));
+
+        const Occupations neg_occ = {-occ1, -occ1};
+        REQUIRE_THROWS(occupation_weighted_orbitals(orbitals, neg_occ));
+
+        const OccupationVector big_occ1 = linalg::ones(n_orb + 1);
+        const Occupations big_occ = {big_occ1, big_occ1};
+        REQUIRE_THROWS(occupation_weighted_orbitals(orbitals, big_occ));
+
+        const auto Co = occupation_weighted_orbitals(orbitals, occ);
+        REQUIRE(spin_channels(Co) == n_spin);
+
+        for (const auto &co: Co) {
+            CHECK(linalg::n_rows(co) == nao);
+            CHECK(linalg::n_cols(co) == n_occ);
+        }
     }
 }
