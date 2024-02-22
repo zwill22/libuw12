@@ -119,6 +119,14 @@ TEST_CASE("Test linear algebra - Test matrix manipulations") {
 
     SECTION("Test sqrt") {
         auto mat2 = linalg::random_pd(n_col, seed);
+        for (size_t col_idx = 0; col_idx < n_col; ++col_idx) {
+            for (size_t row_idx = 0; row_idx < n_col; ++row_idx) {
+                const auto elem = linalg::elem(mat2, row_idx, col_idx);
+                if (elem < 0) {
+                    linalg::set_elem(mat2, row_idx, col_idx, -1 * elem);
+                }
+            }
+        }
 
         for (size_t i = 0; i < n_col; ++i) {
             const auto col = linalg::col(mat2, i);
