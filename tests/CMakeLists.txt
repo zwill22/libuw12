@@ -20,3 +20,7 @@ catch_discover_tests(test_utils)
 add_executable(test_integral_transformations test_integral_transformations.cpp)
 target_link_libraries(test_integral_transformations Catch2::Catch2WithMain uw12)
 catch_discover_tests(test_integral_transformations)
+
+add_executable(test_integral_functions test_integral_functions.cpp)
+target_link_libraries(test_integral_functions Catch2::Catch2WithMain uw12)
+catch_discover_tests(test_integral_functions)
