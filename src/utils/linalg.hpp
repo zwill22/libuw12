@@ -716,7 +716,7 @@ namespace uw12::linalg {
         if (n_rows(mat) != n_rows(input)) {
             throw std::logic_error("Matrices have different number of rows");
         }
-        if (n_cols(mat) < offset + n -1) {
+        if (n_cols(mat) < offset + n) {
             throw std::logic_error("Columns outside boundary of matrix");
         }
         assert(n_cols(mat) >= offset + n - 1);
@@ -744,7 +744,7 @@ namespace uw12::linalg {
         if (n_cols(mat) != n_cols(input)) {
             throw std::logic_error("Matrices have different number of columns");
         }
-        if (n_rows(mat) < offset + n - 1) {
+        if (n_rows(mat) < offset + n) {
             throw std::logic_error("Rows outside boundary of matrix");
         }
 
@@ -764,7 +764,12 @@ namespace uw12::linalg {
     /// \param offset First index for assignment
     inline void assign_rows(Vec &vec, const Vec &input, const size_t offset) {
         const auto n = n_elem(input);
-        assert(n_elem(vec) >= offset + n - 1);
+        if (offset >= n_elem(vec)) {
+            throw std::logic_error("offset greater thansize of vec");
+        }
+        if (n_elem(vec) < offset + n) {
+            throw std::logic_error("assignment outside boundary of vec");
+        }
 
 #ifdef USE_ARMA
         vec.rows(offset, offset + n - 1) = input;

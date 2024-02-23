@@ -215,4 +215,21 @@ TEST_CASE("Test linear algebra - Test vector slicing") {
 
         CHECK_THROWS(linalg::tail(vec, 7));
     }
+
+    SECTION("Assign rows") {
+        auto vec2 = vec;
+        const auto n = linalg::n_elem(vec);
+        REQUIRE_THROWS(linalg::assign_rows(vec2, {}, n));
+        REQUIRE_THROWS(linalg::assign_rows(vec2, vec, 1));
+
+        linalg::assign_rows(vec2, vec.tail(2), 1);
+        for (int idx = 0; idx < n; ++idx) {
+            const auto elem = linalg::elem(vec2, idx);
+            auto target = linalg::elem(vec, idx);
+            if (idx >= 1 && idx <= 2) {
+                target = linalg::elem(vec, idx + n - 3);
+            }
+            CHECK_THAT(elem, Catch::Matchers::WithinAbs(target, margin));
+        }
+    }
 }
