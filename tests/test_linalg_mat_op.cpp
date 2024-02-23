@@ -70,6 +70,13 @@ TEST_CASE("Test linear algebra - Test matrix properties") {
 
         CHECK_THAT(total, WithinAbs(trace, margin));
     }
+
+    SECTION("Check empty") {
+        const auto mat0 = linalg::ones(0, 0);
+        CHECK(linalg::empty(mat0));
+
+        CHECK_FALSE(linalg::empty(mat));
+    }
 }
 
 TEST_CASE("Test linear algebra - Test matrix manipulations") {
@@ -174,6 +181,43 @@ TEST_CASE("Test linear algebra - Test matrix manipulations") {
             }
         }
     }
+
+    SECTION("Test assign cols") {
+        auto mat2 = mat;
+        REQUIRE_THROWS(linalg::assign_cols(mat2, mat, 1));
+        REQUIRE_THROWS(linalg::assign_cols(mat2, linalg::col(mat, 0), n_col + 1));
+        REQUIRE_THROWS(linalg::assign_cols(mat2, linalg::head_rows(mat, n_row - 1), 0));
+
+        linalg::assign_cols(mat2, linalg::tail_cols(mat, 3), 1);
+        for (int col_idx = 0; col_idx < n_col; ++col_idx) {
+            const auto col1 = linalg::col(mat2, col_idx);
+            auto col2 = linalg::col(mat, col_idx);
+            if (0 < col_idx && col_idx < 4) {
+                col2 = linalg::col(mat, col_idx + n_col - 4);
+            }
+            CHECK(linalg::nearly_equal(col1, col2, margin));
+        }
+    }
+
+    SECTION("Test assign rows") {
+        auto mat2 = mat;
+        REQUIRE_THROWS(linalg::assign_rows(mat2, mat, 1));
+        REQUIRE_THROWS(linalg::assign_rows(mat2, linalg::row(mat, 0), n_row + 1));
+        REQUIRE_THROWS(linalg::assign_rows(mat2, linalg::head_cols(mat, n_col - 1), 0));
+
+        linalg::assign_rows(mat2, linalg::tail_rows(mat, 3), 2);
+        for (int col_idx = 0; col_idx < n_col; ++col_idx) {
+            for (int row_idx = 0; row_idx < n_row; ++row_idx) {
+                const auto elem = linalg::elem(mat2, row_idx, col_idx);
+                auto target = linalg::elem(mat, row_idx, col_idx);
+                if (row_idx >= 2 && row_idx <= 4) {
+                    target = linalg::elem(mat, row_idx + n_row - 5, col_idx);
+                }
+                CHECK_THAT(elem, WithinAbs(target, margin));
+            }
+        }
+    }
+
 }
 
 TEST_CASE("Test linear algebra - Eigendecompositions") {

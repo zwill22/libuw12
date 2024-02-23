@@ -710,6 +710,15 @@ namespace uw12::linalg {
     /// \param offset First column index for assignment
     inline void assign_cols(Mat &mat, const Mat &input, const size_t offset) {
         const auto n = n_cols(input);
+        if (offset >= n_cols(mat)) {
+            throw std::logic_error("offset greater than number of columns of mat");
+        }
+        if (n_rows(mat) != n_rows(input)) {
+            throw std::logic_error("Matrices have different number of rows");
+        }
+        if (n_cols(mat) < offset + n -1) {
+            throw std::logic_error("Columns outside boundary of matrix");
+        }
         assert(n_cols(mat) >= offset + n - 1);
         assert(n_rows(mat) == n_rows(input));
 
@@ -729,8 +738,15 @@ namespace uw12::linalg {
     /// \param offset First rows index for assignment
     inline void assign_rows(Mat &mat, const Mat &input, const size_t offset) {
         const auto n = n_rows(input);
-        assert(n_rows(mat) >= offset + n - 1);
-        assert(n_cols(mat) == n_cols(input));
+        if (offset >= n_rows(mat)) {
+            throw std::logic_error("offset greater than number of rows of mat");
+        }
+        if (n_cols(mat) != n_cols(input)) {
+            throw std::logic_error("Matrices have different number of columns");
+        }
+        if (n_rows(mat) < offset + n - 1) {
+            throw std::logic_error("Rows outside boundary of matrix");
+        }
 
 #ifdef USE_ARMA
         mat.rows(offset, offset + n - 1) = input;
