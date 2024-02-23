@@ -217,7 +217,6 @@ TEST_CASE("Test linear algebra - Test matrix manipulations") {
             }
         }
     }
-
 }
 
 TEST_CASE("Test linear algebra - Eigendecompositions") {
@@ -245,4 +244,5 @@ TEST_CASE("Test linear algebra - Eigendecompositions") {
     REQUIRE(linalg::n_elem(vals3) <= linalg::n_elem(vals));
 }
 
-// TODO: Load csv test
+// TODO Memory test
+// TODO CSV test

@@ -16,3 +16,7 @@ catch_discover_tests(test_linear_algebra_library)
 add_executable(test_utils test_utils.cpp)
 target_link_libraries(test_utils Catch2::Catch2WithMain uw12)
 catch_discover_tests(test_utils)
+
+add_executable(test_integral_transformations test_integral_transformations.cpp)
+target_link_libraries(test_integral_transformations Catch2::Catch2WithMain uw12)
+catch_discover_tests(test_integral_transformations)
