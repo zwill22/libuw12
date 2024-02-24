@@ -208,6 +208,8 @@ if (USE_CATCH)
     endif ()
 endif ()
 
+add_subdirectory(src)
+
 if (USE_CATCH)
     if (FOUND_CATCH)
         include(CTest)
