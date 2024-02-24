@@ -1,5 +1,7 @@
 #include "base_integrals.hpp"
 
+#include <iostream>
+
 namespace uw12::integrals {
     BaseIntegrals::BaseIntegrals(
         TwoIndexFn two_index_fn_,
