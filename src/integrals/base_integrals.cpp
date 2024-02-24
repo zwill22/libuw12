@@ -246,7 +246,7 @@ namespace uw12::integrals {
     }
 
     const linalg::Mat &BaseIntegrals::get_P2() const {
-        std::lock_guard lock_guard(*eig_lock);
+        std::lock_guard<std::mutex> lock_guard(*eig_lock);
 
         if (linalg::empty(*P2)) {
             if (!linalg::empty(*df_vals)) {
@@ -260,7 +260,7 @@ namespace uw12::integrals {
     }
 
     const linalg::Vec &BaseIntegrals::get_df_vals() const {
-        std::lock_guard lock_guard(*eig_lock);
+        std::lock_guard<std::mutex> lock_guard(*eig_lock);
 
         if (linalg::empty(*df_vals)) {
             if (!linalg::empty(*P2)) {
@@ -310,7 +310,7 @@ namespace uw12::integrals {
     }
 
     const linalg::Mat &BaseIntegrals::get_J3_0() const {
-        std::lock_guard lock_guard(*J3_lock);
+        std::lock_guard<std::mutex> lock_guard(*J3_lock);
         if (linalg::empty(*J3_0)) {
             throw std::runtime_error("J3_0 not stored");
         }
@@ -319,7 +319,7 @@ namespace uw12::integrals {
     }
 
     const linalg::Mat &BaseIntegrals::get_J3() const {
-        std::lock_guard lock_guard(*J3_lock);
+        std::lock_guard<std::mutex> lock_guard(*J3_lock);
         if (linalg::empty(*J3)) {
             const auto &P = get_P2();
 
@@ -358,7 +358,7 @@ namespace uw12::integrals {
     }
 
     const linalg::Mat &BaseIntegrals::get_J3_ri_0() const {
-        std::lock_guard lock_guard(*J3_ri_lock);
+        std::lock_guard<std::mutex> lock_guard(*J3_ri_lock);
 
         if (linalg::empty(*J3_ri_0)) {
             throw std::runtime_error("J3_ri_0 not stored");
@@ -367,7 +367,7 @@ namespace uw12::integrals {
     }
 
     const linalg::Mat &BaseIntegrals::get_J3_ri() const {
-        std::lock_guard lock_guard(*J3_ri_lock);
+        std::lock_guard<std::mutex> lock_guard(*J3_ri_lock);
         if (linalg::empty(*J3_ri)) {
             const auto &P = get_P2();
 
