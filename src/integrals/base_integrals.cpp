@@ -1,6 +1,7 @@
 #include "base_integrals.hpp"
 
 #include <iostream>
+#include <mutex>
 
 namespace uw12::integrals {
     BaseIntegrals::BaseIntegrals(
