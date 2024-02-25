@@ -2,6 +2,7 @@
 #define UW12_BASE_INTEGRALS_HPP
 
 #include <memory>
+#include <mutex>
 
 #include "integral_functions.hpp"
 
