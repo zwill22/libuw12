@@ -8,6 +8,7 @@
 
 using namespace uw12::integrals;
 
+constexpr auto epsilon = 1e-10;
 constexpr auto seed = 2;
 
 TEST_CASE("Test integrals - base integrals") {
@@ -23,22 +24,37 @@ TEST_CASE("Test integrals - base integrals") {
     }
     REQUIRE(total == n_df);
 
-    const TwoIndexFn two_index_fn = []()-> uw12::linalg::Mat {
-        return uw12::linalg::random_pd(n_df, seed);
+    auto J20 = uw12::linalg::random_pd(n_df, seed);
+    auto J30 = uw12::linalg::random(n_ao * (n_ao + 1) /2, n_df, seed);
+    auto J3ri0 = uw12::linalg::random(n_ao * n_ri, n_df, seed);
+
+
+    const TwoIndexFn two_index_fn = [&J20]()-> uw12::linalg::Mat {
+        return J20;
     };
 
-    const ThreeIndexFn three_index_fn = [&df_sizes](const int A) -> uw12::linalg::Mat {
+    const ThreeIndexFn three_index_fn = [&df_sizes, &J30](const int A) -> uw12::linalg::Mat {
         constexpr auto n_row = n_ao * (n_ao + 1) / 2;
         const auto n_col = df_sizes[A];
 
-        return uw12::linalg::random(n_row, n_col, seed);
+        int offset = 0;
+        for (int i = 0; i < A; ++i) {
+            offset += df_sizes[i];
+        }
+
+        return uw12::linalg::sub_mat(J30, 0, offset, n_row, n_col);
     };
 
-    const ThreeIndexFn three_index_ri_fn = [&df_sizes](const int A) -> uw12::linalg::Mat {
+    const ThreeIndexFn three_index_ri_fn = [&df_sizes, &J3ri0](const int A) -> uw12::linalg::Mat {
         constexpr auto n_row = n_ao * n_ri;
         const auto n_col = df_sizes[A];
 
-        return uw12::linalg::random(n_row, n_col, seed);
+        int offset = 0;
+        for (int i = 0; i < A; ++i) {
+            offset += df_sizes[i];
+        }
+
+        return uw12::linalg::sub_mat(J3ri0, 0, offset, n_row, n_col);
     };
 
     SECTION("Default constructor") {
@@ -150,5 +166,50 @@ TEST_CASE("Test integrals - base integrals") {
         CHECK(base_integrals.has_J3());
         CHECK_FALSE(base_integrals.has_J3_ri_0());
         CHECK(base_integrals.has_J3_ri());
+
+        {
+            const auto base_integrals2 = BaseIntegrals(
+                two_index_fn, three_index_fn, three_index_ri_fn, df_sizes, n_ao, n_df, n_ri, false);
+
+            CHECK_FALSE(base_integrals2.storing_ao());
+            CHECK(base_integrals2.storing_ri());
+            CHECK_THROWS(base_integrals2.get_J3_0());
+            CHECK_THROWS(base_integrals2.get_J3_ri_0());
+
+            const auto & P2_2 = base_integrals2.get_P2();
+            CHECK(uw12::linalg::nearly_equal(P2, P2_2, epsilon));
+
+            const auto & df_vals_2 = base_integrals2.get_df_vals();
+            CHECK(uw12::linalg::nearly_equal(df_vals, df_vals_2, epsilon));
+
+            const auto & J3_2 = base_integrals2.get_J3();
+            CHECK(uw12::linalg::nearly_equal(J3, J3_2, epsilon));
+
+            const auto & J3_ri_2 = base_integrals2.get_J3_ri();
+            CHECK(uw12::linalg::nearly_equal(J3_ri, J3_ri_2, epsilon));
+        }
+
+        {
+            const auto base_integrals3 = BaseIntegrals(
+                two_index_fn, three_index_fn, three_index_ri_fn, df_sizes, n_ao, n_df, n_ri, false,
+                false);
+
+            CHECK_FALSE(base_integrals3.storing_ao());
+            CHECK_FALSE(base_integrals3.storing_ri());
+            CHECK_THROWS(base_integrals3.get_J3_0());
+            CHECK_THROWS(base_integrals3.get_J3_ri_0());
+
+            const auto & P2_3 = base_integrals3.get_P2();
+            CHECK(uw12::linalg::nearly_equal(P2, P2_3, epsilon));
+
+            const auto & df_vals_3 = base_integrals3.get_df_vals();
+            CHECK(uw12::linalg::nearly_equal(df_vals, df_vals_3, epsilon));
+
+            const auto & J3_3 = base_integrals3.get_J3();
+            CHECK(uw12::linalg::nearly_equal(J3, J3_3, epsilon));
+
+            const auto & J3_ri_3 = base_integrals3.get_J3_ri();
+            CHECK(uw12::linalg::nearly_equal(J3_ri, J3_ri_3, epsilon));
+        }
     }
 }
