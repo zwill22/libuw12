@@ -12,7 +12,7 @@ using namespace uw12::integrals::transformations;
 constexpr auto seed = 2;
 constexpr auto epsilon = 1e-10;
 
-TEST_CASE("Test Integral transformations - MO transformations") {
+TEST_CASE("Test integrals - MO transformations") {
     constexpr auto n_ao = 11;
     constexpr auto n_df = 20;
     constexpr auto n_orb = 7;
@@ -63,7 +63,7 @@ TEST_CASE("Test Integral transformations - MO transformations") {
     CHECK(linalg::nearly_equal(J3_ijA, J3_ijB, epsilon));
 }
 
-TEST_CASE("Test Integral transformations - MO transformations (RI)") {
+TEST_CASE("Test integrals - MO transformations (RI)") {
     constexpr auto n_ao = 11;
     constexpr auto n_ri = 25;
     constexpr auto n_df = 20;

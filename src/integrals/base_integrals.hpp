@@ -46,7 +46,7 @@ namespace uw12::integrals {
     class BaseIntegrals {
     public:
         /// Default constructor
-        BaseIntegrals() = default;
+        BaseIntegrals();
 
         /// Standard constructor using functions to calculate integrals
         BaseIntegrals(

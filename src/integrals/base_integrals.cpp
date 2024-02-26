@@ -109,6 +109,14 @@ namespace uw12::integrals {
         }
     }
 
+    BaseIntegrals::BaseIntegrals()
+    : BaseIntegrals(
+        nullptr, nullptr, nullptr, {}, 0, 0, 0,
+        false, false, false, false,
+        false
+    ) {
+    }
+
     BaseIntegrals::BaseIntegrals(
         const TwoIndexFn &two_index_fn,
         const ThreeIndexFn &three_index_fn,
@@ -246,11 +254,14 @@ namespace uw12::integrals {
     }
 
     const linalg::Mat &BaseIntegrals::get_P2() const {
-        std::scoped_lock lock_guard(*eig_lock);
+        std::lock_guard lock_guard(*eig_lock);
 
         if (linalg::empty(*P2)) {
             if (!linalg::empty(*df_vals)) {
                 throw std::runtime_error("density-fitting eigenvalues already available");
+            }
+            if (!two_index_fn_provided) {
+                throw std::runtime_error("no two index integral function provided");
             }
 
             parallel::isolate([&] { set_J2_values(); });
