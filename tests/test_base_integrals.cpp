@@ -475,4 +475,12 @@ TEST_CASE("Test integrals - base integrals") {
         CHECK_FALSE(base_integrals.has_J3_ri_0());
         CHECK_FALSE(base_integrals.has_J3_ri());
     }
+
+    SECTION("Test construction fails") {
+        CHECK_THROWS(BaseIntegrals(two_index_fn, three_index_fn, {}, n_ao, n_df));
+        CHECK_THROWS(BaseIntegrals(two_index_fn, three_index_fn, df_sizes, 0, n_df));
+        CHECK_THROWS(BaseIntegrals(two_index_fn, three_index_fn, df_sizes, n_ao, 0));
+        CHECK_THROWS(BaseIntegrals(two_index_fn, three_index_fn, df_sizes, n_ao, n_df + 1));
+        CHECK_THROWS(BaseIntegrals(two_index_fn, three_index_fn, three_index_ri_fn, df_sizes, n_ao, n_df, 0));
+    }
 }

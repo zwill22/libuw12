@@ -4,6 +4,15 @@
 #include <mutex>
 
 namespace uw12::integrals {
+
+    int calculate_n_df(const std::vector<int>& df_sizes) {
+        int total = 0;
+        for (const auto &shell_size: df_sizes) {
+            total += shell_size;
+        }
+        return total;
+    }
+
     BaseIntegrals::BaseIntegrals(
         TwoIndexFn two_index_fn_,
         ThreeIndexFn three_index_fn_,
@@ -64,23 +73,14 @@ namespace uw12::integrals {
                 throw std::runtime_error("More shells than basis functions in df basis");
             }
 
-            int total = 0;
-            for (const auto n_sh: df_sizes) {
-                total += n_sh;
-            }
-
-            if (total != n_df) {
+            if (calculate_n_df(df_sizes) != n_df) {
                 throw std::runtime_error("total df basis functions inconsistent with number in shells");
             }
         }
 
         if (J2_) {
-            if (P2) {
-                throw std::runtime_error("density-fitting projector provided as well as J2idx");
-            }
-            if (df_vals) {
-                throw std::runtime_error("density-fitting eigenvalue provided as well as J2idx");
-            }
+            assert(!P2);
+            assert(!df_vals);
 
             const auto &[vals, vecs] = linalg::eigen_system(*J2_);
 
@@ -288,14 +288,7 @@ namespace uw12::integrals {
             throw std::runtime_error("df_sizes requested but none available");
         }
 
-        int total = 0;
-        for (const auto &shell_size: df_sizes) {
-            total += shell_size;
-        }
-
-        if (total != n_df) {
-            throw std::runtime_error("total number of df basis functions not equal to total sum of shell sizes");
-        }
+        assert(calculate_n_df(df_sizes) == n_df);
 
         return df_sizes;
     }
@@ -343,17 +336,10 @@ namespace uw12::integrals {
                     std::cerr << "three-center ao integrals requested this may be memory inefficient" << std::endl;
                 }
 
-                if (n_ao == 0) {
-                    throw std::runtime_error("three-centre integrals requested but n_ao is zero");
-                }
+                assert(n_ao > 0);
+                assert(n_df > 0);
+                assert(!df_sizes.empty());
 
-                if (n_df == 0) {
-                    throw std::runtime_error("three-centre integrals requested but n_df is zero");
-                }
-
-                if (df_sizes.empty()) {
-                    throw std::runtime_error("three-index integrals requested but no df offsets provided");
-                }
 
                 const auto n_row = n_ao * (n_ao + 1) / 2;
 
@@ -391,21 +377,10 @@ namespace uw12::integrals {
                     std::cerr << "three-center ri integrals requested this may be memory inefficient" << std::endl;
                 }
 
-                if (n_ao == 0) {
-                    throw std::runtime_error("ri integrals requested but number of ri basis functions is zero");
-                }
-
-                if (n_df == 0) {
-                    throw std::runtime_error("ri integrals requested but number of df basis functions is zero");
-                }
-
-                if (n_ri == 0) {
-                    throw std::runtime_error("ri integrals requested but number of ri basis functions is zero");
-                }
-
-                if (df_sizes.empty()) {
-                    throw std::runtime_error("three-index integrals requested but no df offsets provided");
-                }
+                assert(n_ao > 0);
+                assert(n_df > 0);
+                assert(n_ri > 0);
+                assert(!df_sizes.empty());
 
                 const auto n_row = n_ao * n_ri;
 
