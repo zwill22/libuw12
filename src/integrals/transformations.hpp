@@ -30,8 +30,10 @@ namespace uw12::integrals::transformations {
     /// \param C Orbital coefficients \f$C_{\mu k}\f$
     ///
     /// \return One-index transformed df integrals \f$(\mu k|A)\f$
-    inline linalg::Mat mo_transform_one_index_full(const linalg::Mat &J3,
-                                                   const linalg::Mat &C) {
+    inline linalg::Mat mo_transform_one_index_full(
+        const linalg::Mat &J3,
+        const linalg::Mat &C
+    ) {
         using namespace linalg;
 
         const auto n_ao = n_rows(C);
@@ -75,8 +77,10 @@ namespace uw12::integrals::transformations {
     /// \param C Orbital coefficients \f$C_{\mu i}\f$
     ///
     /// \return First-index mo transformed df integrals \f$(i k|A)\f$
-    inline linalg::Mat transform_first_index(const linalg::Mat &J3,
-                                             const linalg::Mat &C) {
+    inline linalg::Mat transform_first_index(
+        const linalg::Mat &J3,
+        const linalg::Mat &C
+    ) {
         using namespace linalg;
 
         const auto n1 = n_rows(C);
@@ -85,7 +89,7 @@ namespace uw12::integrals::transformations {
         if (n_rows(J3) % n1 != 0) {
             throw std::runtime_error("number of rows of J3 not a multiple of n_ao");
         }
-        const int n2 = static_cast<int>(n_rows(J3) / n1);
+        const size_t n2 = n_rows(J3) / n1;
 
         const Mat C_t = transpose(C);
 
@@ -125,8 +129,10 @@ namespace uw12::integrals::transformations {
     /// \param C Orbital coefficients \f$C_{\mu i}\f$
     ///
     /// \return Second-index mo transformed df integrals \f$(a i|A)\f$
-    inline linalg::Mat transform_second_index(const linalg::Mat &J3,
-                                              const linalg::Mat &C) {
+    inline linalg::Mat transform_second_index(
+        const linalg::Mat &J3,
+        const linalg::Mat &C
+    ) {
         using namespace linalg;
 
         const auto n2 = n_rows(C);
@@ -136,7 +142,7 @@ namespace uw12::integrals::transformations {
             throw std::runtime_error("number of rows J3 is not a multiple of number of orbitals being transformed");
         }
         assert(n_rows(J3) % n2 == 0);
-        const int n1 = static_cast<int>(n_rows(J3) / n2);
+        const size_t n1 = n_rows(J3) / n2;
 
         Mat result(n1 * n4, n3);
 
@@ -171,9 +177,11 @@ namespace uw12::integrals::transformations {
     /// \param C_right Orbital coefficients \f$C_{\mu k}\f$
     ///
     /// \return Two-index mo transformed df integrals \f$(i k|A)\f$
-    inline linalg::Mat mo_transform_two_index_full(const linalg::Mat &J3,
-                                                   const linalg::Mat &C_left,
-                                                   const linalg::Mat &C_right) {
+    inline linalg::Mat mo_transform_two_index_full(
+        const linalg::Mat &J3,
+        const linalg::Mat &C_left,
+        const linalg::Mat &C_right
+    ) {
         if (linalg::n_rows(C_left) != linalg::n_rows(C_right)) {
             throw std::runtime_error("Coefficient matrices with different numbers of ao functions");
         }

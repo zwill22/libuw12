@@ -13,9 +13,9 @@ constexpr auto seed = 2;
 constexpr auto epsilon = 1e-10;
 
 TEST_CASE("Test integrals - MO transformations") {
-    constexpr auto n_ao = 11;
-    constexpr auto n_df = 20;
-    constexpr auto n_orb = 7;
+    constexpr size_t n_ao = 11;
+    constexpr size_t n_df = 20;
+    constexpr size_t n_orb = 7;
 
     const auto J3 = linalg::random(n_ao * (n_ao + 1) / 2, n_df, seed);
     const auto C = linalg::random(n_ao, n_orb, seed);
@@ -29,7 +29,7 @@ TEST_CASE("Test integrals - MO transformations") {
     REQUIRE(linalg::n_rows(J3_mjA) == n_ao * n_orb);
     REQUIRE(linalg::n_cols(J3_mjA) == n_df);
 
-    for (int col_idx = 0; col_idx < n_df; ++col_idx) {
+    for (size_t col_idx = 0; col_idx < n_df; ++col_idx) {
         const linalg::Mat mat1 = linalg::reshape_col(J3_mjA, col_idx, n_ao, n_orb);
         const linalg::Mat mat2 = utils::square(linalg::col(J3, col_idx)) * C;
 
@@ -39,7 +39,7 @@ TEST_CASE("Test integrals - MO transformations") {
     INFO("TEST one tranform first index");
     REQUIRE_THROWS(transform_first_index(J3, linalg::head_rows(C, n_orb)));
 
-    constexpr auto n_occ = n_orb - 1;
+    constexpr size_t n_occ = n_orb - 1;
     const auto Co = linalg::tail_cols(C, n_occ);
 
     const auto J3_ijA = transform_first_index(J3_mjA, Co);
@@ -47,7 +47,7 @@ TEST_CASE("Test integrals - MO transformations") {
     REQUIRE(linalg::n_rows(J3_ijA) == n_orb * n_occ);
     REQUIRE(linalg::n_cols(J3_ijA) == n_df);
 
-    for (int col_idx = 0; col_idx < n_df; ++col_idx) {
+    for (size_t col_idx = 0; col_idx < n_df; ++col_idx) {
         const linalg::Mat mat1 = linalg::reshape_col(J3_ijA, col_idx, n_occ, n_orb);
         const linalg::Mat mat2 = linalg::transpose(Co) * linalg::reshape_col(J3_mjA, col_idx, n_ao, n_orb);
 
@@ -64,10 +64,10 @@ TEST_CASE("Test integrals - MO transformations") {
 }
 
 TEST_CASE("Test integrals - MO transformations (RI)") {
-    constexpr auto n_ao = 11;
-    constexpr auto n_ri = 25;
-    constexpr auto n_df = 20;
-    constexpr auto n_orb = 7;
+    constexpr size_t n_ao = 11;
+    constexpr size_t n_ri = 25;
+    constexpr size_t n_df = 20;
+    constexpr size_t n_orb = 7;
 
     const auto J3_pvA = linalg::random(n_ri * n_ao, n_df, seed);
     const auto C = linalg::random(n_ao, n_orb, seed);
@@ -79,7 +79,7 @@ TEST_CASE("Test integrals - MO transformations (RI)") {
     REQUIRE(linalg::n_rows(J3_piA) == n_ri * n_orb);
     REQUIRE(linalg::n_cols(J3_piA) == n_df);
 
-    for (int col_idx = 0; col_idx < n_df; ++col_idx) {
+    for (size_t col_idx = 0; col_idx < n_df; ++col_idx) {
         const linalg::Mat mat1 = linalg::reshape_col(J3_piA, col_idx, n_ri, n_orb);
         const linalg::Mat mat2 = linalg::reshape_col(J3_pvA, col_idx, n_ri, n_ao) * C;
 

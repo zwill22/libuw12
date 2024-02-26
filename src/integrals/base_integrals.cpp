@@ -5,8 +5,8 @@
 
 namespace uw12::integrals {
 
-    int calculate_n_df(const std::vector<int>& df_sizes) {
-        int total = 0;
+    size_t calculate_n_df(const std::vector<size_t>& df_sizes) {
+        size_t total = 0;
         for (const auto &shell_size: df_sizes) {
             total += shell_size;
         }
@@ -17,10 +17,10 @@ namespace uw12::integrals {
         TwoIndexFn two_index_fn_,
         ThreeIndexFn three_index_fn_,
         ThreeIndexFn three_index_ri_fn_,
-        std::vector<int> df_sizes_,
-        const int n_ao_,
-        const int n_df_,
-        const int n_ri_,
+        const std::vector<size_t> & df_sizes_,
+        const size_t n_ao_,
+        const size_t n_df_,
+        const size_t n_ri_,
         const bool store_ao_integrals_,
         const bool store_ri_integrals_,
         const bool two_index_fn_provided_,
@@ -37,7 +37,7 @@ namespace uw12::integrals {
         n_ao(n_ao_),
         n_df(n_df_),
         n_ri(n_ri_),
-        df_sizes(std::move(df_sizes_)),
+        df_sizes(df_sizes_),
         J3_0(J3_0_),
         J3(J3_),
         J3_ri_0(J3_ri_0_),
@@ -121,10 +121,10 @@ namespace uw12::integrals {
         const TwoIndexFn &two_index_fn,
         const ThreeIndexFn &three_index_fn,
         const ThreeIndexFn &three_index_ri_fn,
-        const std::vector<int> &df_sizes,
-        const int n_ao,
-        const int n_df,
-        const int n_ri,
+        const std::vector<size_t> &df_sizes,
+        const size_t n_ao,
+        const size_t n_df,
+        const size_t n_ri,
         const bool store_ao_integrals,
         const bool store_ri_integrals
     )
@@ -139,9 +139,9 @@ namespace uw12::integrals {
     BaseIntegrals::BaseIntegrals(
         const TwoIndexFn &two_index_fn,
         const ThreeIndexFn &three_index_fn,
-        const std::vector<int> &df_sizes,
-        const int n_ao,
-        const int n_df,
+        const std::vector<size_t> &df_sizes,
+        const size_t n_ao,
+        const size_t n_df,
         const bool store_ao_integrals
     )
         : BaseIntegrals(
@@ -155,11 +155,11 @@ namespace uw12::integrals {
         const linalg::Mat &J3_0,
         const linalg::Mat &J2,
         const ThreeIndexFn &three_index_ri_fn,
-        const std::vector<int> &df_sizes,
+        const std::vector<size_t> &df_sizes,
         const bool use_ri,
-        const int n_ao,
-        const int n_df,
-        const int n_ri,
+        const size_t n_ao,
+        const size_t n_df,
+        const size_t n_ri,
         const bool store_ri_integrals
     )
         : BaseIntegrals(
@@ -212,7 +212,7 @@ namespace uw12::integrals {
         return two_index_fn();
     }
 
-    linalg::Mat BaseIntegrals::three_index(const int A) const {
+    linalg::Mat BaseIntegrals::three_index(const size_t A) const {
         if (!three_index_fn_provided) {
             throw std::runtime_error("no three index function provided");
         }
@@ -220,7 +220,7 @@ namespace uw12::integrals {
         return three_index_fn(A);
     }
 
-    linalg::Mat BaseIntegrals::three_index_ri(const int A) const {
+    linalg::Mat BaseIntegrals::three_index_ri(const size_t A) const {
         if (!three_index_ri_fn_provided) {
             throw std::runtime_error("no three index function provided");
         }
@@ -283,7 +283,7 @@ namespace uw12::integrals {
         return *df_vals;
     }
 
-    const std::vector<int> &BaseIntegrals::get_df_sizes() const {
+    const std::vector<size_t> &BaseIntegrals::get_df_sizes() const {
         if (df_sizes.empty()) {
             throw std::runtime_error("df_sizes requested but none available");
         }
@@ -294,14 +294,14 @@ namespace uw12::integrals {
     }
 
 
-    std::vector<int> BaseIntegrals::get_df_offsets() const {
+    std::vector<size_t> BaseIntegrals::get_df_offsets() const {
         const auto sizes = get_df_sizes();
         const auto n_shells = sizes.size();
 
-        int total = 0;
-        std::vector<int> df_offsets(n_shells);
+        size_t total = 0;
+        std::vector<size_t> df_offsets(n_shells);
 
-        for (int i = 0; i < n_shells; ++i) {
+        for (size_t i = 0; i < n_shells; ++i) {
             df_offsets[i] = total;
             total += sizes[i];
         }
@@ -395,15 +395,15 @@ namespace uw12::integrals {
         return *J3_ri;
     }
 
-    int BaseIntegrals::get_number_ao() const {
+    size_t BaseIntegrals::get_number_ao() const {
         return n_ao;
     }
 
-    int BaseIntegrals::get_number_df() const {
+    size_t BaseIntegrals::get_number_df() const {
         return n_df;
     }
 
-    int BaseIntegrals::get_number_ri() const {
+    size_t BaseIntegrals::get_number_ri() const {
         return n_ri;
     }
 

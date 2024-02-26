@@ -239,8 +239,8 @@ namespace uw12::linalg {
             return false;
         }
 
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < i; j++) {
+        for (size_t i = 0; i < n; i++) {
+            for (size_t j = 0; j < i; j++) {
                 if (std::abs(mat(i, j) - mat(j, i)) > threshold) {
                     return false;
                 }
@@ -286,7 +286,7 @@ namespace uw12::linalg {
         return arma::dot(mat1, mat2);
 #elif USE_EIGEN
         double result = 0;
-        for (int i = 0; i < n_col; ++i) {
+        for (size_t i = 0; i < n_col; ++i) {
             result += mat1.col(i).dot(mat2.col(i));
         }
 
@@ -725,7 +725,7 @@ namespace uw12::linalg {
 #ifdef USE_ARMA
         mat.cols(offset, offset + n - 1) = input;
 #elif USE_EIGEN
-        for (int i = 0; i < n; ++i) {
+        for (size_t i = 0; i < n; ++i) {
             mat.col(offset + i) = input.col(i);
         }
 #endif
@@ -751,7 +751,7 @@ namespace uw12::linalg {
 #ifdef USE_ARMA
         mat.rows(offset, offset + n - 1) = input;
 #elif USE_EIGEN
-        for (int i = 0; i < n; ++i) {
+        for (size_t i = 0; i < n; ++i) {
             mat.row(offset + i) = input.row(i);
         }
 #endif
@@ -774,7 +774,7 @@ namespace uw12::linalg {
 #ifdef USE_ARMA
         vec.rows(offset, offset + n - 1) = input;
 #elif USE_EIGEN
-        for (int i = 0; i < n; ++i) {
+        for (size_t i = 0; i < n; ++i) {
             vec(offset + i) = input(i);
         }
 #endif
@@ -981,8 +981,8 @@ namespace uw12::linalg {
             const auto n = non_zero.sum();
             linalg::Vec eigenvalues(n);
             linalg::Mat eigenvectors(vecs.rows(), n);
-            for (int i = 0; i < eigenvalues.size(); ++i) {
-                int idx = 0;
+            for (size_t i = 0; i < eigenvalues.size(); ++i) {
+                size_t idx = 0;
                 if (non_zero[i]) {
                     eigenvalues(idx) = vals(i);
                     eigenvectors.col(idx) = vecs.col(i);

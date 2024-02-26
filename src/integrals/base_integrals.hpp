@@ -53,8 +53,10 @@ namespace uw12::integrals {
             const TwoIndexFn &two_index_fn,
             const ThreeIndexFn &three_index_fn,
             const ThreeIndexFn &three_index_ri_fn,
-            const std::vector<int> &df_sizes,
-            int n_ao, int n_df, int n_ri,
+            const std::vector<size_t> &df_sizes,
+            size_t n_ao,
+            size_t n_df,
+            size_t n_ri,
             bool store_ao_integrals = true,
             bool store_ri_integrals = true
         );
@@ -63,9 +65,9 @@ namespace uw12::integrals {
         BaseIntegrals(
             const TwoIndexFn &two_index_fn,
             const ThreeIndexFn &three_index_fn,
-            const std::vector<int> &df_sizes,
-            int n_ao,
-            int n_df,
+            const std::vector<size_t> &df_sizes,
+            size_t n_ao,
+            size_t n_df,
             bool store_ao_integrals = true
         );
 
@@ -78,11 +80,11 @@ namespace uw12::integrals {
             const linalg::Mat &J3_0,
             const linalg::Mat &J2,
             const ThreeIndexFn &three_index_ri,
-            const std::vector<int> &df_sizes,
+            const std::vector<size_t> &df_sizes,
             bool use_ri,
-            int n_ao,
-            int n_df,
-            int n_ri,
+            size_t n_ao,
+            size_t n_df,
+            size_t n_ri,
             bool store_ri_integrals = false
         );
 
@@ -120,7 +122,7 @@ namespace uw12::integrals {
         /// \param A Index of density-fitting shell
         ///
         /// \return Density-fitting integrals \f$(\rho\sigma | w | A)\f$
-        [[nodiscard]] linalg::Mat three_index(int A) const;
+        [[nodiscard]] linalg::Mat three_index(size_t A) const;
 
         /// \brief Call the three_index_fn to obtain the three index density-fitting
         /// ri integrals in the ao basis and ri basis for the density-fitting basis
@@ -136,7 +138,7 @@ namespace uw12::integrals {
         /// \param A Index of density-fitting shell
         ///
         /// \return Density-fitting ri integrals \f$(\mu\rho | w | A)\f$
-        [[nodiscard]] linalg::Mat three_index_ri(int A) const;
+        [[nodiscard]] linalg::Mat three_index_ri(size_t A) const;
 
         /// Check whether a `two_index_fn` is provided
         [[nodiscard]] bool has_two_index_fn() const;
@@ -153,13 +155,13 @@ namespace uw12::integrals {
         [[nodiscard]] const linalg::Mat &get_P2() const;
 
         /// Obtain the vector of density-fitting basis set shell sizes.
-        [[nodiscard]] const std::vector<int> &get_df_sizes() const;
+        [[nodiscard]] const std::vector<size_t> &get_df_sizes() const;
 
         /// Obtain the vector of density-fitting basis set shell offsets. This vector
         /// is determined using `df_sizes` and is of length `n_sh` for number of df
         /// basis set shells. Th vector determines the first column index in the final
         /// `J3` matrix where the first column of a given df shell is assigned.
-        [[nodiscard]] std::vector<int> get_df_offsets() const;
+        [[nodiscard]] std::vector<size_t> get_df_offsets() const;
 
         /// Return the density-fitting eigenvalues `df_vals`. If not already
         /// calculated, the two-index matrix `J2` is calculated and decomposed into
@@ -191,13 +193,13 @@ namespace uw12::integrals {
         [[nodiscard]] const linalg::Mat &get_J3_ri() const;
 
         /// Get the number of ao basis functions
-        [[nodiscard]] int get_number_ao() const;
+        [[nodiscard]] size_t get_number_ao() const;
 
         /// Get the number of df basis functions
-        [[nodiscard]] int get_number_df() const;
+        [[nodiscard]] size_t get_number_df() const;
 
         /// Get the number of ri basis functions
-        [[nodiscard]] int get_number_ri() const;
+        [[nodiscard]] size_t get_number_ri() const;
 
         /// Check whether `ri` integrals should be stored. If false a warning is
         /// given when calling `get_J3_ri`
@@ -231,10 +233,10 @@ namespace uw12::integrals {
             TwoIndexFn two_index_fn_,
             ThreeIndexFn three_index_fn_,
             ThreeIndexFn three_index_ri_fn_,
-            std::vector<int> df_sizes_,
-            int n_ao_,
-            int n_df_,
-            int n_ri_,
+            const std::vector<size_t> & df_sizes_,
+            size_t n_ao_,
+            size_t n_df_,
+            size_t n_ri_,
             bool store_ao_integrals_,
             bool store_ri_integrals_,
             bool two_index_fn_provided_,
@@ -253,13 +255,13 @@ namespace uw12::integrals {
         ThreeIndexFn three_index_fn;
         ThreeIndexFn three_index_fn_ri;
 
-        int n_ao{};
-        int n_df{};
-        int n_ri{};
+        size_t n_ao{};
+        size_t n_df{};
+        size_t n_ri{};
 
         /// Vector of df basis set shell sizes where the length is the number of df
         /// basis set shells
-        std::vector<int> df_sizes;
+        std::vector<size_t> df_sizes;
 
         /// Three-index integrals in the original df basis space
         std::shared_ptr<linalg::Mat> J3_0;

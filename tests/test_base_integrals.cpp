@@ -11,7 +11,7 @@ using namespace uw12::integrals;
 constexpr auto epsilon = 1e-10;
 constexpr auto seed = 2;
 
-void check_df_vals(const BaseIntegrals &base_integrals, const int n_df) {
+void check_df_vals(const BaseIntegrals &base_integrals, const size_t n_df) {
     const auto &P2 = base_integrals.get_P2();
     REQUIRE(uw12::linalg::n_rows(P2) == n_df);
     REQUIRE(uw12::linalg::n_cols(P2) == n_df);
@@ -21,7 +21,7 @@ void check_df_vals(const BaseIntegrals &base_integrals, const int n_df) {
     REQUIRE(uw12::linalg::n_elem(df_vals) == n_df);
 }
 
-void check_df_offsets(const BaseIntegrals &base_integrals, const std::vector<int> & df_sizes) {
+void check_df_offsets(const BaseIntegrals &base_integrals, const std::vector<size_t> & df_sizes) {
     const auto &df_size = base_integrals.get_df_sizes();
     REQUIRE(df_sizes.size() == df_size.size());
     for (int i = 0; i < df_sizes.size(); ++i) {
@@ -30,21 +30,21 @@ void check_df_offsets(const BaseIntegrals &base_integrals, const std::vector<int
 
     const auto df_offsets = base_integrals.get_df_offsets();
     REQUIRE(df_offsets.size() == df_sizes.size());
-    int offset = 0;
-    for (int i = 0; i < df_sizes.size(); ++i) {
+    size_t offset = 0;
+    for (size_t i = 0; i < df_sizes.size(); ++i) {
         CHECK(df_offsets[i] == offset);
         offset += df_sizes[i];
     }
 }
 
 TEST_CASE("Test integrals - base integrals") {
-    constexpr auto n_ao = 10;
-    constexpr auto n_df = 22;
-    constexpr auto n_ri = 33;
+    constexpr size_t n_ao = 10;
+    constexpr size_t n_df = 22;
+    constexpr size_t n_ri = 33;
 
-    const std::vector df_sizes = {1, 3, 5, 1, 3, 5, 1, 3};
+    const std::vector<size_t> df_sizes = {1, 3, 5, 1, 3, 5, 1, 3};
 
-    int total = 0;
+    size_t total = 0;
     for (const auto size: df_sizes) {
         total += size;
     }
@@ -63,8 +63,8 @@ TEST_CASE("Test integrals - base integrals") {
         constexpr auto n_row = n_ao * (n_ao + 1) / 2;
         const auto n_col = df_sizes[A];
 
-        int offset = 0;
-        for (int i = 0; i < A; ++i) {
+        size_t offset = 0;
+        for (size_t i = 0; i < A; ++i) {
             offset += df_sizes[i];
         }
 
@@ -75,8 +75,8 @@ TEST_CASE("Test integrals - base integrals") {
         constexpr auto n_row = n_ao * n_ri;
         const auto n_col = df_sizes[A];
 
-        int offset = 0;
-        for (int i = 0; i < A; ++i) {
+        size_t offset = 0;
+        for (size_t i = 0; i < A; ++i) {
             offset += df_sizes[i];
         }
 
@@ -129,13 +129,13 @@ TEST_CASE("Test integrals - base integrals") {
         CHECK(uw12::linalg::is_square(J2));
         CHECK(uw12::linalg::is_symmetric(J2));
 
-        for (int A = 0; A < df_sizes.size(); ++A) {
+        for (size_t A = 0; A < df_sizes.size(); ++A) {
             const auto J3_A = base_integrals.three_index(A);
             REQUIRE(uw12::linalg::n_rows(J3_A) == n_ao * (n_ao + 1) / 2);
             REQUIRE(uw12::linalg::n_cols(J3_A) == df_sizes[A]);
         }
 
-        for (int A = 0; A < df_sizes.size(); ++A) {
+        for (size_t A = 0; A < df_sizes.size(); ++A) {
             const auto J3_ri_A = base_integrals.three_index_ri(A);
             REQUIRE(uw12::linalg::n_rows(J3_ri_A) == n_ao * n_ri);
             REQUIRE(uw12::linalg::n_cols(J3_ri_A) == df_sizes[A]);

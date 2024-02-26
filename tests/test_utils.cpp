@@ -18,7 +18,7 @@ TEST_CASE("Test utils - Matrix utils") {
     SECTION("Test square matrix") {
         constexpr size_t n = 6;
 
-        constexpr int n2 = n * (n + 1) / 2;
+        constexpr size_t n2 = n * (n + 1) / 2;
 
         const linalg::Vec vec = linalg::random(n2, 1, seed);
 
@@ -35,7 +35,7 @@ TEST_CASE("Test utils - Matrix utils") {
 
         size_t col_idx = 0;
         size_t row_idx = 0;
-        for (int i = 0; i < n2; ++i) {
+        for (size_t i = 0; i < n2; ++i) {
             CHECK_THAT(linalg::elem(sq, row_idx, col_idx), WithinAbs(linalg::elem(vec, i), margin));
             col_idx++;
             if (col_idx > row_idx) {
@@ -57,12 +57,12 @@ TEST_CASE("Test utils - Matrix utils") {
 
         for (const auto factor: {1.0, 2.0, 3.5}) {
             const auto vec = lower(sq, factor);
-            constexpr int n2 = n * (n + 1) / 2;
+            constexpr size_t n2 = n * (n + 1) / 2;
             REQUIRE(linalg::n_elem(vec) == n2);
 
             size_t col_idx = 0;
             size_t row_idx = 0;
-            for (int i = 0; i < n2; ++i) {
+            for (size_t i = 0; i < n2; ++i) {
                 const auto target = linalg::elem(vec, i) / (col_idx == row_idx ? 1.0 : factor);
                 CHECK_THAT(linalg::elem(sq, row_idx, col_idx), WithinAbs(target, margin));
                 col_idx++;
@@ -89,7 +89,7 @@ TEST_CASE("Test utils - MatVec") {
 
         REQUIRE(multiple.size() == multiple2.size());
 
-        for (int i = 0; i < multiple.size(); ++i) {
+        for (size_t i = 0; i < multiple.size(); ++i) {
             const linalg::Mat mat = factor * mat_vec[i];
 
             CHECK(linalg::nearly_equal(multiple[i], multiple2[i], margin));
@@ -101,7 +101,7 @@ TEST_CASE("Test utils - MatVec") {
         const auto sum = mat_vec + mat_vec;
         REQUIRE(mat_vec.size() == sum.size());
 
-        for (int i = 0; i < mat_vec.size(); ++i) {
+        for (size_t i = 0; i < mat_vec.size(); ++i) {
             const linalg::Mat target = mat_vec[i] + mat_vec[i];
             CHECK(linalg::nearly_equal(sum[i], target, margin));
         }
@@ -146,7 +146,7 @@ TEST_CASE("Test utils - Fock Matrix and Energy") {
         const auto sum = fock_energy + fock_energy;
         REQUIRE(sum.fock.size() == fock_energy.fock.size());
 
-        for (int i = 0; i < sum.fock.size(); ++i) {
+        for (size_t i = 0; i < sum.fock.size(); ++i) {
             const linalg::Mat target = fock_energy.fock[i] + fock_energy.fock[i];
             CHECK(linalg::nearly_equal(sum.fock[i], target, margin));
         }
@@ -159,7 +159,7 @@ TEST_CASE("Test utils - Fock Matrix and Energy") {
         fock_matrix_and_energy += fock_energy;
         REQUIRE(fock_matrix_and_energy.fock.size() == sum.fock.size());
 
-        for (int i = 0; i < sum.fock.size(); ++i) {
+        for (size_t i = 0; i < sum.fock.size(); ++i) {
             CHECK(linalg::nearly_equal(sum.fock[i], fock_matrix_and_energy.fock[i], margin));
         }
         CHECK_THAT(sum.energy, WithinAbs(fock_matrix_and_energy.energy, margin));
@@ -181,7 +181,7 @@ TEST_CASE("Test utils - Fock Matrix and Energy") {
         const auto fock_matrix_and_energy2 = symmetrise_fock(fock_matrix_and_energy);
         REQUIRE(fock_matrix_and_energy.fock.size() == fock_matrix_and_energy2.fock.size());
 
-        for (int i = 0; i < fock_matrix_and_energy.fock.size(); ++i) {
+        for (size_t i = 0; i < fock_matrix_and_energy.fock.size(); ++i) {
             CHECK(linalg::nearly_equal(fock_matrix_and_energy.fock[i], fock_matrix_and_energy2.fock[i], margin));
         }
         CHECK_THAT(fock_matrix_and_energy.energy, WithinAbs(fock_energy.energy, margin));

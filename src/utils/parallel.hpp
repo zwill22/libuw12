@@ -47,7 +47,7 @@ namespace uw12::parallel {
 #pragma omp parallel
             {
 #pragma omp for
-                for (int i = start; i < stop; ++i) {
+                for (size_t i = start; i < stop; ++i) {
                     func(i);
                 }
             }

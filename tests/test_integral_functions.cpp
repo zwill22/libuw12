@@ -7,16 +7,16 @@
 #include "catch.hpp"
 
 TEST_CASE("Test integrals - Test integral functions") {
-    const std::vector df_shell_sizes = {1, 3, 5, 7, 9, 11};
-    std::vector df_offsets = {0};
-    for (int idx = 0; idx < df_shell_sizes.size() - 1; ++idx) {
+    const std::vector<size_t> df_shell_sizes = {1, 3, 5, 7, 9, 11};
+    std::vector<size_t> df_offsets = {0};
+    for (size_t idx = 0; idx < df_shell_sizes.size() - 1; ++idx) {
         df_offsets.push_back(df_offsets[idx] + df_shell_sizes[idx]);
     }
 
     constexpr auto n_ao = 5;
     constexpr auto n_row = n_ao * (n_ao + 1) / 2;
 
-    auto n_df = 0;
+    size_t n_df = 0;
     for (const auto df: df_shell_sizes) {
         n_df += df;
     }
@@ -37,8 +37,8 @@ TEST_CASE("Test integrals - Test integral functions") {
     REQUIRE(uw12::linalg::n_cols(result) == n_df);
 
     int shell_idx = 0;
-    for (int col_idx = 0; col_idx < n_df; ++col_idx) {
-        for (int idx = 0; idx < df_offsets.size(); ++idx) {
+    for (auto col_idx = 0; col_idx < n_df; ++col_idx) {
+        for (auto idx = 0; idx < df_offsets.size(); ++idx) {
             if (col_idx >= df_offsets[idx]) {
                 shell_idx = idx;
             }

@@ -36,7 +36,7 @@ std::vector<double> slice(
     }
 
     std::vector<double> new_vector({});
-    for (int i = 0; i < n_elem; ++i) {
+    for (size_t i = 0; i < n_elem; ++i) {
         const auto index = start_index + i;
         if (index >= vector.size()) {
             throw std::logic_error("Index outside of parent vector range");
@@ -223,7 +223,7 @@ TEST_CASE("Test linear algebra - Test vector slicing") {
         REQUIRE_THROWS(linalg::assign_rows(vec2, vec, 1));
 
         linalg::assign_rows(vec2, vec.tail(2), 1);
-        for (int idx = 0; idx < n; ++idx) {
+        for (size_t idx = 0; idx < n; ++idx) {
             const auto elem = linalg::elem(vec2, idx);
             auto target = linalg::elem(vec, idx);
             if (idx >= 1 && idx <= 2) {

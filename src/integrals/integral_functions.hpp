@@ -17,7 +17,7 @@ namespace uw12::integrals {
 
     /// Function which returns a matrix of three-index integrals for a single shell
     /// of third index
-    using ThreeIndexFn = std::function<linalg::Mat(int)>;
+    using ThreeIndexFn = std::function<linalg::Mat(size_t)>;
 
     /// \brief Calculate the three-index Coulomb matrix \f$(\mu\nu | w | A)\f$
     ///
@@ -30,15 +30,18 @@ namespace uw12::integrals {
     /// \param n_df number of df basis functions
     ///
     /// \return Three-index matrix
-    inline linalg::Mat coulomb_3idx(const ThreeIndexFn &three_index_fn,
-                                    const std::vector<int> &df_offsets, const int n_rows,
-                                    const int n_df) {
+    inline linalg::Mat coulomb_3idx(
+        const ThreeIndexFn &three_index_fn,
+        const std::vector<size_t> &df_offsets,
+        const size_t n_rows,
+        const size_t n_df
+    ) {
         linalg::Mat result(n_rows, n_df);
 
         const auto n_df_sh = df_offsets.size();
 
         const auto parallel_fn = [&result, &three_index_fn,
-                    &df_offsets](const int A) {
+                    &df_offsets](const size_t A) {
             const auto off_a = df_offsets[A];
 
             const auto shell_results = three_index_fn(A);

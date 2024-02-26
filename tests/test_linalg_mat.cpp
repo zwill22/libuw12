@@ -226,8 +226,8 @@ TEST_CASE("Test linear algebra - Test Matrix operations") {
         REQUIRE(linalg::n_rows(product) == n_row);
         REQUIRE(linalg::n_cols(product) == n_row);
 
-        for (int col_index = 0; col_index < n_row; ++col_index) {
-            for (int row_index = 0; row_index < n_row; ++row_index) {
+        for (size_t col_index = 0; col_index < n_row; ++col_index) {
+            for (size_t row_index = 0; row_index < n_row; ++row_index) {
                 double target = 0;
                 if (col_index == row_index) {
                     target = 1;
@@ -260,8 +260,8 @@ TEST_CASE("Test linear algebra - Test Matrix operations") {
         REQUIRE(linalg::n_cols(product) == n);
         REQUIRE(linalg::is_square(product));
 
-        for (int col_index = 0; col_index < n; ++col_index) {
-            for (int row_index = 0; row_index < n; ++row_index) {
+        for (size_t col_index = 0; col_index < n; ++col_index) {
+            for (size_t row_index = 0; row_index < n; ++row_index) {
                 double target = 0;
                 if (col_index == row_index) {
                     target = 1;
@@ -314,7 +314,7 @@ TEST_CASE("Test Linear Algebra - Matrix slicing") {
         REQUIRE(linalg::n_rows(mat3) == 6);
         REQUIRE(linalg::n_cols(mat3) == 8);
 
-        for (int col_index = 0; col_index < 8; ++col_index) {
+        for (size_t col_index = 0; col_index < 8; ++col_index) {
             for (size_t row_index = 0; row_index < 6; ++row_index) {
                 CHECK_THAT(linalg::elem(mat3, row_index, col_index),
                            WithinAbs(linalg::elem(mat, row_index + 2, col_index + 4), margin));
@@ -364,7 +364,7 @@ TEST_CASE("Test Linear Algebra - Matrix slicing") {
         REQUIRE(linalg::n_rows(mat3) == 8);
         REQUIRE(linalg::n_cols(mat3) == n_col);
 
-        for (int col_index = 0; col_index < n_col; ++col_index) {
+        for (size_t col_index = 0; col_index < n_col; ++col_index) {
             for (size_t row_index = 0; row_index < 8; ++row_index) {
                 CHECK_THAT(linalg::elem(mat3, row_index, col_index),
                            WithinAbs(linalg::elem(mat, row_index + 2, col_index), margin));
@@ -404,7 +404,7 @@ TEST_CASE("Test Linear Algebra - Matrix slicing") {
         REQUIRE(linalg::n_rows(mat3) == n_row);
         REQUIRE(linalg::n_cols(mat3) == 5);
 
-        for (int col_index = 0; col_index < 5; ++col_index) {
+        for (size_t col_index = 0; col_index < 5; ++col_index) {
             for (size_t row_index = 0; row_index < n_row; ++row_index) {
                 CHECK_THAT(linalg::elem(mat3, row_index, col_index),
                            WithinAbs(linalg::elem(mat, row_index, col_index + n_col - 5), margin));
@@ -424,7 +424,7 @@ TEST_CASE("Test Linear Algebra - Matrix slicing") {
         REQUIRE(linalg::n_rows(mat3) == 5);
         REQUIRE(linalg::n_cols(mat3) == n_col);
 
-        for (int col_index = 0; col_index < n_col; ++col_index) {
+        for (size_t col_index = 0; col_index < n_col; ++col_index) {
             for (size_t row_index = 0; row_index < 5; ++row_index) {
                 CHECK_THAT(linalg::elem(mat3, row_index, col_index),
                            WithinAbs(linalg::elem(mat, row_index, col_index), margin));
@@ -444,7 +444,7 @@ TEST_CASE("Test Linear Algebra - Matrix slicing") {
         REQUIRE(linalg::n_rows(mat3) == 5);
         REQUIRE(linalg::n_cols(mat3) == n_col);
 
-        for (int col_index = 0; col_index < n_col; ++col_index) {
+        for (size_t col_index = 0; col_index < n_col; ++col_index) {
             for (size_t row_index = 0; row_index < 5; ++row_index) {
                 CHECK_THAT(linalg::elem(mat3, row_index, col_index),
                            WithinAbs(linalg::elem(mat, row_index + n_row - 5, col_index), margin));

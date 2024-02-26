@@ -162,8 +162,8 @@ TEST_CASE("Test linear algebra - Test matrix manipulations") {
 
         const auto mat2 = linalg::each_col(mat, vec);
         REQUIRE(linalg::n_elem(vec) == n_row);
-        for (int col_idx = 0; col_idx < n_col; ++col_idx) {
-            for (int row_idx = 0; row_idx < n_row; ++row_idx) {
+        for (size_t col_idx = 0; col_idx < n_col; ++col_idx) {
+            for (size_t row_idx = 0; row_idx < n_row; ++row_idx) {
                 const auto target = linalg::elem(mat, row_idx, col_idx) * linalg::elem(vec, row_idx);
                 CHECK_THAT(linalg::elem(mat2, row_idx, col_idx), WithinAbs(target, margin));
             }
@@ -174,8 +174,8 @@ TEST_CASE("Test linear algebra - Test matrix manipulations") {
         REQUIRE_THROWS(linalg::join_matrices(mat, linalg::head_rows(mat, n_row - 1)));
 
         const auto joined = linalg::join_matrices(mat, mat);
-        for (int col_idx = 0; col_idx < n_col; ++col_idx) {
-            for (int row_idx = 0; row_idx < n_row; ++row_idx) {
+        for (size_t col_idx = 0; col_idx < n_col; ++col_idx) {
+            for (size_t row_idx = 0; row_idx < n_row; ++row_idx) {
                 const auto target = linalg::elem(mat, row_idx, col_idx % n_col);
                 CHECK_THAT(linalg::elem(joined, row_idx, col_idx), WithinAbs(target, margin));
             }
@@ -189,7 +189,7 @@ TEST_CASE("Test linear algebra - Test matrix manipulations") {
         REQUIRE_THROWS(linalg::assign_cols(mat2, linalg::head_rows(mat, n_row - 1), 0));
 
         linalg::assign_cols(mat2, linalg::tail_cols(mat, 3), 1);
-        for (int col_idx = 0; col_idx < n_col; ++col_idx) {
+        for (size_t col_idx = 0; col_idx < n_col; ++col_idx) {
             const auto col1 = linalg::col(mat2, col_idx);
             auto col2 = linalg::col(mat, col_idx);
             if (0 < col_idx && col_idx < 4) {
@@ -206,8 +206,8 @@ TEST_CASE("Test linear algebra - Test matrix manipulations") {
         REQUIRE_THROWS(linalg::assign_rows(mat2, linalg::head_cols(mat, n_col - 1), 0));
 
         linalg::assign_rows(mat2, linalg::tail_rows(mat, 3), 2);
-        for (int col_idx = 0; col_idx < n_col; ++col_idx) {
-            for (int row_idx = 0; row_idx < n_row; ++row_idx) {
+        for (size_t col_idx = 0; col_idx < n_col; ++col_idx) {
+            for (size_t row_idx = 0; row_idx < n_row; ++row_idx) {
                 const auto elem = linalg::elem(mat2, row_idx, col_idx);
                 auto target = linalg::elem(mat, row_idx, col_idx);
                 if (row_idx >= 2 && row_idx <= 4) {
@@ -233,12 +233,14 @@ TEST_CASE("Test linear algebra - Eigendecompositions") {
     REQUIRE(linalg::n_rows(vecs) == n_row);
     REQUIRE(linalg::n_cols(vecs) == n_row);
 
-    const auto &[vals2, vecs2] = linalg::eigen_decomposition(mat, 0, 0);
+    const auto &[vals2, vecs2] = linalg::eigen_decomposition(
+        mat, 0, 0);
 
     CHECK(linalg::nearly_equal(vals, vals2, margin));
     CHECK(linalg::nearly_equal(vecs, vecs2, margin));
 
-    const auto &[vals3, vecs3] = linalg::eigen_decomposition(mat, 1e-6, 1e-8);
+    const auto &[vals3, vecs3] = linalg::eigen_decomposition(
+        mat, 1e-6, 1e-8);
 
     REQUIRE(linalg::n_elem(vals3) == linalg::n_cols(vecs3));
     REQUIRE(linalg::n_elem(vals3) <= linalg::n_elem(vals));
