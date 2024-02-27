@@ -24,7 +24,7 @@ void check_df_vals(const BaseIntegrals &base_integrals, const size_t n_df) {
 void check_df_offsets(const BaseIntegrals &base_integrals, const std::vector<size_t> & df_sizes) {
     const auto &df_size = base_integrals.get_df_sizes();
     REQUIRE(df_sizes.size() == df_size.size());
-    for (int i = 0; i < df_sizes.size(); ++i) {
+    for (size_t i = 0; i < df_sizes.size(); ++i) {
         CHECK(df_sizes[i] == df_size[i]);
     }
 
@@ -59,7 +59,7 @@ TEST_CASE("Test integrals - base integrals") {
         return J20;
     };
 
-    const ThreeIndexFn three_index_fn = [&df_sizes, &J30](const int A) -> uw12::linalg::Mat {
+    const ThreeIndexFn three_index_fn = [&df_sizes, &J30](const size_t A) -> uw12::linalg::Mat {
         constexpr auto n_row = n_ao * (n_ao + 1) / 2;
         const auto n_col = df_sizes[A];
 
@@ -71,7 +71,7 @@ TEST_CASE("Test integrals - base integrals") {
         return uw12::linalg::sub_mat(J30, 0, offset, n_row, n_col);
     };
 
-    const ThreeIndexFn three_index_ri_fn = [&df_sizes, &J3ri0](const int A) -> uw12::linalg::Mat {
+    const ThreeIndexFn three_index_ri_fn = [&df_sizes, &J3ri0](const size_t A) -> uw12::linalg::Mat {
         constexpr auto n_row = n_ao * n_ri;
         const auto n_col = df_sizes[A];
 
@@ -227,7 +227,7 @@ TEST_CASE("Test integrals - base integrals") {
         CHECK(uw12::linalg::is_square(J2));
         CHECK(uw12::linalg::is_symmetric(J2));
 
-        for (int A = 0; A < df_sizes.size(); ++A) {
+        for (size_t A = 0; A < df_sizes.size(); ++A) {
             const auto J3_A = base_integrals.three_index(A);
             REQUIRE(uw12::linalg::n_rows(J3_A) == n_ao * (n_ao + 1) / 2);
             REQUIRE(uw12::linalg::n_cols(J3_A) == df_sizes[A]);
@@ -291,7 +291,7 @@ TEST_CASE("Test integrals - base integrals") {
         CHECK_THROWS(base_integrals.two_index());
         CHECK_THROWS(base_integrals.three_index(0));
 
-        for (int A = 0; A < df_sizes.size(); ++A) {
+        for (size_t A = 0; A < df_sizes.size(); ++A) {
             const auto J3_ri_A = base_integrals.three_index_ri(A);
             REQUIRE(uw12::linalg::n_rows(J3_ri_A) == n_ao * n_ri);
             REQUIRE(uw12::linalg::n_cols(J3_ri_A) == df_sizes[A]);
