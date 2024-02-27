@@ -28,3 +28,7 @@ catch_discover_tests(test_integral_functions)
 add_executable(test_base_integrals test_base_integrals.cpp)
 target_link_libraries(test_base_integrals Catch2::Catch2WithMain uw12)
 catch_discover_tests(test_base_integrals)
+
+add_executable(test_integrals test_integrals.cpp)
+target_link_libraries(test_integrals Catch2::Catch2WithMain uw12)
+catch_discover_tests(test_integrals)
