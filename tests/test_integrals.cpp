@@ -71,38 +71,40 @@ TEST_CASE("Test integrals - Closed shell") {
 
     const auto Cactive = tail_cols(C, n_active);
 
-        const Orbitals occ_orbitals = {C};
-        const Orbitals active_orbitals = {Cactive};
+    const Orbitals occ_orbitals = {C};
+    const Orbitals active_orbitals = {Cactive};
 
-        const auto integrals = Integrals(base_integrals, occ_orbitals, active_orbitals);
+    const auto integrals = Integrals(base_integrals, occ_orbitals, active_orbitals);
 
-        const auto n_spin = integrals.spin_channels();
-        const auto &X3pkA = integrals.get_X3idx_one_trans();
-        const auto &X3miA = integrals.get_X3idx_one_trans_ri();
-        REQUIRE(X3miA.size() == n_spin);
-        REQUIRE(X3pkA.size() == n_spin);
+    const auto n_spin = integrals.spin_channels();
+    const auto &X3pkA = integrals.get_X3idx_one_trans();
+    const auto &X3miA = integrals.get_X3idx_one_trans_ri();
+    REQUIRE(X3miA.size() == n_spin);
+    REQUIRE(X3pkA.size() == n_spin);
 
-        const auto &X3ikA = integrals.get_X3idx_two_trans();
-        REQUIRE(X3ikA.size() == n_spin);
+    const auto &X3ikA = integrals.get_X3idx_two_trans();
+    REQUIRE(X3ikA.size() == n_spin);
 
-        MatVec X4pkjl = {};
-        MatVec X4ikjl = {};
-        for (size_t sigma = 0; sigma < n_spin; ++sigma) {
-            X4pkjl.push_back(integrals.get_X4idx_three_trans(sigma));
-            X4ikjl.push_back(integrals.get_X4idx_four_trans(sigma));
-        }
+    MatVec X4pkjl = {};
+    MatVec X4ikjl = {};
+    for (size_t sigma = 0; sigma < n_spin; ++sigma) {
+        X4pkjl.push_back(integrals.get_X4idx_three_trans(sigma));
+        X4ikjl.push_back(integrals.get_X4idx_four_trans(sigma));
+    }
 
-        CHECK(nearly_equal(base_integrals.get_P2(), integrals.get_P2(), epsilon));
-        CHECK(nearly_equal(base_integrals.get_df_vals(), integrals.get_df_vals(), epsilon));
-        CHECK(nearly_equal(base_integrals.get_J3(), integrals.get_J3(), epsilon));
-        CHECK(nearly_equal(base_integrals.get_J3_ri(), integrals.get_J3_ri(), epsilon));
+    const auto X_D = integrals.get_X_D();
 
-        CHECK(integrals.number_ao_orbitals() == n_ao);
-        CHECK(integrals.number_occ_orbitals(0) == n_occ);
-        CHECK(integrals.number_active_orbitals(0) == n_active);
+    CHECK(nearly_equal(base_integrals.get_P2(), integrals.get_P2(), epsilon));
+    CHECK(nearly_equal(base_integrals.get_df_vals(), integrals.get_df_vals(), epsilon));
+    CHECK(nearly_equal(base_integrals.get_J3(), integrals.get_J3(), epsilon));
+    CHECK(nearly_equal(base_integrals.get_J3_ri(), integrals.get_J3_ri(), epsilon));
+
+    CHECK(integrals.number_ao_orbitals() == n_ao);
+    CHECK(integrals.number_occ_orbitals(0) == n_occ);
+    CHECK(integrals.number_active_orbitals(0) == n_active);
 
     SECTION("Two MO transform (direct)") {
-        const auto & base2 = integrals.get_base_integrals();
+        const auto &base2 = integrals.get_base_integrals();
 
         const auto integrals2 = Integrals(
             base2, occ_orbitals, active_orbitals, false, true);
@@ -124,16 +126,22 @@ TEST_CASE("Test integrals - Closed shell") {
 
         const auto integrals2 = Integrals(base2, occ_orbitals, active_orbitals, true, false);
 
-        const auto & X3pkA2 = integrals2.get_X3idx_one_trans();
+        const auto &X3pkA2 = integrals2.get_X3idx_one_trans();
         REQUIRE(X3pkA2.size() == n_spin);
         for (size_t sigma = 0; sigma < n_spin; ++sigma) {
             CHECK(nearly_equal(X3pkA[sigma], X3pkA2[sigma], epsilon));
         }
 
-        const auto & X3miA2 = integrals2.get_X3idx_one_trans_ri();
+        const auto &X3miA2 = integrals2.get_X3idx_one_trans_ri();
         REQUIRE(X3miA2.size() == n_spin);
         for (size_t sigma = 0; sigma < n_spin; ++sigma) {
             CHECK(nearly_equal(X3miA[sigma], X3miA2[sigma], epsilon));
+        }
+
+        const auto X_D2 = integrals2.get_X_D();
+        REQUIRE(X_D2.size() == n_spin);
+        for (size_t sigma = 0; sigma < n_spin; ++sigma) {
+            CHECK(nearly_equal(X_D[sigma], X_D2[sigma], epsilon));
         }
 
         const auto integrals3 = Integrals(base2, occ_orbitals, active_orbitals, false, false);
@@ -154,8 +162,8 @@ TEST_CASE("Test integrals - Closed shell") {
 
     SECTION("Direct") {
         const auto base_integrals2 = BaseIntegrals(
-        two_index_fn, three_index_fn, three_index_ri_fn, df_sizes, n_ao, n_df, n_ri,
-        false, false);
+            two_index_fn, three_index_fn, three_index_ri_fn, df_sizes, n_ao, n_df, n_ri,
+            false, false);
 
         const auto integrals2 = Integrals(base_integrals2, occ_orbitals, active_orbitals, false);
 
@@ -165,17 +173,22 @@ TEST_CASE("Test integrals - Closed shell") {
             CHECK(nearly_equal(X3ikA[sigma], X3ikA2[sigma], epsilon));
         }
 
-        const auto & X3pkA2 = integrals2.get_X3idx_one_trans();
+        const auto &X3pkA2 = integrals2.get_X3idx_one_trans();
         REQUIRE(X3pkA2.size() == n_spin);
         for (size_t sigma = 0; sigma < n_spin; ++sigma) {
             CHECK(nearly_equal(X3pkA[sigma], X3pkA2[sigma], epsilon));
         }
 
-        const auto & X3miA2 = integrals2.get_X3idx_one_trans_ri();
+        const auto &X3miA2 = integrals2.get_X3idx_one_trans_ri();
         REQUIRE(X3miA2.size() == n_spin);
         for (size_t sigma = 0; sigma < n_spin; ++sigma) {
             CHECK(nearly_equal(X3miA[sigma], X3miA2[sigma], epsilon));
         }
 
+        const auto X_D2 = integrals2.get_X_D();
+        REQUIRE(X_D2.size() == X_D.size());
+        for (size_t sigma = 0; sigma < n_spin; ++sigma) {
+            CHECK(nearly_equal(X_D[sigma], X_D2[sigma], epsilon));
+        }
     }
 }

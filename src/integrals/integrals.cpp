@@ -142,8 +142,7 @@ namespace uw12::integrals {
 
         std::vector out(n_spin, linalg::Vec(n_df));
 
-        const auto parallel_fn = [&out, &base_integrals, &offsets,
-                    &density](const size_t A) {
+        const auto parallel_fn = [&out, &base_integrals, &offsets, &density](const size_t A) {
             const auto off_a = offsets[A];
 
             const auto shell_results = base_integrals.three_index(A);
@@ -314,7 +313,6 @@ namespace uw12::integrals {
     }
 
     std::vector<linalg::Vec> Integrals::get_X_D() const {
-        // TODO Add test to check all versions give same answer
         using namespace linalg;
 
         const auto n_spin = active_orbitals.size();
