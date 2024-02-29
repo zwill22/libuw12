@@ -125,6 +125,43 @@ namespace uw12::integrals {
         return calculate_integrals_direct(base_integrals, integral_fn, transform_fn, n_rows);
     }
 
+    std::vector<linalg::Vec> calculate_X_D_direct(
+        const BaseIntegrals &base_integrals,
+        const utils::DensityMatrix &D
+    ) {
+        const auto n_spin = D.size();
+
+        const auto offsets = base_integrals.get_df_offsets();
+        const auto n_df = base_integrals.get_number_df();
+        assert(offsets.size() < n_df);
+
+        std::vector<linalg::Vec> density(n_spin);
+        for (size_t sigma = 0; sigma < n_spin; ++sigma) {
+            density[sigma] = utils::lower(D[sigma], 2);
+        }
+
+        std::vector out(n_spin, linalg::Vec(n_df));
+
+        const auto parallel_fn = [&out, &base_integrals, &offsets,
+                    &density](const size_t A) {
+            const auto off_a = offsets[A];
+
+            const auto shell_results = base_integrals.three_index(A);
+
+            for (size_t sigma = 0; sigma < out.size(); ++sigma) {
+                linalg::assign_rows(out[sigma], linalg::transpose(shell_results) * density[sigma], off_a);
+            }
+        };
+
+        parallel::parallel_for(0, offsets.size(), parallel_fn);
+
+        for (auto &integrals: out) {
+            integrals = 0.5 * static_cast<double>(n_spin) * linalg::transpose(base_integrals.get_P2()) * integrals;
+        }
+
+        return out;
+    }
+
     Integrals::Integrals(
         const BaseIntegrals &_base_integrals,
         const utils::Orbitals &_occ_orbitals,
@@ -274,6 +311,39 @@ namespace uw12::integrals {
         return X3idx_two_trans_sigma *
                linalg::diagmat(base_integrals->get_df_vals()) *
                linalg::transpose(X3idx_two_trans_sigma);
+    }
+
+    std::vector<linalg::Vec> Integrals::get_X_D() const {
+        // TODO Add test to check all versions give same answer
+        using namespace linalg;
+
+        const auto n_spin = active_orbitals.size();
+        const auto D = utils::construct_density(active_orbitals);
+        assert(D.size() == n_spin);
+
+        std::vector<Vec> result(n_spin);
+        if (base_integrals->has_J3_0()) {
+            const auto &WV3_0 = base_integrals->get_J3_0();
+            const auto &P2 = base_integrals->get_P2();
+            for (size_t sigma = 0; sigma < n_spin; ++sigma) {
+                const auto D_sigma = utils::lower(D[sigma], 2);
+
+                assert(linalg::n_rows(D_sigma) == linalg::n_rows(WV3_0));
+                result[sigma] = 0.5 * static_cast<double>(n_spin) * transpose(P2) * transpose(WV3_0) * D_sigma;
+            }
+        } else if (base_integrals->has_J3()) {
+            const auto &WV3 = base_integrals->get_J3();
+            for (size_t sigma = 0; sigma < n_spin; ++sigma) {
+                const auto D_sigma = utils::lower(D[sigma], 2);
+
+                assert(linalg::n_rows(D_sigma) == linalg::n_rows(WV3));
+                result[sigma] = 0.5 * static_cast<double>(n_spin) * transpose(WV3) * D_sigma;
+            }
+        } else {
+            result = calculate_X_D_direct(*base_integrals, D);
+        }
+
+        return result;
     }
 
     const linalg::Mat &Integrals::get_P2() const {

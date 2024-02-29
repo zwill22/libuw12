@@ -65,6 +65,11 @@ namespace uw12::integrals {
         /// i,j and `occ_orbitals` indices k,l.
         linalg::Mat get_X4idx_four_trans(size_t sigma) const;
 
+        /// Transform base_integrals eigenvectors (lambda| w |alpha beta)
+        /// over density to give total contribution for each eigen-component
+        /// WV_D = Sum_j ( lambda | w | jj ) for each lambda for each spin channel
+        std::vector<linalg::Vec> get_X_D() const;
+
         /// Wrapper functions to access integrals from `BaseIntegrals` {
         const linalg::Mat &get_P2() const;
 

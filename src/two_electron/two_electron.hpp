@@ -1,7 +1,7 @@
 #ifndef UW12_two_electron_HPP
 #define UW12_two_electron_HPP
 
-#include "../integrals/base_integrals.hpp"
+#include "../integrals/integrals.hpp"
 #include "../utils/utils.hpp"
 
 namespace uw12::two_el {
@@ -45,9 +45,7 @@ namespace uw12::two_el {
 /// \return Two electron UW12 Fock matrix and energy
 utils::FockMatrixAndEnergy form_fock_two_el_df(
     /// Integrals \f$( ab | r^{-1}w(r) | A )\f$ and \f$( A | r^{-1}w(r) | B )\f$
-    const integrals::BaseIntegrals & WV,
-    /// Frozen core occupation weighted orbitals
-    const utils::Orbitals & active_Co,
+    const integrals::Integrals & WV,
     /// Whether to compute indirect term
     bool indirect_term,
     /// Whether to calculate the Fock matrix
