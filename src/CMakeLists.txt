@@ -1,1 +1,2 @@
 add_subdirectory(integrals)
+add_subdirectory(two_electron)
