@@ -11,9 +11,6 @@ using namespace uw12;
 
 using Catch::Matchers::WithinAbs;
 
-constexpr auto margin = 1e-10;
-constexpr int seed = 22;
-
 TEST_CASE("Test linear algebra - Test Matrix initialisation") {
     SECTION("Test memory initialiser") {
         std::vector<double> vector({1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12});
@@ -133,7 +130,7 @@ TEST_CASE("Test linear algebra - Test Matrix initialisation") {
         REQUIRE(linalg::n_cols(mat) == n_col);
 
         const auto mat2 = linalg::random(n_row, n_col, seed);
-        CHECK(linalg::nearly_equal(mat, mat2, margin));
+        CHECK(linalg::nearly_equal(mat, mat2, epsilon));
     }
 
     SECTION("Random positive definite matrices") {
@@ -358,7 +355,7 @@ TEST_CASE("Test Linear Algebra - Matrix slicing") {
         const auto mat2 = linalg::rows(mat, 0, n_row);
         REQUIRE(linalg::n_rows(mat2) == n_row);
         REQUIRE(linalg::n_cols(mat2) == n_col);
-        CHECK(linalg::nearly_equal(mat2, mat, margin));
+        CHECK(linalg::nearly_equal(mat2, mat, epsilon));
 
         const auto mat3 = linalg::rows(mat, 2, 8);
         REQUIRE(linalg::n_rows(mat3) == 8);
@@ -378,7 +375,7 @@ TEST_CASE("Test Linear Algebra - Matrix slicing") {
         const auto mat2 = linalg::head_cols(mat, n_col);
         REQUIRE(linalg::n_rows(mat2) == n_row);
         REQUIRE(linalg::n_cols(mat2) == n_col);
-        CHECK(linalg::nearly_equal(mat2, mat, margin));
+        CHECK(linalg::nearly_equal(mat2, mat, epsilon));
 
         const auto mat3 = linalg::head_cols(mat, 5);
         REQUIRE(linalg::n_rows(mat3) == n_row);
@@ -398,7 +395,7 @@ TEST_CASE("Test Linear Algebra - Matrix slicing") {
         const auto mat2 = linalg::tail_cols(mat, n_col);
         REQUIRE(linalg::n_rows(mat2) == n_row);
         REQUIRE(linalg::n_cols(mat2) == n_col);
-        CHECK(linalg::nearly_equal(mat2, mat, margin));
+        CHECK(linalg::nearly_equal(mat2, mat, epsilon));
 
         const auto mat3 = linalg::tail_cols(mat, 5);
         REQUIRE(linalg::n_rows(mat3) == n_row);
@@ -418,7 +415,7 @@ TEST_CASE("Test Linear Algebra - Matrix slicing") {
         const auto mat2 = linalg::head_rows(mat, n_row);
         REQUIRE(linalg::n_rows(mat2) == n_row);
         REQUIRE(linalg::n_cols(mat2) == n_col);
-        CHECK(linalg::nearly_equal(mat, mat2, margin));
+        CHECK(linalg::nearly_equal(mat, mat2, epsilon));
 
         const auto mat3 = linalg::head_rows(mat, 5);
         REQUIRE(linalg::n_rows(mat3) == 5);
@@ -438,7 +435,7 @@ TEST_CASE("Test Linear Algebra - Matrix slicing") {
         const auto mat2 = linalg::tail_rows(mat, n_row);
         REQUIRE(linalg::n_rows(mat2) == n_row);
         REQUIRE(linalg::n_cols(mat2) == n_col);
-        CHECK(linalg::nearly_equal(mat, mat2, margin));
+        CHECK(linalg::nearly_equal(mat, mat2, epsilon));
 
         const auto mat3 = linalg::tail_rows(mat, 5);
         REQUIRE(linalg::n_rows(mat3) == 5);

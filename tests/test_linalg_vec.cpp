@@ -10,8 +10,6 @@
 
 using namespace uw12;
 
-constexpr auto margin = 1e-10;
-
 void check_equal(const linalg::Vec &vec, const std::vector<double> &vector) {
     REQUIRE(vector.size() == linalg::n_elem(vec));
 

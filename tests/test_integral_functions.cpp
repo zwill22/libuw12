@@ -47,6 +47,6 @@ TEST_CASE("Test integrals - Test integral functions") {
         const uw12::linalg::Mat col = uw12::linalg::col(result, col_idx);
         const uw12::linalg::Mat target = uw12::linalg::ones(n_row, 1) * shell_idx;
 
-        CHECK(uw12::linalg::nearly_equal(col, target, 1e-10));
+        CHECK(uw12::linalg::nearly_equal(col, target, epsilon));
     }
 }

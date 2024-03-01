@@ -10,9 +10,6 @@ using namespace uw12::utils;
 using namespace uw12::linalg;
 using namespace uw12::integrals;
 
-constexpr auto epsilon = 1e-10;
-constexpr auto seed = 2;
-
 void test_integrals(
     const Orbitals &occ_orbitals,
     const Orbitals &active_orbitals,

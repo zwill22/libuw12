@@ -8,9 +8,6 @@
 
 using namespace uw12::integrals;
 
-constexpr auto epsilon = 1e-10;
-constexpr auto seed = 2;
-
 void check_df_vals(const BaseIntegrals &base_integrals, const size_t n_df) {
     const auto &P2 = base_integrals.get_P2();
     REQUIRE(uw12::linalg::n_rows(P2) == n_df);

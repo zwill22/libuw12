@@ -10,9 +10,6 @@ using namespace uw12;
 
 using Catch::Matchers::WithinAbs;
 
-constexpr auto margin = 1e-10;
-constexpr int seed = 22;
-
 TEST_CASE("Test linear algebra - Test matrix properties") {
     constexpr size_t n_row = 12;
     constexpr size_t n_col = 14;
@@ -127,8 +124,7 @@ TEST_CASE("Test linear algebra - Test matrix manipulations") {
         auto mat2 = linalg::random_pd(n_col, seed);
         for (size_t col_idx = 0; col_idx < n_col; ++col_idx) {
             for (size_t row_idx = 0; row_idx < n_col; ++row_idx) {
-                const auto elem = linalg::elem(mat2, row_idx, col_idx);
-                if (elem < 0) {
+                if (const auto elem = linalg::elem(mat2, row_idx, col_idx); elem < 0) {
                     linalg::set_elem(mat2, row_idx, col_idx, -1 * elem);
                 }
             }

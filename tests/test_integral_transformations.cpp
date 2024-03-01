@@ -9,9 +9,6 @@
 using namespace uw12;
 using namespace uw12::integrals::transformations;
 
-constexpr auto seed = 2;
-constexpr auto epsilon = 1e-10;
-
 TEST_CASE("Test integrals - MO transformations") {
     constexpr size_t n_ao = 11;
     constexpr size_t n_df = 20;

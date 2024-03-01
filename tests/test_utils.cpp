@@ -11,9 +11,6 @@ using namespace utils;
 
 using Catch::Matchers::WithinAbs;
 
-constexpr double margin = 1e-10;
-constexpr int seed = 22;
-
 TEST_CASE("Test utils - Matrix utils") {
     SECTION("Test square matrix") {
         constexpr size_t n = 6;
@@ -44,7 +41,7 @@ TEST_CASE("Test utils - Matrix utils") {
             }
         }
 
-        CHECK(linalg::nearly_equal(lower(sq), vec, margin));
+        CHECK(linalg::nearly_equal(lower(sq), vec, epsilon));
     }
 
     SECTION("Test lower matrix") {
@@ -92,8 +89,8 @@ TEST_CASE("Test utils - MatVec") {
         for (size_t i = 0; i < multiple.size(); ++i) {
             const linalg::Mat mat = factor * mat_vec[i];
 
-            CHECK(linalg::nearly_equal(multiple[i], multiple2[i], margin));
-            CHECK(linalg::nearly_equal(multiple[i], mat, margin));
+            CHECK(linalg::nearly_equal(multiple[i], multiple2[i], epsilon));
+            CHECK(linalg::nearly_equal(multiple[i], mat, epsilon));
         }
     }
 
@@ -103,7 +100,7 @@ TEST_CASE("Test utils - MatVec") {
 
         for (size_t i = 0; i < mat_vec.size(); ++i) {
             const linalg::Mat target = mat_vec[i] + mat_vec[i];
-            CHECK(linalg::nearly_equal(sum[i], target, margin));
+            CHECK(linalg::nearly_equal(sum[i], target, epsilon));
         }
 
         const auto one = MatVec({mat1});
@@ -130,14 +127,14 @@ TEST_CASE("Test utils - Fock Matrix and Energy") {
         const auto fock2 = factor * fock_energy;
         for (const auto &mat1: fock2.fock) {
             const linalg::Mat mat2 = factor * matrix;
-            CHECK(linalg::nearly_equal(mat1, mat2, margin));
+            CHECK(linalg::nearly_equal(mat1, mat2, epsilon));
         }
         CHECK_THAT(fock2.energy, WithinAbs(factor * fock_energy.energy, margin));
 
         const auto fock3 = fock_energy * factor;
         for (const auto &mat1: fock3.fock) {
             const linalg::Mat mat3 = factor * matrix;
-            CHECK(linalg::nearly_equal(mat1, mat3, margin));
+            CHECK(linalg::nearly_equal(mat1, mat3, epsilon));
         }
         CHECK_THAT(fock3.energy, WithinAbs(factor * fock_energy.energy, margin));
     }
@@ -148,7 +145,7 @@ TEST_CASE("Test utils - Fock Matrix and Energy") {
 
         for (size_t i = 0; i < sum.fock.size(); ++i) {
             const linalg::Mat target = fock_energy.fock[i] + fock_energy.fock[i];
-            CHECK(linalg::nearly_equal(sum.fock[i], target, margin));
+            CHECK(linalg::nearly_equal(sum.fock[i], target, epsilon));
         }
         CHECK_THAT(sum.energy, WithinAbs(fock_energy.energy * 2, margin));
 
@@ -160,7 +157,8 @@ TEST_CASE("Test utils - Fock Matrix and Energy") {
         REQUIRE(fock_matrix_and_energy.fock.size() == sum.fock.size());
 
         for (size_t i = 0; i < sum.fock.size(); ++i) {
-            CHECK(linalg::nearly_equal(sum.fock[i], fock_matrix_and_energy.fock[i], margin));
+            CHECK(linalg::nearly_equal(
+                sum.fock[i], fock_matrix_and_energy.fock[i], epsilon));
         }
         CHECK_THAT(sum.energy, WithinAbs(fock_matrix_and_energy.energy, margin));
     }
@@ -182,7 +180,8 @@ TEST_CASE("Test utils - Fock Matrix and Energy") {
         REQUIRE(fock_matrix_and_energy.fock.size() == fock_matrix_and_energy2.fock.size());
 
         for (size_t i = 0; i < fock_matrix_and_energy.fock.size(); ++i) {
-            CHECK(linalg::nearly_equal(fock_matrix_and_energy.fock[i], fock_matrix_and_energy2.fock[i], margin));
+            CHECK(linalg::nearly_equal(
+                fock_matrix_and_energy.fock[i], fock_matrix_and_energy2.fock[i], epsilon));
         }
         CHECK_THAT(fock_matrix_and_energy.energy, WithinAbs(fock_energy.energy, margin));
     }
@@ -248,7 +247,8 @@ TEST_CASE("Test utils - Orbitals") {
         for (const auto &d0: D0) {
             REQUIRE(linalg::n_rows(d0) == nao);
             REQUIRE(linalg::n_cols(d0) == nao);
-            CHECK(linalg::nearly_equal(d0, linalg::zeros(nao, nao), margin));
+            CHECK(linalg::nearly_equal(
+                d0, linalg::zeros(nao, nao), epsilon));
         }
     }
 

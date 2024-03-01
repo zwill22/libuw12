@@ -11,11 +11,6 @@
 
 using namespace uw12;
 
-constexpr auto seed = 2;
-constexpr auto eps = 1e-10;
-constexpr auto margin = 1e-10;
-constexpr auto epsilon = 1e-10;
-
 TEST_CASE("Test Two Electron term - Closed Shell") {
     constexpr size_t n_ao = 7;
     constexpr size_t n_occ = 5;

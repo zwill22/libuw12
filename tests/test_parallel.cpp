@@ -10,8 +10,6 @@
 
 using namespace uw12::parallel;
 
-constexpr auto margin = 1e-10;
-
 TEST_CASE("Test Parallel - parallel_for") {
     INFO("Check parallel for returns the same result in parallel and not");
 
