@@ -30,7 +30,7 @@ TEST_CASE("Test Two Electron term - Closed Shell") {
     };
 
     const integrals::ThreeIndexFn three_index_fn = [&df_sizes, J30, n_ao](const size_t A) -> linalg::Mat {
-        const auto n_row = n_ao * (n_ao + 1) / 2;
+        constexpr auto n_row = n_ao * (n_ao + 1) / 2;
         const auto n_col = df_sizes[A];
 
         size_t offset = 0;
@@ -46,6 +46,7 @@ TEST_CASE("Test Two Electron term - Closed Shell") {
         two_index_fn, three_index_fn, df_sizes, n_ao, n_df, true);
 
     const auto C = linalg::random(n_ao, n_occ, seed);
+    const utils::Orbitals active_Co = {C};
 
     const auto fock0 = linalg::zeros(n_ao, n_ao);
 
@@ -57,14 +58,14 @@ TEST_CASE("Test Two Electron term - Closed Shell") {
     SECTION("Direct fock") {
         INFO("Check energy is the same whether or not the Fock matrix is calculated"); {
             const auto &[fock2, energy2] = two_el::form_fock_two_el_df(
-                base_integrals, {C}, false, false, 1.0, 0);
+                base_integrals, active_Co, false, false, 1.0, 0);
             REQUIRE(fock.size() == 1);
             CHECK(linalg::nearly_equal(fock2[0], fock0, epsilon));
             CHECK_THAT(energy2, Catch::Matchers::WithinRel(energy, eps));
         }
         INFO("Test scale = 0 results in zero energy"); {
             const auto &[fock2, energy2] = two_el::form_fock_two_el_df(
-                base_integrals, {C}, false, false, 0, 0);
+                base_integrals, active_Co, false, false, 0, 0);
 
             REQUIRE(fock2.size() == 1);
             CHECK(linalg::nearly_equal(fock2[0], fock0, epsilon));
@@ -75,7 +76,7 @@ TEST_CASE("Test Two Electron term - Closed Shell") {
             const auto base2 = integrals::BaseIntegrals(J30, J20);
 
             const auto &[fock2, energy2] = two_el::form_fock_two_el_df(
-                base2, {C}, false, true, 1.0, 0.0);
+                base2, active_Co, false, true, 1.0, 0.0);
 
             REQUIRE(fock2.size() == 1);
             CHECK(linalg::nearly_equal(fock2[0], fock[0], epsilon));
@@ -84,7 +85,7 @@ TEST_CASE("Test Two Electron term - Closed Shell") {
 
         INFO("Test multiplicity of scale factor"); {
             const auto &[fock2, energy2] = two_el::form_fock_two_el_df(
-                base_integrals, {C}, false, true, 1.5, 0.0);
+                base_integrals, active_Co, false, true, 1.5, 0.0);
             REQUIRE(fock2.size() == 1);
 
             const linalg::Mat mat2 = fock[0] * 1.5;
@@ -94,7 +95,7 @@ TEST_CASE("Test Two Electron term - Closed Shell") {
 
         INFO("Test symmetry of spin factors"); {
             const auto &[fock2, energy2] = two_el::form_fock_two_el_df(
-                base_integrals, {C}, false, true, 0.0, 1.0);
+                base_integrals, active_Co, false, true, 0.0, 1.0);
 
             REQUIRE(fock2.size() == 1);
             CHECK(linalg::nearly_equal(fock2[0], fock[0], epsilon));
@@ -103,7 +104,7 @@ TEST_CASE("Test Two Electron term - Closed Shell") {
 
         INFO("Test that results are the same when indirect_term = true for ss_scale = 0"); {
             const auto &[fock2, energy2] = two_el::form_fock_two_el_df(
-                base_integrals, {C}, true, true, 1.0, 0);
+                base_integrals, active_Co, true, true, 1.0, 0);
 
             REQUIRE(fock2.size() == 1);
             CHECK(linalg::nearly_equal(fock2[0], fock[0], epsilon));
@@ -111,8 +112,9 @@ TEST_CASE("Test Two Electron term - Closed Shell") {
         }
 
         INFO("Check result are the same for open and closed shell with same orbitals"); {
+            const utils::Orbitals Co = {C, C};
             const auto &[fock2, energy2] = two_el::form_fock_two_el_df(
-                base_integrals, {C, C}, true, true, 1.0, 0);
+                base_integrals, Co, true, true, 1.0, 0);
 
             REQUIRE(fock2.size() == 2);
             for (size_t sigma = 0; sigma < 2; ++sigma) {
@@ -125,13 +127,13 @@ TEST_CASE("Test Two Electron term - Closed Shell") {
 
     SECTION("Indirect fock") {
         const auto &[fock2, energy2] = two_el::form_fock_two_el_df(
-            base_integrals, {C}, true, true, 0, 1.0);
+            base_integrals, active_Co, true, true, 0, 1.0);
         CHECK(fock2.size() == 1);
         CHECK_FALSE(linalg::nearly_equal(fock2[0], fock[0], epsilon));
 
         INFO("Check energy is the same whether or not the Fock matrix is calculated"); {
             const auto &[fock3, energy3] = two_el::form_fock_two_el_df(
-                base_integrals, {C}, true, false, 0, 1.0);
+                base_integrals, active_Co, true, false, 0, 1.0);
             REQUIRE(fock3.size() == 1);
             CHECK(linalg::nearly_equal(fock3[0], fock0, epsilon));
             CHECK_THAT(energy3, Catch::Matchers::WithinRel(energy2, eps));
@@ -139,7 +141,7 @@ TEST_CASE("Test Two Electron term - Closed Shell") {
 
         INFO("Check zero"); {
             const auto &[fock3, energy3] = two_el::form_fock_two_el_df(
-                base_integrals, {C}, true, true, 0, 0.0);
+                base_integrals, active_Co, true, true, 0, 0.0);
             CHECK(fock3.size() == 1);
             CHECK(linalg::nearly_equal(fock3[0], fock0, epsilon));
             CHECK_THAT(energy3, Catch::Matchers::WithinAbs(0, margin));
@@ -147,23 +149,28 @@ TEST_CASE("Test Two Electron term - Closed Shell") {
 
         INFO("Check same spin multiplicity"); {
             const auto &[fock3, energy3] = two_el::form_fock_two_el_df(
-                base_integrals, {C}, true, true, 0, 1.5);
+                base_integrals, active_Co, true, true, 0, 1.5);
             CHECK(fock3.size() == 1);
-            CHECK(linalg::nearly_equal(fock2[0] * 1.5, fock3[0], epsilon));
+
+            const linalg::Mat mat2 = 1.5 * fock2[0];
+            CHECK(linalg::nearly_equal(fock3[0], mat2, epsilon));
             CHECK_THAT(energy3, Catch::Matchers::WithinRel(energy2 * 1.5, eps));
         }
 
         INFO("Check combined calculations give same results"); {
             const auto &[fock3, energy3] = two_el::form_fock_two_el_df(
-                base_integrals, {C}, true, true, 1.0, 1.0);
+                base_integrals, active_Co, true, true, 1.0, 1.0);
             CHECK(fock3.size() == 1);
-            CHECK(linalg::nearly_equal(fock[0] + fock2[0], fock3[0], epsilon));
+
+            const linalg::Mat total_fock = fock[0] + fock2[0];
+            CHECK(linalg::nearly_equal(total_fock, fock3[0], epsilon));
             CHECK_THAT(energy + energy2, Catch::Matchers::WithinRel(energy3, eps));
         }
 
         INFO("Check result are the same for open and closed shell with same orbitals"); {
+            const utils::Orbitals Co = {C, C};
             const auto &[fock3, energy3] = two_el::form_fock_two_el_df(
-                base_integrals, {C, C}, true, true, 0, 1.0);
+                base_integrals, Co, true, true, 0, 1.0);
 
             REQUIRE(fock3.size() == 2);
             for (size_t sigma = 0; sigma < 2; ++sigma) {
@@ -194,7 +201,7 @@ TEST_CASE("Test Two Electron term - Open Shell") {
     };
 
     const integrals::ThreeIndexFn three_index_fn = [&df_sizes, J30, n_ao](const size_t A) -> linalg::Mat {
-        const auto n_row = n_ao * (n_ao + 1) / 2;
+        constexpr auto n_row = n_ao * (n_ao + 1) / 2;
         const auto n_col = df_sizes[A];
 
         size_t offset = 0;
@@ -262,7 +269,8 @@ TEST_CASE("Test Two Electron term - Open Shell") {
                 base_integrals, orbitals, false, true, 1.5, 0.0);
             REQUIRE(fock2.size() == n_spin);
             for (size_t sigma = 0; sigma < n_spin; ++sigma) {
-                CHECK(linalg::nearly_equal(fock2[sigma], fock[sigma] * 1.5, epsilon));
+                const linalg::Mat mat2 = 1.5 * fock[sigma];
+                CHECK(linalg::nearly_equal(fock2[sigma], mat2, epsilon));
             }
             CHECK_THAT(energy2, Catch::Matchers::WithinRel(1.5 * energy, eps));
         }
@@ -324,7 +332,9 @@ TEST_CASE("Test Two Electron term - Open Shell") {
                 base_integrals, orbitals, true, true, 0, 1.5);
             REQUIRE(fock3.size() == n_spin);
             for (size_t sigma = 0; sigma < n_spin; ++sigma) {
-                CHECK(linalg::nearly_equal(fock3[sigma], 1.5 * fock2[sigma], epsilon));
+                const linalg::Mat mat2 = 1.5 * fock2[sigma];
+
+                CHECK(linalg::nearly_equal(fock3[sigma], mat2, epsilon));
             }
             CHECK_THAT(energy3, Catch::Matchers::WithinRel(energy2 * 1.5, eps));
         }
@@ -334,8 +344,8 @@ TEST_CASE("Test Two Electron term - Open Shell") {
                 base_integrals, orbitals, true, true, 1.0, 1.0);
             REQUIRE(fock3.size() == n_spin);
             for (size_t sigma = 0; sigma < n_spin; ++sigma) {
-                CHECK(linalg::nearly_equal(
-                    fock3[sigma], fock[sigma] + fock2[sigma], epsilon));
+                const linalg::Mat mat2 = fock[sigma] + fock2[sigma];
+                CHECK(linalg::nearly_equal(fock3[sigma], mat2, epsilon));
             }
             CHECK_THAT(energy + energy2, Catch::Matchers::WithinRel(energy3, eps));
         }

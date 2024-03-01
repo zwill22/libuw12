@@ -112,8 +112,8 @@ namespace uw12::two_el {
 
             if (calculate_fock) {
                 const auto &WV3idx_one_trans = WV.get_X3idx_one_trans();
-                const linalg::Mat WV3idx_one_trans_tilde = linalg::reshape(
-                    WV3idx_one_trans[sigma] * linalg::diagmat(WV_vals), n_ao, n_occ * n_df);
+                const linalg::Mat tmp = WV3idx_one_trans[sigma] * linalg::diagmat(WV_vals);
+                const linalg::Mat WV3idx_one_trans_tilde = linalg::reshape(tmp, n_ao, n_occ * n_df);
 
                 // Reshape WV3idx_two_trans to size (n_ao, nj * na) multiplication sums
                 // over nj and na indices returning a matrix of size (n_ao, n_ao)
