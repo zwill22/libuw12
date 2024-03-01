@@ -13,12 +13,15 @@ using namespace uw12::integrals;
 constexpr auto epsilon = 1e-10;
 constexpr auto seed = 2;
 
-TEST_CASE("Test integrals - Closed shell") {
-    constexpr size_t n_ao = 11;
+void test_integrals(
+    const Orbitals &occ_orbitals,
+    const Orbitals &active_orbitals,
+    const std::vector<size_t> &n_occ,
+    const std::vector<size_t> &n_active,
+    const size_t n_ao
+) {
     constexpr size_t n_df = 25;
     constexpr size_t n_ri = 32;
-    constexpr size_t n_occ = 5;
-    constexpr size_t n_active = 3;
 
     const std::vector<size_t> df_sizes = {1, 3, 5, 1, 3, 5, 7};
 
@@ -32,13 +35,12 @@ TEST_CASE("Test integrals - Closed shell") {
     auto J30 = random(n_ao * (n_ao + 1) / 2, n_df, seed);
     auto J3ri0 = random(n_ao * n_ri, n_df, seed);
 
-
     const TwoIndexFn two_index_fn = [&J20]()-> Mat {
         return J20;
     };
 
-    const ThreeIndexFn three_index_fn = [&df_sizes, &J30](const size_t A) -> Mat {
-        constexpr auto n_row = n_ao * (n_ao + 1) / 2;
+    const ThreeIndexFn three_index_fn = [&df_sizes, &J30, n_ao](const size_t A) -> Mat {
+        const auto n_row = n_ao * (n_ao + 1) / 2;
         const auto n_col = df_sizes[A];
 
         size_t offset = 0;
@@ -49,8 +51,8 @@ TEST_CASE("Test integrals - Closed shell") {
         return sub_mat(J30, 0, offset, n_row, n_col);
     };
 
-    const ThreeIndexFn three_index_ri_fn = [&df_sizes, &J3ri0](const int A) -> Mat {
-        constexpr auto n_row = n_ao * n_ri;
+    const ThreeIndexFn three_index_ri_fn = [&df_sizes, &J3ri0, n_ao](const int A) -> Mat {
+        const auto n_row = n_ao * n_ri;
         const auto n_col = df_sizes[A];
 
         size_t offset = 0;
@@ -65,14 +67,6 @@ TEST_CASE("Test integrals - Closed shell") {
     const auto base_integrals = BaseIntegrals(
         two_index_fn, three_index_fn, three_index_ri_fn, df_sizes, n_ao, n_df, n_ri,
         true, true);
-
-
-    const auto C = random(n_ao, n_occ, seed);
-
-    const auto Cactive = tail_cols(C, n_active);
-
-    const Orbitals occ_orbitals = {C};
-    const Orbitals active_orbitals = {Cactive};
 
     const auto integrals = Integrals(base_integrals, occ_orbitals, active_orbitals);
 
@@ -100,8 +94,12 @@ TEST_CASE("Test integrals - Closed shell") {
     CHECK(nearly_equal(base_integrals.get_J3_ri(), integrals.get_J3_ri(), epsilon));
 
     CHECK(integrals.number_ao_orbitals() == n_ao);
-    CHECK(integrals.number_occ_orbitals(0) == n_occ);
-    CHECK(integrals.number_active_orbitals(0) == n_active);
+    REQUIRE(n_occ.size() == n_spin);
+    REQUIRE(n_active.size() == n_spin);
+    for (size_t sigma = 0; sigma < n_spin; ++sigma) {
+        CHECK(integrals.number_occ_orbitals(sigma) == n_occ[sigma]);
+        CHECK(integrals.number_active_orbitals(sigma) == n_active[sigma]);
+    }
 
     SECTION("Two MO transform (direct)") {
         const auto &base2 = integrals.get_base_integrals();
@@ -153,7 +151,15 @@ TEST_CASE("Test integrals - Closed shell") {
     }
 
     SECTION("Check errors") {
-        CHECK_THROWS(Integrals(base_integrals, occ_orbitals, {Cactive, Cactive}));
+        const auto &C = occ_orbitals[0];
+        if (n_spin == 1) {
+            CHECK_THROWS(Integrals(base_integrals, occ_orbitals, {C, C}));
+        } else if (n_spin == 2) {
+            CHECK_THROWS(Integrals(base_integrals, occ_orbitals, {C}));
+        } else {
+            throw std::runtime_error("Invalid number of spin channels");
+        }
+
         CHECK_THROWS(Integrals(base_integrals, occ_orbitals, {}));
         CHECK_THROWS(Integrals(base_integrals, {}, active_orbitals));
         CHECK_THROWS(Integrals(base_integrals, {}, {}));
@@ -191,4 +197,39 @@ TEST_CASE("Test integrals - Closed shell") {
             CHECK(nearly_equal(X_D[sigma], X_D2[sigma], epsilon));
         }
     }
+}
+
+TEST_CASE("Test integrals - closed shell") {
+    constexpr size_t n_ao = 11;
+    constexpr size_t n_occ = 5;
+    constexpr size_t n_active = 4;
+
+    const auto C = random(n_ao, n_occ, seed);
+
+    const auto Cactive = tail_cols(C, n_active);
+
+    const Orbitals occ_orbitals = {C};
+    const Orbitals active_orbitals = {Cactive};
+
+    test_integrals(occ_orbitals, active_orbitals, {n_occ}, {n_active}, n_ao);
+}
+
+TEST_CASE("Test integrals - open shell") {
+    constexpr size_t n_ao = 11;
+    const std::vector<size_t> n_occ = {5, 4};
+    const std::vector<size_t> n_active = {5, 4};
+
+    const auto n_spin = n_occ.size();
+    REQUIRE(n_active.size() == n_spin);
+
+    MatVec C;
+    MatVec Cactive;
+    for (size_t sigma = 0; sigma < n_spin; ++sigma) {
+        const auto Csigma = random(n_ao, n_occ[sigma], seed);
+
+        C.push_back(Csigma);
+        Cactive.push_back(tail_cols(Csigma, n_active[sigma], true));
+    }
+
+    test_integrals(C, Cactive, n_occ, n_active, n_ao);
 }
