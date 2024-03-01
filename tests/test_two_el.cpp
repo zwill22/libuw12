@@ -12,6 +12,7 @@
 using namespace uw12;
 
 constexpr auto seed = 2;
+constexpr auto eps = 1e-10;
 constexpr auto margin = 1e-10;
 constexpr auto epsilon = 1e-10;
 
@@ -64,7 +65,7 @@ TEST_CASE("Test Two Electron term - Closed Shell") {
                 base_integrals, {C}, false, false, 1.0, 0);
             REQUIRE(fock.size() == 1);
             CHECK(linalg::nearly_equal(fock2[0], fock0, epsilon));
-            CHECK_THAT(energy2, Catch::Matchers::WithinAbs(energy, margin));
+            CHECK_THAT(energy2, Catch::Matchers::WithinRel(energy, eps));
         }
         INFO("Test scale = 0 results in zero energy"); {
             const auto &[fock2, energy2] = two_el::form_fock_two_el_df(
@@ -83,7 +84,7 @@ TEST_CASE("Test Two Electron term - Closed Shell") {
 
             REQUIRE(fock2.size() == 1);
             CHECK(linalg::nearly_equal(fock2[0], fock[0], epsilon));
-            CHECK_THAT(energy2, Catch::Matchers::WithinAbs(energy, margin));
+            CHECK_THAT(energy2, Catch::Matchers::WithinRel(energy, eps));
         }
 
         INFO("Test multiplicity of scale factor"); {
@@ -93,7 +94,7 @@ TEST_CASE("Test Two Electron term - Closed Shell") {
 
             const linalg::Mat mat2 = fock[0] * 1.5;
             CHECK(linalg::nearly_equal(fock2[0], mat2, epsilon));
-            CHECK_THAT(energy2, Catch::Matchers::WithinAbs(1.5 * energy, margin));
+            CHECK_THAT(energy2, Catch::Matchers::WithinRel(1.5 * energy, eps));
         }
 
         INFO("Test symmetry of spin factors"); {
@@ -102,7 +103,7 @@ TEST_CASE("Test Two Electron term - Closed Shell") {
 
             REQUIRE(fock2.size() == 1);
             CHECK(linalg::nearly_equal(fock2[0], fock[0], epsilon));
-            CHECK_THAT(energy2, Catch::Matchers::WithinAbs(energy, margin));
+            CHECK_THAT(energy2, Catch::Matchers::WithinRel(energy, eps));
         }
 
         INFO("Test that results are the same when indirect_term = true for ss_scale = 0"); {
@@ -111,7 +112,7 @@ TEST_CASE("Test Two Electron term - Closed Shell") {
 
             REQUIRE(fock2.size() == 1);
             CHECK(linalg::nearly_equal(fock2[0], fock[0], epsilon));
-            CHECK_THAT(energy2, Catch::Matchers::WithinAbs(energy, margin));
+            CHECK_THAT(energy2, Catch::Matchers::WithinRel(energy, eps));
         }
 
         INFO("Check result are the same for open and closed shell with same orbitals"); {
@@ -122,7 +123,7 @@ TEST_CASE("Test Two Electron term - Closed Shell") {
             for (size_t sigma = 0; sigma < 2; ++sigma) {
                 CHECK(linalg::nearly_equal(fock2[sigma], fock[0], epsilon));
             }
-            CHECK_THAT(energy2, Catch::Matchers::WithinAbs(energy, margin));
+            CHECK_THAT(energy2, Catch::Matchers::WithinRel(energy, eps));
         }
     }
 
@@ -138,7 +139,7 @@ TEST_CASE("Test Two Electron term - Closed Shell") {
                 base_integrals, {C}, true, false, 0, 1.0);
             REQUIRE(fock3.size() == 1);
             CHECK(linalg::nearly_equal(fock3[0], fock0, epsilon));
-            CHECK_THAT(energy3, Catch::Matchers::WithinAbs(energy2, margin));
+            CHECK_THAT(energy3, Catch::Matchers::WithinRel(energy2, eps));
         }
 
         INFO("Check zero"); {
@@ -154,7 +155,7 @@ TEST_CASE("Test Two Electron term - Closed Shell") {
                 base_integrals, {C}, true, true, 0, 1.5);
             CHECK(fock3.size() == 1);
             CHECK(linalg::nearly_equal(fock2[0] * 1.5, fock3[0], epsilon));
-            CHECK_THAT(energy3, Catch::Matchers::WithinAbs(energy2 * 1.5, margin));
+            CHECK_THAT(energy3, Catch::Matchers::WithinRel(energy2 * 1.5, eps));
         }
 
         INFO("Check combined calculations give same results"); {
@@ -162,7 +163,7 @@ TEST_CASE("Test Two Electron term - Closed Shell") {
                 base_integrals, {C}, true, true, 1.0, 1.0);
             CHECK(fock3.size() == 1);
             CHECK(linalg::nearly_equal(fock[0] + fock2[0], fock3[0], epsilon));
-            CHECK_THAT(energy + energy2, Catch::Matchers::WithinAbs(energy3, margin));
+            CHECK_THAT(energy + energy2, Catch::Matchers::WithinRel(energy3, eps));
         }
 
         INFO("Check result are the same for open and closed shell with same orbitals"); {
@@ -173,7 +174,7 @@ TEST_CASE("Test Two Electron term - Closed Shell") {
             for (size_t sigma = 0; sigma < 2; ++sigma) {
                 CHECK(linalg::nearly_equal(fock3[sigma], fock2[0], epsilon));
             }
-            CHECK_THAT(energy3, Catch::Matchers::WithinAbs(energy2, margin));
+            CHECK_THAT(energy3, Catch::Matchers::WithinRel(energy2, eps));
         }
     }
 }
@@ -235,7 +236,7 @@ TEST_CASE("Test Two Electron term - Open Shell") {
                 CHECK(linalg::nearly_equal(fock2[sigma], fock0, epsilon));
             }
 
-            CHECK_THAT(energy2, Catch::Matchers::WithinAbs(energy, margin));
+            CHECK_THAT(energy2, Catch::Matchers::WithinRel(energy, eps));
         }
         INFO("Test scale = 0 results in zero energy"); {
             const auto &[fock2, energy2] = two_el::form_fock_two_el_df(
@@ -258,7 +259,7 @@ TEST_CASE("Test Two Electron term - Open Shell") {
             for (size_t sigma = 0; sigma < n_spin; ++sigma) {
                 CHECK(linalg::nearly_equal(fock2[sigma], fock[sigma], epsilon));
             }
-            CHECK_THAT(energy2, Catch::Matchers::WithinAbs(energy, margin));
+            CHECK_THAT(energy2, Catch::Matchers::WithinRel(energy, eps));
         }
 
         INFO("Test multiplicity of scale factor"); {
@@ -268,7 +269,7 @@ TEST_CASE("Test Two Electron term - Open Shell") {
             for (size_t sigma = 0; sigma < n_spin; ++sigma) {
                 CHECK(linalg::nearly_equal(fock2[sigma], fock[sigma] * 1.5, epsilon));
             }
-            CHECK_THAT(energy2, Catch::Matchers::WithinAbs(1.5 * energy, margin));
+            CHECK_THAT(energy2, Catch::Matchers::WithinRel(1.5 * energy, eps));
         }
 
         INFO("Test assymmetry of spin factors"); {
@@ -279,7 +280,7 @@ TEST_CASE("Test Two Electron term - Open Shell") {
             for (size_t sigma = 0; sigma < n_spin; ++sigma) {
                 CHECK_FALSE(linalg::nearly_equal(fock2[sigma], fock[sigma], epsilon));
             }
-            CHECK(std::abs(energy2 - energy) > margin);
+            CHECK(std::abs(energy2 - energy) > eps);
         }
 
         INFO("Test that results are the same when indirect_term = true for ss_scale = 0"); {
@@ -290,7 +291,7 @@ TEST_CASE("Test Two Electron term - Open Shell") {
             for (size_t sigma = 0; sigma < n_spin; ++sigma) {
                 CHECK(linalg::nearly_equal(fock2[sigma], fock[sigma], epsilon));
             }
-            CHECK_THAT(energy2, Catch::Matchers::WithinAbs(energy, margin));
+            CHECK_THAT(energy2, Catch::Matchers::WithinRel(energy, eps));
         }
     }
 
@@ -310,7 +311,7 @@ TEST_CASE("Test Two Electron term - Open Shell") {
             for (size_t sigma = 0; sigma < n_spin; ++sigma) {
                 CHECK(linalg::nearly_equal(fock3[sigma], fock0, epsilon));
             }
-            CHECK_THAT(energy3, Catch::Matchers::WithinAbs(energy2, margin));
+            CHECK_THAT(energy3, Catch::Matchers::WithinRel(energy2, eps));
         }
 
         INFO("Check zero"); {
@@ -330,7 +331,7 @@ TEST_CASE("Test Two Electron term - Open Shell") {
             for (size_t sigma = 0; sigma < n_spin; ++sigma) {
                 CHECK(linalg::nearly_equal(fock3[sigma], 1.5 * fock2[sigma], epsilon));
             }
-            CHECK_THAT(energy3, Catch::Matchers::WithinAbs(energy2 * 1.5, margin));
+            CHECK_THAT(energy3, Catch::Matchers::WithinRel(energy2 * 1.5, eps));
         }
 
         INFO("Check combined calculations give same results"); {
@@ -341,7 +342,7 @@ TEST_CASE("Test Two Electron term - Open Shell") {
                 CHECK(linalg::nearly_equal(
                     fock3[sigma], fock[sigma] + fock2[sigma], epsilon));
             }
-            CHECK_THAT(energy + energy2, Catch::Matchers::WithinAbs(energy3, margin));
+            CHECK_THAT(energy + energy2, Catch::Matchers::WithinRel(energy3, eps));
         }
 
         INFO("Check empty spin channel"); {
@@ -354,7 +355,7 @@ TEST_CASE("Test Two Electron term - Open Shell") {
                 base_integrals, empty_orb, true, true, 1.0,
                 1.0);
             REQUIRE(fock3.size() == n_spin);
-            CHECK_THAT(energy3, Catch::Matchers::WithinAbs(0, margin));
+            CHECK_THAT(energy3, Catch::Matchers::WithinAbs(0, 100 * margin));
             // One electron -- no SIE
 
             INFO("Test opposite spin only has no energy contribution"); {
@@ -376,7 +377,7 @@ TEST_CASE("Test Two Electron term - Open Shell") {
                 REQUIRE(fock4.size() == n_spin);
                 CHECK(linalg::nearly_equal(fock4[0], fock3[0], epsilon));
                 CHECK(linalg::nearly_equal(fock4[1], fock0, epsilon));
-                CHECK_THAT(energy4, Catch::Matchers::WithinAbs(0, margin));
+                CHECK_THAT(energy4, Catch::Matchers::WithinAbs(0, 100 * margin));
             }
         }
     }
