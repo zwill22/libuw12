@@ -32,3 +32,8 @@ catch_discover_tests(test_base_integrals)
 add_executable(test_integrals test_integrals.cpp)
 target_link_libraries(test_integrals Catch2::Catch2WithMain uw12)
 catch_discover_tests(test_integrals)
+
+add_executable(test_two_electron test_two_el.cpp)
+target_link_libraries(test_two_electron Catch2::Catch2WithMain uw12)
+catch_discover_tests(test_two_electron)
+

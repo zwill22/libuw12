@@ -43,58 +43,58 @@ namespace uw12::integrals {
         /// Calculate the one mo-index transformed three index integrals
         /// \f$(\rho k| A)\f$. For `occ_orbitals` index k. Returns a matrix of size
         /// (nao * n_occ, ndf) for each spin channel.
-        const utils::MatVec &get_X3idx_one_trans() const;
+        [[nodiscard]] const utils::MatVec &get_X3idx_one_trans() const;
 
         /// Calculate the one mo-index transformed three index ri integrals
         /// \f$(\mu i| A)\f$. For `active_orbitals` index i. Returns a matrix of size
         /// (nao * n_occ, ndf) for each spin channel.
-        const utils::MatVec &get_X3idx_one_trans_ri() const;
+        [[nodiscard]] const utils::MatVec &get_X3idx_one_trans_ri() const;
 
         /// Calculate the two mo-index transformed three index integrals
         /// \f$(i k| A)\f$. For `active_orbitals` index i and `occ_orbitals` index k.
         /// Returns a matrix of size (nao * n_occ, ndf) for each spin channel.
-        const utils::MatVec &get_X3idx_two_trans() const;
+        [[nodiscard]] const utils::MatVec &get_X3idx_two_trans() const;
 
         /// Calculate the three mo-index transformed four-index integrals
         /// \f$(\rho k|j l)\f$ for spin channel `sigma`. For `active_orbitals` index
         /// j and `occ_orbitals` indices k,l.
-        linalg::Mat get_X4idx_three_trans(size_t sigma) const;
+        [[nodiscard]] linalg::Mat get_X4idx_three_trans(size_t sigma) const;
 
         /// Calculate the four mo-index transformed four-index integrals
         /// \f$(i k|j l)\f$ for spin channel `sigma`. For `active_orbitals` indices
         /// i,j and `occ_orbitals` indices k,l.
-        linalg::Mat get_X4idx_four_trans(size_t sigma) const;
+        [[nodiscard]] linalg::Mat get_X4idx_four_trans(size_t sigma) const;
 
         /// Transform base_integrals eigenvectors (lambda| w |alpha beta)
         /// over density to give total contribution for each eigen-component
         /// WV_D = Sum_j ( lambda | w | jj ) for each lambda for each spin channel
-        std::vector<linalg::Vec> get_X_D() const;
+        [[nodiscard]] std::vector<linalg::Vec> get_X_D() const;
 
         /// Wrapper functions to access integrals from `BaseIntegrals` {
-        const linalg::Mat &get_P2() const;
+        [[nodiscard]] const linalg::Mat &get_P2() const;
 
-        const linalg::Vec &get_df_vals() const;
+        [[nodiscard]] const linalg::Vec &get_df_vals() const;
 
-        const linalg::Mat &get_J3() const;
+        [[nodiscard]] const linalg::Mat &get_J3() const;
 
-        const linalg::Mat &get_J3_ri() const;
+        [[nodiscard]] const linalg::Mat &get_J3_ri() const;
 
         /// }
 
         /// Calculate the number of spin channels based on the orbitals provided
-        size_t spin_channels() const;
+        [[nodiscard]] size_t spin_channels() const;
 
         /// Determine the number of ao basis functions
-        size_t number_ao_orbitals() const;
+        [[nodiscard]] size_t number_ao_orbitals() const;
 
         /// Get the number of occupied orbitals in channel sigma
-        size_t number_occ_orbitals(size_t sigma) const;
+        [[nodiscard]] size_t number_occ_orbitals(size_t sigma) const;
 
         /// Get the number of active occupied orbitals in channel sigma
-        size_t number_active_orbitals(size_t sigma) const;
+        [[nodiscard]] size_t number_active_orbitals(size_t sigma) const;
 
         /// Obtain the base integrals stored in the class
-        const BaseIntegrals &get_base_integrals() const;
+        [[nodiscard]] const BaseIntegrals &get_base_integrals() const;
 
     private:
         std::shared_ptr<BaseIntegrals> base_integrals;

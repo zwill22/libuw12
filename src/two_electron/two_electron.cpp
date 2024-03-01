@@ -29,12 +29,11 @@ namespace uw12::two_el {
         const linalg::Vec &WV_tilde_D
     ) {
         // TODO Implement fully direct mo version
-        if (const auto & base = WV.get_base_integrals(); base.has_J3_0()) {
+        if (const auto &base = WV.get_base_integrals(); base.has_J3_0()) {
             return utils::square(base.get_J3_0() * WV.get_P2() * WV_tilde_D);
         }
 
         return utils::square(WV.get_J3() * WV_tilde_D);
-
     }
 
     utils::FockMatrixAndEnergy direct_fock(
@@ -56,9 +55,7 @@ namespace uw12::two_el {
 
         for (size_t sigma = 0; sigma < n_spin; sigma++) {
             for (size_t sigmaprime = 0; sigmaprime < n_spin; sigmaprime++) {
-                if (n_ao == 0) {
-                    continue;
-                }
+                assert(n_ao > 0);
 
                 const auto energy_spin_factor =
                         (n_spin == 1)
@@ -89,7 +86,7 @@ namespace uw12::two_el {
     utils::FockMatrixAndEnergy indirect_fock(
         const integrals::Integrals &WV,
         const bool calculate_fock
-        ) {
+    ) {
         const auto n_spin = WV.spin_channels();
         const auto n_ao = WV.number_ao_orbitals();
 
@@ -104,13 +101,14 @@ namespace uw12::two_el {
         for (size_t sigma = 0; sigma < n_spin; sigma++) {
             const auto n_occ = WV.number_occ_orbitals(sigma);
             assert(n_occ == WV.number_active_orbitals(sigma));
-
-            if (n_ao == 0 || n_occ == 0 || n_df == 0) {
+            assert(n_ao > 0);
+            assert(n_df > 0);
+            if (n_occ == 0) {
                 continue;
             }
 
             energy -= 0.5 * ((n_spin == 1) ? 2 : 1) * linalg::dot(
-                        WV3idx_two_trans[sigma] * linalg::diagmat(WV_vals), WV3idx_two_trans[sigma]);
+                WV3idx_two_trans[sigma] * linalg::diagmat(WV_vals), WV3idx_two_trans[sigma]);
 
             if (calculate_fock) {
                 const auto &WV3idx_one_trans = WV.get_X3idx_one_trans();
@@ -128,18 +126,20 @@ namespace uw12::two_el {
     }
 
     utils::FockMatrixAndEnergy form_fock_two_el_df(
-        const integrals::Integrals &WV,
+        const integrals::BaseIntegrals &WV,
+        const utils::Orbitals &active_Co,
         const bool indirect_term,
         const bool calculate_fock,
         const double scale_opp_spin,
         const double scale_same_spin
     ) {
+        const auto integrals = integrals::Integrals(WV, active_Co, active_Co);
 
-        auto fock = direct_fock(WV, calculate_fock, scale_opp_spin, scale_same_spin);
+        auto fock = direct_fock(integrals, calculate_fock, scale_opp_spin, scale_same_spin);
 
         // TODO Implement near zero for double
         if (indirect_term && scale_same_spin != 0) {
-            fock += scale_same_spin * indirect_fock(WV, calculate_fock);
+            fock += scale_same_spin * indirect_fock(integrals, calculate_fock);
         }
 
         return fock;
