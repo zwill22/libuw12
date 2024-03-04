@@ -9,6 +9,7 @@
 #include "catch.hpp"
 
 using namespace uw12;
+using namespace test;
 
 void check_equal(const linalg::Vec &vec, const std::vector<double> &vector) {
     REQUIRE(vector.size() == linalg::n_elem(vec));

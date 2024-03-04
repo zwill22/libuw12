@@ -7,6 +7,7 @@
 #include "catch.hpp"
 
 using namespace uw12;
+using namespace test;
 
 using Catch::Matchers::WithinAbs;
 

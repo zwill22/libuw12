@@ -6,6 +6,8 @@
 
 #include "catch.hpp"
 
+using namespace test;
+
 TEST_CASE("Test integrals - Test integral functions") {
     const std::vector<size_t> df_shell_sizes = {1, 3, 5, 7, 9, 11};
     std::vector<size_t> df_offsets = {0};

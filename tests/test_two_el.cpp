@@ -12,6 +12,7 @@
 #include "../src/utils/linalg.hpp"
 
 using namespace uw12;
+using namespace test;
 
 TEST_CASE("Test Two Electron term - Closed Shell") {
     constexpr size_t n_ao = 7;

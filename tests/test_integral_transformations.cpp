@@ -8,6 +8,7 @@
 
 using namespace uw12;
 using namespace uw12::integrals::transformations;
+using namespace test;
 
 TEST_CASE("Test integrals - MO transformations") {
     constexpr size_t n_ao = 11;

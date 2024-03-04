@@ -8,6 +8,7 @@
 
 using namespace uw12;
 using namespace utils;
+using namespace test;
 
 using Catch::Matchers::WithinAbs;
 

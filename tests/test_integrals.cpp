@@ -9,6 +9,7 @@
 using namespace uw12::utils;
 using namespace uw12::linalg;
 using namespace uw12::integrals;
+using namespace test;
 
 void test_integrals(
     const Orbitals &occ_orbitals,
