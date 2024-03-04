@@ -4,6 +4,8 @@
 
 #include "catch.hpp"
 
+#include "check_fock.hpp"
+
 #include "../src/two_electron/two_electron.hpp"
 
 #include "../src/integrals/integrals.hpp"
@@ -385,5 +387,41 @@ TEST_CASE("Test Two Electron term - Open Shell") {
                 CHECK_THAT(energy4, Catch::Matchers::WithinAbs(0, 100 * margin));
             }
         }
+    }
+}
+
+TEST_CASE("Test two-electron - Check Fock norm") {
+    constexpr size_t n_ao = 7;
+    constexpr size_t n_df = 17;
+
+    const auto J20 = linalg::random_pd(n_df, seed);
+    const auto J30 = linalg::random(n_ao * (n_ao + 1) / 2, n_df, seed);
+
+    const auto base_integrals = integrals::BaseIntegrals(J30, J20);
+
+    std::vector<size_t> n_occ = {4};
+    for (auto i = 0; i < 2; ++i) {
+        for (const auto scale_same_spin: {0.0, 0.5}) {
+            constexpr auto scale_opp_spin = 1.0;
+            if (std::abs(scale_opp_spin + scale_same_spin) < 1e-10) {
+                continue;
+            }
+            std::cout << "Opposite spin scale = " << scale_opp_spin << std::endl;
+            std::cout << "Same spin scale = " << scale_same_spin << std::endl;
+
+            const auto two_el_func = [&base_integrals, scale_opp_spin, scale_same_spin](
+                const utils::DensityMatrix &D) -> utils::FockMatrixAndEnergy {
+                const auto active_Co = fock::calculate_orbitals_from_density(D, 1e-3);
+
+                return two_el::form_fock_two_el_df(
+                    base_integrals, active_Co, true, true, scale_opp_spin, scale_same_spin);
+            };
+
+            const auto D = fock::random_density_matrix(n_occ, n_ao, seed);
+
+            fock::check_energy_derivative_along_fock(two_el_func, D);
+        }
+
+        n_occ.push_back(3);
     }
 }

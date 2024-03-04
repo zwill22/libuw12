@@ -66,11 +66,11 @@ namespace uw12::two_el {
                     continue;
                 }
 
-                const auto fock_spin_factor = 0.5 * static_cast<double>(n_spin) * energy_spin_factor;
-
                 energy += 0.5 * energy_spin_factor * linalg::dot(WV_D[sigma], WV_tilde_D[sigmaprime]);
 
                 if (calculate_fock) {
+                    const auto fock_spin_factor = 0.5 * static_cast<double>(n_spin) * energy_spin_factor;
+
                     fock[sigma] += fock_spin_factor * calculate_direct_fock(WV, WV_tilde_D[sigmaprime]);
                 } // calculate_fock
             } // sigmaprime
@@ -98,6 +98,8 @@ namespace uw12::two_el {
 
         const auto &WV3idx_two_trans = WV.get_X3idx_two_trans();
 
+        const auto energy_spin_factor = (n_spin == 1) ? 2 : 1;
+
         for (size_t sigma = 0; sigma < n_spin; sigma++) {
             const auto n_occ = WV.number_occ_orbitals(sigma);
             assert(n_occ == WV.number_active_orbitals(sigma));
@@ -107,13 +109,13 @@ namespace uw12::two_el {
                 continue;
             }
 
-            energy -= 0.5 * ((n_spin == 1) ? 2 : 1) * linalg::dot(
-                WV3idx_two_trans[sigma] * linalg::diagmat(WV_vals), WV3idx_two_trans[sigma]);
+            const linalg::Mat tmp = WV3idx_two_trans[sigma] * linalg::diagmat(WV_vals);
+            energy -= 0.5 * energy_spin_factor * linalg::dot(tmp, WV3idx_two_trans[sigma]);
 
             if (calculate_fock) {
                 const auto &WV3idx_one_trans = WV.get_X3idx_one_trans();
-                const linalg::Mat tmp = WV3idx_one_trans[sigma] * linalg::diagmat(WV_vals);
-                const linalg::Mat WV3idx_one_trans_tilde = linalg::reshape(tmp, n_ao, n_occ * n_df);
+                const linalg::Mat tmp2 = WV3idx_one_trans[sigma] * linalg::diagmat(WV_vals);
+                const linalg::Mat WV3idx_one_trans_tilde = linalg::reshape(tmp2, n_ao, n_occ * n_df);
 
                 // Reshape WV3idx_two_trans to size (n_ao, nj * na) multiplication sums
                 // over nj and na indices returning a matrix of size (n_ao, n_ao)
