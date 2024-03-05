@@ -10,6 +10,8 @@
 #elif USE_EIGEN
 #include <Eigen/Dense>
 #include <fstream>
+#include <random>
+#include <iostream>
 #endif
 #include <cassert>
 #include <cmath>
@@ -212,8 +214,13 @@ namespace uw12::linalg {
         arma::arma_rng::set_seed(seed);
         return arma::randu(n_row, n_col);
 #elif USE_EIGEN
-        std::srand(seed);
-        return Mat::Random(n_row, n_col);
+        std::default_random_engine generator(seed);
+        std::uniform_real_distribution<double> distribution(0, 1);
+        const auto uniform = [&] {return distribution(generator);};
+
+        const Mat mat = Mat::NullaryExpr(n_row, n_col, uniform);
+
+        return mat;
 #endif
     }
 
@@ -962,7 +969,7 @@ namespace uw12::linalg {
     inline std::pair<Vec, Mat> eigen_decomposition(
         const Mat &matrix, const double linear_dependency_threshold,
         const double eigen_ld_threshold) {
-        const auto &[vals, vecs] = eigen_system(matrix);
+        const auto [vals, vecs] = eigen_system(matrix);
 
         if (linear_dependency_threshold > 0 || eigen_ld_threshold > 0) {
             const auto max_eig = max_abs(vals);
@@ -975,18 +982,17 @@ namespace uw12::linalg {
             const arma::vec eigenvalues = vals.rows(non_zero);
             const arma::mat eigenvectors = vecs.cols(non_zero);
 #elif USE_EIGEN
-            const Eigen::VectorXi non_zero =
-                    (vals.array().abs() > threshold).cast<int>();
+            const Eigen::VectorXi non_zero = (vals.array().abs() > threshold).cast<int>();
 
             const auto n = non_zero.sum();
-            linalg::Vec eigenvalues(n);
-            linalg::Mat eigenvectors(vecs.rows(), n);
-            for (size_t i = 0; i < eigenvalues.size(); ++i) {
-                size_t idx = 0;
+            Vec eigenvalues(n);
+            Mat eigenvectors(vecs.rows(), n);
+            int idx = 0;
+            for (int i = 0; i < vals.size(); ++i) {
                 if (non_zero[i]) {
                     eigenvalues(idx) = vals(i);
                     eigenvectors.col(idx) = vecs.col(i);
-                    idx += 1;
+                    idx++;
                 }
             }
 #endif

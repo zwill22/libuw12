@@ -37,13 +37,13 @@ namespace fock {
         assert(linalg::n_cols(D) == n_ao);
         assert(epsilon > 0);
 
-        if (linalg::nearly_equal(D, linalg::zeros(n_ao, n_ao), epsilon)) {
+        if (linalg::nearly_equal(D, linalg::zeros(n_ao, n_ao), test::epsilon)) {
             return {linalg::zeros(n_ao, 1), linalg::ones(1)};
         }
 
         const linalg::Mat D_neg = -0.5 * (D + linalg::transpose(D));
 
-        const auto &[occ_neg, C] = linalg::eigen_decomposition(
+        const auto [occ_neg, C] = linalg::eigen_decomposition(
             D_neg, epsilon, epsilon);
 
         const linalg::Vec occ = -1 * occ_neg;
@@ -58,7 +58,7 @@ namespace fock {
         const auto n_spin = D.size();
 
         for (size_t sigma = 0; sigma < n_spin; ++sigma) {
-            const auto & [C, occ] = orbitals_from_density(D[sigma], epsilon);
+            const auto [C, occ] = orbitals_from_density(D[sigma], epsilon);
             orbitals.push_back(C);
             occupations.push_back(occ);
         }

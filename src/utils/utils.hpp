@@ -264,8 +264,7 @@ namespace uw12::utils {
             } else {
                 const auto n_electron_per_orbital = (n_spin == 1) ? 2 : 1;
 
-                result.emplace_back(n_electron_per_orbital * C_sigma *
-                                    linalg::transpose(C_sigma));
+                result.emplace_back(n_electron_per_orbital * C_sigma * linalg::transpose(C_sigma));
             }
         }
 
