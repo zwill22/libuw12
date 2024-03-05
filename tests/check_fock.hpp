@@ -5,6 +5,8 @@
 #ifndef CHECK_FOCK_HPP
 #define CHECK_FOCK_HPP
 
+#include <iostream>
+
 #include "../src/utils/utils.hpp"
 
 using namespace uw12;
