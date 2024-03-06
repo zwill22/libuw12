@@ -416,50 +416,26 @@ namespace uw12::integrals {
     }
 
     bool BaseIntegrals::has_P2() const {
-        if (linalg::empty(*P2)) {
-            return false;
-        }
-
-        return true;
+        return !linalg::empty(*P2);
     }
 
     bool BaseIntegrals::has_df_vals() const {
-        if (linalg::empty(*df_vals)) {
-            return false;
-        }
-
-        return true;
+        return !linalg::empty(*df_vals);
     }
 
     bool BaseIntegrals::has_J3_0() const {
-        if (linalg::empty(*J3_0)) {
-            return false;
-        }
-
-        return true;
+        return !linalg::empty(*J3_0);
     }
 
     bool BaseIntegrals::has_J3() const {
-        if (linalg::empty(*J3)) {
-            return false;
-        }
-
-        return true;
+        return !linalg::empty(*J3);
     }
 
     bool BaseIntegrals::has_J3_ri() const {
-        if (linalg::empty(*J3_ri)) {
-            return false;
-        }
-
-        return true;
+        return !linalg::empty(*J3_ri);
     }
 
     bool BaseIntegrals::has_J3_ri_0() const {
-        if (linalg::empty(*J3_ri_0)) {
-            return false;
-        }
-
-        return true;
+        return !linalg::empty(*J3_ri_0);
     }
 } // namespace uw12::integrals
