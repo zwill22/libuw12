@@ -19,27 +19,28 @@ namespace uw12::utils {
 /// \param vec Vector of lower triangular elements of symmetric matrix
 ///
 /// \return Resulting symmetric matrix
-inline linalg::Mat square(const linalg::Vec &vec) {
-  using namespace linalg;
+inline auto square(const linalg::Vec &vec) {
 
-  const auto n = n_elem(vec);
-  const auto n2 = static_cast<int>((std::sqrt(8 * n - 1)) / 2);
+  const auto n_1 = linalg::n_elem(vec);
+  const auto n_2 = static_cast<int>((std::sqrt(8 * n_1 - 1)) / 2);
 
-  if (n2 * (n2 + 1) / 2 != n) {
+  if (n_2 * (n_2 + 1) / 2 != n_1) {
     throw std::logic_error("vector must be of length n(n+1)/2");
   }
 
-  auto matrix = mat(n2, n2);
-  size_t ij = 0;
-  for (int i = 0; i < n2; ++i) {
+  auto matrix = linalg::mat(n_2, n_2);
+  size_t idx = 0;
+  for (int i = 0; i < n_2; ++i) {
     for (int j = 0; j <= i; ++j) {
-      matrix(i, j) = vec(ij);
-      if (i != j) matrix(j, i) = vec(ij);
-      ij++;
+      matrix(i, j) = vec(idx);
+      if (i != j) {
+        matrix(j, i) = vec(idx);
+      }
+      idx++;
     }
   }
 
-  assert(ij == n);
+  assert(idx == n_1);
 
   return matrix;
 }
@@ -52,27 +53,26 @@ inline linalg::Mat square(const linalg::Vec &vec) {
 /// \param mat
 /// \param factor
 /// \return
-inline linalg::Vec lower(const linalg::Mat &mat, const double factor = 1) {
-  using namespace linalg;
+inline auto lower(const linalg::Mat &mat, const double factor = 1) {
 
-  const auto n = n_rows(mat);
-  if (!is_square(mat)) {
+  const auto n_row = linalg::n_rows(mat);
+  if (!linalg::is_square(mat)) {
     throw std::logic_error("matrix is not square");
   }
-  if (!is_symmetric(mat)) {
+  if (!linalg::is_symmetric(mat)) {
     throw std::logic_error("matrix is not symmetric");
   }
 
-  Vec vec(n * (n + 1) / 2);
-  int ij = 0;
-  for (int i = 0; i < n; ++i) {
+  linalg::Vec vec(n_row * (n_row + 1) / 2);
+  int idx = 0;
+  for (int i = 0; i < n_row; ++i) {
     for (int j = 0; j < i; ++j) {
-      vec(ij++) = factor * mat(i, j);
+      vec(idx++) = factor * mat(i, j);
     }
-    vec(ij++) = mat(i, i);
+    vec(idx++) = mat(i, i);
   }
 
-  assert(ij == n * (n + 1) / 2);
+  assert(idx == n_row * (n_row + 1) / 2);
 
   return vec;
 }
@@ -82,28 +82,28 @@ using MatVec = std::vector<linalg::Mat>;
 
 /// Scalar multiplication of MatVec
 /// {
-inline MatVec operator*(const MatVec &object, const double a) {
+inline auto operator*(const MatVec &object, const double factor) {
   MatVec result(object.size());
   for (int i = 0; i < object.size(); ++i) {
-    result[i] = a * object[i];
+    result[i] = factor * object[i];
   }
   return result;
 }
 
-inline MatVec operator*(const double a, const MatVec &object) {
-  return object * a;
+inline auto operator*(const double factor, const MatVec &object) {
+  return object * factor;
 }
 
 /// }
 
 /// Fock matrix addition {
-inline MatVec &operator+=(MatVec &lhs, const MatVec &rhs) {
-  const auto n = lhs.size();
-  if (rhs.size() != n) {
+inline auto &operator+=(MatVec &lhs, const MatVec &rhs) {
+  const auto length = lhs.size();
+  if (rhs.size() != length) {
     throw std::logic_error("containers are of different sizes");
   }
 
-  for (int i = 0; i < n; ++i) {
+  for (int i = 0; i < length; ++i) {
     if (linalg::n_rows(lhs[i]) != linalg::n_rows(rhs[i]) ||
         linalg::n_cols(lhs[i]) != linalg::n_cols(rhs[i])) {
       throw std::logic_error("matrices are of different sizes");
@@ -114,7 +114,7 @@ inline MatVec &operator+=(MatVec &lhs, const MatVec &rhs) {
   return lhs;
 }
 
-inline MatVec operator+(MatVec left, const MatVec &right) {
+inline auto operator+(MatVec left, const MatVec &right) {
   left += right;
   return left;
 }
@@ -145,33 +145,27 @@ struct FockMatrixAndEnergy {
 
 /// Scalar multiplication of FockMatrixAndEnergy
 /// {
-inline FockMatrixAndEnergy operator*(
-    const FockMatrixAndEnergy &fock, const double a
-) {
-  return {a * fock.fock, a * fock.energy};
+inline auto operator*(
+    const FockMatrixAndEnergy &fock, const double factor
+) -> FockMatrixAndEnergy {
+  return {factor * fock.fock, factor * fock.energy};
 }
 
-inline FockMatrixAndEnergy operator*(
-    const double a, const FockMatrixAndEnergy &fock
-) {
-  return fock * a;
+inline auto operator*(const double factor, const FockMatrixAndEnergy &fock) {
+  return fock * factor;
 }
 
 /// }
 
 /// FockMatrixAndEnergy addition {
-inline FockMatrixAndEnergy operator+=(
-    FockMatrixAndEnergy &lhs, const FockMatrixAndEnergy &rhs
-) {
+inline auto operator+=(FockMatrixAndEnergy &lhs, const FockMatrixAndEnergy &rhs) {
   lhs.fock += rhs.fock;
   lhs.energy += rhs.energy;
 
   return lhs;
 }
 
-inline FockMatrixAndEnergy operator+(
-    FockMatrixAndEnergy lhs, const FockMatrixAndEnergy &rhs
-) {
+inline auto operator+(FockMatrixAndEnergy lhs, const FockMatrixAndEnergy &rhs) {
   lhs += rhs;
   return lhs;
 }
@@ -181,13 +175,13 @@ inline FockMatrixAndEnergy operator+(
 /// \brief Check whether a value is approximately zero
 ///
 /// \tparam T
-/// \param a Value to check
+/// \param value Value to check
 /// \param epsilon Multiplicative factor to control numerical limit
 ///
 /// \return Whether value is nearly zero
 template <typename T>
-bool nearly_zero(T a, int epsilon = 4) {
-  return std::abs(a) <= epsilon * std::numeric_limits<T>::epsilon();
+auto nearly_zero(T value, int epsilon = 4) {
+  return std::abs(value) <= epsilon * std::numeric_limits<T>::epsilon();
 }
 
 /// \brief Calculate and check the number of spin channels of an object
@@ -197,7 +191,7 @@ bool nearly_zero(T a, int epsilon = 4) {
 ///
 /// \return Number of spin channels `n_spin`
 template <typename T>
-size_t spin_channels(const T &object) {
+auto spin_channels(const T &object) {
   const size_t n_spin = object.size();
   if (n_spin < 1 || n_spin > 2) {
     throw std::logic_error("invalid number of spin channels");
@@ -214,7 +208,7 @@ size_t spin_channels(const T &object) {
 /// \param fock A FockMatrixAndEnergy object
 ///
 /// \return Symmetric FockMatrixAndEnergy
-inline FockMatrixAndEnergy symmetrise_fock(FockMatrixAndEnergy fock) {
+inline auto symmetrise_fock(FockMatrixAndEnergy fock) {
   const auto n_spin = spin_channels(fock.fock);
 
   for (size_t sigma = 0; sigma < n_spin; sigma++) {
@@ -234,7 +228,7 @@ inline FockMatrixAndEnergy symmetrise_fock(FockMatrixAndEnergy fock) {
 /// \param n_core Number of core (spatial) orbitals
 ///
 /// \return Active Orbitals
-inline Orbitals freeze_core(const Orbitals &orbitals, const size_t n_core) {
+inline auto freeze_core(const Orbitals &orbitals, const size_t n_core) {
   Orbitals frozen_orbitals;
   for (const auto &channel : orbitals) {
     const auto n_orb = linalg::n_cols(channel);
@@ -251,18 +245,18 @@ inline Orbitals freeze_core(const Orbitals &orbitals, const size_t n_core) {
 
 /// \brief Construct the density matrix from the (occupation weighted) Orbitals
 ///
-/// \param Co Orbitals object containing coefficients for each spin
+/// \param orbitals Orbitals object containing coefficients for each spin
 /// channel
 ///
 /// \return Density matrix for each spin channel
-inline DensityMatrix construct_density(const Orbitals &Co) {
-  const auto n_spin = spin_channels(Co);
+inline auto construct_density(const Orbitals &orbitals) {
+  const auto n_spin = spin_channels(orbitals);
 
-  const auto nao = linalg::n_rows(Co[0]);
+  const auto nao = linalg::n_rows(orbitals[0]);
 
   DensityMatrix result;
   for (int sigma = 0; sigma < n_spin; ++sigma) {
-    const auto &C_sigma = Co[sigma];
+    const auto &C_sigma = orbitals[sigma];
 
     if (const auto n_occ = linalg::n_cols(C_sigma); n_occ == 0) {
       result.push_back(linalg::zeros(nao, nao));
@@ -283,7 +277,7 @@ inline DensityMatrix construct_density(const Orbitals &Co) {
 ///
 /// \param orb Orbital coefficients
 /// \param occ Occupation vectors
-inline Orbitals occupation_weighted_orbitals(
+inline auto occupation_weighted_orbitals(
     const Orbitals &orb, const Occupations &occ
 ) {
   const auto n_spin = orb.size();
