@@ -470,7 +470,9 @@ namespace uw12::linalg {
 #ifdef USE_ARMA
         return arma::norm(mat);
 #elif USE_EIGEN
-        return mat.norm();
+      const Eigen::JacobiSVD svd(mat);
+
+      return svd.singularValues().array().abs().maxCoeff();
 #endif
     }
 
