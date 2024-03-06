@@ -17,9 +17,10 @@ namespace uw12::utils {
 /// output matrix in column major ordering. Inverse of `lower`.
 ///
 /// \param vec Vector of lower triangular elements of symmetric matrix
+/// \param factor Off-diagonal factor
 ///
 /// \return Resulting symmetric matrix
-inline auto square(const linalg::Vec &vec) {
+inline auto square(const linalg::Vec &vec, const double factor = 1) {
 
   const auto n_1 = linalg::n_elem(vec);
   const auto n_2 = static_cast<int>((std::sqrt(8 * n_1 - 1)) / 2);
@@ -32,9 +33,11 @@ inline auto square(const linalg::Vec &vec) {
   size_t idx = 0;
   for (int i = 0; i < n_2; ++i) {
     for (int j = 0; j <= i; ++j) {
-      matrix(i, j) = vec(idx);
       if (i != j) {
-        matrix(j, i) = vec(idx);
+      matrix(i, j) = factor * vec(idx);
+        matrix(j, i) = factor * vec(idx);
+      } else {
+        matrix(i, i) = vec(idx);
       }
       idx++;
     }

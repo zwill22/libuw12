@@ -152,7 +152,11 @@ inline double elem(
 }
 
 /// \brief Sets the (`row_index`, `col_index`) element of `mat` to `value`. (For
-/// testing) \param mat Matrix \param row_index \param col_index \param value
+/// testing)
+/// \param mat Matrix
+/// \param row_index
+/// \param col_index
+/// \param value
 inline void set_elem(
     Mat &mat, const size_t row_index, const size_t col_index, const double value
 ) {
@@ -161,6 +165,14 @@ inline void set_elem(
   }
 
   mat(row_index, col_index) = value;
+}
+
+/// \brief Sets the `index` element of `vec` to `value`. (For testing)
+/// \param vec vec
+/// \param index
+/// \param value
+inline void set_elem(Vec &vec, const size_t index, const double value) {
+  set_elem(vec, index, 0, value);
 }
 
 /// Initialise a matrix of size `n_row` by `n_col`
