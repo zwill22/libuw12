@@ -1,0 +1,8 @@
+// config.hpp.in
+
+#ifndef CONFIG_HPP
+#define CONFIG_HPP
+
+constexpr char source_dir[] = "@CMAKE_SOURCE_DIR@";
+
+#endif
