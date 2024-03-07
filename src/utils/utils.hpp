@@ -10,16 +10,16 @@
 #include "linalg.hpp"
 
 namespace uw12::utils {
-/// \brief Generate a square symmetric matrix from a vector
+/// Generate a square symmetric matrix from a vector
 ///
 /// Generate a square symmetric matrix of size `n * n` from a vector of size
 /// `n * (n+1) /2` where the elements are the lower triangular elements of the
 /// output matrix in column major ordering. Inverse of `lower`.
 ///
-/// \param vec Vector of lower triangular elements of symmetric matrix
-/// \param factor Off-diagonal factor
+/// @param vec Vector of lower triangular elements of symmetric matrix
+/// @param factor Off-diagonal factor
 ///
-/// \return Resulting symmetric matrix
+/// @return Resulting symmetric matrix
 inline auto square(const linalg::Vec &vec, const double factor = 1) {
 
   const auto n_1 = linalg::n_elem(vec);
@@ -48,14 +48,14 @@ inline auto square(const linalg::Vec &vec, const double factor = 1) {
   return matrix;
 }
 
-/// \brief Compress symmetric matrix into vector of lower triangular elements
+/// Compress symmetric matrix into vector of lower triangular elements
 ///
 /// Store `n * n` symmetric matrix as a vector of lower triangular elements of
 /// size `n * (n+1) /2`. Inverse of `square`.
 ///
-/// \param mat
-/// \param factor
-/// \return
+/// @param mat
+/// @param factor
+/// @return
 inline auto lower(const linalg::Mat &mat, const double factor = 1) {
 
   const auto n_row = linalg::n_rows(mat);
@@ -175,24 +175,24 @@ inline auto operator+(FockMatrixAndEnergy lhs, const FockMatrixAndEnergy &rhs) {
 
 /// }
 
-/// \brief Check whether a value is approximately zero
+/// Check whether a value is approximately zero
 ///
 /// \tparam T
-/// \param value Value to check
-/// \param epsilon Multiplicative factor to control numerical limit
+/// @param value Value to check
+/// @param epsilon Multiplicative factor to control numerical limit
 ///
-/// \return Whether value is nearly zero
+/// @return Whether value is nearly zero
 template <typename T>
 auto nearly_zero(T value, int epsilon = 4) {
   return std::abs(value) <= epsilon * std::numeric_limits<T>::epsilon();
 }
 
-/// \brief Calculate and check the number of spin channels of an object
+/// Calculate and check the number of spin channels of an object
 ///
 /// \tparam T
-/// \param object Object of size `n_spin`
+/// @param object Object of size `n_spin`
 ///
-/// \return Number of spin channels `n_spin`
+/// @return Number of spin channels `n_spin`
 template <typename T>
 auto spin_channels(const T &object) {
   const size_t n_spin = object.size();
@@ -203,14 +203,14 @@ auto spin_channels(const T &object) {
   return n_spin;
 }
 
-/// \brief Make Fock matrix symmetric (inplace)
+/// Make Fock matrix symmetric (inplace)
 ///
 /// Using \f$0.5 (F + F^T)\f$, make the Fock matrix in a FockMatrixAndEnergy
 /// object symmetric
 ///
-/// \param fock A FockMatrixAndEnergy object
+/// @param fock A FockMatrixAndEnergy object
 ///
-/// \return Symmetric FockMatrixAndEnergy
+/// @return Symmetric FockMatrixAndEnergy
 inline auto symmetrise_fock(FockMatrixAndEnergy fock) {
   const auto n_spin = spin_channels(fock.fock);
 
@@ -222,15 +222,15 @@ inline auto symmetrise_fock(FockMatrixAndEnergy fock) {
   return fock;
 }
 
-/// \brief Freeze core orbitals of an Orbitals object
+/// Freeze core orbitals of an Orbitals object
 ///
 /// Freeze the core orbitals out of an Orbitals object by removing these
 /// orbitals from the object.
 ///
-/// \param orbitals Orbitals object containing core and valence orbitals
-/// \param n_core Number of core (spatial) orbitals
+/// @param orbitals Orbitals object containing core and valence orbitals
+/// @param n_core Number of core (spatial) orbitals
 ///
-/// \return Active Orbitals
+/// @return Active Orbitals
 inline auto freeze_core(const Orbitals &orbitals, const size_t n_core) {
   Orbitals frozen_orbitals;
   for (const auto &channel : orbitals) {
@@ -246,12 +246,12 @@ inline auto freeze_core(const Orbitals &orbitals, const size_t n_core) {
   return frozen_orbitals;
 }
 
-/// \brief Construct the density matrix from the (occupation weighted) Orbitals
+/// Construct the density matrix from the (occupation weighted) Orbitals
 ///
-/// \param orbitals Orbitals object containing coefficients for each spin
+/// @param orbitals Orbitals object containing coefficients for each spin
 /// channel
 ///
-/// \return Density matrix for each spin channel
+/// @return Density matrix for each spin channel
 inline auto construct_density(const Orbitals &orbitals) {
   const auto n_spin = spin_channels(orbitals);
 
@@ -275,11 +275,11 @@ inline auto construct_density(const Orbitals &orbitals) {
   return result;
 }
 
-/// \brief Construct occupation weighted orbitals from a set of orbitals and
+/// Construct occupation weighted orbitals from a set of orbitals and
 /// occupations
 ///
-/// \param orb Orbital coefficients
-/// \param occ Occupation vectors
+/// @param orb Orbital coefficients
+/// @param occ Occupation vectors
 inline auto occupation_weighted_orbitals(
     const Orbitals &orb, const Occupations &occ
 ) {

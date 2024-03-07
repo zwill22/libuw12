@@ -10,7 +10,7 @@
 #include "base_integrals.hpp"
 
 namespace uw12::integrals {
-/// \brief Class for calculating and managing all integrals for df-UW12
+/// Class for calculating and managing all integrals for df-UW12
 ///
 /// This class calculates and stores mo transformed UW12 integrals. The
 /// class is initialised using a `BaseIntegrals` object which manages all

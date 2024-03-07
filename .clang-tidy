@@ -13,6 +13,8 @@ performance-*
 portability-*
 readability-*
 misc-*
+-cppcoreguidelines-avoid-magic-numbers
 -misc-use-anonymous-namespace
+-modernize-use-trailing-return-type
 -readability-identifier-length
--modernize-use-trailing-return-type'
+-readability-magic-numbers'

@@ -111,7 +111,7 @@ inline double elem(const Vec &vec, const size_t index) {
 #endif
 }
 
-/// \brief Initialise a `Mat` object given a memory location and the size
+/// Initialise a `Mat` object given a memory location and the size
 ///
 /// Initialise a matrix of size `n_row * n_col` given these values and a
 /// pointer to the first entry of the final matrix.
@@ -121,13 +121,13 @@ inline double elem(const Vec &vec, const size_t index) {
 /// before using this function.
 /// TODO: Require memory checks whenever this function is called
 ///
-/// \param mem Pointer to first entry in array
-/// \param n_row Number of rows in final matrix
-/// \param n_col Number of columns in final matrix
-/// \param copy Whether to copy memory or construct matrix pointing to original
+/// @param mem Pointer to first entry in array
+/// @param n_row Number of rows in final matrix
+/// @param n_col Number of columns in final matrix
+/// @param copy Whether to copy memory or construct matrix pointing to original
 ///             memory
 ///
-/// \return Mat object of size `n_row * n_col`
+/// @return Mat object of size `n_row * n_col`
 inline Mat mat(
     double *mem, const size_t n_row, const size_t n_col, const bool copy = false
 ) {
@@ -138,8 +138,8 @@ inline Mat mat(
 #endif
 }
 
-/// \brief Returns the (`row_index`, `col_index`) element of `mat`. (For
-/// testing) \param mat Matrix \param row_index \param col_index \return Element
+/// Returns the (`row_index`, `col_index`) element of `mat`. (For
+/// testing) @param mat Matrix @param row_index @param col_index @return Element
 /// in position (`row_index`, `col_index`)
 inline double elem(
     const Mat &mat, const size_t row_index, const size_t col_index
@@ -151,12 +151,12 @@ inline double elem(
 #endif
 }
 
-/// \brief Sets the (`row_index`, `col_index`) element of `mat` to `value`. (For
+/// Sets the (`row_index`, `col_index`) element of `mat` to `value`. (For
 /// testing)
-/// \param mat Matrix
-/// \param row_index
-/// \param col_index
-/// \param value
+/// @param mat Matrix
+/// @param row_index
+/// @param col_index
+/// @param value
 inline void set_elem(
     Mat &mat, const size_t row_index, const size_t col_index, const double value
 ) {
@@ -167,10 +167,10 @@ inline void set_elem(
   mat(row_index, col_index) = value;
 }
 
-/// \brief Sets the `index` element of `vec` to `value`. (For testing)
-/// \param vec vec
-/// \param index
-/// \param value
+/// Sets the `index` element of `vec` to `value`. (For testing)
+/// @param vec vec
+/// @param index
+/// @param value
 inline void set_elem(Vec &vec, const size_t index, const double value) {
   if (index >= n_elem(vec)) {
     throw std::logic_error("Index outside scope of vector");
@@ -320,14 +320,14 @@ inline double dot(const Mat &mat1, const Mat &mat2) {
 #endif
 }
 
-/// \brief Reshape an object into a matrix of size `n_row * n_col`
+/// Reshape an object into a matrix of size `n_row * n_col`
 ///
-/// \param mat Input object (must have `n_row * n_col` elements)
-/// \param n_row Number of rows of output matrix
-/// \param n_col Number of columns of output matrix
-/// \param copy_data Whether to copy the matrix data or point to original data
+/// @param mat Input object (must have `n_row * n_col` elements)
+/// @param n_row Number of rows of output matrix
+/// @param n_col Number of columns of output matrix
+/// @param copy_data Whether to copy the matrix data or point to original data
 ///
-/// \return Output matrix of size `n_row * n_col`
+/// @return Output matrix of size `n_row * n_col`
 inline Mat reshape(
     const Mat &mat,
     const size_t n_row,
@@ -359,14 +359,14 @@ inline Mat reshape(
 #endif
 }
 
-/// \brief Reshape a column of a matrix to a new matrix
+/// Reshape a column of a matrix to a new matrix
 ///
-/// \param mat Matrix containing chosen column (must have `n_row * n_col`
-/// rows) \param col_idx Index of chosen column (must be a column of matrix
-/// `mat`) \param n_row Number of rows of output matrix \param n_col Number of
-/// columns of output matrix \param copy_data Whether to copy the data
+/// @param mat Matrix containing chosen column (must have `n_row * n_col`
+/// rows) @param col_idx Index of chosen column (must be a column of matrix
+/// `mat`) @param n_row Number of rows of output matrix @param n_col Number of
+/// columns of output matrix @param copy_data Whether to copy the data
 ///
-/// \return Matrix of size `n_row * n_col`
+/// @return Matrix of size `n_row * n_col`
 inline Mat reshape_col(
     const Mat &mat,
     const size_t col_idx,
@@ -445,13 +445,13 @@ inline Mat inv_sym_pd(const Mat &mat) {
 #endif
 }
 
-/// \brief Output a contiguous sub-vector of the input vector
+/// Output a contiguous sub-vector of the input vector
 ///
-/// \param vec Input vector
-/// \param row1 First row of sub-vector
-/// \param n_row Number of rows of sub-vector
+/// @param vec Input vector
+/// @param row1 First row of sub-vector
+/// @param n_row Number of rows of sub-vector
 ///
-/// \return Sub-vector of size `n_row`
+/// @return Sub-vector of size `n_row`
 inline Vec sub_vec(const Vec &vec, const size_t row1, const size_t n_row) {
   if (n_row > n_rows(vec)) {
     throw std::logic_error("sub vec cannot be larger than parent vec");
@@ -470,15 +470,15 @@ inline Vec sub_vec(const Vec &vec, const size_t row1, const size_t n_row) {
 #endif
 }
 
-/// \brief Output a sub-matrix of input matrix `mat`
+/// Output a sub-matrix of input matrix `mat`
 ///
-/// \param mat Input matrix
-/// \param row1 Index of first row of sub-matrix
-/// \param col1 Index of first column of sub-matrix
-/// \param n_row Number of rows of sub-matrix
-/// \param n_col Number of columns of sub-matrix
+/// @param mat Input matrix
+/// @param row1 Index of first row of sub-matrix
+/// @param col1 Index of first column of sub-matrix
+/// @param n_row Number of rows of sub-matrix
+/// @param n_col Number of columns of sub-matrix
 ///
-/// \return Sub-matrix of size `n_row * n_col`
+/// @return Sub-matrix of size `n_row * n_col`
 inline Mat sub_mat(
     const Mat &mat,
     const size_t row1,
@@ -516,13 +516,13 @@ inline double norm(const Mat &mat) {
 #endif
 }
 
-/// \brief Get a column of input matrix `mat`
+/// Get a column of input matrix `mat`
 ///
-/// \param mat Input matrix
-/// \param col_idx Index of column
-/// \param copy_data Whether to copy the column data
+/// @param mat Input matrix
+/// @param col_idx Index of column
+/// @param copy_data Whether to copy the column data
 ///
-/// \return Column vector corresponding to `col_idx` column of matrix `mat`
+/// @return Column vector corresponding to `col_idx` column of matrix `mat`
 inline Vec col(
     const Mat &mat, const size_t col_idx, const bool copy_data = false
 ) {
@@ -538,12 +538,12 @@ inline Vec col(
 #endif
 }
 
-/// \brief Get a row of input matrix `mat`
+/// Get a row of input matrix `mat`
 ///
-/// \param mat Input matrix
-/// \param row_idx Index of row in `mat`
+/// @param mat Input matrix
+/// @param row_idx Index of row in `mat`
 ///
-/// \return Matrix of size `1 * n_col` corresponding to `row_idx` row of `mat`
+/// @return Matrix of size `1 * n_col` corresponding to `row_idx` row of `mat`
 inline Mat row(const Mat &mat, const size_t row_idx) {
   if (row_idx >= n_rows(mat)) {
     throw std::logic_error("row index must be in parent matrix");
@@ -555,25 +555,25 @@ inline Mat row(const Mat &mat, const size_t row_idx) {
 #endif
 }
 
-/// \brief Get sub-matrix of multiple rows of input matrix
+/// Get sub-matrix of multiple rows of input matrix
 ///
-/// \param mat Input matrix
-/// \param row_idx Index of first row
-/// \param n_row Number of rows in sub-matrix
+/// @param mat Input matrix
+/// @param row_idx Index of first row
+/// @param n_row Number of rows in sub-matrix
 ///
-/// \return sub-matrix of the `n_row` rows of `mat`
+/// @return sub-matrix of the `n_row` rows of `mat`
 inline Mat rows(const Mat &mat, const size_t row_idx, const size_t n_row) {
   const auto n_col = n_cols(mat);
 
   return sub_mat(mat, row_idx, 0, n_row, n_col);
 }
 
-/// \brief Get first `n_row` of vector `vec`
+/// Get first `n_row` of vector `vec`
 ///
-/// \param vec Input vector
-/// \param n_row Number of rows in sub-vector
+/// @param vec Input vector
+/// @param n_row Number of rows in sub-vector
 ///
-/// \return Sub-vector of first `n_row` of input vector
+/// @return Sub-vector of first `n_row` of input vector
 inline Vec head(const Vec &vec, const size_t n_row) {
   if (n_row > n_elem(vec)) {
     throw std::logic_error(
@@ -587,12 +587,12 @@ inline Vec head(const Vec &vec, const size_t n_row) {
 #endif
 }
 
-/// \brief Get last `n_row` of vector `vec`
+/// Get last `n_row` of vector `vec`
 ///
-/// \param vec Input vector
-/// \param n_row Number of rows in sub-vector
+/// @param vec Input vector
+/// @param n_row Number of rows in sub-vector
 ///
-/// \return Sub-vector of last `n_row` of input vector
+/// @return Sub-vector of last `n_row` of input vector
 inline Vec tail(const Vec &vec, const size_t n_row) {
   if (n_row > n_elem(vec)) {
     throw std::logic_error(
@@ -606,13 +606,13 @@ inline Vec tail(const Vec &vec, const size_t n_row) {
 #endif
 }
 
-/// \brief Get sub-matrix of the first `n_col` of input matrix
+/// Get sub-matrix of the first `n_col` of input matrix
 ///
-/// \param mat Input matrix
-/// \param n_col Number of columns in sub-matrix
-/// \param copy_data Whether to copy dat to make new matrix
+/// @param mat Input matrix
+/// @param n_col Number of columns in sub-matrix
+/// @param copy_data Whether to copy dat to make new matrix
 ///
-/// \return Sub-matrix of first `n_col` of `mat`
+/// @return Sub-matrix of first `n_col` of `mat`
 inline Mat head_cols(
     const Mat &mat, const size_t n_col, const bool copy_data = false
 ) {
@@ -637,13 +637,13 @@ inline Mat head_cols(
 #endif
 }
 
-/// \brief Get sub-matrix of the last `n_col` of input matrix
+/// Get sub-matrix of the last `n_col` of input matrix
 ///
-/// \param mat Input matrix
-/// \param n_col Number of columns in sub-matrix
-/// \param copy_data Whether to copy dat to make new matrix
+/// @param mat Input matrix
+/// @param n_col Number of columns in sub-matrix
+/// @param copy_data Whether to copy dat to make new matrix
 ///
-/// \return Sub-matrix of last `n_col` of `mat`
+/// @return Sub-matrix of last `n_col` of `mat`
 inline Mat tail_cols(
     const Mat &mat, const size_t n_col, const bool copy_data = false
 ) {
@@ -677,12 +677,12 @@ inline Mat tail_cols(
 #endif
 }
 
-/// \brief Get sub-matrix of the first `n_row` of input matrix
+/// Get sub-matrix of the first `n_row` of input matrix
 ///
-/// \param mat Input matrix
-/// \param n_row Number of row in sub-matrix
+/// @param mat Input matrix
+/// @param n_row Number of row in sub-matrix
 ///
-/// \return Sub-matrix of first `n_row` of `mat`
+/// @return Sub-matrix of first `n_row` of `mat`
 inline Mat head_rows(const Mat &mat, const size_t n_row) {
   if (n_row > n_rows(mat)) {
     throw std::logic_error(
@@ -698,12 +698,12 @@ inline Mat head_rows(const Mat &mat, const size_t n_row) {
 #endif
 }
 
-/// \brief Get sub-matrix of the last `n_row` of input matrix
+/// Get sub-matrix of the last `n_row` of input matrix
 ///
-/// \param mat Input matrix
-/// \param n_row Number of row in sub-matrix
+/// @param mat Input matrix
+/// @param n_row Number of row in sub-matrix
 ///
-/// \return Sub-matrix of last `n_row` of `mat`
+/// @return Sub-matrix of last `n_row` of `mat`
 inline Mat tail_rows(const Mat &mat, const size_t n_row) {
   if (n_row > n_rows(mat)) {
     throw std::logic_error(
@@ -770,11 +770,11 @@ inline Mat sqrt(const Mat &mat) {
 #endif
 }
 
-/// \brief Assign a matrix to columns of matrix `mat`
+/// Assign a matrix to columns of matrix `mat`
 ///
-/// \param mat Matrix for column assignment (non-const)
-/// \param input Input matrix (must have same number of rows as `mat`)
-/// \param offset First column index for assignment
+/// @param mat Matrix for column assignment (non-const)
+/// @param input Input matrix (must have same number of rows as `mat`)
+/// @param offset First column index for assignment
 inline void assign_cols(Mat &mat, const Mat &input, const size_t offset) {
   const auto n = n_cols(input);
   if (offset >= n_cols(mat)) {
@@ -798,11 +798,11 @@ inline void assign_cols(Mat &mat, const Mat &input, const size_t offset) {
 #endif
 }
 
-/// \brief Assign a matrix to rows of matrix `mat`
+/// Assign a matrix to rows of matrix `mat`
 ///
-/// \param mat Matrix for row assignment (non-const)
-/// \param input Input matrix (must have same number of cols as `mat`)
-/// \param offset First rows index for assignment
+/// @param mat Matrix for row assignment (non-const)
+/// @param input Input matrix (must have same number of cols as `mat`)
+/// @param offset First rows index for assignment
 inline void assign_rows(Mat &mat, const Mat &input, const size_t offset) {
   const auto n = n_rows(input);
   if (offset >= n_rows(mat)) {
@@ -824,11 +824,11 @@ inline void assign_rows(Mat &mat, const Mat &input, const size_t offset) {
 #endif
 }
 
-/// \brief Assign a matrix to rows of vector `vec`
+/// Assign a matrix to rows of vector `vec`
 ///
-/// \param vec Vector for row assignment (non-const)
-/// \param input Input vector
-/// \param offset First index for assignment
+/// @param vec Vector for row assignment (non-const)
+/// @param input Input vector
+/// @param offset First index for assignment
 inline void assign_rows(Vec &vec, const Vec &input, const size_t offset) {
   const auto n = n_elem(input);
   if (offset >= n_elem(vec)) {
@@ -902,14 +902,14 @@ inline bool nearly_equal(
 #endif
 }
 
-/// \brief Multiply each column in a matrix by a column vector element-wise
+/// Multiply each column in a matrix by a column vector element-wise
 ///
 /// For each column in matrix `mat` multiply element-wise by vector `vec`
 ///
-/// \param mat Matrix of size `n_row * n_col`
-/// \param vec Vector of length `n_row`
+/// @param mat Matrix of size `n_row * n_col`
+/// @param vec Vector of length `n_row`
 ///
-/// \return Matrix of size `n_row * n_col`
+/// @return Matrix of size `n_row * n_col`
 inline Mat each_col(const Mat &mat, const Vec &vec) {
   if (n_elem(vec) != n_rows(mat)) {
     throw std::logic_error("size of vector does not match matrix");
@@ -975,15 +975,15 @@ inline Mat load_csv(const std::string &filepath) {
 #endif
 }
 
-/// \brief Eigen-decomposition of a symmetric/hermitian matrix
+/// Eigen-decomposition of a symmetric/hermitian matrix
 ///
 /// Calculate the eigenvalues and eigenvectors of an `n * n` matrix. Results
 /// are returned as a std::pair<Vec, Mat> containing a vector of `n` eigenvalues
 /// and a matrix of `n` eigenvectors in each column.
 ///
-/// \param mat Input matrix (must be square and symmetric)
+/// @param mat Input matrix (must be square and symmetric)
 ///
-/// \return Eigenvalues and eigenvectors of matrix
+/// @return Eigenvalues and eigenvectors of matrix
 inline std::pair<Vec, Mat> eigen_system(const Mat &mat) {
   if (!is_square(mat)) {
     throw std::logic_error("matrix must be square");
@@ -1017,16 +1017,16 @@ inline std::pair<Vec, Mat> eigen_system(const Mat &mat) {
   return {vals, vecs};
 }
 
-/// \brief Eigen-decomposition of a symmetric/hermitian matrix removing linear
+/// Eigen-decomposition of a symmetric/hermitian matrix removing linear
 /// dependent eigenvalues
 ///
-/// \param matrix Input matrix
-/// \param linear_dependency_threshold Absolute threshold for linear-dependence
-/// \param eigen_ld_threshold Eigenvalue linear dependence threshold
+/// @param matrix Input matrix
+/// @param linear_dependency_threshold Absolute threshold for linear-dependence
+/// @param eigen_ld_threshold Eigenvalue linear dependence threshold
 /// (eigenvalues smaller than this threshold multiplied by the maximum
 /// eigenvalue are removed)
 ///
-/// \return Eigenvalues (as a vector) Eigenvectors as a matrix
+/// @return Eigenvalues (as a vector) Eigenvectors as a matrix
 inline std::pair<Vec, Mat> eigen_decomposition(
     const Mat &matrix,
     const double linear_dependency_threshold,

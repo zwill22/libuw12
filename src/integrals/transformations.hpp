@@ -26,10 +26,10 @@ namespace uw12::integrals::transformations {
 /// and number of occupied orbitals `n_occ`. The resulting matrix is of size
 /// `(n_ao * n_occ) * nA`.
 ///
-/// \param J3 Three-index density-fitting integrals \f$(\mu\nu|A)\f$
-/// \param C Orbital coefficients \f$C_{\mu k}\f$
+/// @param J3 Three-index density-fitting integrals \f$(\mu\nu|A)\f$
+/// @param C Orbital coefficients \f$C_{\mu k}\f$
 ///
-/// \return One-index transformed df integrals \f$(\mu k|A)\f$
+/// @return One-index transformed df integrals \f$(\mu k|A)\f$
 inline linalg::Mat mo_transform_one_index_full(
     const linalg::Mat &J3, const linalg::Mat &C
 ) {
@@ -57,7 +57,7 @@ inline linalg::Mat mo_transform_one_index_full(
 /// object from the ao basis using orbital matrix `C`.
 ///
 /// Transform the first index of the matrix `J3` of three-index density-fitting
-/// integrals \f$(\mu k| A)\f$ for ao index \f$\muf$ to orbitals `i` in mo space
+/// integrals \f$(\mu k| A)\f$ for ao index \f$\mu\f$ to orbitals `i` in mo space
 /// resulting in a matrix of three-index integrals \f$(i k | A)\f$ for df
 /// index `A`.
 ///
@@ -72,10 +72,10 @@ inline linalg::Mat mo_transform_one_index_full(
 /// J3 is a full matrix vectorised rather than the lower trianglar part
 /// of a symmetric matrix.
 ///
-/// \param J3 Three-index density-fitting integrals \f$(\mu k|A)\f$
-/// \param C Orbital coefficients \f$C_{\mu i}\f$
+/// @param J3 Three-index density-fitting integrals \f$(\mu k|A)\f$
+/// @param C Orbital coefficients \f$C_{\mu i}\f$
 ///
-/// \return First-index mo transformed df integrals \f$(i k|A)\f$
+/// @return First-index mo transformed df integrals \f$(i k|A)\f$
 inline linalg::Mat transform_first_index(
     const linalg::Mat &J3, const linalg::Mat &C
 ) {
@@ -109,7 +109,7 @@ inline linalg::Mat transform_first_index(
 /// object from the ao basis using orbital matrix `C`.
 ///
 /// Transform the second index of the matrix `J3` of three-index density-fitting
-/// integrals \f$(p \mu| A)\f$ for ao index \f$\muf$ to the space of orbitals
+/// integrals \f$(p \mu| A)\f$ for ao index \f$\mu\f$ to the space of orbitals
 /// `i` resulting in a matrix of three-index integrals \f$(p i | A)\f$ for df
 /// index `A`.
 ///
@@ -123,10 +123,10 @@ inline linalg::Mat transform_first_index(
 /// ::mo_transform_one_index_full. Should only be used to transform the second
 /// index an asymmetric matrix.
 ///
-/// \param J3 Three-index density-fitting integrals \f$(a \mu|A)\f$
-/// \param C Orbital coefficients \f$C_{\mu i}\f$
+/// @param J3 Three-index density-fitting integrals \f$(a \mu|A)\f$
+/// @param C Orbital coefficients \f$C_{\mu i}\f$
 ///
-/// \return Second-index mo transformed df integrals \f$(a i|A)\f$
+/// @return Second-index mo transformed df integrals \f$(a i|A)\f$
 inline linalg::Mat transform_second_index(
     const linalg::Mat &J3, const linalg::Mat &C
 ) {
@@ -157,7 +157,7 @@ inline linalg::Mat transform_second_index(
   return result;
 }
 
-/// \brief Directly transform the three-index density-fitting integrals from
+/// Directly transform the three-index density-fitting integrals from
 /// the ao basis to mo space using orbital matrices `C_left` and `C_right`.
 ///
 /// Transform both ao indices of the matrix `J3` of three-index density-fitting
@@ -172,11 +172,11 @@ inline linalg::Mat transform_second_index(
 /// and number of `i` and `k` orbitals `n_i` and `n_k` respectively. The
 /// resulting matrix is of size `(n_i * n_k) * nA`.
 ///
-/// \param J3 Three-index density-fitting integrals \f$(\mu\nu|A)\f$
-/// \param C_left Orbital coefficients \f$C_{\mu i}\f$
-/// \param C_right Orbital coefficients \f$C_{\mu k}\f$
+/// @param J3 Three-index density-fitting integrals \f$(\mu\nu|A)\f$
+/// @param C_left Orbital coefficients \f$C_{\mu i}\f$
+/// @param C_right Orbital coefficients \f$C_{\mu k}\f$
 ///
-/// \return Two-index mo transformed df integrals \f$(i k|A)\f$
+/// @return Two-index mo transformed df integrals \f$(i k|A)\f$
 inline linalg::Mat mo_transform_two_index_full(
     const linalg::Mat &J3, const linalg::Mat &C_left, const linalg::Mat &C_right
 ) {

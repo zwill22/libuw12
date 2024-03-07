@@ -5,7 +5,7 @@
 #include "../utils/utils.hpp"
 
 namespace uw12::two_el {
-/// \brief Find the contribution to the energy and Fock matrix of the two
+/// Find the contribution to the energy and Fock matrix of the two
 /// electron term of UW12.
 ///
 /// The two electron UW12 Fock matrix and energy are calculated using
@@ -42,19 +42,20 @@ namespace uw12::two_el {
 /// \f$w^{s=1}(r) = 0\f$ (opposite spin only), there is no indirect
 /// contribution.
 ///
-/// \return Two electron UW12 Fock matrix and energy
+/// @param WV Integrals \f$(ab|r^{-1}w(r)|A)\f$ and \f$(A|r^{-1}w(r)|B)\f$
+/// @param active_Co Frozen core occupation weighted orbitals
+/// @param indirect_term Whether to compute the indirect term
+/// @param calculate_fock Whether to calculate the Fock matrix contribution
+/// @param scale_opp_spin Scale factor for \f$ w^0 (r) \f$
+/// @param scale_same_spin Scale factor for \f$ w^1 (r) \f$
+///
+/// @return Two electron UW12 Fock matrix and energy contribution
 utils::FockMatrixAndEnergy form_fock_two_el_df(
-    /// Integrals \f$( ab | r^{-1}w(r) | A )\f$ and \f$( A | r^{-1}w(r) | B )\f$
     const integrals::BaseIntegrals &WV,
-    /// Frozen core occupation weighted orbitals
     const utils::Orbitals &active_Co,
-    /// Whether to compute indirect term
     bool indirect_term,
-    /// Whether to calculate the Fock matrix
     bool calculate_fock,
-    /// Scale for \f$ w^0 (r) \f$
     double scale_opp_spin,
-    /// Scale for \f$ w^1 (r) \f$
     double scale_same_spin
 );
 }  // namespace uw12::two_el

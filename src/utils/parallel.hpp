@@ -14,7 +14,7 @@
 #endif
 
 namespace uw12::parallel {
-/// \brief Run a for loop in parallel
+/// Run a for loop in parallel
 ///
 /// Calls a function which takes an integer as argument and calls it for each
 /// integer between start and stop (exclusive).
@@ -24,10 +24,10 @@ namespace uw12::parallel {
 /// summation. If this is required, the ::parallel_sum function should be used
 /// instead.
 ///
-/// \param start Initial integer value
-/// \param stop Final integer value (exclusive)
-/// \param func Function to call
-/// \param parallel Whether to run in parallel
+/// @param start Initial integer value
+/// @param stop Final integer value (exclusive)
+/// @param func Function to call
+/// @param parallel Whether to run in parallel
 inline void parallel_for(
     size_t start,
     size_t stop,
@@ -64,19 +64,19 @@ inline void parallel_for(
   }
 }
 
-/// \brief Construct an object in parallel
+/// Construct an object in parallel
 ///
 /// Construct an object of type `ReturnType` in parallel for each input integer
 /// in range [start, stop).
 ///
-/// \tparam ReturnType
-/// \param start Initial value
-/// \param stop Final value (excluded)
-/// \param identity Identity value
-/// \param func Parallel function
-/// \param parallel Run in parallel
+/// @tparam ReturnType
+/// @param start Initial value
+/// @param stop Final value (excluded)
+/// @param identity Identity value
+/// @param func Parallel function
+/// @param parallel Run in parallel
 ///
-/// \return Object of type `ReturnType`
+/// @return Object of type `ReturnType`
 template <typename ReturnType>
 ReturnType parallel_sum(
     const size_t start,
@@ -133,18 +133,18 @@ ReturnType parallel_sum(
   }
 }
 
-/// \brief Construct an object in parallel over two sets of integers
+/// Construct an object in parallel over two sets of integers
 ///
-/// \tparam ReturnType
-/// \param start1 Initial value for loop 1
-/// \param stop1 Final value (excluded) for loop 1
-/// \param start2 Initial value for loop 2
-/// \param stop2 Final value (excluded) for loop 2
-/// \param identity Identity value
-/// \param func Parallel function
-/// \param parallel Run in parallel
+/// @tparam ReturnType
+/// @param start1 Initial value for loop 1
+/// @param stop1 Final value (excluded) for loop 1
+/// @param start2 Initial value for loop 2
+/// @param stop2 Final value (excluded) for loop 2
+/// @param identity Identity value
+/// @param func Parallel function
+/// @param parallel Run in parallel
 ///
-/// \return Object of type `ReturnType`
+/// @return Object of type `ReturnType`
 template <typename ReturnType>
 ReturnType parallel_sum_2d(
     const size_t start1,
@@ -169,10 +169,10 @@ ReturnType parallel_sum_2d(
   );
 }
 
-/// \brief Function to avoid deadlocks for mutex in parallel
+/// Function to avoid deadlocks for mutex in parallel
 ///
-/// \tparam Func
-/// \param func Parallel mutex protected code
+/// @tparam Func
+/// @param func Parallel mutex protected code
 template <typename Func>
 void isolate(Func &&func) {
 #ifdef USE_TBB

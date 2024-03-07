@@ -19,17 +19,17 @@ using TwoIndexFn = std::function<linalg::Mat()>;
 /// of third index
 using ThreeIndexFn = std::function<linalg::Mat(size_t)>;
 
-/// \brief Calculate the three-index Coulomb matrix \f$(\mu\nu | w | A)\f$
+/// Calculate the three-index Coulomb matrix \f$(\mu\nu | w | A)\f$
 ///
 /// Use a `three_index_fn` for each density-fitting basis shell to calculate
 /// the total three-index matrix
 ///
-/// \param three_index_fn Function to calculate integrals for each basis shell
-/// \param df_offsets offsets in full matrix for each df basis shell
-/// \param n_rows number of rows of the matrix (depends on the `three_index_fn`)
-/// \param n_df number of df basis functions
+/// @param three_index_fn Function to calculate integrals for each basis shell
+/// @param df_offsets offsets in full matrix for each df basis shell
+/// @param n_rows number of rows of the matrix (depends on the `three_index_fn`)
+/// @param n_df number of df basis functions
 ///
-/// \return Three-index matrix
+/// @return Three-index matrix
 inline linalg::Mat coulomb_3idx(
     const ThreeIndexFn &three_index_fn,
     const std::vector<size_t> &df_offsets,

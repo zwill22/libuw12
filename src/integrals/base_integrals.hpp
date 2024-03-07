@@ -7,7 +7,7 @@
 #include "integral_functions.hpp"
 
 namespace uw12::integrals {
-/// \brief Class for calculating and storing ao/ri integrals for density-fitted
+/// Class for calculating and storing ao/ri integrals for density-fitted
 /// UW12 calculations
 ///
 /// Density-fitting a two-electron integral is usually performed using:
@@ -108,7 +108,7 @@ class BaseIntegrals {
   /// where `n_df` is the number of density_fitting basis functions
   [[nodiscard]] linalg::Mat two_index() const;
 
-  /// \brief Call the three_index_fn to obtain the three index density-fitting
+  /// Call the three_index_fn to obtain the three index density-fitting
   /// integrals in the ao basis for the density-fitting basis shell index `A`
   ///
   /// The resulting matrix should have `n_ao * (n_ao + 1) / 2` rows and `nA`
@@ -119,12 +119,12 @@ class BaseIntegrals {
   /// matrix of size `n_ao * n_ao`, the full matrix may be obtained using
   /// `linalg::square`.
   ///
-  /// \param A Index of density-fitting shell
+  /// @param A Index of density-fitting shell
   ///
-  /// \return Density-fitting integrals \f$(\rho\sigma | w | A)\f$
+  /// @return Density-fitting integrals \f$(\rho\sigma | w | A)\f$
   [[nodiscard]] linalg::Mat three_index(size_t A) const;
 
-  /// \brief Call the three_index_fn to obtain the three index density-fitting
+  /// Call the three_index_fn to obtain the three index density-fitting
   /// ri integrals in the ao basis and ri basis for the density-fitting basis
   /// shell index `A`
   ///
@@ -135,9 +135,9 @@ class BaseIntegrals {
   ///
   /// Each column contains a matrix of size `n_ri * n_ao`.
   ///
-  /// \param A Index of density-fitting shell
+  /// @param A Index of density-fitting shell
   ///
-  /// \return Density-fitting ri integrals \f$(\mu\rho | w | A)\f$
+  /// @return Density-fitting ri integrals \f$(\mu\rho | w | A)\f$
   [[nodiscard]] linalg::Mat three_index_ri(size_t A) const;
 
   /// Check whether a `two_index_fn` is provided
