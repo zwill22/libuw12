@@ -9,6 +9,15 @@
 
 namespace fock {
 
+/// A function which calculates the numerical gradient with respect to vector
+/// vec for an energy function fn
+///
+/// @tparam EnergyFn A function of type f(vec) -> double
+/// @param vec
+/// @param energy_fn
+/// @param delta
+///
+/// @return gradient in vector form
 template <typename EnergyFn>
 auto numerical_gradient(
     const uw12::linalg::Vec& vec, const EnergyFn& energy_fn, const double delta
@@ -42,6 +51,14 @@ auto numerical_gradient(
   return result;
 }
 
+/// Calculate the Fock matrix numerically using the energy
+///
+/// @tparam EnergyFn Function f(vec) -> double
+/// @param energy_function E(D) -> energy
+/// @param D_mat Density matrix
+/// @param delta variation parameter
+///
+/// @return Fock matrix
 template <typename EnergyFn>
 auto numerical_fock_matrix(
     const EnergyFn& energy_function,
@@ -77,8 +94,11 @@ auto numerical_fock_matrix(
   const auto initial_d_vec = [&D_mat, n_spin] {
     Vec d_vec;
     for (auto sigma = 0; sigma < n_spin; ++sigma) {
-      d_vec = empty(d_vec) ? lower(D_mat[sigma])
-                           : join_matrices(d_vec, lower(D_mat[sigma]));
+      if (empty(d_vec)) {
+        d_vec = lower(D_mat[sigma]);
+      } else {
+        join_matrices(d_vec, lower(D_mat[sigma]));
+      }
     }
     return d_vec;
   }();

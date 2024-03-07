@@ -172,8 +172,13 @@ inline void set_elem(
 /// \param index
 /// \param value
 inline void set_elem(Vec &vec, const size_t index, const double value) {
-  set_elem(vec, index, 0, value);
+  if (index >= n_elem(vec)) {
+    throw std::logic_error("Index outside scope of vector");
+  }
+
+  vec(index) = value;
 }
+
 
 /// Initialise a matrix of size `n_row` by `n_col`
 inline Mat mat(const size_t n_row, const size_t n_col) {
