@@ -5,7 +5,7 @@
 
 namespace uw12::integrals {
 
-size_t calculate_n_df(const std::vector<size_t> &df_sizes) {
+auto calculate_n_df(const std::vector<size_t> &df_sizes) {
   size_t total = 0;
   for (const auto &shell_size : df_sizes) {
     total += shell_size;

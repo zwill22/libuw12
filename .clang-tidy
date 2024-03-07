@@ -13,4 +13,6 @@ performance-*
 portability-*
 readability-*
 misc-*
--misc-use-anonymous-namespace'
+-misc-use-anonymous-namespace
+-readability-identifier-length
+-modernize-use-trailing-return-type'
