@@ -12,6 +12,7 @@
 #include <fstream>
 #include <iostream>
 #include <random>
+#include <unsupported/Eigen/MatrixFunctions> // mat.exp()
 #endif
 #include <cassert>
 #include <cmath>
@@ -132,8 +133,13 @@ inline Mat mat(
     double *mem, const size_t n_row, const size_t n_col, const bool copy = false
 ) {
 #ifdef USE_ARMA
-  return {mem, n_row, n_col, true, true};  // CheckMem
+  return {mem, n_row, n_col, copy, true};  // CheckMem
 #elif USE_EIGEN
+  if (copy) {
+    const Mat mat1 = Eigen::Map<Mat>(mem, n_row, n_col);
+    const Mat mat2 = mat1;
+    return mat2;
+  }
   return Eigen::Map<Mat>(mem, n_row, n_col);
 #endif
 }
@@ -178,7 +184,6 @@ inline void set_elem(Vec &vec, const size_t index, const double value) {
 
   vec(index) = value;
 }
-
 
 /// Initialise a matrix of size `n_row` by `n_col`
 inline Mat mat(const size_t n_row, const size_t n_col) {
@@ -414,23 +419,35 @@ inline Mat p_inv(const Mat &mat, const double threshold = 1e-10) {
 #endif
 }
 
+/// Generate a diagonal matrix of size `n_el * n_el` from a vector of size
+/// `n_el`
+inline Mat diagmat(const Vec &vec) {
+#ifdef USE_ARMA
+  return arma::diagmat(vec);
+#elif USE_EIGEN
+  return vec.asDiagonal();
+#endif
+}
+
+/// Compute the matrix exponential of input matrix
+inline Mat expmat(const Mat &mat) {
+#ifdef USE_ARMA
+  return arma::expmat(mat);
+#elif USE_EIGEN
+  return mat.exp();
+#endif
+}
+
 /// Generate a random positive-definite square matrix of size `n_row * n_row`
 inline Mat random_pd(const size_t n_row, const int seed) {
   const Vec eigen = random(n_row, 1, seed) + ones(n_row);
-  Mat X = random(n_row, n_row, seed);
+  const Mat X = random(n_row, n_row, seed);
 
-#ifdef USE_ARMA
-  X = 0.5 * (X - X.t());
+  const Mat X2 = 0.5 * (X - transpose(X));
 
-  const Mat U = expmat(X);
-  return U * diagmat(eigen) * U.t();
-#elif USE_EIGEN
-  X = 0.5 * (X - X.transpose());
+  const Mat U = expmat(X2);
 
-  const Mat U = Eigen::exp(X.array());
-
-  return U * eigen.asDiagonal() * U.transpose();
-#endif
+  return U * diagmat(eigen) * transpose(U);
 }
 
 /// Calculate the inverse of a symmetric positive definite matrix
@@ -728,7 +745,7 @@ inline Mat tail_rows(const Mat &mat, const size_t n_row) {
 inline Vec vectorise(const Mat &mat) {
 #ifdef USE_ARMA
   return arma::vectorise(mat);
-#elif USE_EIGEN
+#elif USE_EIGEN  // check memory
   return Eigen::Map<Vec>(const_cast<double *>(mat.data()), n_elem(mat));
 #endif
 }
@@ -745,21 +762,10 @@ inline double trace(const Mat &mat) {
 #endif
 }
 
-/// Generate a diagonal matrix of size `n_el * n_el` from a vector of size
-/// `n_el`
-inline Mat diagmat(const Vec &vec) {
-#ifdef USE_ARMA
-  return arma::diagmat(vec);
-#elif USE_EIGEN
-  return vec.asDiagonal();
-#endif
-}
-
 /// Calculate the element-wise square-root of the input object
 inline Mat sqrt(const Mat &mat) {
   for (size_t i = 0; i < n_cols(mat); ++i) {
-    const auto col = linalg::col(mat, i);
-    if (!all_positive(col)) {
+    if (const auto col = linalg::col(mat, i); !all_positive(col)) {
       throw std::logic_error("Cannot compute square root of negative elements");
     }
   }
@@ -870,7 +876,7 @@ inline bool empty(const Vec &vec) {
 #ifdef USE_ARMA
   return vec.empty();
 #elif USE_EIGEN
-  return (n_elem(vec) == 0);
+  return n_elem(vec) == 0;
 #endif
 }
 
@@ -879,7 +885,7 @@ inline bool empty(const Mat &mat) {
 #ifdef USE_ARMA
   return mat.empty();
 #elif USE_EIGEN
-  return (n_elem(mat) == 0);
+  return n_elem(mat) == 0;
 #endif
 }
 
