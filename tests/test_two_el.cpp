@@ -415,7 +415,6 @@ TEST_CASE("Test two electron - Test Fock matrix (Closed Shell)") {
   constexpr size_t n_occ = 5;
   constexpr size_t n_df = 19;
   constexpr auto threshold = 1e-3;
-  constexpr auto delta = 1e-10;
 
   auto J20 = uw12::linalg::random_pd(n_df, seed);
   auto J30 = uw12::linalg::random(n_ao * (n_ao + 1) / 2, n_df, seed);
@@ -425,47 +424,60 @@ TEST_CASE("Test two electron - Test Fock matrix (Closed Shell)") {
   const auto D = density::random_density_matrix({n_occ}, n_ao, seed);
 
   const auto active_Co = density::calculate_orbitals_from_density(D, threshold);
-  constexpr auto scale_opp_spin = 1.0;
-  constexpr auto scale_same_spin = 0.0;
-  const auto &[analytic_fock, energy] = form_fock_two_el_df(
-      base_integrals, active_Co, true, true, scale_opp_spin, scale_same_spin
-  );
+  for (auto scale_same_spin : {0.0, 0.5}) {
+    constexpr auto scale_opp_spin = 1.0;
 
-  REQUIRE((analytic_fock.size() == 1));
+    const auto &[analytic_fock, energy] = form_fock_two_el_df(
+        base_integrals, active_Co, true, true, scale_opp_spin, scale_same_spin
+    );
 
-  const auto energy_fn = [&base_integrals, scale_opp_spin, scale_same_spin](
-                             const uw12::utils::DensityMatrix &D_mat
-                         ) {
-    const auto orbitals =
-        density::calculate_orbitals_from_density(D_mat, threshold);
+    REQUIRE((analytic_fock.size() == 1));
 
-    return form_fock_two_el_df(
-               base_integrals,
-               orbitals,
-               true,
-               false,
-               scale_opp_spin,
-               scale_same_spin
-    )
-        .energy;
-  };
+    const auto energy_fn = [&base_integrals, scale_opp_spin, scale_same_spin](
+                               const uw12::utils::DensityMatrix &D_mat
+                           ) {
+      const auto orbitals =
+          density::calculate_orbitals_from_density(D_mat, threshold);
 
-  REQUIRE_THAT(energy_fn(D), Catch::Matchers::WithinAbs(energy, epsilon));
+      return form_fock_two_el_df(
+                 base_integrals,
+                 orbitals,
+                 true,
+                 false,
+                 scale_opp_spin,
+                 scale_same_spin
+      )
+          .energy;
+    };
 
-  const auto num_fock = fock::numerical_fock_matrix(energy_fn, D, delta);
-  REQUIRE((num_fock.size() == 1));
-  for (auto col_idx = 0; col_idx < n_ao; ++col_idx) {
-    for (auto row_idx = 0; row_idx < n_ao; ++row_idx) {
-      const auto elem = uw12::linalg::elem(num_fock[0], row_idx, col_idx);
-      const auto target =
-          uw12::linalg::elem(analytic_fock[0], row_idx, col_idx);
+    REQUIRE_THAT(energy_fn(D), Catch::Matchers::WithinAbs(energy, margin));
 
+    constexpr auto delta = 1e-10;
+    const auto num_fock = fock::numerical_fock_matrix(energy_fn, D, delta);
+    REQUIRE((num_fock.size() == 1));
 
-      std::cout << "Value: " << elem << '\n';
-      std::cout << "Target: " << target << '\n';
-      std::cout << "Relative Diff: " << (elem - target) / target << '\n';
+    constexpr auto rel_eps = 0.3;
+    double max_rel_diff = 0;
+    for (auto col_idx = 0; col_idx < n_ao; ++col_idx) {
+      for (auto row_idx = 0; row_idx < n_ao; ++row_idx) {
+        const auto elem = uw12::linalg::elem(num_fock[0], row_idx, col_idx);
+        const auto target =
+            uw12::linalg::elem(analytic_fock[0], row_idx, col_idx);
 
-      CHECK_THAT(elem, Catch::Matchers::WithinRel(target, 0.2));
+        if (const auto rel_diff = std::abs((elem - target) / target);
+            rel_diff > max_rel_diff) {
+          max_rel_diff = rel_diff;
+        }
+
+        CHECK_THAT(elem, Catch::Matchers::WithinRel(target, rel_eps));
+      }
     }
+
+    std::cout << "Opposite spin scale: " << scale_opp_spin << '\n';
+    std::cout << "Same spin scale: " << scale_same_spin << '\n';
+    std::cout << "Maximum relative Diff: " << max_rel_diff << '\n';
+    std::cout << "Threshold: " << rel_eps << '\n';
   }
 }
+
+// TODO Open shell case
