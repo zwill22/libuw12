@@ -6,6 +6,8 @@
 #include "../src/two_electron/two_electron.hpp"
 #include "../src/utils/linalg.hpp"
 #include "catch.hpp"
+#include "density_utils.hpp"
+#include "numerical_fock.hpp"
 
 using uw12::linalg::Mat;
 using uw12::linalg::nearly_equal;
@@ -19,37 +21,12 @@ using test::seed;
 TEST_CASE("Test Two Electron term - Closed Shell") {
   constexpr size_t n_ao = 7;
   constexpr size_t n_occ = 5;
-
-  const std::vector<size_t> df_sizes = {1, 3, 1, 3, 1, 3, 5};
-
-  size_t n_df = 0;
-  for (const auto size : df_sizes) {
-    n_df += size;
-  }
+  constexpr size_t n_df = 17;
 
   auto J20 = uw12::linalg::random_pd(n_df, seed);
   auto J30 = uw12::linalg::random(n_ao * (n_ao + 1) / 2, n_df, seed);
 
-  const uw12::integrals::TwoIndexFn two_index_fn = [J20]() -> Mat {
-    return J20;
-  };
-
-  const uw12::integrals::ThreeIndexFn three_index_fn =
-      [&df_sizes, J30, n_ao](const size_t A) -> Mat {
-    constexpr auto n_row = n_ao * (n_ao + 1) / 2;
-    const auto n_col = df_sizes[A];
-
-    size_t offset = 0;
-    for (size_t i = 0; i < A; ++i) {
-      offset += df_sizes[i];
-    }
-
-    return uw12::linalg::sub_mat(J30, 0, offset, n_row, n_col);
-  };
-
-  const auto base_integrals = uw12::integrals::BaseIntegrals(
-      two_index_fn, three_index_fn, df_sizes, n_ao, n_df, true
-  );
+  const auto base_integrals = uw12::integrals::BaseIntegrals(J30, J20);
 
   const auto C = uw12::linalg::random(n_ao, n_occ, seed);
   const uw12::utils::Orbitals active_Co = {C};
@@ -375,7 +352,7 @@ TEST_CASE("Test Two Electron term - Open Shell") {
           form_fock_two_el_df(base_integrals, orbitals, true, true, 0, 1.5);
       REQUIRE((fock3.size() == n_spin));
       for (size_t sigma = 0; sigma < n_spin; ++sigma) {
-        const uw12::linalg::Mat mat2 = 1.5 * fock2[sigma];
+        const Mat mat2 = 1.5 * fock2[sigma];
 
         CHECK(uw12::linalg::nearly_equal(fock3[sigma], mat2, epsilon));
       }
@@ -429,6 +406,66 @@ TEST_CASE("Test Two Electron term - Open Shell") {
         CHECK(uw12::linalg::nearly_equal(fock4[1], fock0, epsilon));
         CHECK_THAT(energy4, Catch::Matchers::WithinAbs(0, 100 * margin));
       }
+    }
+  }
+}
+
+TEST_CASE("Test two electron - Test Fock matrix (Closed Shell)") {
+  constexpr size_t n_ao = 8;
+  constexpr size_t n_occ = 5;
+  constexpr size_t n_df = 19;
+  constexpr auto threshold = 1e-3;
+  constexpr auto delta = 1e-10;
+
+  auto J20 = uw12::linalg::random_pd(n_df, seed);
+  auto J30 = uw12::linalg::random(n_ao * (n_ao + 1) / 2, n_df, seed);
+
+  const auto base_integrals = uw12::integrals::BaseIntegrals(J30, J20);
+
+  const auto D = density::random_density_matrix({n_occ}, n_ao, seed);
+
+  const auto active_Co = density::calculate_orbitals_from_density(D, threshold);
+  constexpr auto scale_opp_spin = 1.0;
+  constexpr auto scale_same_spin = 0.0;
+  const auto &[analytic_fock, energy] = form_fock_two_el_df(
+      base_integrals, active_Co, true, true, scale_opp_spin, scale_same_spin
+  );
+
+  REQUIRE((analytic_fock.size() == 1));
+
+  const auto energy_fn = [&base_integrals, scale_opp_spin, scale_same_spin](
+                             const uw12::utils::DensityMatrix &D_mat
+                         ) {
+    const auto orbitals =
+        density::calculate_orbitals_from_density(D_mat, threshold);
+
+    return form_fock_two_el_df(
+               base_integrals,
+               orbitals,
+               true,
+               false,
+               scale_opp_spin,
+               scale_same_spin
+    )
+        .energy;
+  };
+
+  REQUIRE_THAT(energy_fn(D), Catch::Matchers::WithinAbs(energy, epsilon));
+
+  const auto num_fock = fock::numerical_fock_matrix(energy_fn, D, delta);
+  REQUIRE((num_fock.size() == 1));
+  for (auto col_idx = 0; col_idx < n_ao; ++col_idx) {
+    for (auto row_idx = 0; row_idx < n_ao; ++row_idx) {
+      const auto elem = uw12::linalg::elem(num_fock[0], row_idx, col_idx);
+      const auto target =
+          uw12::linalg::elem(analytic_fock[0], row_idx, col_idx);
+
+
+      std::cout << "Value: " << elem << '\n';
+      std::cout << "Target: " << target << '\n';
+      std::cout << "Relative Diff: " << (elem - target) / target << '\n';
+
+      CHECK_THAT(elem, Catch::Matchers::WithinRel(target, 0.2));
     }
   }
 }
