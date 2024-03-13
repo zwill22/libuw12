@@ -410,18 +410,13 @@ TEST_CASE("Test Two Electron term - Open Shell") {
   }
 }
 
-TEST_CASE("Test two electron - Test Fock matrix (Closed Shell)") {
-  constexpr size_t n_ao = 8;
-  constexpr size_t n_occ = 5;
-  constexpr size_t n_df = 19;
-  constexpr auto threshold = 1e-3;
-
-  auto J20 = uw12::linalg::random_pd(n_df, seed);
-  auto J30 = uw12::linalg::random(n_ao * (n_ao + 1) / 2, n_df, seed);
-
-  const auto base_integrals = uw12::integrals::BaseIntegrals(J30, J20);
-
-  const auto D = density::random_density_matrix({n_occ}, n_ao, seed);
+void test_two_el_fock(
+    const uw12::integrals::BaseIntegrals &base_integrals,
+    const uw12::utils::DensityMatrix &D,
+    const double threshold
+) {
+  const auto n_spin = D.size();
+  const auto n_ao = uw12::linalg::n_rows(D[0]);
 
   const auto active_Co = density::calculate_orbitals_from_density(D, threshold);
   for (auto scale_same_spin : {0.0, 0.5}) {
@@ -431,30 +426,31 @@ TEST_CASE("Test two electron - Test Fock matrix (Closed Shell)") {
         base_integrals, active_Co, true, true, scale_opp_spin, scale_same_spin
     );
 
-    REQUIRE((analytic_fock.size() == 1));
+    REQUIRE((analytic_fock.size() == n_spin));
 
-    const auto energy_fn = [&base_integrals, scale_opp_spin, scale_same_spin](
-                               const uw12::utils::DensityMatrix &D_mat
-                           ) {
-      const auto orbitals =
-          density::calculate_orbitals_from_density(D_mat, threshold);
+    const auto energy_fn =
+        [&base_integrals, scale_opp_spin, scale_same_spin, threshold](
+            const uw12::utils::DensityMatrix &D_mat
+        ) {
+          const auto orbitals =
+              density::calculate_orbitals_from_density(D_mat, threshold);
 
-      return form_fock_two_el_df(
-                 base_integrals,
-                 orbitals,
-                 true,
-                 false,
-                 scale_opp_spin,
-                 scale_same_spin
-      )
-          .energy;
-    };
+          return form_fock_two_el_df(
+                     base_integrals,
+                     orbitals,
+                     true,
+                     false,
+                     scale_opp_spin,
+                     scale_same_spin
+          )
+              .energy;
+        };
 
     REQUIRE_THAT(energy_fn(D), Catch::Matchers::WithinAbs(energy, margin));
 
     constexpr auto delta = 1e-10;
     const auto num_fock = fock::numerical_fock_matrix(energy_fn, D, delta);
-    REQUIRE((num_fock.size() == 1));
+    REQUIRE((num_fock.size() == n_spin));
 
     constexpr auto rel_eps = 0.3;
     double max_rel_diff = 0;
@@ -480,4 +476,35 @@ TEST_CASE("Test two electron - Test Fock matrix (Closed Shell)") {
   }
 }
 
-// TODO Open shell case
+TEST_CASE("Test two electron - Test Fock matrix (Closed Shell)") {
+  constexpr size_t n_ao = 8;
+  constexpr size_t n_occ = 5;
+  constexpr size_t n_df = 19;
+  constexpr auto threshold = 1e-3;
+
+  const auto J20 = uw12::linalg::random_pd(n_df, seed);
+  const auto J30 = uw12::linalg::random(n_ao * (n_ao + 1) / 2, n_df, seed);
+
+  const auto base_integrals = uw12::integrals::BaseIntegrals(J30, J20);
+
+  const auto D = density::random_density_matrix({n_occ}, n_ao, seed);
+
+  test_two_el_fock(base_integrals, D, threshold);
+}
+
+TEST_CASE("Test two electron - Test Fock matrix (Open Shell)") {
+  constexpr size_t n_ao = 7;
+  constexpr size_t n_df = 17;
+  constexpr auto threshold = 1e-3;
+
+  const std::vector<size_t> n_occ = {5, 4};
+
+  const auto J20 = uw12::linalg::random_pd(n_df, seed);
+  const auto J30 = uw12::linalg::random(n_ao * (n_ao + 1) / 2, n_df, seed);
+
+  const auto base_integrals = uw12::integrals::BaseIntegrals(J30, J20);
+
+  const auto D = density::random_density_matrix(n_occ, n_ao, seed);
+
+  test_two_el_fock(base_integrals, D, threshold);
+}
