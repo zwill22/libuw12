@@ -65,55 +65,29 @@ auto numerical_fock_matrix(
     const uw12::utils::DensityMatrix& D_mat,
     const double delta
 ) {
-  using uw12::linalg::empty;
-  using uw12::linalg::join_matrices;
-  using uw12::linalg::n_elem;
   using uw12::linalg::Vec;
-  using uw12::utils::lower;
+  using uw12::utils::square;
 
   const auto n_spin = D_mat.size();
   if (n_spin != 1 && n_spin != 2) {
     throw std::runtime_error("Invalid number of spin channels");
   }
 
-  const auto energy_func = [&energy_function,
-                            n_spin](const Vec& d_vec) -> double {
-    const auto n_total = uw12::linalg::n_elem(d_vec);
-    const auto n_sub = n_total / n_spin;
-
-    uw12::utils::DensityMatrix D_new;
-    for (auto sigma = 0; sigma < n_spin; ++sigma) {
-      const auto start = sigma * n_sub;
-      const auto d_vec_this = uw12::linalg::sub_vec(d_vec, start, n_sub);
-      D_new.push_back(uw12::utils::square(d_vec_this));
-    }
-
-    return energy_function(D_new);
-  };
-
-  const auto initial_d_vec = [&D_mat, n_spin] {
-    Vec d_vec;
-    for (auto sigma = 0; sigma < n_spin; ++sigma) {
-      if (empty(d_vec)) {
-        d_vec = lower(D_mat[sigma]);
-      } else {
-        join_matrices(d_vec, lower(D_mat[sigma]));
-      }
-    }
-    return d_vec;
-  }();
-
-  const auto F_vec = numerical_gradient(initial_d_vec, energy_func, delta);
-
-  const auto n_total = n_elem(F_vec);
-  const auto n_sub = n_total / n_spin;
-
   uw12::utils::FockMatrix fock;
-  for (auto sigma = 0; sigma < n_spin; ++sigma) {
-    constexpr double off_diag_factor = 0.5;
-    const auto start = sigma * n_sub;
-    const auto F_vec_this = uw12::linalg::sub_vec(F_vec, start, n_sub);
-    fock.push_back(uw12::utils::square(F_vec_this, off_diag_factor));
+  for (size_t sigma = 0; sigma < n_spin; ++sigma) {
+    const auto energy_func = [&energy_function, &D_mat, sigma](const Vec& d_vec
+                             ) -> double {
+      auto D_new = D_mat;
+      D_new[sigma] = square(d_vec);
+
+      return energy_function(D_new);
+    };
+
+    const auto initial_d_vec = uw12::utils::lower(D_mat[sigma]);
+
+    const auto F_vec = numerical_gradient(initial_d_vec, energy_func, delta);
+
+    fock.push_back(square(F_vec, 0.5));
   }
 
   return fock;
