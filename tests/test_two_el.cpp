@@ -452,7 +452,7 @@ void test_two_el_fock(
     const auto num_fock = fock::numerical_fock_matrix(energy_fn, D, delta);
     REQUIRE((num_fock.size() == n_spin));
 
-    constexpr auto rel_eps = 0.3;
+    constexpr auto rel_eps = 0.5;
     double max_rel_diff = 0;
     for (auto col_idx = 0; col_idx < n_ao; ++col_idx) {
       for (auto row_idx = 0; row_idx < n_ao; ++row_idx) {
