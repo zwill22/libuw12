@@ -413,7 +413,9 @@ TEST_CASE("Test Two Electron term - Open Shell") {
 void test_two_el_fock(
     const uw12::integrals::BaseIntegrals &base_integrals,
     const uw12::utils::DensityMatrix &D,
-    const double threshold
+    const double threshold,
+    const double delta = 1e-4,
+    const double rel_eps  = 0.5
 ) {
   const auto n_spin = D.size();
   const auto n_ao = uw12::linalg::n_rows(D[0]);
@@ -448,11 +450,9 @@ void test_two_el_fock(
 
     REQUIRE_THAT(energy_fn(D), Catch::Matchers::WithinAbs(energy, margin));
 
-    constexpr auto delta = 1e-10;
     const auto num_fock = fock::numerical_fock_matrix(energy_fn, D, delta);
     REQUIRE((num_fock.size() == n_spin));
 
-    constexpr auto rel_eps = 0.5;
     double max_rel_diff = 0;
     for (auto col_idx = 0; col_idx < n_ao; ++col_idx) {
       for (auto row_idx = 0; row_idx < n_ao; ++row_idx) {

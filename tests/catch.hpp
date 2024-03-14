@@ -8,7 +8,7 @@
 #include <catch2/catch_all.hpp>
 
 namespace test {
-    constexpr auto seed = 22;
+    constexpr auto seed = 11;
     constexpr auto epsilon = 1e-10;
     constexpr auto margin = epsilon;
     constexpr auto eps = epsilon;
