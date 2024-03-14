@@ -17,7 +17,7 @@ using uw12::linalg::n_elem;
 using uw12::linalg::n_rows;
 using uw12::linalg::nearly_equal;
 
-TEST_CASE("Orbitals from density") {
+TEST_CASE("Test Density Utils - Orbitals from density") {
   constexpr size_t n_ao = 10;
   std::vector<size_t> n_occ = {4};
 
