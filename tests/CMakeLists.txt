@@ -44,3 +44,11 @@ catch_discover_tests(test_numerical_fock)
 add_executable(test_two_electron test_two_el.cpp)
 target_link_libraries(test_two_electron Catch2::Catch2WithMain uw12)
 catch_discover_tests(test_two_electron)
+
+add_executable(test_four_electron_utils test_four_el_utils.cpp)
+target_link_libraries(test_four_electron_utils Catch2::Catch2WithMain uw12)
+catch_discover_tests(test_four_electron_utils)
+
+add_executable(test_four_electron test_four_el.cpp)
+target_link_libraries(test_four_electron Catch2::Catch2WithMain uw12)
+catch_discover_tests(test_four_electron)
