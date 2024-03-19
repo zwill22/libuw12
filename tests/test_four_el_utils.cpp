@@ -4,10 +4,13 @@
 
 #include "../src/four_electron/four_electron_utils.hpp"
 #include "catch.hpp"
+#include "setup_integrals.hpp"
 
 using test::epsilon;
 using test::margin;
 using test::seed;
+using test::setup_base_integrals;
+using test::setup_orbitals;
 using uw12::integrals::Integrals;
 
 TEST_CASE("Test Four Electron Utils - Test energy spin factor") {
@@ -50,39 +53,6 @@ TEST_CASE("Test Four Electron Utils - Test energy spin factor") {
   );
 
   CHECK_THROWS(get_energy_spin_factor(3, 0, 0, 0, 0));
-}
-
-auto setup_base_integrals(
-    const size_t n_ao, const size_t n_df, const int J_seed
-) {
-  const auto J2 = uw12::linalg::random_pd(n_df, J_seed);
-  const auto J3 = uw12::linalg::random(n_ao * (n_ao + 1) / 2, n_df, J_seed);
-
-  return uw12::integrals::BaseIntegrals(J3, J2);
-}
-
-auto setup_orbitals(
-    const std::vector<size_t>& n_occ,
-    const std::vector<size_t>& n_active,
-    const size_t n_ao
-) {
-  const auto n_spin = n_occ.size();
-
-  REQUIRE(0 < n_spin);
-  REQUIRE(n_spin <= 2);
-  REQUIRE(n_active.size() == n_spin);
-
-  uw12::utils::Orbitals Co;
-  uw12::utils::Orbitals active_Co;
-  for (size_t sigma = 0; sigma < n_spin; ++sigma) {
-    const auto C = uw12::linalg::random(n_ao, n_occ[sigma], seed);
-    REQUIRE(n_active[sigma] <= n_occ[sigma]);
-
-    Co.push_back(C);
-    active_Co.push_back(uw12::linalg::tail_cols(C, n_active[sigma], true));
-  }
-
-  return std::pair(Co, active_Co);
 }
 
 TEST_CASE("Test Four Electron Utils - Test t_ab") {
