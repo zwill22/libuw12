@@ -41,7 +41,8 @@ utils::MatVec calculate_tab(
 
   std::vector<linalg::Mat> tab(n_spin);
   for (size_t sigma = 0; sigma < n_spin; ++sigma) {
-    tab[sigma] = linalg::transpose(W3idx_two_trans[sigma]) * V3idx_two_trans[sigma];
+    tab[sigma] =
+        linalg::transpose(W3idx_two_trans[sigma]) * V3idx_two_trans[sigma];
   }
 
   return tab;

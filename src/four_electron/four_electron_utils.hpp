@@ -24,7 +24,8 @@ double get_energy_spin_factor(
     size_t sigma,
     size_t sigmaprime,
     double scale_opp_spin,
-    double scale_same_spin);
+    double scale_same_spin
+);
 
 /// \brief Calculate matrices \f$t_{AB}^{\sigma}\f$ given by:
 /// \f[
@@ -37,7 +38,9 @@ double get_energy_spin_factor(
 /// \param V Integrals for \f$r_{12}^{-1}\f$
 ///
 /// \return Matrices \f$t_{AB}^{\sigma}\f$
-utils::MatVec calculate_tab(const integrals::Integrals & W, const integrals::Integrals & V);
+utils::MatVec calculate_tab(
+    const integrals::Integrals& W, const integrals::Integrals& V
+);
 
 /// \brief Calculate matrices \f$\tilde{t}_{AB}^{\sigma}\f$ given by:
 /// \f[
@@ -59,11 +62,17 @@ utils::MatVec calculate_tab(const integrals::Integrals & W, const integrals::Int
 ///
 /// \return Matrices \f$\tilde{t}_{AB}^{\sigma}\f$
 /// {
-utils::MatVec calculate_ttilde(const integrals::Integrals & W, const integrals::Integrals & V, const utils::MatVec & tab);
+utils::MatVec calculate_ttilde(
+    const integrals::Integrals& W,
+    const integrals::Integrals& V,
+    const utils::MatVec& tab
+);
 
-utils::MatVec calculate_ttilde(const integrals::Integrals & W, const integrals::Integrals & V);
+utils::MatVec calculate_ttilde(
+    const integrals::Integrals& W, const integrals::Integrals& V
+);
 /// }
 
-}
+}  // namespace uw12::four_el
 
 #endif
