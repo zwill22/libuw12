@@ -298,7 +298,7 @@ utils::FockMatrixAndEnergy indirect_four_el_fock(
 // ####################################################################
 // ####################################################################
 
-utils::FockMatrixAndEnergy form_fock_four_el_term_density_fitting(
+utils::FockMatrixAndEnergy form_fock_four_el_df(
     const integrals::Integrals& W,
     const integrals::Integrals& V,
     const bool indirect_term,
@@ -316,4 +316,4 @@ utils::FockMatrixAndEnergy form_fock_four_el_term_density_fitting(
   return fock;
 }
 
-}  // namespace uw12::four_el
+}

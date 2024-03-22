@@ -902,7 +902,7 @@ inline bool nearly_equal(
     const Mat &mat1, const Mat &mat2, const double epsilon
 ) {
 #ifdef USE_ARMA
-  return approx_equal(mat1, mat2, "absdiff", epsilon);
+  return approx_equal(mat1, mat2, "both", epsilon, epsilon);
 #elif USE_EIGEN
   return mat1.array().isApprox(mat2.array(), epsilon);
 #endif
