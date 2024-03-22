@@ -151,7 +151,7 @@ TEST_CASE("Test Two Electron term - Closed Shell") {
           form_fock_two_el_df(base_integrals, active_Co, true, true, 0, 1.5);
       CHECK((fock3.size() == 1));
 
-      const uw12::linalg::Mat mat2 = 1.5 * fock2[0];
+      const Mat mat2 = 1.5 * fock2[0];
       CHECK(uw12::linalg::nearly_equal(fock3[0], mat2, epsilon));
       CHECK_THAT(energy3, Catch::Matchers::WithinRel(energy2 * 1.5, eps));
     }
@@ -162,7 +162,7 @@ TEST_CASE("Test Two Electron term - Closed Shell") {
           form_fock_two_el_df(base_integrals, active_Co, true, true, 1.0, 1.0);
       CHECK((fock3.size() == 1));
 
-      const uw12::linalg::Mat total_fock = fock[0] + fock2[0];
+      const Mat total_fock = fock[0] + fock2[0];
       CHECK(uw12::linalg::nearly_equal(total_fock, fock3[0], epsilon));
       CHECK_THAT(energy + energy2, Catch::Matchers::WithinRel(energy3, eps));
     }
