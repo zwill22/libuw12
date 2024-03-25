@@ -110,10 +110,9 @@ utils::FockMatrixAndEnergy direct_fock(
           continue;
         }
 
-        const auto energy_spin_factor =
-            n_spin == 1           ? 2 * (scale_opp_spin + scale_same_spin)
-            : sigma == sigmaprime ? scale_same_spin
-                                  : scale_opp_spin;
+        const auto energy_spin_factor = get_energy_spin_factor(
+            n_spin, sigma, sigmaprime, scale_opp_spin, scale_same_spin
+        );
 
         // Skip if energy factor is zero
         if (energy_spin_factor == 0) {
@@ -316,4 +315,4 @@ utils::FockMatrixAndEnergy form_fock_four_el_df(
   return fock;
 }
 
-}
+}  // namespace uw12::four_el

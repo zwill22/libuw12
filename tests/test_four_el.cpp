@@ -125,7 +125,9 @@ TEST_CASE("Test four electron term - Closed Shell (same spin only)") {
     const uw12::linalg::Mat mat2 = fock[0] * scale_factor;
     const auto target = energy * scale_factor;
     CHECK(uw12::linalg::nearly_equal(fock2[0], mat2, epsilon));
-    CHECK_THAT(energy2, Catch::Matchers::WithinRel(target, eps * 10)); // Linux test
+    CHECK_THAT(
+        energy2, Catch::Matchers::WithinRel(target, eps * 10)
+    );  // Linux test
   }
 }
 
@@ -196,4 +198,47 @@ TEST_CASE(
     CHECK(uw12::linalg::nearly_equal(fock2[sigma], fock[0], epsilon));
   }
   CHECK_THAT(energy2, Catch::Matchers::WithinRel(energy, eps));
+}
+
+TEST_CASE("Test four electron term - Closed Shell (Check cases)") {
+  constexpr size_t n_ao = 11;
+  constexpr size_t n_df = 23;
+
+  const std::vector<size_t> n_occ = {5};
+  const auto fock0 = uw12::linalg::zeros(n_ao, n_ao);
+
+  SECTION("All electron") {
+    const std::vector<size_t> n_active = {5};
+
+    const auto [W, V] =
+        test::setup_integrals_pair(n_ao, n_df, n_occ, n_active, seed + 1);
+
+    form_fock_four_el_df(W, V, true, true, 1.0, 0.5);
+  }
+
+  SECTION("No active orbitals") {
+    const auto [W, V] =
+        test::setup_integrals_pair(n_ao, n_df, n_occ, {0}, seed + 1);
+
+    const auto [fock, energy] =
+        form_fock_four_el_df(W, V, true, true, 1.0, 0.5);
+
+    REQUIRE((fock.size() == 1));
+
+    CHECK(uw12::linalg::nearly_equal(fock[0], fock0, epsilon));
+    CHECK_THAT(energy, Catch::Matchers::WithinAbs(0, margin));
+  }
+
+  SECTION("No occupied orbitals") {
+    const auto [W, V] =
+        test::setup_integrals_pair(n_ao, n_df, {0}, {0}, seed + 1);
+
+    const auto [fock, energy] =
+        form_fock_four_el_df(W, V, true, true, 1.0, 0.5);
+
+    REQUIRE((fock.size() == 1));
+
+    CHECK(uw12::linalg::nearly_equal(fock[0], fock0, epsilon));
+    CHECK_THAT(energy, Catch::Matchers::WithinAbs(0, margin));
+  }
 }
