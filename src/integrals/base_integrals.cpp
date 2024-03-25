@@ -463,6 +463,7 @@ const linalg::Mat &BaseIntegrals::get_J3_ri() const {
   return *J3_ri;
 }
 
+// TODO Change to account for cases when not speciified
 size_t BaseIntegrals::get_number_ao() const { return n_ao; }
 
 size_t BaseIntegrals::get_number_df() const { return n_df; }
