@@ -190,6 +190,52 @@ Mat calculate_xab_dttilde(
   );
 }
 
+std::function<Vec(size_t)> get_X3_fn(const Integrals& X_int) {
+  if (const auto X = X_int.get_base_integrals(); X.has_J3_0()) {
+    const auto& X3_0 = X.get_J3_0();
+    const auto& P2 = X.get_P2();
+
+    return [&X3_0, &P2](const size_t A) -> Vec { return X3_0 * col(P2, A); };
+  } else if (X.has_J3() || X.storing_ao()) {
+    const auto& X3 = X.get_J3();
+
+    return [&X3](const size_t A) -> Vec { return col(X3, A); };
+  }
+
+  throw std::runtime_error("No three-index ao integrals stored");
+}
+
+std::function<Mat(size_t)> get_W3_ri_fn(
+    const Integrals& V_int, const size_t n_ao, const size_t n_ri
+) {
+  if (const auto V = V_int.get_base_integrals(); V.has_J3_ri_0()) {
+    const auto& V3_ri0 = V.get_J3_ri_0();
+    const auto& P2 = V.get_P2();
+
+    return [&V3_ri0, &P2, n_ao, n_ri](const size_t A) -> Mat {
+      return linalg::reshape(V3_ri0 * col(P2, A), n_ri, n_ao, true);
+    };
+  } else if (V.has_J3_ri_0() || V.storing_ri()) {
+    const auto& V3_ri = V.get_J3_ri();
+
+    return [&V3_ri, n_ao, n_ri](const size_t A) -> Mat {
+      return reshape_col(V3_ri, A, n_ri, n_ao);
+    };
+  }
+
+  throw std::logic_error("no ri integrals stored");
+}
+
+Mat calculate_s_matrix(const Integrals& V_int, const Mat& t_tilde) {
+  if (const auto V = V_int.get_base_integrals(); V.has_J3_0()) {
+    return V.get_J3_0() * V.get_P2() * transpose(t_tilde);
+  } else if (V.has_J3() || V.storing_ao()) {
+    return V.get_J3() * transpose(t_tilde);
+  }
+
+  throw std::runtime_error("No three-index ao integrals stored");
+}
+
 // Calculates the contribution
 // (A|w|αμ) [S^{-1}]_{μσ} (σβ|r^{-1}|B) \tilde{t}_{AB}
 //   + (A|w|αρ) [S^{-1}]_{μσ} (σβ|r^{-1}|B) \tilde{t}_{AB}
@@ -203,18 +249,20 @@ Mat calculate_ttilde_dxab_s_term(
   const auto n_df_W = linalg::n_elem(W.get_df_vals());
   const auto n_ri = n_rows(abs_projectors.s_inv_ri_ri);
   const auto n_ao = n_rows(abs_projectors.s_inv_ao_ao);
-  // TODO Avoid direct calculation of three index objects
-  const Mat s = V.get_J3() * transpose(ttilde);
+
+  const auto W3_fn = get_X3_fn(W);
+  const auto s = calculate_s_matrix(V, ttilde);
   assert(n_rows(s) == n_ao * (n_ao + 1) / 2);
   assert(n_cols(s) == n_df_W);
 
-  const auto fock_fn = [&s, &abs_projectors, &W, n_ao, n_ri](const size_t A
-                       ) -> Mat {
-    Mat fock = -square(col(W.get_J3(), A)) * abs_projectors.s_inv_ao_ao *
-               square(col(s, A));
+  const auto W3_fn_ri = get_W3_ri_fn(W, n_ao, n_ri);
 
-    fock -= transpose(linalg::reshape(col(W.get_J3_ri(), A), n_ri, n_ao)) *
-            abs_projectors.s_inv_ri_ao * square(col(s, A));
+  const auto fock_fn = [&s, &abs_projectors, &W3_fn, &W3_fn_ri](const size_t A
+                       ) -> Mat {
+    const auto sA = square(col(s, A));
+    Mat fock = -square(W3_fn(A)) * abs_projectors.s_inv_ao_ao * sA;
+
+    fock -= transpose(W3_fn_ri(A)) * abs_projectors.s_inv_ri_ao * sA;
 
     return fock;
   };
@@ -222,6 +270,16 @@ Mat calculate_ttilde_dxab_s_term(
   return parallel::parallel_sum<Mat>(
       0, n_cols(s), linalg::zeros(n_ao, n_ao), fock_fn
   );
+}
+
+Mat calculate_p_matrix(const Integrals& V_int, const Mat& t_tilde) {
+  if (const auto& V = V_int.get_base_integrals(); V.has_J3_ri_0()) {
+    return V.get_J3_ri_0() * V.get_P2() * transpose(t_tilde);
+  } else if (V.has_J3_ri() || V.storing_ri()) {
+    return V.get_J3_ri() * transpose(t_tilde);
+  }
+
+  throw std::logic_error("no ri integrals stored");
 }
 
 // Calculates the contribution
@@ -238,17 +296,20 @@ Mat calculate_ttilde_dxab_p_term(
   const auto n_ri = n_rows(abs_projectors.s_inv_ri_ri);
   const auto n_ao = n_rows(abs_projectors.s_inv_ao_ao);
 
-  const Mat p = V.get_J3_ri() * transpose(ttilde);
+  const auto W3_fn = get_X3_fn(W);
+  const auto W3_fn_ri = get_W3_ri_fn(W, n_ao, n_ri);
+
+  const auto p = calculate_p_matrix(V, ttilde);
   assert(n_rows(p) == n_ao * n_ri);
   assert(n_cols(p) == n_df_W);
 
-  const auto fock_fn = [&W, &p, &abs_projectors, n_ao, n_ri](const size_t A
+  const auto fock_fn = [&p, &abs_projectors, &W3_fn, &W3_fn_ri, n_ao, n_ri](const size_t A
                        ) -> Mat {
-    Mat fock = -square(col(W.get_J3(), A)) * abs_projectors.s_inv_ao_ri *
-               linalg::reshape(col(p, A), n_ri, n_ao);
+    const auto pA = linalg::reshape(col(p, A), n_ri, n_ao);
 
-    fock -= transpose(linalg::reshape(col(W.get_J3_ri(), A), n_ri, n_ao)) *
-            abs_projectors.s_inv_ri_ri * linalg::reshape(col(p, A), n_ri, n_ao);
+    Mat fock = -square(W3_fn(A)) * abs_projectors.s_inv_ao_ri * pA;
+
+    fock -= transpose(W3_fn_ri(A)) * abs_projectors.s_inv_ri_ri * pA;
 
     return fock;
   };
@@ -258,17 +319,27 @@ Mat calculate_ttilde_dxab_p_term(
   );
 }
 
-Mat calculate_ttilde_dxab(
+Mat calculate_ttilde_dxab_incore(
     const Integrals& W,
     const Integrals& V,
     const Mat& ttilde,
     const ABSProjectors& abs_projectors
 ) {
-  // TODO Split into cases to avoid J3(_ri) being calculated directly
   auto fock_sigma = calculate_ttilde_dxab_s_term(W, V, ttilde, abs_projectors);
 
   fock_sigma += calculate_ttilde_dxab_p_term(W, V, ttilde, abs_projectors);
 
   return fock_sigma;
 }
+
+Mat calculate_ttilde_dxab(
+    const Integrals& W,
+    const Integrals& V,
+    const Mat& ttilde,
+    const ABSProjectors& abs_projectors
+) {
+  // TODO Implement direct calculation
+  return calculate_ttilde_dxab_incore(W, V, ttilde, abs_projectors);
+}
+
 }
