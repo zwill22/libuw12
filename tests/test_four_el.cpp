@@ -466,7 +466,7 @@ TEST_CASE("Test four electron term - Open Shell (No occupied orbitals)") {
     CHECK_FALSE(uw12::linalg::nearly_equal(ss_fock[1], fock0, epsilon));
   }
 
-  SECTION("Both channels)") {
+  SECTION("Both channels") {
     const auto [W, V] =
         test::setup_integrals_pair(n_ao, n_df, {0, 0}, {0, 0}, seed + 1);
 
@@ -480,3 +480,5 @@ TEST_CASE("Test four electron term - Open Shell (No occupied orbitals)") {
     CHECK_THAT(energy, Catch::Matchers::WithinAbs(0, margin));
   }
 }
+
+// TODO Add fock test

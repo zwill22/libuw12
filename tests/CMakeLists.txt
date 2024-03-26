@@ -52,3 +52,7 @@ catch_discover_tests(test_four_electron_utils)
 add_executable(test_four_electron test_four_el.cpp)
 target_link_libraries(test_four_electron Catch2::Catch2WithMain uw12)
 catch_discover_tests(test_four_electron)
+
+add_executable(test_ri_utils test_ri_utils.cpp)
+target_link_libraries(test_ri_utils Catch2::Catch2WithMain uw12)
+catch_discover_tests(test_ri_utils)

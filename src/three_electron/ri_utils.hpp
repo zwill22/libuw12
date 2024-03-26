@@ -22,8 +22,6 @@ struct ABSProjectors {
   linalg::Mat s_inv_ri_ao;
   linalg::Mat s_inv_ao_ri;
   linalg::Mat s_inv_ao_ao;
-  linalg::Mat s_vecs;
-  linalg::Vec s_vals;
 };
 
 /// Calculates the ABSProjectors for a given pair of ao and ri basis sets
@@ -55,7 +53,10 @@ inline ABSProjectors calculate_abs_projectors(
       overlap_matrix, linear_dependency_threshold, eigen_ld_threshold
   );
 
-  assert(linalg::n_rows(s_vecs) == n_ao + n_ri);
+  if (linalg::n_rows(s_vecs) != n_ao + n_ri) {
+    throw std::runtime_error("Total number of basis functions is inconsistent");
+  }
+
   assert(linalg::n_cols(s_vecs) == linalg::n_elem(s_vals));
 
   const linalg::Mat inv = linalg::inv_sym_pd(linalg::diagmat(s_vals));
