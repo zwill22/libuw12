@@ -415,10 +415,9 @@ void test_two_el_fock(
     const uw12::utils::DensityMatrix &D,
     const double threshold,
     const double delta = 1e-4,
-    const double rel_eps  = 0.5
+    const double rel_eps = 0.5
 ) {
   const auto n_spin = D.size();
-  const auto n_ao = uw12::linalg::n_rows(D[0]);
 
   const auto active_Co = density::calculate_orbitals_from_density(D, threshold);
   for (auto scale_same_spin : {0.0, 0.5}) {
@@ -453,30 +452,14 @@ void test_two_el_fock(
     const auto num_fock = fock::numerical_fock_matrix(energy_fn, D, delta);
     REQUIRE((num_fock.size() == n_spin));
 
-    double max_rel_diff = 0;
-    for (auto col_idx = 0; col_idx < n_ao; ++col_idx) {
-      for (auto row_idx = 0; row_idx < n_ao; ++row_idx) {
-        const auto elem = uw12::linalg::elem(num_fock[0], row_idx, col_idx);
-        const auto target =
-            uw12::linalg::elem(analytic_fock[0], row_idx, col_idx);
-
-        if (const auto rel_diff = std::abs((elem - target) / target);
-            rel_diff > max_rel_diff) {
-          max_rel_diff = rel_diff;
-        }
-
-        CHECK_THAT(elem, Catch::Matchers::WithinRel(target, rel_eps));
-      }
-    }
-
     std::cout << "Opposite spin scale: " << scale_opp_spin << '\n';
     std::cout << "Same spin scale: " << scale_same_spin << '\n';
-    std::cout << "Maximum relative Diff: " << max_rel_diff << '\n';
-    std::cout << "Threshold: " << rel_eps << '\n';
+
+    fock::check_fock(analytic_fock, num_fock, rel_eps);
   }
 }
 
-TEST_CASE("Test two electron - Test Fock matrix (Closed Shell)") {
+TEST_CASE("Test two electron term - Test Fock matrix (Closed Shell)") {
   constexpr size_t n_ao = 8;
   constexpr size_t n_occ = 5;
   constexpr size_t n_df = 19;
@@ -492,7 +475,7 @@ TEST_CASE("Test two electron - Test Fock matrix (Closed Shell)") {
   test_two_el_fock(base_integrals, D, threshold);
 }
 
-TEST_CASE("Test two electron - Test Fock matrix (Open Shell)") {
+TEST_CASE("Test two electron term - Test Fock matrix (Open Shell)") {
   constexpr size_t n_ao = 7;
   constexpr size_t n_df = 17;
   constexpr auto threshold = 1e-3;

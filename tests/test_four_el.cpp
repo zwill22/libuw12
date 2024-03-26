@@ -4,6 +4,8 @@
 
 #include "../src/four_electron/four_electron.hpp"
 #include "catch.hpp"
+#include "density_utils.hpp"
+#include "numerical_fock.hpp"
 #include "setup_integrals.hpp"
 
 using test::eps;
@@ -344,7 +346,7 @@ TEST_CASE("Test four electron term - Open Shell (All electron case)") {
   const std::vector<size_t> n_active = {5, 4};
 
   const auto [W, V] =
-        test::setup_integrals_pair(n_ao, n_df, n_occ, n_active, seed + 1);
+      test::setup_integrals_pair(n_ao, n_df, n_occ, n_active, seed + 1);
 
   form_fock_four_el_df(W, V, true, true, 1.0, 0.5);
 }
@@ -370,7 +372,7 @@ TEST_CASE("Test four electron term - Open Shell (No active orbitals)") {
     CHECK_THAT(os_energy, Catch::Matchers::WithinAbs(0, margin));
 
     const auto [ss_fock, ss_energy] =
-    form_fock_four_el_df(W, V, true, true, 0, 0.5);
+        form_fock_four_el_df(W, V, true, true, 0, 0.5);
 
     REQUIRE((ss_fock.size() == 2));
     CHECK_FALSE(uw12::linalg::nearly_equal(ss_fock[0], fock0, epsilon));
@@ -391,7 +393,7 @@ TEST_CASE("Test four electron term - Open Shell (No active orbitals)") {
     CHECK_THAT(os_energy, Catch::Matchers::WithinAbs(0, margin));
 
     const auto [ss_fock, ss_energy] =
-    form_fock_four_el_df(W, V, true, true, 0, 0.5);
+        form_fock_four_el_df(W, V, true, true, 0, 0.5);
 
     REQUIRE((ss_fock.size() == 2));
     CHECK(uw12::linalg::nearly_equal(ss_fock[0], fock0, epsilon));
@@ -402,8 +404,7 @@ TEST_CASE("Test four electron term - Open Shell (No active orbitals)") {
     const auto [W, V] =
         test::setup_integrals_pair(n_ao, n_df, n_occ, {0, 0}, seed + 1);
 
-    const auto [fock, energy] =
-        form_fock_four_el_df(W, V, true, true, 1.0, 0);
+    const auto [fock, energy] = form_fock_four_el_df(W, V, true, true, 1.0, 0);
 
     REQUIRE((fock.size() == 2));
     for (size_t sigma = 0; sigma < 2; ++sigma) {
@@ -436,7 +437,7 @@ TEST_CASE("Test four electron term - Open Shell (No occupied orbitals)") {
     CHECK_THAT(os_energy, Catch::Matchers::WithinAbs(0, margin));
 
     const auto [ss_fock, ss_energy] =
-    form_fock_four_el_df(W, V, true, true, 0, 0.5);
+        form_fock_four_el_df(W, V, true, true, 0, 0.5);
 
     REQUIRE((ss_fock.size() == 2));
     CHECK_FALSE(uw12::linalg::nearly_equal(ss_fock[0], fock0, epsilon));
@@ -459,7 +460,7 @@ TEST_CASE("Test four electron term - Open Shell (No occupied orbitals)") {
     CHECK_THAT(os_energy, Catch::Matchers::WithinAbs(0, margin));
 
     const auto [ss_fock, ss_energy] =
-    form_fock_four_el_df(W, V, true, true, 0, 0.5);
+        form_fock_four_el_df(W, V, true, true, 0, 0.5);
 
     REQUIRE((ss_fock.size() == 2));
     CHECK(uw12::linalg::nearly_equal(ss_fock[0], fock0, epsilon));
@@ -470,8 +471,7 @@ TEST_CASE("Test four electron term - Open Shell (No occupied orbitals)") {
     const auto [W, V] =
         test::setup_integrals_pair(n_ao, n_df, {0, 0}, {0, 0}, seed + 1);
 
-    const auto [fock, energy] =
-        form_fock_four_el_df(W, V, true, true, 1.0, 0);
+    const auto [fock, energy] = form_fock_four_el_df(W, V, true, true, 1.0, 0);
 
     REQUIRE((fock.size() == 2));
     for (size_t sigma = 0; sigma < 2; ++sigma) {
@@ -481,4 +481,85 @@ TEST_CASE("Test four electron term - Open Shell (No occupied orbitals)") {
   }
 }
 
-// TODO Add fock test
+void test_four_el_fock_all_electron(
+    const uw12::integrals::BaseIntegrals &W_base,
+    const uw12::integrals::BaseIntegrals &V_base,
+    const uw12::utils::DensityMatrix &D,
+    const double threshold,
+    const double delta = 1e-4,
+    const double rel_eps = 0.5
+) {
+  const auto n_spin = D.size();
+
+  const auto Co = density::calculate_orbitals_from_density(D, threshold);
+
+  const auto W1 = Integrals(W_base, Co, Co);
+  const auto V1 = Integrals(V_base, Co, Co);
+
+  for (auto scale_same_spin : {0.0, 0.5}) {
+    constexpr auto scale_opp_spin = 1.0;
+
+    const auto &[analytic_fock, energy] = form_fock_four_el_df(
+        W1, V1, true, true, scale_opp_spin, scale_same_spin
+    );
+
+    REQUIRE((analytic_fock.size() == n_spin));
+
+    const auto energy_fn =
+        [&W_base, &V_base, scale_opp_spin, scale_same_spin, threshold](
+            const uw12::utils::DensityMatrix &D_mat
+        ) {
+          const auto occ_orbitals =
+              density::calculate_orbitals_from_density(D_mat, threshold);
+
+          const auto W = Integrals(W_base, occ_orbitals, occ_orbitals);
+          const auto V = Integrals(V_base, occ_orbitals, occ_orbitals);
+
+          return form_fock_four_el_df(
+                     W, V, true, true, scale_opp_spin, scale_same_spin
+          )
+              .energy;
+    };
+
+    REQUIRE_THAT(energy_fn(D), Catch::Matchers::WithinAbs(energy, margin));
+
+    const auto num_fock = fock::numerical_fock_matrix(energy_fn, D, delta);
+    REQUIRE((num_fock.size() == n_spin));
+
+    std::cout << "n spin: " << n_spin << '\n';
+    std::cout << "Opposite spin scale: " << scale_opp_spin << '\n';
+    std::cout << "Same spin scale: " << scale_same_spin << '\n';
+
+    fock::check_fock(analytic_fock, num_fock, rel_eps);
+  }
+}
+
+TEST_CASE("Test four electron term - Test Fock matrix (Closed Shell)") {
+  constexpr size_t n_ao = 11;
+  constexpr size_t n_df = 23;
+  constexpr auto threshold = 1e-3;
+
+  const std::vector<size_t> n_occ = {5};
+
+  const auto W_base = test::setup_base_integrals(n_ao, n_df, seed + 1);
+  const auto V_base = test::setup_base_integrals(n_ao, n_df, seed);
+
+  const auto D = density::random_density_matrix(n_occ, n_ao, seed);
+
+  test_four_el_fock_all_electron(W_base, V_base, D, threshold);
+}
+
+TEST_CASE("Test four electron term - Test Fock matrix (Open Shell)") {
+  constexpr size_t n_ao = 11;
+  constexpr size_t n_df = 23;
+  constexpr auto threshold = 1e-3;
+
+  const std::vector<size_t> n_occ = {5, 4};
+
+  const auto W_base = test::setup_base_integrals(n_ao, n_df, seed + 1);
+  const auto V_base = test::setup_base_integrals(n_ao, n_df, seed);
+
+  const auto D = density::random_density_matrix(n_occ, n_ao, seed);
+
+  test_four_el_fock_all_electron(W_base, V_base, D, threshold);
+}

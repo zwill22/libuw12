@@ -58,7 +58,7 @@ inline std::pair<uw12::linalg::Mat, uw12::linalg::Vec> orbitals_from_density(
           D, uw12::linalg::zeros(n_ao, n_ao), test::epsilon
       )) {
     return {uw12::linalg::zeros(n_ao, 1), uw12::linalg::ones(1)};
-      }
+  }
 
   const uw12::linalg::Mat D_neg = -0.5 * (D + uw12::linalg::transpose(D));
 

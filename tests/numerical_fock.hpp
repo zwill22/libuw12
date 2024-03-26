@@ -92,5 +92,52 @@ auto numerical_fock_matrix(
 
   return fock;
 }
+
+inline void check_fock(
+    const uw12::utils::FockMatrix& analytic_fock,
+    const uw12::utils::FockMatrix& num_fock,
+    const double rel_eps
+) {
+  const auto n_spin = analytic_fock.size();
+  if (num_fock.size() != n_spin) {
+    throw std::runtime_error(
+        "Analytic and numeric Fock matrices have different numbers of spin "
+        "channels"
+    );
+  }
+
+  double max_rel_diff = 0;
+  for (size_t sigma = 0; sigma < n_spin; ++sigma) {
+    const auto fock1 = analytic_fock[sigma];
+    const auto fock2 = num_fock[sigma];
+    const auto n_ao = uw12::linalg::n_rows(fock1);
+    assert(uw12::linalg::n_cols(fock1) == n_ao);
+    if (uw12::linalg::n_rows(fock2) != n_ao) {
+      throw std::runtime_error(
+          "Analytic and numeric Fock matrices are of different sizes"
+      );
+    }
+    assert(uw12::linalg::n_cols(fock2) == n_ao);
+    for (auto col_idx = 0; col_idx < n_ao; ++col_idx) {
+      for (auto row_idx = 0; row_idx < n_ao; ++row_idx) {
+        const auto target = uw12::linalg::elem(fock1, row_idx, col_idx);
+        const auto elem = uw12::linalg::elem(fock2, row_idx, col_idx);
+
+        if (const auto rel_diff = std::abs((elem - target) / target);
+            rel_diff > max_rel_diff) {
+          max_rel_diff = rel_diff;
+        }
+      }
+    }
+  }
+
+  std::cout << "Maximum relative Diff: " << max_rel_diff << '\n';
+  std::cout << "Threshold: " << rel_eps << '\n';
+
+  if (max_rel_diff > rel_eps) {
+    throw std::runtime_error("Relative difference outside threshold");
+  }
+}
+
 }  // namespace fock
 #endif  // NUMERICAL_FOCK_HPP
