@@ -33,8 +33,9 @@ struct ABSProjectors {
 /// multiplied by `eigen_ld_threshold`. Default values for linear dependency
 /// taken from https://doi.org/10.1063/1.2712434
 ///
-/// @param ao Atomic orbital basis set
-/// @param ri Auxiliary RI basis set
+/// @param overlap_matrix
+/// @param n_ao Number of atomic orbital basis functions
+/// @param n_ri Number of auxiliary RI basis functions
 /// @param eigen_ld_threshold ld threshold relative to greatest eigenvalue
 /// @param linear_dependency_threshold ld threshold in the eigenvalues
 ///
@@ -43,8 +44,8 @@ inline ABSProjectors calculate_abs_projectors(
     const linalg::Mat& overlap_matrix,
     const size_t n_ao,
     const size_t n_ri,
-    double eigen_ld_threshold = 1e-8,
-    double linear_dependency_threshold = 1e-6
+    const double eigen_ld_threshold = 1e-8,
+    const double linear_dependency_threshold = 1e-6
 ) {
   using linalg::head_rows;
   using linalg::tail_rows;
@@ -54,16 +55,16 @@ inline ABSProjectors calculate_abs_projectors(
       overlap_matrix, linear_dependency_threshold, eigen_ld_threshold
   );
 
-  assert(linalg::n_rows(s_vecs) == nao + nri);
+  assert(linalg::n_rows(s_vecs) == n_ao + n_ri);
   assert(linalg::n_cols(s_vecs) == linalg::n_elem(s_vals));
 
   const linalg::Mat inv = linalg::inv_sym_pd(linalg::diagmat(s_vals));
 
   return {
-      tail_rows(s_vec, nri) * inv * transpose(tail_rows(s_vec, nri)),
-      tail_rows(s_vec, nri) * inv * transpose(head_rows(s_vec, nao)),
-      head_rows(s_vec, nao) * inv * transpose(tail_rows(s_vec, nri)),
-      head_rows(s_vec, nao) * inv * transpose(head_rows(s_vec, nao))
+      tail_rows(s_vecs, n_ri) * inv * transpose(tail_rows(s_vecs, n_ri)),
+      tail_rows(s_vecs, n_ri) * inv * transpose(head_rows(s_vecs, n_ao)),
+      head_rows(s_vecs, n_ao) * inv * transpose(tail_rows(s_vecs, n_ri)),
+      head_rows(s_vecs, n_ao) * inv * transpose(head_rows(s_vecs, n_ao))
   };
 }
 

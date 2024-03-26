@@ -49,14 +49,14 @@ utils::FockMatrix calculate_direct_fock_matrix(
   const auto& V3idx_one_trans = V.get_X3idx_one_trans();
 
   utils::MatVec fock(n_spin, linalg::zeros(n_ao, n_ao));
-  for (int sigma = 0; sigma < n_spin; ++sigma) {
+  for (size_t sigma = 0; sigma < n_spin; ++sigma) {
     const auto n_active = W.number_active_orbitals(sigma);
     assert(n_active == V.number_active_orbitals(sigma));
 
     const auto fock_sp =
         calculate_ttilde_dxab(W, V, ttilde[sigma], abs_projectors);
 
-    for (int sigmaprime = 0; sigmaprime < n_spin; ++sigmaprime) {
+    for (size_t sigmaprime = 0; sigmaprime < n_spin; ++sigmaprime) {
       const auto direct_fock_spin_factor =
           ((n_spin == 1) ? 0.5 : 1) *
           get_energy_spin_factor(
@@ -106,7 +106,7 @@ auto direct_fock(
   } else {
     const auto n_ao = linalg::n_rows(abs_projectors.s_inv_ao_ao);
     const auto n_spin = W.spin_channels();
-    for (int sigma = 0; sigma < n_spin; ++sigma) {
+    for (size_t sigma = 0; sigma < n_spin; ++sigma) {
       fock.fock.push_back(linalg::zeros(n_ao, n_ao));
     }
   }
@@ -128,7 +128,7 @@ auto calculate_indirect_fock(
   const auto n_spin = W.spin_channels();
 
   utils::FockMatrix fock;
-  for (int sigma = 0; sigma < n_spin; ++sigma) {
+  for (size_t sigma = 0; sigma < n_spin; ++sigma) {
     const auto fock_sigma =
         indirect_3el_fock_matrix(W, V, abs_projectors, sigma);
 
@@ -154,11 +154,11 @@ auto indirect_fock(
   if (calculate_fock) {
     fock.fock = calculate_indirect_fock(W, V, abs_projectors);
   } else {
-    const auto nspin = W.spin_channels();
-    const int nao = abs_projectors.s_inv_ao_ao.n_rows;
+    const auto n_spin = W.spin_channels();
+    const auto n_ao = linalg::n_rows(abs_projectors.s_inv_ao_ao);
 
-    for (int sigma = 0; sigma < nspin; ++sigma) {
-      fock.fock.push_back(arma::zeros(nao, nao));
+    for (size_t sigma = 0; sigma < n_spin; ++sigma) {
+      fock.fock.push_back(linalg::zeros(n_ao, n_ao));
     }
   }
 

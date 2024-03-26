@@ -238,7 +238,7 @@ Mat calculate_ttilde_dxab_p_term(
   const auto n_ri = n_rows(abs_projectors.s_inv_ri_ri);
   const auto n_ao = n_rows(abs_projectors.s_inv_ao_ao);
 
-  const Mat p = V.get_J3_ri() * ttilde.t();
+  const Mat p = V.get_J3_ri() * transpose(ttilde);
   assert(n_rows(p) == n_ao * n_ri);
   assert(n_cols(p) == n_df_W);
 
