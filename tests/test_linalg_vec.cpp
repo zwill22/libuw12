@@ -138,7 +138,7 @@ TEST_CASE("Test linear algebra - Test Vector properties") {
     const auto *const ptr = uw12::linalg::mem_ptr(vec);
     const auto n_elem = uw12::linalg::n_elem(vec);
 
-    const std::vector<double *> vector(ptr, ptr + n_elem);
+    const std::vector<double> vector(ptr, ptr + n_elem);
 
     check_equal(vec, vector);
   }
