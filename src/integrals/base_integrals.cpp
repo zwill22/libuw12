@@ -125,9 +125,9 @@ BaseIntegrals::BaseIntegrals(
 
 BaseIntegrals::BaseIntegrals()
     : BaseIntegrals(
-          nullptr,
-          nullptr,
-          nullptr,
+          TwoIndexFn(),
+          ThreeIndexFn(),
+          ThreeIndexFn(),
           {},
           0,
           0,

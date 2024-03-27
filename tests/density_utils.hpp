@@ -5,8 +5,6 @@
 #ifndef DENSITY_UTILS_HPP
 #define DENSITY_UTILS_HPP
 
-#include <iostream>
-
 #include "../src/utils/utils.hpp"
 
 namespace density {

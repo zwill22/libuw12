@@ -34,6 +34,7 @@ inline auto setup_base_integrals(
 /// @param n_occ Number of occupied orbitals in each spin channel
 /// @param n_active Number of active orbitals in each spin channel
 /// @param n_ao Number of atomic orbitals
+/// @param C_seed Seed for rng for orbitals
 ///
 /// @return Pair of occupied and active orbitals
 inline auto setup_orbitals(

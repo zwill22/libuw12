@@ -88,7 +88,7 @@ utils::FockMatrixAndEnergy direct_fock(
   const auto n_spin = W.spin_channels();
   assert(n_spin == V.spin_channels());
 
-  std::vector fock(n_spin, linalg::zeros(n_ao, n_ao));
+  std::vector<linalg::Mat> fock(n_spin, linalg::zeros(n_ao, n_ao));
   double energy = 0;
 
   // t_{AB} (sum over occupied orbitals)
@@ -264,7 +264,7 @@ utils::FockMatrixAndEnergy indirect_four_el_fock(
   const auto nspin = W.spin_channels();
   assert(nspin == V.spin_channels());
 
-  std::vector fock(nspin, linalg::zeros(nao, nao));
+  std::vector<linalg::Mat> fock(nspin, linalg::zeros(nao, nao));
   double energy = 0;
   for (int sigma = 0; sigma < nspin; sigma++) {
     const auto n_occ = W.number_occ_orbitals(sigma);

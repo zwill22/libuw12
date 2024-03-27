@@ -68,7 +68,7 @@ double calculate_direct_energy(
 /// @param W_vals Vector of df eigenvalues for \f$(A| w_{12} |B)\f$
 /// @param V_vals Vector of df eigenvalues for \f$(A| r_{12}^{-1} |B)\f$
 /// @param n_active Number of active orbitals
-/// @param n_spin Number of spin channels @param n_ao Number of atomic orbitals
+/// @param n_ao Number of atomic orbital basis functions
 ///
 /// @return Fock matrix contribution
 linalg::Mat calculate_xab_dttilde(
@@ -92,7 +92,7 @@ linalg::Mat calculate_xab_dttilde(
 /// \f]
 ///
 /// @param W Integrals for \f$w_{12}\f$
-/// @param W Integrals for \f$r_{12}^{-1}\f$
+/// @param V Integrals for \f$r_{12}^{-1}\f$
 /// @param ttilde Matrix \f$\tilde{t}_{AB}^{\sigma'}\f$
 /// @param abs_projectors RI projectors \f$S^{-1}\f$
 ///

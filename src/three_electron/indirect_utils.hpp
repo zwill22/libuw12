@@ -44,6 +44,7 @@ double indirect_3el_energy(
 
 /// Generalised version of indirect energy function with multiple integrals as
 /// inputs (useful for testing)
+/// TODO Consider removing
 double indirect_3el_energy(
     const integrals::Integrals& W1,
     const integrals::Integrals& V1,
