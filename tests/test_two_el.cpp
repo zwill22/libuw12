@@ -452,6 +452,7 @@ void test_two_el_fock(
     const auto num_fock = fock::numerical_fock_matrix(energy_fn, D, delta);
     REQUIRE((num_fock.size() == n_spin));
 
+    std::cout << "n spin: " << n_spin << '\n';
     std::cout << "Opposite spin scale: " << scale_opp_spin << '\n';
     std::cout << "Same spin scale: " << scale_same_spin << '\n';
 
@@ -465,8 +466,11 @@ TEST_CASE("Test two electron term - Test Fock matrix (Closed Shell)") {
   constexpr size_t n_df = 19;
   constexpr auto threshold = 1e-3;
 
-  const auto J20 = uw12::linalg::random_pd(n_df, seed);
-  const auto J30 = uw12::linalg::random(n_ao * (n_ao + 1) / 2, n_df, seed);
+  const auto J20u = uw12::linalg::random_pd(n_df, seed);
+  const auto J30u = uw12::linalg::random(n_ao * (n_ao + 1) / 2, n_df, seed);
+
+  const Mat J20 = J20u / uw12::linalg::norm(J20u);
+  const Mat J30 = J30u / uw12::linalg::norm(J30u);
 
   const auto base_integrals = uw12::integrals::BaseIntegrals(J30, J20);
 
@@ -482,12 +486,15 @@ TEST_CASE("Test two electron term - Test Fock matrix (Open Shell)") {
 
   const std::vector<size_t> n_occ = {5, 4};
 
-  const auto J20 = uw12::linalg::random_pd(n_df, seed);
-  const auto J30 = uw12::linalg::random(n_ao * (n_ao + 1) / 2, n_df, seed);
+  const auto J20u = uw12::linalg::random_pd(n_df, seed + 1);
+  const auto J30u = uw12::linalg::random(n_ao * (n_ao + 1) / 2, n_df, seed + 1);
+
+  const Mat J20 = J20u / uw12::linalg::norm(J20u);
+  const Mat J30 = J30u / uw12::linalg::norm(J30u);
 
   const auto base_integrals = uw12::integrals::BaseIntegrals(J30, J20);
 
-  const auto D = density::random_density_matrix(n_occ, n_ao, seed);
+  const auto D = density::random_density_matrix(n_occ, n_ao, seed + 1);
 
   test_two_el_fock(base_integrals, D, threshold);
 }

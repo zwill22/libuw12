@@ -69,8 +69,7 @@ utils::FockMatrixAndEnergy direct_fock(
                 linalg::dot(WV_D[sigma], WV_tilde_D[sigmaprime]);
 
       if (calculate_fock) {
-        const auto fock_spin_factor =
-            0.5 * static_cast<double>(n_spin) * energy_spin_factor;
+        const auto fock_spin_factor = 0.5 * n_spin * energy_spin_factor;
 
         fock[sigma] += fock_spin_factor *
                        calculate_direct_fock(WV, WV_tilde_D[sigmaprime]);

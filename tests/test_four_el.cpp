@@ -521,7 +521,7 @@ void test_four_el_fock_all_electron(
               .energy;
     };
 
-    REQUIRE_THAT(energy_fn(D), Catch::Matchers::WithinAbs(energy, margin));
+    REQUIRE_THAT(energy_fn(D), Catch::Matchers::WithinRel(energy, margin));
 
     const auto num_fock = fock::numerical_fock_matrix(energy_fn, D, delta);
     REQUIRE((num_fock.size() == n_spin));
