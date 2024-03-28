@@ -219,7 +219,8 @@ linalg::Mat indirect_fock_matrix(
             linalg::col(V4idx_three_trans, i + n_active * k), n_ao * n_active
         ),
         n_ao,
-        n_active
+        n_active,
+        true // TODO Avoid copy
     );
 
     return -2 * W4_ik * transpose(V4_ik);
@@ -260,33 +261,33 @@ utils::FockMatrixAndEnergy indirect_four_el_fock(
     const integrals::Integrals& V,
     const bool calculate_fock
 ) {
-  const auto nao = W.number_ao_orbitals();
-  const auto nspin = W.spin_channels();
-  assert(nspin == V.spin_channels());
+  const auto n_ao = W.number_ao_orbitals();
+  const auto n_spin = W.spin_channels();
+  assert(n_spin == V.spin_channels());
 
-  std::vector<linalg::Mat> fock(nspin, linalg::zeros(nao, nao));
+  std::vector<linalg::Mat> fock(n_spin, linalg::zeros(n_ao, n_ao));
   double energy = 0;
-  for (int sigma = 0; sigma < nspin; sigma++) {
+  for (int sigma = 0; sigma < n_spin; sigma++) {
     const auto n_occ = W.number_occ_orbitals(sigma);
     assert(V.number_occ_orbitals(sigma) == n_occ);
     const auto n_active = W.number_active_orbitals(sigma);
     assert(n_active == V.number_active_orbitals(sigma));
 
-    if (n_active == 0 || n_occ == 0 || nao == 0) {
+    if (n_active == 0 || n_occ == 0 || n_ao == 0) {
       continue;
     }
 
     const auto W4idx_four_trans = W.get_X4idx_four_trans(sigma);
     const auto V4idx_four_trans = V.get_X4idx_four_trans(sigma);
 
-    energy += indirect_energy(W4idx_four_trans, V4idx_four_trans, n_occ, nspin);
+    energy += indirect_energy(W4idx_four_trans, V4idx_four_trans, n_occ, n_spin);
 
     if (calculate_fock) {
       const auto W4idx_three_trans = W.get_X4idx_three_trans(sigma);
       const auto V4idx_three_trans = V.get_X4idx_three_trans(sigma);
 
       fock[sigma] =
-          indirect_fock_matrix(W4idx_three_trans, V4idx_three_trans, nao);
+          indirect_fock_matrix(W4idx_three_trans, V4idx_three_trans, n_ao);
     }
   }  // sigma
 

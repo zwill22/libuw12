@@ -118,8 +118,8 @@ inline void check_fock(
       );
     }
     assert(uw12::linalg::n_cols(fock2) == n_ao);
-    for (auto col_idx = 0; col_idx < n_ao; ++col_idx) {
-      for (auto row_idx = 0; row_idx < n_ao; ++row_idx) {
+    for (size_t col_idx = 0; col_idx < n_ao; ++col_idx) {
+      for (size_t row_idx = 0; row_idx < n_ao; ++row_idx) {
         const auto target = uw12::linalg::elem(fock1, row_idx, col_idx);
         const auto elem = uw12::linalg::elem(fock2, row_idx, col_idx);
 

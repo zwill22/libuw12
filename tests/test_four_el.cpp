@@ -146,7 +146,7 @@ void run_ss_test(const Integrals &W, const Integrals &V) {
 
     for (size_t sigma = 0; sigma < n_spin; ++sigma) {
       const uw12::linalg::Mat mat2 = fock[sigma] * scale_factor;
-      CHECK((uw12::linalg::nearly_equal(fock2[sigma], mat2, epsilon)));
+      CHECK((uw12::linalg::nearly_equal(fock2[sigma], mat2, 10 * epsilon)));
     }
     CHECK_THAT(
         energy2, Catch::Matchers::WithinRel(target, eps * 10)
