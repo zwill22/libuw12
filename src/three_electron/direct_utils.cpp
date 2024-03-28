@@ -303,7 +303,8 @@ Mat calculate_ttilde_dxab_p_term(
   assert(n_rows(p) == n_ao * n_ri);
   assert(n_cols(p) == n_df_W);
 
-  const auto fock_fn = [&p, &abs_projectors, &W3_fn, &W3_fn_ri, n_ao, n_ri](const size_t A
+  const auto fock_fn = [&p, &abs_projectors, &W3_fn, &W3_fn_ri, n_ao, n_ri](
+                           const size_t A
                        ) -> Mat {
     const auto pA = linalg::reshape(col(p, A), n_ri, n_ao);
 
@@ -332,14 +333,126 @@ Mat calculate_ttilde_dxab_incore(
   return fock_sigma;
 }
 
+Mat calculate_ttilde_dxab_direct(
+    const Integrals& W_int,
+    const Integrals& V_int,
+    const Mat& t_tilde,
+    const ABSProjectors& abs_projectors
+) {
+  const auto& W = W_int.get_base_integrals();
+  const auto& V = V_int.get_base_integrals();
+
+  const Mat t_tilde2 = W.get_P2() * t_tilde * transpose(V.get_P2());
+
+  const auto n_ao = W.get_number_ao();
+  const auto n_df = W.get_number_df();
+  const auto n_ri = W.get_number_ri();
+
+  assert(V.get_number_ao() == n_ao);
+  assert(V.get_number_ri() == n_ri);
+  assert(V.get_number_df() == n_df);
+
+  const auto df_sizes = W.get_df_sizes();
+  const auto df_offsets = W.get_df_offsets();
+
+  const auto df_sizes_v = V.get_df_sizes();
+  const auto df_offsets_v = V.get_df_offsets();
+
+  if (!W.has_three_index_fn()) {
+    throw std::runtime_error("no three index function to calculate W integrals"
+    );
+  }
+  if (!V.has_three_index_fn()) {
+    throw std::runtime_error("no three index function to calculate V integrals"
+    );
+  }
+  if (!W.has_three_index_ri_fn()) {
+    throw std::runtime_error(
+        "no three index ri function to calculate W integrals"
+    );
+  }
+  if (!V.has_three_index_ri_fn()) {
+    throw std::runtime_error(
+        "no three index ri function to calculate V integrals"
+    );
+  }
+  const size_t n_row = n_ao * (n_ao + 1) / 2;
+
+  const auto parallel_fn =
+      [&df_sizes,
+       &df_sizes_v,
+       &df_offsets_v,
+       &W,
+       &V,
+       n_ao,
+       n_row,
+       n_ri,
+       &abs_projectors,
+       &t_tilde2,
+       &df_offsets](const size_t A, const size_t B) -> Mat {
+    const auto na = df_sizes[A];
+    const auto off_a = df_offsets[A];
+
+    const auto W3 = W.three_index(A);
+    const auto W3_ri = W.three_index_ri(A);
+
+    const auto nb = df_sizes_v[B];
+    const auto off_b = df_offsets_v[B];
+
+    const auto V3 = V.three_index(B);
+    const auto V3_ri = V.three_index_ri(B);
+
+    Mat out = linalg::zeros(n_ao, n_ao);
+    for (int ia = 0; ia < na; ++ia) {
+      const auto W3_ia = utils::square(reshape_col(W3, ia, n_row, 1));
+      const auto W3_ri_ia = reshape_col(W3_ri, ia, n_ri, n_ao);
+
+      for (int ib = 0; ib < nb; ++ib) {
+        const auto V3_ib = utils::square(reshape_col(V3, ib, n_row, 1));
+        const auto V3_ri_ib = reshape_col(V3_ri, ib, n_ri, n_ao);
+
+        Mat tmp = W3_ia * abs_projectors.s_inv_ao_ao * V3_ib;
+
+        tmp += W3_ia * abs_projectors.s_inv_ao_ri * V3_ri_ib;
+
+        tmp += transpose(W3_ri_ia) * abs_projectors.s_inv_ri_ao * V3_ib;
+
+        tmp += transpose(W3_ri_ia) * abs_projectors.s_inv_ri_ri * V3_ri_ib;
+
+        out -= linalg::elem(t_tilde2, off_a + ia, off_b + ib) * tmp;
+      }
+    }
+
+    return out;
+  };
+
+  return parallel::parallel_sum_2d<Mat>(
+      0,
+      df_offsets.size(),
+      0,
+      df_offsets_v.size(),
+      linalg::zeros(n_ao, n_ao),
+      parallel_fn
+  );
+}
+
 Mat calculate_ttilde_dxab(
     const Integrals& W,
     const Integrals& V,
     const Mat& ttilde,
     const ABSProjectors& abs_projectors
 ) {
-  // TODO Implement direct calculation
-  return calculate_ttilde_dxab_incore(W, V, ttilde, abs_projectors);
+  const auto w_ao = W.get_base_integrals().storing_ao();
+  const auto w_ri = W.get_base_integrals().storing_ri();
+  const auto v_ao = V.get_base_integrals().storing_ao();
+  const auto v_ri = V.get_base_integrals().storing_ri();
+
+  if (const auto calculate_incore = w_ao && w_ri && v_ao & v_ri;
+      calculate_incore) {
+    return calculate_ttilde_dxab_incore(W, V, ttilde, abs_projectors);
+  }
+
+  return calculate_ttilde_dxab_direct(W, V, ttilde, abs_projectors);
 }
 
 }
