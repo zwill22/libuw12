@@ -174,6 +174,12 @@ void test_integrals(
     CHECK_THROWS(Integrals(base_integrals, {}, active_orbitals));
     CHECK_THROWS(Integrals(base_integrals, {}, {}));
     CHECK_THROWS(Integrals(base_integrals, {C, C, C}, {C, C, C}));
+
+    {
+      const auto occ = {head_rows(C, n_ao - 1)};
+      CHECK_THROWS(Integrals(base_integrals, occ, occ).number_ao_orbitals());
+    }
+
   }
 
   SECTION("Direct") {

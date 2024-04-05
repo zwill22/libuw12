@@ -404,6 +404,9 @@ size_t Integrals::spin_channels() const {
 size_t Integrals::number_ao_orbitals() const {
   const auto n_ao = linalg::n_rows(active_orbitals[0]);
   assert(linalg::n_rows(occ_orbitals[0]) == n_ao);
+  if (base_integrals->get_number_ao() != n_ao) {
+    throw std::runtime_error("Inconsistent number of atomic orbitals");
+  }
 
   return n_ao;
 }
