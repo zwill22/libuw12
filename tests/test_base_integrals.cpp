@@ -404,9 +404,9 @@ TEST_CASE("Test integrals - base integrals") {
     REQUIRE(uw12::linalg::n_rows(J3_ri) == n_ao * n_ri);
     REQUIRE(uw12::linalg::n_cols(J3_ri) == n_df);
 
-    CHECK(base_integrals.get_number_ao() == 0);
-    CHECK(base_integrals.get_number_df() == 0);
-    CHECK(base_integrals.get_number_ri() == 0);
+    CHECK(base_integrals.get_number_ao() == n_ao);
+    CHECK(base_integrals.get_number_df() == n_df);
+    CHECK(base_integrals.get_number_ri() == n_ri);
 
     CHECK(base_integrals.storing_ao());
     CHECK(base_integrals.storing_ri());
@@ -417,6 +417,9 @@ TEST_CASE("Test integrals - base integrals") {
     CHECK(base_integrals.has_J3());
     CHECK(base_integrals.has_J3_ri_0());
     CHECK(base_integrals.has_J3_ri());
+
+    CHECK_THROWS(BaseIntegrals(uw12::linalg::head_rows(J30, 0), J20, J3ri0));
+    CHECK_THROWS(BaseIntegrals(uw12::linalg::head_cols(J30, n_df - 1), J20, J3ri0));
   }
 
   SECTION("J3_0 constructor - No RI") {
@@ -445,8 +448,8 @@ TEST_CASE("Test integrals - base integrals") {
 
     CHECK_THROWS(base_integrals.get_J3_ri());
 
-    CHECK(base_integrals.get_number_ao() == 0);
-    CHECK(base_integrals.get_number_df() == 0);
+    CHECK(base_integrals.get_number_ao() == n_ao);
+    CHECK(base_integrals.get_number_df() == n_df);
     CHECK(base_integrals.get_number_ri() == 0);
 
     CHECK(base_integrals.storing_ao());
@@ -491,8 +494,8 @@ TEST_CASE("Test integrals - base integrals") {
     const auto &J3_2 = base_integrals.get_J3();
     CHECK(uw12::linalg::nearly_equal(J3_2, J3, epsilon));
 
-    CHECK(base_integrals.get_number_ao() == 0);
-    CHECK(base_integrals.get_number_df() == 0);
+    CHECK(base_integrals.get_number_ao() == n_ao);
+    CHECK(base_integrals.get_number_df() == n_df);
     CHECK(base_integrals.get_number_ri() == 0);
 
     CHECK(base_integrals.storing_ao());
@@ -504,6 +507,9 @@ TEST_CASE("Test integrals - base integrals") {
     CHECK(base_integrals.has_J3());
     CHECK_FALSE(base_integrals.has_J3_ri_0());
     CHECK_FALSE(base_integrals.has_J3_ri());
+
+
+    CHECK_THROWS(BaseIntegrals(uw12::linalg::head_cols(J3, n_df - 1), df_vals));
   }
 
   SECTION("Test construction fails") {

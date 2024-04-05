@@ -7,10 +7,34 @@ namespace uw12::integrals {
 
 auto calculate_n_df(const std::vector<size_t> &df_sizes) {
   size_t total = 0;
-  for (const auto &shell_size : df_sizes) {
+  for (const auto shell_size : df_sizes) {
     total += shell_size;
   }
   return total;
+}
+
+size_t calculate_n_ao(const linalg::Mat &J3) {
+  const size_t n = linalg::n_rows(J3);
+
+  if (n == 0) {
+    throw std::runtime_error("Number of ao orbitals is zero");
+  }
+
+  const auto n_ao = static_cast<size_t>(std::sqrt(8 * n - 1) / 2);
+  assert(n_ao * (n_ao + 1) / 2 == n);
+
+  return n_ao;
+}
+
+auto calculate_n_ri(const linalg::Mat &J3, const size_t n_ao) {
+  assert(n_ao != 0);
+
+  const auto n = linalg::n_rows(J3);
+
+  const size_t n_ri = n / n_ao;
+  assert(n_ao * n_ri == n);
+
+  return n_ri;
 }
 
 BaseIntegrals::BaseIntegrals(
@@ -68,11 +92,49 @@ BaseIntegrals::BaseIntegrals(
       );
     }
 
+    // TODO Consider removing to enable OBS RI method
     if (three_index_ri_fn_provided && n_ri == 0) {
       throw std::runtime_error(
           "Three index ri integrals requested but number "
           "of ri basis functions is zero"
       );
+    }
+  } else {
+    if (n_ao == 0) {
+      if (J3_0) {
+        n_ao = calculate_n_ao(*J3_0);
+      } else if (J3) {
+        n_ao = calculate_n_ao(*J3);
+      }
+    }
+
+    if (n_df == 0) {
+      if (J2_) {
+        n_df = linalg::n_rows(*J2_);
+        assert(linalg::n_cols(*J2_) == n_df);
+
+        assert(J3_0);
+        if (linalg::n_cols(*J3_0) != n_df) {
+          throw std::runtime_error(
+              "Number of density-fitting basis functions inconsistent"
+          );
+        }
+      } else if (df_vals_) {
+        n_df = linalg::n_elem(*df_vals_);
+
+        assert(J3);
+        if (linalg::n_cols(*J3) != n_df) {
+          throw std::runtime_error(
+              "Number of density-fitting basis functions inconsistent"
+          );
+        }
+      }
+    }
+
+    if (n_ri == 0) {
+      if (J3_ri_0) {
+        n_ri = calculate_n_ri(*J3_ri_0, n_ao);
+      }
     }
   }
 
@@ -463,7 +525,6 @@ const linalg::Mat &BaseIntegrals::get_J3_ri() const {
   return *J3_ri;
 }
 
-// TODO Change to account for cases when not speciified
 size_t BaseIntegrals::get_number_ao() const { return n_ao; }
 
 size_t BaseIntegrals::get_number_df() const { return n_df; }

@@ -23,7 +23,7 @@ namespace uw12::utils {
 inline auto square(const linalg::Vec &vec, const double factor = 1) {
 
   const auto n_1 = linalg::n_elem(vec);
-  const auto n_2 = static_cast<int>((std::sqrt(8 * n_1 - 1)) / 2);
+  const auto n_2 = static_cast<size_t>(std::sqrt(8 * n_1 - 1) / 2);
 
   if (n_2 * (n_2 + 1) / 2 != n_1) {
     throw std::logic_error("vector must be of length n(n+1)/2");
