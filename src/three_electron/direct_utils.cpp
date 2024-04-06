@@ -167,8 +167,12 @@ Mat calculate_xab_dttilde(
 ) {
   const auto n_df = linalg::n_elem(W_vals);
   const size_t n_occ = n_rows(W3idx_one_trans) / n_ao;
-  assert(n_occ * n_ao == n_rows(W3idx_one_trans));
-  assert(n_occ * n_ao == n_rows(V3idx_one_trans));
+  if (n_rows(W3idx_one_trans) != n_occ * n_ao) {
+    throw std::runtime_error("Incorrect number of rows in W3_imA");
+  }
+  if (n_rows(V3idx_one_trans) != n_occ * n_ao) {
+    throw std::runtime_error("Incorrect number of rows in V3_imA");
+  }
 
   const Mat w = W3idx_one_trans * linalg::diagmat(W_vals) * xab;
   const Mat v_tilde = V3idx_one_trans * linalg::diagmat(V_vals);
