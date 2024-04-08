@@ -158,8 +158,9 @@ Mat fock_i(
 
   const Mat X3tilde_two_trans_kj = linalg::schur(row, X.get_df_vals());
 
+  // TODO Mask .get_J3_ri() type functions
   const Mat X_jk_am =
-      linalg::reshape(X.get_J3_ri() * X3tilde_two_trans_kj, n_ri, n_ao);
+      linalg::reshape(X.get_J3_ri() * X3tilde_two_trans_kj, n_ri, n_ao, true);
 
   const Mat Y3tilde_one_trans_k =
       linalg::diagmat(Y.get_df_vals()) *
