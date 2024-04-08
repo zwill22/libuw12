@@ -120,6 +120,8 @@ TEST_CASE("Test three electron term - Direct Utils (X_AB Dttilde)") {
   const auto x_dttilde = uw12::three_el::calculate_xab_dttilde(
       W3_imA, V3_imA, Xab, W_vals, V_vals, n_active, n_ao
   );
+  REQUIRE(uw12::linalg::n_rows(x_dttilde) == n_ao);
+  REQUIRE(uw12::linalg::n_cols(x_dttilde) == n_ao);
 
   CHECK_THROWS(uw12::three_el::calculate_xab_dttilde(
       W3_imA, V3_imA, Xab, W_vals, V_vals, n_active, n_ao - 1
@@ -135,10 +137,131 @@ TEST_CASE("Test three electron term - Direct Utils (X_AB Dttilde)") {
   ));
   CHECK_THROWS(uw12::three_el::calculate_xab_dttilde(
       W3_imA,
-      uw12::linalg::head_rows(V3_imA, n_occ * (n_ao - 1)), Xab,
+      uw12::linalg::head_rows(V3_imA, n_occ * (n_ao - 1)),
+      Xab,
       W_vals,
       V_vals,
       n_active,
       n_ao
   ));
+}
+
+auto setup_base_integrals_direct(
+    const uw12::integrals::BaseIntegrals& W, const uw12::linalg::Mat& W2
+) {
+  const auto& W3 = W.get_J3_0();
+  const auto& W3_ri = W.get_J3_ri_0();
+
+  const auto n_ao = W.get_number_ao();
+  const auto n_df = W.get_number_df();
+  const auto n_ri = W.get_number_ri();
+
+  const auto W2_func = [W2] { return W2; };
+
+  const auto W3_func = [W3](const size_t A) { return W3; };
+
+  const auto W3_ri_func = [W3_ri](const size_t A) { return W3_ri; };
+
+  const auto df_sizes = std::vector({n_df});
+
+  return uw12::integrals::BaseIntegrals(
+      W2_func, W3_func, W3_ri_func, df_sizes, n_ao, n_df, n_ri, false, false
+  );
+}
+
+TEST_CASE("Test three electron term - Direct Utils (ttilde dX_AB)") {
+  constexpr size_t n_ao = 10;
+  constexpr size_t n_df = 18;
+  constexpr size_t n_ri = 25;
+  std::vector<size_t> n_occ = {3};
+  std::vector<size_t> n_active = {2};
+
+  constexpr auto W_seed = test::seed + 1;
+  constexpr auto V_seed = test::seed;
+
+  const auto W2 = uw12::linalg::random_pd(n_df, W_seed);
+  const auto W3 = uw12::linalg::random(n_ao * (n_ao + 1) / 2, n_df, W_seed);
+  const auto W3_ri = uw12::linalg::random(n_ao * n_ri, n_df, W_seed);
+
+  const auto W_base = uw12::integrals::BaseIntegrals(W3, W2, W3_ri);
+  const auto W_base_direct = setup_base_integrals_direct(W_base, W2);
+
+  CHECK(uw12::linalg::nearly_equal(W2, W_base_direct.two_index(), test::epsilon)
+  );
+  CHECK(uw12::linalg::nearly_equal(
+      W_base.get_J3(), W_base_direct.get_J3(), test::epsilon
+  ));
+  CHECK(uw12::linalg::nearly_equal(
+      W_base.get_J3_ri(), W_base_direct.get_J3_ri(), test::epsilon
+  ));
+
+  const auto V2 = uw12::linalg::random_pd(n_df, V_seed);
+  const auto V3 = uw12::linalg::random(n_ao * (n_ao + 1) / 2, n_df, V_seed);
+  const auto V3_ri = uw12::linalg::random(n_ao * n_ri, n_df, V_seed);
+
+  const auto V_base = uw12::integrals::BaseIntegrals(V3, V2, V3_ri);
+  const auto V_base_direct = setup_base_integrals_direct(V_base, V2);
+
+  CHECK(uw12::linalg::nearly_equal(V2, V_base_direct.two_index(), test::epsilon)
+  );
+  CHECK(uw12::linalg::nearly_equal(
+      V_base.get_J3(), V_base_direct.get_J3(), test::epsilon
+  ));
+  CHECK(uw12::linalg::nearly_equal(
+      V_base.get_J3_ri(), V_base_direct.get_J3_ri(), test::epsilon
+  ));
+
+  const auto abs_projectors = setup_abs_projector(n_ao, n_ri);
+
+  for (size_t i = 0; i < 2; ++i) {
+    const auto n_spin = n_occ.size();
+    REQUIRE(n_active.size() == n_spin);
+
+    const auto [Co, active_Co] = test::setup_orbitals(n_occ, n_active, n_ao);
+    REQUIRE(Co.size() == n_spin);
+    REQUIRE(active_Co.size() == n_spin);
+
+    const auto W = uw12::integrals::Integrals(W_base, Co, active_Co);
+    const auto V = uw12::integrals::Integrals(V_base, Co, active_Co);
+
+    const auto ttilde = uw12::four_el::calculate_ttilde(W, V);
+    REQUIRE(ttilde.size() == n_spin);
+
+    const auto W_direct =
+        uw12::integrals::Integrals(W_base_direct, Co, active_Co);
+    const auto V_direct =
+        uw12::integrals::Integrals(V_base_direct, Co, active_Co);
+
+    SECTION("Test ttilde") {
+      const auto ttilde_direct =
+          uw12::four_el::calculate_ttilde(W_direct, V_direct);
+      REQUIRE(ttilde_direct.size() == n_spin);
+
+      for (size_t sigma = 0; sigma < n_spin; ++sigma) {
+        CHECK(uw12::linalg::nearly_equal(
+            ttilde[sigma], ttilde_direct[sigma], test::epsilon
+        ));
+      }
+    }
+
+    for (const auto& tt : ttilde) {
+      const auto ttilde_dxab =
+          uw12::three_el::calculate_ttilde_dxab(W, V, tt, abs_projectors);
+      REQUIRE(uw12::linalg::n_rows(ttilde_dxab) == n_ao);
+      REQUIRE(uw12::linalg::n_cols(ttilde_dxab) == n_ao);
+
+      const auto ttilde_dxab_direct = uw12::three_el::calculate_ttilde_dxab(
+          W_direct, V_direct, tt, abs_projectors
+      );
+      REQUIRE(uw12::linalg::n_rows(ttilde_dxab_direct) == n_ao);
+      REQUIRE(uw12::linalg::n_cols(ttilde_dxab_direct) == n_ao);
+
+      CHECK(uw12::linalg::nearly_equal(
+          ttilde_dxab, ttilde_dxab_direct, test::epsilon
+      ));
+    }
+
+    n_occ.push_back(2);
+    n_active.push_back(1);
+  }
 }

@@ -21,7 +21,6 @@ namespace uw12::utils {
 ///
 /// @return Resulting symmetric matrix
 inline auto square(const linalg::Vec &vec, const double factor = 1) {
-
   const auto n_1 = linalg::n_elem(vec);
   const auto n_2 = static_cast<size_t>(std::sqrt(8 * n_1 - 1) / 2);
 
@@ -31,10 +30,10 @@ inline auto square(const linalg::Vec &vec, const double factor = 1) {
 
   auto matrix = linalg::mat(n_2, n_2);
   size_t idx = 0;
-  for (int i = 0; i < n_2; ++i) {
-    for (int j = 0; j <= i; ++j) {
+  for (size_t i = 0; i < n_2; ++i) {
+    for (size_t j = 0; j <= i; ++j) {
       if (i != j) {
-      matrix(i, j) = factor * vec(idx);
+        matrix(i, j) = factor * vec(idx);
         matrix(j, i) = factor * vec(idx);
       } else {
         matrix(i, i) = vec(idx);
@@ -57,7 +56,6 @@ inline auto square(const linalg::Vec &vec, const double factor = 1) {
 /// @param factor
 /// @return
 inline auto lower(const linalg::Mat &mat, const double factor = 1) {
-
   const auto n_row = linalg::n_rows(mat);
   if (!linalg::is_square(mat)) {
     throw std::logic_error("matrix is not square");
@@ -67,9 +65,9 @@ inline auto lower(const linalg::Mat &mat, const double factor = 1) {
   }
 
   linalg::Vec vec(n_row * (n_row + 1) / 2);
-  int idx = 0;
-  for (int i = 0; i < n_row; ++i) {
-    for (int j = 0; j < i; ++j) {
+  size_t idx = 0;
+  for (size_t i = 0; i < n_row; ++i) {
+    for (size_t j = 0; j < i; ++j) {
       vec(idx++) = factor * mat(i, j);
     }
     vec(idx++) = mat(i, i);
@@ -87,7 +85,7 @@ using MatVec = std::vector<linalg::Mat>;
 /// {
 inline auto operator*(const MatVec &object, const double factor) {
   MatVec result(object.size());
-  for (int i = 0; i < object.size(); ++i) {
+  for (size_t i = 0; i < object.size(); ++i) {
     result[i] = factor * object[i];
   }
   return result;
@@ -106,7 +104,7 @@ inline auto &operator+=(MatVec &lhs, const MatVec &rhs) {
     throw std::logic_error("containers are of different sizes");
   }
 
-  for (int i = 0; i < length; ++i) {
+  for (size_t i = 0; i < length; ++i) {
     if (linalg::n_rows(lhs[i]) != linalg::n_rows(rhs[i]) ||
         linalg::n_cols(lhs[i]) != linalg::n_cols(rhs[i])) {
       throw std::logic_error("matrices are of different sizes");
@@ -148,9 +146,8 @@ struct FockMatrixAndEnergy {
 
 /// Scalar multiplication of FockMatrixAndEnergy
 /// {
-inline auto operator*(
-    const FockMatrixAndEnergy &fock, const double factor
-) -> FockMatrixAndEnergy {
+inline auto operator*(const FockMatrixAndEnergy &fock, const double factor)
+    -> FockMatrixAndEnergy {
   return {factor * fock.fock, factor * fock.energy};
 }
 
@@ -161,7 +158,9 @@ inline auto operator*(const double factor, const FockMatrixAndEnergy &fock) {
 /// }
 
 /// FockMatrixAndEnergy addition {
-inline auto operator+=(FockMatrixAndEnergy &lhs, const FockMatrixAndEnergy &rhs) {
+inline auto operator+=(
+    FockMatrixAndEnergy &lhs, const FockMatrixAndEnergy &rhs
+) {
   lhs.fock += rhs.fock;
   lhs.energy += rhs.energy;
 
@@ -258,7 +257,7 @@ inline auto construct_density(const Orbitals &orbitals) {
   const auto nao = linalg::n_rows(orbitals[0]);
 
   DensityMatrix result;
-  for (int sigma = 0; sigma < n_spin; ++sigma) {
+  for (size_t sigma = 0; sigma < n_spin; ++sigma) {
     const auto &C_sigma = orbitals[sigma];
 
     if (const auto n_occ = linalg::n_cols(C_sigma); n_occ == 0) {
@@ -290,7 +289,7 @@ inline auto occupation_weighted_orbitals(
 
   Orbitals result(n_spin);
   const auto n_electron_per_orbital = (n_spin == 1) ? 2 : 1;
-  for (auto i = 0; i < n_spin; ++i) {
+  for (size_t i = 0; i < n_spin; ++i) {
     if (!linalg::all_positive(occ[i])) {
       throw std::runtime_error("occupations must be positive");
     }

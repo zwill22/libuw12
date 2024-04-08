@@ -39,7 +39,8 @@ auto calculate_xab_component(const Mat& W, const Mat& V, const Mat& projector) {
   assert(n_rows(projector) * n_active == n_rows(W));
 
   Mat out(n_df, n_df);
-  const auto func = [&W, &V, &projector, &out, n_orb, n_active](const int A) {
+  const auto func = [&W, &V, &projector, &out, n_orb, n_active](const size_t A
+                    ) {
     const Mat V_proj = projector * linalg::reshape(col(V, A), n_orb, n_active);
 
     linalg::assign_cols(out, transpose(W) * linalg::vectorise(V_proj), A);
@@ -195,7 +196,7 @@ Mat calculate_xab_dttilde(
 }
 
 std::function<Vec(size_t)> get_X3_fn(const Integrals& X_int) {
-  if (const auto X = X_int.get_base_integrals(); X.has_J3_0()) {
+  if (const auto& X = X_int.get_base_integrals(); X.has_J3_0()) {
     const auto& X3_0 = X.get_J3_0();
     const auto& P2 = X.get_P2();
 
@@ -212,7 +213,7 @@ std::function<Vec(size_t)> get_X3_fn(const Integrals& X_int) {
 std::function<Mat(size_t)> get_W3_ri_fn(
     const Integrals& V_int, const size_t n_ao, const size_t n_ri
 ) {
-  if (const auto V = V_int.get_base_integrals(); V.has_J3_ri_0()) {
+  if (const auto& V = V_int.get_base_integrals(); V.has_J3_ri_0()) {
     const auto& V3_ri0 = V.get_J3_ri_0();
     const auto& P2 = V.get_P2();
 
@@ -231,7 +232,7 @@ std::function<Mat(size_t)> get_W3_ri_fn(
 }
 
 Mat calculate_s_matrix(const Integrals& V_int, const Mat& t_tilde) {
-  if (const auto V = V_int.get_base_integrals(); V.has_J3_0()) {
+  if (const auto& V = V_int.get_base_integrals(); V.has_J3_0()) {
     return V.get_J3_0() * V.get_P2() * transpose(t_tilde);
   } else if (V.has_J3() || V.storing_ao()) {
     return V.get_J3() * transpose(t_tilde);
@@ -310,7 +311,7 @@ Mat calculate_ttilde_dxab_p_term(
   const auto fock_fn = [&p, &abs_projectors, &W3_fn, &W3_fn_ri, n_ao, n_ri](
                            const size_t A
                        ) -> Mat {
-    const auto pA = linalg::reshape(col(p, A), n_ri, n_ao);
+    const auto pA = linalg::reshape(col(p, A), n_ri, n_ao, true);
 
     Mat fock = -square(W3_fn(A)) * abs_projectors.s_inv_ao_ri * pA;
 
@@ -362,24 +363,10 @@ Mat calculate_ttilde_dxab_direct(
   const auto df_sizes_v = V.get_df_sizes();
   const auto df_offsets_v = V.get_df_offsets();
 
-  if (!W.has_three_index_fn()) {
-    throw std::runtime_error("no three index function to calculate W integrals"
-    );
-  }
-  if (!V.has_three_index_fn()) {
-    throw std::runtime_error("no three index function to calculate V integrals"
-    );
-  }
-  if (!W.has_three_index_ri_fn()) {
-    throw std::runtime_error(
-        "no three index ri function to calculate W integrals"
-    );
-  }
-  if (!V.has_three_index_ri_fn()) {
-    throw std::runtime_error(
-        "no three index ri function to calculate V integrals"
-    );
-  }
+  assert(W.has_three_index_fn());
+  assert(V.has_three_index_fn());
+  assert(W.has_three_index_ri_fn());
+  assert(V.has_three_index_ri_fn());
   const size_t n_row = n_ao * (n_ao + 1) / 2;
 
   const auto parallel_fn =
@@ -407,11 +394,11 @@ Mat calculate_ttilde_dxab_direct(
     const auto V3_ri = V.three_index_ri(B);
 
     Mat out = linalg::zeros(n_ao, n_ao);
-    for (int ia = 0; ia < na; ++ia) {
+    for (size_t ia = 0; ia < na; ++ia) {
       const auto W3_ia = utils::square(reshape_col(W3, ia, n_row, 1));
       const auto W3_ri_ia = reshape_col(W3_ri, ia, n_ri, n_ao);
 
-      for (int ib = 0; ib < nb; ++ib) {
+      for (size_t ib = 0; ib < nb; ++ib) {
         const auto V3_ib = utils::square(reshape_col(V3, ib, n_row, 1));
         const auto V3_ri_ib = reshape_col(V3_ri, ib, n_ri, n_ao);
 
