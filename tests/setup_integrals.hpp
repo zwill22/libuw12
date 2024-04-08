@@ -7,6 +7,7 @@
 
 #include "../src/integrals/base_integrals.hpp"
 #include "../src/integrals/integrals.hpp"
+#include "../src/three_electron/ri_utils.hpp"
 #include "../src/utils/linalg.hpp"
 #include "../src/utils/utils.hpp"
 #include "catch.hpp"
