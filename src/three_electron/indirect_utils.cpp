@@ -82,14 +82,13 @@ Mat calculate_ttilde_ij(
 
   const auto W_tmp = reshape(W3idx_two_trans_sigma, n_active, n_occ * n_df_W);
 
-  // TODO Check safety of reshaping a row
-  const Mat W3idx_trans =
-      reshape(row(W_tmp, j), n_occ, n_df_W) * linalg::diagmat(W.get_df_vals());
+  const Mat W3idx_trans = reshape(row(W_tmp, j), n_occ, n_df_W, true) *
+                          linalg::diagmat(W.get_df_vals());
 
   const auto V_tmp = reshape(V3idx_two_trans_sigma, n_active, n_occ * n_df_V);
 
-  const Mat V3idx_trans =
-      reshape(row(V_tmp, i), n_occ, n_df_V) * linalg::diagmat(V.get_df_vals());
+  const Mat V3idx_trans = reshape(row(V_tmp, i), n_occ, n_df_V, true) *
+                          linalg::diagmat(V.get_df_vals());
 
   return transpose(W3idx_trans) * V3idx_trans;
 }
@@ -100,38 +99,27 @@ Mat calculate_ttilde_ij(
 // X_AB^ij = Σ_μν (A|w|iμ) s_μ (μj|r^-1|B)
 // with parallelisation over indices i,j.
 double indirect_3el_energy(
-    const Integrals& W1,
-    const Integrals& V1,
-    const Integrals& W2,
-    const Integrals& V2,
-    const ABSProjectors& abs_projectors
+    const Integrals& W, const Integrals& V, const ABSProjectors& abs_projectors
 ) {
-  const auto n_spin = W1.spin_channels();
-  assert(V1.spin_channels() == n_spin);
-  assert(V2.spin_channels() == n_spin);
-  assert(W2.spin_channels() == n_spin);
+  const auto n_spin = W.spin_channels();
+  assert(V.spin_channels() == n_spin);
 
   double energy = 0;
   for (size_t sigma = 0; sigma < n_spin; ++sigma) {
-    const auto n_occ = W1.number_occ_orbitals(sigma);
-    assert(n_occ == V1.number_occ_orbitals(sigma));
-    assert(n_occ == V2.number_occ_orbitals(sigma));
-    assert(n_occ == W2.number_occ_orbitals(sigma));
-    const auto n_active = W1.number_active_orbitals(sigma);
-    assert(n_active == V1.number_active_orbitals(sigma));
-    assert(n_active == V2.number_active_orbitals(sigma));
-    assert(n_active == W2.number_active_orbitals(sigma));
+    const auto n_occ = W.number_occ_orbitals(sigma);
+    assert(n_occ == V.number_occ_orbitals(sigma));
+    const auto n_active = W.number_active_orbitals(sigma);
+    assert(n_active == V.number_active_orbitals(sigma));
     assert(n_occ >= n_active);
     const auto n_core = n_occ - n_active;
 
     const auto indirect_energy =
-        [&W1, &V1, &W2, &V2, &abs_projectors, n_active, n_core, sigma, n_spin](
+        [&W, &V, &abs_projectors, n_active, n_core, sigma, n_spin](
             const size_t i, const size_t j
         ) -> double {
-      const auto xij =
-          calculate_xij(W1, V1, abs_projectors, n_core, i, j, sigma);
+      const auto xij = calculate_xij(W, V, abs_projectors, n_core, i, j, sigma);
 
-      const auto ttilde_ij = calculate_ttilde_ij(W2, V2, n_active, i, j, sigma);
+      const auto ttilde_ij = calculate_ttilde_ij(W, V, n_active, i, j, sigma);
 
       return (n_spin == 1 ? 2 : 1) * dot(xij, ttilde_ij);
     };
@@ -142,12 +130,6 @@ double indirect_3el_energy(
   }
 
   return energy;
-}
-
-double indirect_3el_energy(
-    const Integrals& W, const Integrals& V, const ABSProjectors& abs_projectors
-) {
-  return indirect_3el_energy(W, V, W, V, abs_projectors);
 }
 
 // Calculates the fock contribution for a single pair jk

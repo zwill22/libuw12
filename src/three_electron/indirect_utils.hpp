@@ -42,17 +42,6 @@ double indirect_3el_energy(
     const ri::ABSProjectors& abs_projectors
 );
 
-/// Generalised version of indirect energy function with multiple integrals as
-/// inputs (useful for testing)
-/// TODO Consider removing
-double indirect_3el_energy(
-    const integrals::Integrals& W1,
-    const integrals::Integrals& V1,
-    const integrals::Integrals& W2,
-    const integrals::Integrals& V2,
-    const ri::ABSProjectors& abs_projectors
-);
-
 /// Calculates the indirect fock matrix contribution
 ///
 /// The indirect fock matrix contribution
