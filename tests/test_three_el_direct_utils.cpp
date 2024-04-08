@@ -7,6 +7,8 @@
 #include "catch.hpp"
 #include "setup_integrals.hpp"
 
+using uw12::integrals::Integrals;
+
 auto setup_abs_projector(
     const size_t n_ao, const size_t n_ri, const int S_seed = test::seed
 ) {
@@ -169,6 +171,22 @@ auto setup_base_integrals_direct(
   );
 }
 
+auto setup_base_integrals_not_direct(const uw12::integrals::BaseIntegrals& W) {
+  const auto W2_func = [&W] { return W.two_index(); };
+  const auto& W3_func = [&W](const size_t A) { return W.three_index(A); };
+  const auto& W3_ri_func = [&W](const size_t A) { return W.three_index_ri(A); };
+
+  const auto n_ao = W.get_number_ao();
+  const auto n_df = W.get_number_df();
+  const auto n_ri = W.get_number_ri();
+
+  const auto df_sizes = std::vector({n_df});
+
+  return uw12::integrals::BaseIntegrals(
+      W2_func, W3_func, W3_ri_func, df_sizes, n_ao, n_df, n_ri
+  );
+}
+
 TEST_CASE("Test three electron term - Direct Utils (ttilde dX_AB)") {
   constexpr size_t n_ao = 10;
   constexpr size_t n_df = 18;
@@ -185,15 +203,7 @@ TEST_CASE("Test three electron term - Direct Utils (ttilde dX_AB)") {
 
   const auto W_base = uw12::integrals::BaseIntegrals(W3, W2, W3_ri);
   const auto W_base_direct = setup_base_integrals_direct(W_base, W2);
-
-  CHECK(uw12::linalg::nearly_equal(W2, W_base_direct.two_index(), test::epsilon)
-  );
-  CHECK(uw12::linalg::nearly_equal(
-      W_base.get_J3(), W_base_direct.get_J3(), test::epsilon
-  ));
-  CHECK(uw12::linalg::nearly_equal(
-      W_base.get_J3_ri(), W_base_direct.get_J3_ri(), test::epsilon
-  ));
+  const auto W_base_indirect = setup_base_integrals_not_direct(W_base_direct);
 
   const auto V2 = uw12::linalg::random_pd(n_df, V_seed);
   const auto V3 = uw12::linalg::random(n_ao * (n_ao + 1) / 2, n_df, V_seed);
@@ -201,15 +211,7 @@ TEST_CASE("Test three electron term - Direct Utils (ttilde dX_AB)") {
 
   const auto V_base = uw12::integrals::BaseIntegrals(V3, V2, V3_ri);
   const auto V_base_direct = setup_base_integrals_direct(V_base, V2);
-
-  CHECK(uw12::linalg::nearly_equal(V2, V_base_direct.two_index(), test::epsilon)
-  );
-  CHECK(uw12::linalg::nearly_equal(
-      V_base.get_J3(), V_base_direct.get_J3(), test::epsilon
-  ));
-  CHECK(uw12::linalg::nearly_equal(
-      V_base.get_J3_ri(), V_base_direct.get_J3_ri(), test::epsilon
-  ));
+  const auto V_base_indirect = setup_base_integrals_not_direct(V_base_direct);
 
   const auto abs_projectors = setup_abs_projector(n_ao, n_ri);
 
@@ -221,25 +223,32 @@ TEST_CASE("Test three electron term - Direct Utils (ttilde dX_AB)") {
     REQUIRE(Co.size() == n_spin);
     REQUIRE(active_Co.size() == n_spin);
 
-    const auto W = uw12::integrals::Integrals(W_base, Co, active_Co);
-    const auto V = uw12::integrals::Integrals(V_base, Co, active_Co);
+    const auto W = Integrals(W_base, Co, active_Co);
+    const auto V = Integrals(V_base, Co, active_Co);
 
     const auto ttilde = uw12::four_el::calculate_ttilde(W, V);
     REQUIRE(ttilde.size() == n_spin);
 
-    const auto W_direct =
-        uw12::integrals::Integrals(W_base_direct, Co, active_Co);
-    const auto V_direct =
-        uw12::integrals::Integrals(V_base_direct, Co, active_Co);
+    const auto W_direct = Integrals(W_base_direct, Co, active_Co);
+    const auto V_direct = Integrals(V_base_direct, Co, active_Co);
+
+    const auto W_indirect = Integrals(W_base_indirect, Co, active_Co);
+    const auto V_indirect = Integrals(V_base_indirect, Co, active_Co);
 
     SECTION("Test ttilde") {
       const auto ttilde_direct =
           uw12::four_el::calculate_ttilde(W_direct, V_direct);
       REQUIRE(ttilde_direct.size() == n_spin);
 
+      const auto ttilde_indirect =
+          uw12::four_el::calculate_ttilde(W_indirect, V_indirect);
+
       for (size_t sigma = 0; sigma < n_spin; ++sigma) {
         CHECK(uw12::linalg::nearly_equal(
             ttilde[sigma], ttilde_direct[sigma], test::epsilon
+        ));
+        CHECK(uw12::linalg::nearly_equal(
+            ttilde[sigma], ttilde_indirect[sigma], test::epsilon
         ));
       }
     }
@@ -259,6 +268,12 @@ TEST_CASE("Test three electron term - Direct Utils (ttilde dX_AB)") {
       CHECK(uw12::linalg::nearly_equal(
           ttilde_dxab, ttilde_dxab_direct, test::epsilon
       ));
+
+      const auto ttilde_dxab_indirect = uw12::three_el::calculate_ttilde_dxab(
+          W_indirect, V_indirect, tt, abs_projectors
+      );
+      REQUIRE(uw12::linalg::n_rows(ttilde_dxab_indirect) == n_ao);
+      REQUIRE(uw12::linalg::n_cols(ttilde_dxab_indirect) == n_ao);
     }
 
     n_occ.push_back(2);
