@@ -135,10 +135,13 @@ double indirect_3el_energy(
 // Calculates the fock contribution for a single pair jk
 // fock_i = (jk|x|αμ)S_μν^-1(νj|y|kβ)
 // this is split into four separate contributions for the four blocks of S_μν
+template <typename X3Fn>
 Mat fock_i(
     const Integrals& X,
     const Integrals& Y,
     const ABSProjectors& abs_projectors,
+    const X3Fn& X3_fn,
+    const X3Fn& X3_ri_fn,
     const size_t j,
     const size_t k,
     const size_t sigma
@@ -156,11 +159,10 @@ Mat fock_i(
   const Vec row =
       transpose(linalg::row(X.get_X3idx_two_trans()[sigma], k * n_active + j));
 
-  const Mat X3tilde_two_trans_kj = linalg::schur(row, X.get_df_vals());
+  const Vec X3tilde_two_trans_kj = linalg::schur(row, X.get_df_vals());
 
-  // TODO Mask .get_J3_ri() type functions
-  const Mat X_jk_am =
-      linalg::reshape(X.get_J3_ri() * X3tilde_two_trans_kj, n_ri, n_ao, true);
+  const Vec tmp1 = X3_ri_fn(X, X3tilde_two_trans_kj);
+  const Mat X_jk_am = linalg::reshape(tmp1, n_ri, n_ao);
 
   const Mat Y3tilde_one_trans_k =
       linalg::diagmat(Y.get_df_vals()) *
@@ -182,7 +184,7 @@ Mat fock_i(
 
   out += transpose(X_jk_am) * abs_projectors.s_inv_ri_ao * Y_pj_kb;
 
-  const Vec X_jk_ap = X.get_J3() * X3tilde_two_trans_kj;
+  const Vec X_jk_ap = X3_fn(X, X3tilde_two_trans_kj);
 
   out += utils::square(X_jk_ap) * abs_projectors.s_inv_ao_ri * Y_vj_kb;
 
@@ -256,6 +258,42 @@ Mat fock_k(
   return out;
 }
 
+std::function<Vec(const Integrals&, const Vec&)> get_X3_func(
+    const Integrals& X_int
+) {
+  if (const auto& X = X_int.get_base_integrals(); X.has_J3_0()) {
+    return [](const Integrals& Y_int, const Vec& vec) -> Vec {
+      const auto& Y = Y_int.get_base_integrals();
+
+      return Y.get_J3_0() * Y.get_P2() * vec;
+    };
+  }
+
+  return [](const Integrals& Y_int, const Vec& vec) -> Vec {
+    const auto& Y = Y_int.get_base_integrals();
+
+    return Y.get_J3() * vec;
+  };
+}
+
+std::function<Vec(const Integrals&, const Vec&)> get_X3_ri_fn(
+    const Integrals& X_int
+) {
+  if (const auto& X = X_int.get_base_integrals(); X.has_J3_ri_0()) {
+    return [](const Integrals& Y_int, const Vec& vec) -> Vec {
+      const auto& Y = Y_int.get_base_integrals();
+
+      return Y.get_J3_ri_0() * Y.get_P2() * vec;
+    };
+  }
+
+  return [](const Integrals& Y_int, const Vec& vec) -> Vec {
+    const auto& Y = Y_int.get_base_integrals();
+
+    return Y.get_J3_ri() * vec;
+  };
+}
+
 Mat indirect_3el_fock_matrix(
     const Integrals& W,
     const Integrals& V,
@@ -266,20 +304,28 @@ Mat indirect_3el_fock_matrix(
   const auto n_occ = W.number_occ_orbitals(sigma);
   const auto n_active = W.number_active_orbitals(sigma);
 
+  const auto W3_fn = get_X3_func(W);
+  const auto W3_ri_fn = get_X3_ri_fn(W);
+
   // i term
-  const auto i_fock =
-      [&W, &V, &abs_projectors, sigma](const size_t j, const size_t k) -> Mat {
-    return fock_i(W, V, abs_projectors, j, k, sigma);
+  const auto i_fock = [&W, &V, &abs_projectors, &W3_fn, &W3_ri_fn, sigma](
+                          const size_t j, const size_t k
+                      ) -> Mat {
+    return fock_i(W, V, abs_projectors, W3_fn, W3_ri_fn, j, k, sigma);
   };
 
   auto fock_sigma = parallel::parallel_sum_2d<Mat>(
       0, n_active, 0, n_occ, zeros(n_ao, n_ao), i_fock
   );
 
+  const auto V3_fn = get_X3_func(V);
+  const auto V3_ri_fn = get_X3_ri_fn(V);
+
   // j term - this uses the same function as i swapping V and W terms
-  const auto j_fock =
-      [&V, &W, &abs_projectors, sigma](const size_t i, const size_t k) -> Mat {
-    return fock_i(V, W, abs_projectors, i, k, sigma);
+  const auto j_fock = [&V, &W, &abs_projectors, &V3_fn, &V3_ri_fn, sigma](
+                          const size_t i, const size_t k
+                      ) -> Mat {
+    return fock_i(V, W, abs_projectors, V3_fn, V3_ri_fn, i, k, sigma);
   };
 
   fock_sigma += parallel::parallel_sum_2d<Mat>(
