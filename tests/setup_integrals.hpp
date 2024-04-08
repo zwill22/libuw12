@@ -142,6 +142,53 @@ inline auto setup_integrals_pair(
   );
 }
 
+inline auto setup_abs_projector(
+    const size_t n_ao, const size_t n_ri, const int S_seed = test::seed
+) {
+  const auto s = uw12::linalg::random_pd(n_ao + n_ri, S_seed);
+
+  return uw12::three_el::ri::calculate_abs_projectors(s, n_ao, n_ri);
+}
+
+inline auto setup_base_integrals_direct(
+    const uw12::integrals::BaseIntegrals& W, const uw12::linalg::Mat& W2
+) {
+  const auto& W3 = W.get_J3_0();
+  const auto& W3_ri = W.get_J3_ri_0();
+
+  const auto n_ao = W.get_number_ao();
+  const auto n_df = W.get_number_df();
+  const auto n_ri = W.get_number_ri();
+
+  const auto W2_func = [W2] { return W2; };
+
+  const auto W3_func = [W3](const size_t A) { return W3; };
+
+  const auto W3_ri_func = [W3_ri](const size_t A) { return W3_ri; };
+
+  const auto df_sizes = std::vector({n_df});
+
+  return uw12::integrals::BaseIntegrals(
+      W2_func, W3_func, W3_ri_func, df_sizes, n_ao, n_df, n_ri, false, false
+  );
+}
+
+inline auto setup_base_integrals_not_direct(const uw12::integrals::BaseIntegrals& W) {
+  const auto W2_func = [&W] { return W.two_index(); };
+  const auto& W3_func = [&W](const size_t A) { return W.three_index(A); };
+  const auto& W3_ri_func = [&W](const size_t A) { return W.three_index_ri(A); };
+
+  const auto n_ao = W.get_number_ao();
+  const auto n_df = W.get_number_df();
+  const auto n_ri = W.get_number_ri();
+
+  const auto df_sizes = std::vector({n_df});
+
+  return uw12::integrals::BaseIntegrals(
+      W2_func, W3_func, W3_ri_func, df_sizes, n_ao, n_df, n_ri
+  );
+}
+
 }  // namespace test
 
 #endif  // SETUP_INTEGRALS_HPP
