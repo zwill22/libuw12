@@ -227,19 +227,24 @@ inline auto symmetrise_fock(FockMatrixAndEnergy fock) {
 /// orbitals from the object.
 ///
 /// @param orbitals Orbitals object containing core and valence orbitals
-/// @param n_core Number of core (spatial) orbitals
+/// @param n_active Number of active (spin) orbitals in each spin channel
 ///
 /// @return Active Orbitals
-inline auto freeze_core(const Orbitals &orbitals, const size_t n_core) {
-  Orbitals frozen_orbitals;
-  for (const auto &channel : orbitals) {
-    const auto n_orb = linalg::n_cols(channel);
-    if (n_core > n_orb) {
-      throw std::logic_error("insufficient orbitals for number of core orbitals"
-      );
-    }
+inline auto freeze_core(
+    const Orbitals &orbitals, const std::vector<size_t> &n_active
+) {
+  const auto n_spin = spin_channels(orbitals);
+  if (spin_channels(n_active) != n_spin) {
+    throw std::runtime_error(
+        "Different number of spin channels in orbitals and n_active"
+    );
+  }
 
-    frozen_orbitals.push_back(linalg::tail_cols(channel, n_orb - n_core, true));
+  Orbitals frozen_orbitals;
+  for (size_t sigma = 0; sigma < n_spin; ++sigma) {
+    frozen_orbitals.push_back(
+        linalg::tail_cols(orbitals[sigma], n_active[sigma], true)
+    );
   }
 
   return frozen_orbitals;
