@@ -103,6 +103,10 @@ utils::MatVec calculate_xab(
         abs_projectors.s_inv_ri_ri
     );
 
+    if (n_active == 0) {
+      continue;
+    }
+
     // X_AB^2 = (A|w|jρ) [S^{-1}]_{ρν} (νj|r^{-1}|B)
     x[sigma] += calculate_xab_component(
         tail_rows(W3idx_one_trans[sigma], n_active * n_ao),
@@ -184,6 +188,10 @@ Mat calculate_xab_dttilde(
     const auto vA = reshape_col(v_tilde, A, n_ao, n_occ);
 
     Mat fock = -wA * transpose(vA);
+
+    if (n_active == 0) {
+      return fock;
+    }
 
     fock -= tail_cols(wA, n_active) * transpose(tail_cols(vA, n_active));
 

@@ -64,3 +64,7 @@ catch_discover_tests(test_three_el_direct_utils)
 add_executable(test_three_el_indirect_utils test_three_el_indirect_utils.cpp)
 target_link_libraries(test_three_el_indirect_utils Catch2::Catch2WithMain uw12)
 catch_discover_tests(test_three_el_indirect_utils)
+
+add_executable(test_three_electron test_three_el.cpp)
+target_link_libraries(test_three_electron Catch2::Catch2WithMain uw12)
+catch_discover_tests(test_three_electron)
