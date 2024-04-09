@@ -60,7 +60,7 @@ linalg::Mat direct_fock_matrix(
       W3idx_one_trans, V3idx_one_trans, ttilde, energy_spin_factor, n_ao, n_spin
   );
 
-  if (n_occ == n_active) {
+  if (n_occ == n_active || n_active == 0) {
     return fock;
   }
 
@@ -102,42 +102,37 @@ utils::FockMatrixAndEnergy direct_fock(
     // Nonzero number of electrons in sigma
     const auto n_active = W.number_active_orbitals(sigma);
     assert(n_active == V.number_active_orbitals(sigma));
-    if (n_active != 0) {
-      // Each second spin state
-      for (size_t sigmaprime = 0; sigmaprime < n_spin; sigmaprime++) {
-        // Skip if no electrons
-        if (W.number_active_orbitals(sigmaprime) == 0) {
-          continue;
-        }
 
-        const auto energy_spin_factor = get_energy_spin_factor(
-            n_spin, sigma, sigmaprime, scale_opp_spin, scale_same_spin
+    // Each second spin state
+    for (size_t sigmaprime = 0; sigmaprime < n_spin; sigmaprime++) {
+
+      const auto energy_spin_factor = get_energy_spin_factor(
+          n_spin, sigma, sigmaprime, scale_opp_spin, scale_same_spin
+      );
+
+      // Skip if energy factor is zero
+      if (energy_spin_factor == 0) {
+        continue;
+      }
+
+      // Calculate energy
+      energy += 0.5 * energy_spin_factor *
+                linalg::dot(ttildeab[sigmaprime], tab[sigma]);
+
+      // Direct term Fock matrix
+      if (calculate_fock) {
+        fock[sigma] += direct_fock_matrix(
+            W.get_X3idx_one_trans()[sigma],
+            V.get_X3idx_one_trans()[sigma],
+            ttildeab[sigmaprime],
+            energy_spin_factor,
+            n_active,
+            n_ao,
+            n_spin
         );
-
-        // Skip if energy factor is zero
-        if (energy_spin_factor == 0) {
-          continue;
-        }
-
-        // Calculate energy
-        energy += 0.5 * energy_spin_factor *
-                  linalg::dot(ttildeab[sigmaprime], tab[sigma]);
-
-        // Direct term Fock matrix
-        if (calculate_fock) {
-          fock[sigma] += direct_fock_matrix(
-              W.get_X3idx_one_trans()[sigma],
-              V.get_X3idx_one_trans()[sigma],
-              ttildeab[sigmaprime],
-              energy_spin_factor,
-              n_active,
-              n_ao,
-              n_spin
-          );
-        }
-      }  // sigmaprime
-    }    // nocc
-  }      // sigma
+      }
+    }  // sigmaprime
+  }    // sigma
 
   return utils::symmetrise_fock({fock, energy});
 }
@@ -220,7 +215,7 @@ linalg::Mat indirect_fock_matrix(
         ),
         n_ao,
         n_active,
-        true // TODO Avoid copy
+        true  // TODO Avoid copy
     );
 
     return -2 * W4_ik * transpose(V4_ik);
@@ -280,7 +275,8 @@ utils::FockMatrixAndEnergy indirect_four_el_fock(
     const auto W4idx_four_trans = W.get_X4idx_four_trans(sigma);
     const auto V4idx_four_trans = V.get_X4idx_four_trans(sigma);
 
-    energy += indirect_energy(W4idx_four_trans, V4idx_four_trans, n_occ, n_spin);
+    energy +=
+        indirect_energy(W4idx_four_trans, V4idx_four_trans, n_occ, n_spin);
 
     if (calculate_fock) {
       const auto W4idx_three_trans = W.get_X4idx_three_trans(sigma);

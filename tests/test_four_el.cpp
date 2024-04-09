@@ -181,6 +181,66 @@ TEST_CASE("Test four electron term - Open Shell (No active orbitals)") {
   );
 }
 
+template <typename FockFn, typename IntegralFn>
+void check_open_shell_no_occupied_orbitals(
+    const FockFn &fock_fn,
+    const IntegralFn &integral_fn,
+    const uw12::linalg::Mat &fock0
+) {
+  SECTION("Alpha channel") {
+    const std::vector<size_t> n_occ = {3, 0};
+    const std::vector<size_t> n_active = {2, 0};
+
+    const auto [W, V] = integral_fn(n_occ, n_active, seed + 1);
+
+    const auto [os_fock, os_energy] = fock_fn(W, V, true, true, 1.0, 0);
+
+    REQUIRE((uw12::utils::spin_channels(os_fock) == 2));
+    for (size_t sigma = 0; sigma < 2; ++sigma) {
+      CHECK(uw12::linalg::nearly_equal(os_fock[sigma], fock0, epsilon));
+    }
+    CHECK_THAT(os_energy, Catch::Matchers::WithinAbs(0, margin));
+
+    const auto [ss_fock, ss_energy] = fock_fn(W, V, true, true, 0, 0.5);
+
+    REQUIRE((uw12::utils::spin_channels(ss_fock) == 2));
+    CHECK_FALSE(uw12::linalg::nearly_equal(ss_fock[0], fock0, epsilon));
+    CHECK(uw12::linalg::nearly_equal(ss_fock[1], fock0, epsilon));
+  }
+
+  SECTION("Beta channel)") {
+    const std::vector<size_t> n_occ = {0, 3};
+    const std::vector<size_t> n_active = {0, 2};
+    const auto [W, V] = integral_fn(n_occ, n_active, seed + 1);
+
+    const auto [os_fock, os_energy] = fock_fn(W, V, true, true, 1.0, 0);
+
+    REQUIRE((uw12::utils::spin_channels(os_fock) == 2));
+    for (size_t sigma = 0; sigma < 2; ++sigma) {
+      CHECK(uw12::linalg::nearly_equal(os_fock[sigma], fock0, epsilon));
+    }
+    CHECK_THAT(os_energy, Catch::Matchers::WithinAbs(0, margin));
+
+    const auto [ss_fock, ss_energy] = fock_fn(W, V, true, true, 0, 0.5);
+
+    REQUIRE((ss_fock.size() == 2));
+    CHECK(uw12::linalg::nearly_equal(ss_fock[0], fock0, epsilon));
+    CHECK_FALSE(uw12::linalg::nearly_equal(ss_fock[1], fock0, epsilon));
+  }
+
+  SECTION("Both channels") {
+    const auto [W, V] = integral_fn({0, 0}, {0, 0}, seed + 1);
+
+    const auto [fock, energy] = fock_fn(W, V, true, true, 1.0, 0);
+
+    REQUIRE((uw12::utils::spin_channels(fock) == 2));
+    for (size_t sigma = 0; sigma < 2; ++sigma) {
+      CHECK(uw12::linalg::nearly_equal(fock[sigma], fock0, epsilon));
+    }
+    CHECK_THAT(energy, Catch::Matchers::WithinAbs(0, margin));
+  }
+}
+
 TEST_CASE("Test four electron term - Open Shell (No occupied orbitals)") {
   constexpr size_t n_ao = 11;
   constexpr size_t n_df = 23;
@@ -189,7 +249,7 @@ TEST_CASE("Test four electron term - Open Shell (No occupied orbitals)") {
 
   const auto integral_fn = get_integral_fn(n_ao, n_df);
 
-  test::check_open_shell_no_occupied_orbitals(
+  check_open_shell_no_occupied_orbitals(
       form_fock_four_el_df, integral_fn, fock0
   );
 }
