@@ -108,35 +108,36 @@ namespace uw12 {
 /// @param WV Density-fitting integrals for \f$w_{12}v_{12}\f$ (No RI)
 /// @param abs_projectors Projectors for ABS+ (inverse overlaps matrices between
 ///                       ri and ao space)
-/// @param occupied_orbitals Occupied orbital coefficients in the form of a
-///                          std::vector of matrices of size number of ao basis
-///                          functions by number of occupied orbitals with one
-///                          matrix for each spin channel
-/// @param occupations Occupied orbital coefficients in the form of a
-///                          std::vector of matrices of size number of ao basis
-///                          functions by number of occupied orbitals with one
-///                          matrix for each spin channel
+/// @param orbitals Orbital coefficients in the form of a std::vector of
+///                 matrices with number of rows specified by the size number
+///                 of ao basis functions and number of columns specified by
+///                 number of (occupied) orbitals with one matrix for each
+///                 spin channel. The first `n_occ` columns are treated as the
+///                 occupied orbital coefficients, with `n_occ` determined by
+///                 `occupations`.
+/// @param occupations Occupation numbers for the orbitals in the form of a
+///                    std::vector of Vecs of size `n_occ` for each spin channel
 /// @param n_active Vector of the number of active orbitals in each spin channel
 /// @param indirect_term Calculate the indirect (exchange) term
 /// @param calculate_fock Calculate the Fock matrix contribution
 /// @param scale_opp_spin Scale \f$w^0 (r)\f$ by a factor \f$\kappa_0\f$
 /// @param scale_same_spin Scale \f$w^1 (r)\f$ by a factor \f$\kappa_1\f$
-/// @param print_level Energy components printed for print_level > 1
+/// @param print_level Adjust details printed (0-3) default: 0 (silent)
 ///
-/// \@return Fock matrix and energy for UW12
+/// @return Fock matrix and energy for UW12
 utils::FockMatrixAndEnergy form_fock(
     const integrals::BaseIntegrals &W,
     const integrals::BaseIntegrals &V,
     const integrals::BaseIntegrals &WV,
     const three_el::ri::ABSProjectors &abs_projectors,
-    const utils::Orbitals &occupied_orbitals,
+    const utils::Orbitals &orbitals,
     const utils::Occupations &occupations,
     const std::vector<size_t> &n_active,
     bool indirect_term,
     bool calculate_fock,
     double scale_opp_spin,
     double scale_same_spin,
-    size_t print_level
+    size_t print_level = 0
 );
 
 }  // namespace uw12

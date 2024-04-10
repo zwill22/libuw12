@@ -24,7 +24,7 @@ FockMatrixAndEnergy form_fock(
     const BaseIntegrals &V,
     const BaseIntegrals &WV,
     const ABSProjectors &abs_projectors,
-    const Orbitals &occupied_orbitals,
+    const Orbitals &orbitals,
     const utils::Occupations &occupations,
     const std::vector<size_t> &n_active,
     const bool indirect_term,
@@ -37,7 +37,7 @@ FockMatrixAndEnergy form_fock(
     print::print_header("UW12 Calculation");
   }
 
-  const size_t n_spin = spin_channels(occupied_orbitals);
+  const size_t n_spin = spin_channels(orbitals);
   if (spin_channels(occupations) != n_spin) {
     throw std::runtime_error(
         "Different number of spin channels for orbitals and occupations"
@@ -49,8 +49,7 @@ FockMatrixAndEnergy form_fock(
     );
   }
 
-  const auto Co =
-      utils::occupation_weighted_orbitals(occupied_orbitals, occupations);
+  const auto Co = utils::occupation_weighted_orbitals(orbitals, occupations);
   const auto active_Co = utils::freeze_core(Co, n_active);
 
   // ----------------------- Two electron term -------------------------------
