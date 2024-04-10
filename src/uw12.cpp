@@ -31,7 +31,7 @@ FockMatrixAndEnergy form_fock(
     const bool calculate_fock,
     const double scale_opp_spin,
     const double scale_same_spin,
-    const int print_level
+    const size_t print_level
 ) {
   if (print_level > 2) {
     print::print_header("UW12 Calculation");
@@ -49,7 +49,8 @@ FockMatrixAndEnergy form_fock(
     );
   }
 
-  const auto Co = utils::occupation_weighted_orbitals(occupied_orbitals, occupations);
+  const auto Co =
+      utils::occupation_weighted_orbitals(occupied_orbitals, occupations);
   const auto active_Co = utils::freeze_core(Co, n_active);
 
   // ----------------------- Two electron term -------------------------------
@@ -108,8 +109,10 @@ FockMatrixAndEnergy form_fock(
   // Compute totals
   auto fock = fock_two_el + fock_three_el + fock_four_el;
 
-  if (print_level > 1) {
-    if (print_level > 2) print::print_character_line('=', 48);
+  if (print_level > 2) {
+    print::print_character_line('=', 48);
+  }
+  if (print_level > 0) {
     print::print_result("Total UW12 energy", fock.energy);
   }
 

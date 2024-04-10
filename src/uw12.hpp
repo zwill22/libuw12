@@ -105,7 +105,7 @@ namespace uw12 {
 ///
 /// @param W Density-fitting integrals and eigenvalues for \f$w_{12}\f$
 /// @param V Density-fitting integrals and eigenvalues for \f$v_{12}\f$
-/// @param WV Density-fitting integrals for \f$w_{12}v_{12}\f$
+/// @param WV Density-fitting integrals for \f$w_{12}v_{12}\f$ (No RI)
 /// @param abs_projectors Projectors for ABS+ (inverse overlaps matrices between
 ///                       ri and ao space)
 /// @param occupied_orbitals Occupied orbital coefficients in the form of a
@@ -130,15 +130,15 @@ utils::FockMatrixAndEnergy form_fock(
     const integrals::BaseIntegrals &WV,
     const three_el::ri::ABSProjectors &abs_projectors,
     const utils::Orbitals &occupied_orbitals,
-    const utils::Occupations & occupations,
-    const std::vector<size_t> & n_active,
+    const utils::Occupations &occupations,
+    const std::vector<size_t> &n_active,
     bool indirect_term,
     bool calculate_fock,
     double scale_opp_spin,
     double scale_same_spin,
-    int print_level
+    size_t print_level
 );
 
-}
+}  // namespace uw12
 
 #endif
