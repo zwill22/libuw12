@@ -7,7 +7,7 @@
 
 #include "../src/utils/utils.hpp"
 
-namespace fock {
+namespace uw12_test::fock {
 
 /// A function which calculates the numerical gradient with respect to vector
 /// vec for an energy function fn
@@ -139,5 +139,5 @@ inline void check_fock(
   }
 }
 
-}  // namespace fock
+}  // namespace uw12_test::fock
 #endif  // NUMERICAL_FOCK_HPP

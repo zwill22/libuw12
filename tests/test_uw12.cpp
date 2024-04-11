@@ -10,15 +10,15 @@ constexpr size_t n_ao = 5;
 constexpr size_t n_df = 8;
 constexpr size_t n_ri = 14;
 
-constexpr auto W_seed = test::seed - 1;
-constexpr auto V_seed = test::seed;
-constexpr auto WV_seed = test::seed + 1;
+constexpr auto W_seed = uw12_test::seed - 1;
+constexpr auto V_seed = uw12_test::seed;
+constexpr auto WV_seed = uw12_test::seed + 1;
 
-const auto abs_projectors = test::setup_abs_projector(n_ao, n_ri);
+const auto abs_projectors = uw12_test::setup_abs_projector(n_ao, n_ri);
 
-const auto W = test::setup_base_integrals(n_ao, n_df, n_ri, W_seed);
-const auto V = test::setup_base_integrals(n_ao, n_df, n_ri, V_seed);
-const auto WV = test::setup_base_integrals(n_ao, n_df, W_seed);
+const auto W = uw12_test::setup_base_integrals(n_ao, n_df, n_ri, W_seed);
+const auto V = uw12_test::setup_base_integrals(n_ao, n_df, n_ri, V_seed);
+const auto WV = uw12_test::setup_base_integrals(n_ao, n_df, W_seed);
 
 auto setup_occupations(const std::vector<size_t>& n_occ) {
   uw12::utils::Occupations occ;
@@ -60,12 +60,14 @@ void run_test(
       W, V, WV, abs_projectors, occ_orb, occ, n_active, true, true, 1.0, 0.5, 3
   );
 
-  CHECK_THAT(e_os + 0.5 * e_ss, Catch::Matchers::WithinRel(e, test::epsilon));
+  CHECK_THAT(
+      e_os + 0.5 * e_ss, Catch::Matchers::WithinRel(e, uw12_test::epsilon)
+  );
 
   for (size_t sigma = 0; sigma < n_spin; ++sigma) {
     const uw12::linalg::Mat mat1 = fock_os[sigma] + 0.5 * fock_ss[sigma];
     const auto mat2 = fock[sigma];
-    CHECK(uw12::linalg::nearly_equal(mat1, mat2, test::epsilon));
+    CHECK(uw12::linalg::nearly_equal(mat1, mat2, uw12_test::epsilon));
   }
 }
 
@@ -74,7 +76,7 @@ TEST_CASE("Test UW12 - Closed shell") {
   const std::vector<size_t> n_active = {2};
 
   const auto [occ_orb, active_orb] =
-      test::setup_orbitals(n_occ, n_active, n_ao);
+      uw12_test::setup_orbitals(n_occ, n_active, n_ao);
 
   const auto occ = setup_occupations(n_occ);
 
@@ -86,7 +88,7 @@ TEST_CASE("Test UW12 - Open shell") {
   const std::vector<size_t> n_active = {3, 2};
 
   const auto [occ_orb, active_orb] =
-      test::setup_orbitals(n_occ, n_active, n_ao);
+      uw12_test::setup_orbitals(n_occ, n_active, n_ao);
 
   const auto occ = setup_occupations(n_occ);
 
@@ -97,7 +99,7 @@ TEST_CASE("Test UW12 - Check error handling") {
   const std::vector<size_t> n_active = {3, 2};
 
   const auto [occ_orb, active_orb] =
-      test::setup_orbitals(n_occ, n_active, n_ao);
+      uw12_test::setup_orbitals(n_occ, n_active, n_ao);
 
   const auto occ = setup_occupations(n_occ);
 

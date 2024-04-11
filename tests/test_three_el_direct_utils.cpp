@@ -8,9 +8,10 @@
 #include "setup_integrals.hpp"
 
 using uw12::integrals::Integrals;
-using test::setup_abs_projector;
-using test::setup_base_integrals_direct;
-using test::setup_base_integrals_not_direct;
+using uw12_test::eps;
+using uw12_test::setup_abs_projector;
+using uw12_test::setup_base_integrals_direct;
+using uw12_test::setup_base_integrals_not_direct;
 
 TEST_CASE("Test three electron term - Direct Utils (X_AB)") {
   std::vector<size_t> n_occ = {3};
@@ -24,8 +25,8 @@ TEST_CASE("Test three electron term - Direct Utils (X_AB)") {
     const auto n_spin = n_occ.size();
     REQUIRE(n_active.size() == n_spin);
 
-    const auto [W, V] = test::setup_integrals_pair(
-        n_ao, n_df, n_ri, n_occ, n_active, test::seed - 1
+    const auto [W, V] = uw12_test::setup_integrals_pair(
+        n_ao, n_df, n_ri, n_occ, n_active, uw12_test::seed - 1
     );
 
     const auto abs_projectors = setup_abs_projector(n_ao, n_ri);
@@ -56,8 +57,8 @@ TEST_CASE("Test three electron term - Direct Utils (energy)") {
     const auto n_spin = n_occ.size();
     REQUIRE(n_active.size() == n_spin);
 
-    const auto [W, V] = test::setup_integrals_pair(
-        n_ao, n_df, n_ri, n_occ, n_active, test::seed - 1
+    const auto [W, V] = uw12_test::setup_integrals_pair(
+        n_ao, n_df, n_ri, n_occ, n_active, uw12_test::seed - 1
     );
 
     const auto abs_projectors = setup_abs_projector(n_ao, n_ri);
@@ -76,18 +77,18 @@ TEST_CASE("Test three electron term - Direct Utils (energy)") {
     SECTION("OS Multiplicity") {
       const auto e_os2 =
           uw12::three_el::calculate_direct_energy(Xab, ttilde_ab, 1.6, 0.0);
-      CHECK_THAT(1.6 * e_os, Catch::Matchers::WithinRel(e_os2, test::eps));
+      CHECK_THAT(1.6 * e_os, Catch::Matchers::WithinRel(e_os2, eps));
     }
 
     SECTION("SS Multiplicity") {
       const auto e_ss2 =
           uw12::three_el::calculate_direct_energy(Xab, ttilde_ab, 0.0, 1.4);
-      CHECK_THAT(1.4 * e_ss, Catch::Matchers::WithinRel(e_ss2, test::eps));
+      CHECK_THAT(1.4 * e_ss, Catch::Matchers::WithinRel(e_ss2, eps));
     }
 
     const auto e =
         uw12::three_el::calculate_direct_energy(Xab, ttilde_ab, 1.0, 0.5);
-    CHECK_THAT(e_os + 0.5 * e_ss, Catch::Matchers::WithinRel(e, test::eps));
+    CHECK_THAT(e_os + 0.5 * e_ss, Catch::Matchers::WithinRel(e, eps));
 
     n_occ.push_back(3);
     n_active.push_back(2);
@@ -101,8 +102,8 @@ TEST_CASE("Test three electron term - Direct Utils (X_AB Dttilde)") {
   constexpr size_t n_occ = 4;
   constexpr size_t n_active = 3;
 
-  const auto [W, V] = test::setup_integrals_pair(
-      n_ao, n_df, n_ri, {n_occ}, {n_active}, test::seed - 1
+  const auto [W, V] = uw12_test::setup_integrals_pair(
+      n_ao, n_df, n_ri, {n_occ}, {n_active}, uw12_test::seed - 1
   );
 
   const auto W3_imA = W.get_X3idx_one_trans()[0];
@@ -150,8 +151,8 @@ TEST_CASE("Test three electron term - Direct Utils (ttilde dX_AB)") {
   std::vector<size_t> n_occ = {3};
   std::vector<size_t> n_active = {2};
 
-  constexpr auto W_seed = test::seed + 1;
-  constexpr auto V_seed = test::seed;
+  constexpr auto W_seed = uw12_test::seed + 1;
+  constexpr auto V_seed = uw12_test::seed;
 
   const auto W2 = uw12::linalg::random_pd(n_df, W_seed);
   const auto W3 = uw12::linalg::random(n_ao * (n_ao + 1) / 2, n_df, W_seed);
@@ -175,7 +176,8 @@ TEST_CASE("Test three electron term - Direct Utils (ttilde dX_AB)") {
     const auto n_spin = n_occ.size();
     REQUIRE(n_active.size() == n_spin);
 
-    const auto [Co, active_Co] = test::setup_orbitals(n_occ, n_active, n_ao);
+    const auto [Co, active_Co] =
+        uw12_test::setup_orbitals(n_occ, n_active, n_ao);
     REQUIRE(Co.size() == n_spin);
     REQUIRE(active_Co.size() == n_spin);
 
@@ -201,10 +203,10 @@ TEST_CASE("Test three electron term - Direct Utils (ttilde dX_AB)") {
 
       for (size_t sigma = 0; sigma < n_spin; ++sigma) {
         CHECK(uw12::linalg::nearly_equal(
-            ttilde[sigma], ttilde_direct[sigma], test::epsilon
+            ttilde[sigma], ttilde_direct[sigma], uw12_test::epsilon
         ));
         CHECK(uw12::linalg::nearly_equal(
-            ttilde[sigma], ttilde_indirect[sigma], test::epsilon
+            ttilde[sigma], ttilde_indirect[sigma], uw12_test::epsilon
         ));
       }
     }
@@ -222,7 +224,7 @@ TEST_CASE("Test three electron term - Direct Utils (ttilde dX_AB)") {
       REQUIRE(uw12::linalg::n_cols(ttilde_dxab_direct) == n_ao);
 
       CHECK(uw12::linalg::nearly_equal(
-          ttilde_dxab, ttilde_dxab_direct, test::epsilon
+          ttilde_dxab, ttilde_dxab_direct, uw12_test::epsilon
       ));
 
       const auto ttilde_dxab_indirect = uw12::three_el::calculate_ttilde_dxab(

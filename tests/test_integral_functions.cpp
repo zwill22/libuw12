@@ -5,7 +5,7 @@
 #include "../src/integrals/integral_functions.hpp"
 #include "catch.hpp"
 
-using namespace test;
+using namespace uw12_test;
 
 TEST_CASE("Test integrals - Test integral functions") {
   const std::vector<size_t> df_shell_sizes = {1, 3, 5, 7, 9, 11};

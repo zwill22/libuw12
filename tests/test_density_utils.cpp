@@ -6,11 +6,11 @@
 #include "catch.hpp"
 #include "density_utils.hpp"
 
+using namespace uw12_test;
+
 using density::calculate_orbitals_from_density;
 using density::orbitals_from_density;
 using density::random_density_matrix;
-using test::epsilon;
-using test::seed;
 
 using uw12::linalg::n_cols;
 using uw12::linalg::n_elem;

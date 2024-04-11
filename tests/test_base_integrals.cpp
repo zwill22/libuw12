@@ -6,7 +6,7 @@
 #include "catch.hpp"
 
 using namespace uw12::integrals;
-using namespace test;
+using namespace uw12_test;
 
 void check_df_vals(const BaseIntegrals &base_integrals, const size_t n_df) {
   const auto &P2 = base_integrals.get_P2();

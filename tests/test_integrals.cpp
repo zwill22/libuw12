@@ -8,7 +8,7 @@
 using namespace uw12::utils;
 using namespace uw12::linalg;
 using namespace uw12::integrals;
-using namespace test;
+using namespace uw12_test;
 
 void test_integrals(
     const Orbitals &occ_orbitals,
@@ -179,7 +179,6 @@ void test_integrals(
       const auto occ = {head_rows(C, n_ao - 1)};
       CHECK_THROWS(Integrals(base_integrals, occ, occ).number_ao_orbitals());
     }
-
   }
 
   SECTION("Direct") {

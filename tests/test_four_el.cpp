@@ -8,23 +8,23 @@
 #include "multi_el_test_utils.hpp"
 #include "setup_integrals.hpp"
 
-using test::eps;
-using test::epsilon;
-using test::margin;
-using test::seed;
 using uw12::four_el::form_fock_four_el_df;
 using uw12::integrals::Integrals;
+using uw12_test::eps;
+using uw12_test::epsilon;
+using uw12_test::margin;
+using uw12_test::seed;
 
 void run_os_tests(const Integrals &W, const Integrals &V) {
-  test::run_os_tests(W, V, form_fock_four_el_df);
+  uw12_test::run_os_tests(W, V, form_fock_four_el_df);
 }
 
 void run_ss_test(const Integrals &W, const Integrals &V) {
-  test::run_ss_test(W, V, form_fock_four_el_df);
+  uw12_test::run_ss_test(W, V, form_fock_four_el_df);
 }
 
 void run_test_full(const Integrals &W, const Integrals &V) {
-  test::run_test_full(W, V, form_fock_four_el_df);
+  uw12_test::run_test_full(W, V, form_fock_four_el_df);
 }
 
 TEST_CASE("Test four electron term - Closed Shell (opposite spin only)") {
@@ -35,7 +35,7 @@ TEST_CASE("Test four electron term - Closed Shell (opposite spin only)") {
   const std::vector<size_t> n_active = {4};
 
   const auto [W, V] =
-      test::setup_integrals_pair(n_ao, n_df, n_occ, n_active, seed + 1);
+      uw12_test::setup_integrals_pair(n_ao, n_df, n_occ, n_active, seed + 1);
 
   run_os_tests(W, V);
 }
@@ -48,7 +48,7 @@ TEST_CASE("Test four electron term - Closed Shell (same spin only)") {
   const std::vector<size_t> n_active = {4};
 
   const auto [W, V] =
-      test::setup_integrals_pair(n_ao, n_df, n_occ, n_active, seed + 1);
+      uw12_test::setup_integrals_pair(n_ao, n_df, n_occ, n_active, seed + 1);
 
   run_ss_test(W, V);
 }
@@ -61,7 +61,7 @@ TEST_CASE("Test four electron term - Closed Shell (full expression)") {
   const std::vector<size_t> n_active = {4};
 
   const auto [W, V] =
-      test::setup_integrals_pair(n_ao, n_df, n_occ, n_active, seed + 1);
+      uw12_test::setup_integrals_pair(n_ao, n_df, n_occ, n_active, seed + 1);
 
   run_test_full(W, V);
 }
@@ -72,7 +72,7 @@ void check_equality_open_closed_spin(
     const uw12::utils::Orbitals &Co,
     const uw12::utils::Orbitals &active_Co
 ) {
-  test::check_equality_open_closed_spin(
+  uw12_test::check_equality_open_closed_spin(
       W_base, V_base, Co, active_Co, form_fock_four_el_df
   );
 }
@@ -86,10 +86,10 @@ TEST_CASE(
   const std::vector<size_t> n_occ = {5};
   const std::vector<size_t> n_active = {4};
 
-  const auto W_base = test::setup_base_integrals(n_ao, n_df, seed + 1);
-  const auto V_base = test::setup_base_integrals(n_ao, n_df, seed);
+  const auto W_base = uw12_test::setup_base_integrals(n_ao, n_df, seed + 1);
+  const auto V_base = uw12_test::setup_base_integrals(n_ao, n_df, seed);
 
-  const auto [Co, active_Co] = test::setup_orbitals(n_occ, n_active, n_ao);
+  const auto [Co, active_Co] = uw12_test::setup_orbitals(n_occ, n_active, n_ao);
 
   check_equality_open_closed_spin(W_base, V_base, Co, active_Co);
 }
@@ -100,7 +100,7 @@ auto get_integral_fn(const size_t n_ao, const size_t n_df) {
              const std::vector<size_t> &n_active,
              const int seed
          ) {
-    return test::setup_integrals_pair(n_ao, n_df, n_occ, n_active, seed);
+    return uw12_test::setup_integrals_pair(n_ao, n_df, n_occ, n_active, seed);
   };
 }
 
@@ -112,7 +112,7 @@ TEST_CASE("Test four electron term - Closed Shell (Check cases)") {
 
   const auto integral_fn = get_integral_fn(n_ao, n_df);
 
-  test::check_closed_shell_cases(integral_fn, form_fock_four_el_df, fock0);
+  uw12_test::check_closed_shell_cases(integral_fn, form_fock_four_el_df, fock0);
 }
 
 TEST_CASE("Test four electron term - Open Shell (opposite spin only)") {
@@ -123,7 +123,7 @@ TEST_CASE("Test four electron term - Open Shell (opposite spin only)") {
   const std::vector<size_t> n_active = {4, 3};
 
   const auto [W, V] =
-      test::setup_integrals_pair(n_ao, n_df, n_occ, n_active, seed + 1);
+      uw12_test::setup_integrals_pair(n_ao, n_df, n_occ, n_active, seed + 1);
 
   run_os_tests(W, V);
 }
@@ -136,7 +136,7 @@ TEST_CASE("Test four electron term - Open Shell (same spin only)") {
   const std::vector<size_t> n_active = {4, 3};
 
   const auto [W, V] =
-      test::setup_integrals_pair(n_ao, n_df, n_occ, n_active, seed + 1);
+      uw12_test::setup_integrals_pair(n_ao, n_df, n_occ, n_active, seed + 1);
 
   run_ss_test(W, V);
 }
@@ -149,7 +149,7 @@ TEST_CASE("Test four electron term - Open Shell (full expression)") {
   const std::vector<size_t> n_active = {4, 3};
 
   const auto [W, V] =
-      test::setup_integrals_pair(n_ao, n_df, n_occ, n_active, seed + 1);
+      uw12_test::setup_integrals_pair(n_ao, n_df, n_occ, n_active, seed + 1);
 
   run_test_full(W, V);
 }
@@ -162,7 +162,7 @@ TEST_CASE("Test four electron term - Open Shell (All electron case)") {
   const std::vector<size_t> n_active = {5, 4};
 
   const auto [W, V] =
-      test::setup_integrals_pair(n_ao, n_df, n_occ, n_active, seed + 1);
+      uw12_test::setup_integrals_pair(n_ao, n_df, n_occ, n_active, seed + 1);
 
   // TODO Add test
   form_fock_four_el_df(W, V, true, true, 1.0, 0.5);
@@ -176,7 +176,7 @@ TEST_CASE("Test four electron term - Open Shell (No active orbitals)") {
 
   const auto integral_fn = get_integral_fn(n_ao, n_df);
 
-  test::check_open_shell_no_active_orbitals(
+  uw12_test::check_open_shell_no_active_orbitals(
       form_fock_four_el_df, integral_fn, fock0
   );
 }
@@ -260,7 +260,7 @@ void test_four_el_fock_all_electron(
     const uw12::utils::DensityMatrix &D,
     const double threshold
 ) {
-  test::test_multi_el_fock_all_electron(
+  uw12_test::test_multi_el_fock_all_electron(
       form_fock_four_el_df, W_base, V_base, D, threshold
   );
 }
@@ -272,10 +272,10 @@ TEST_CASE("Test four electron term - Test Fock matrix (Closed Shell)") {
 
   const std::vector<size_t> n_occ = {5};
 
-  const auto W_base = test::setup_base_integrals(n_ao, n_df, seed + 1);
-  const auto V_base = test::setup_base_integrals(n_ao, n_df, seed);
+  const auto W_base = uw12_test::setup_base_integrals(n_ao, n_df, seed + 1);
+  const auto V_base = uw12_test::setup_base_integrals(n_ao, n_df, seed);
 
-  const auto D = density::random_density_matrix(n_occ, n_ao, seed);
+  const auto D = uw12_test::density::random_density_matrix(n_occ, n_ao, seed);
 
   test_four_el_fock_all_electron(W_base, V_base, D, threshold);
 }
@@ -287,10 +287,10 @@ TEST_CASE("Test four electron term - Test Fock matrix (Open Shell)") {
 
   const std::vector<size_t> n_occ = {5, 4};
 
-  const auto W_base = test::setup_base_integrals(n_ao, n_df, seed + 1);
-  const auto V_base = test::setup_base_integrals(n_ao, n_df, seed);
+  const auto W_base = uw12_test::setup_base_integrals(n_ao, n_df, seed + 1);
+  const auto V_base = uw12_test::setup_base_integrals(n_ao, n_df, seed);
 
-  const auto D = density::random_density_matrix(n_occ, n_ao, seed);
+  const auto D = uw12_test::density::random_density_matrix(n_occ, n_ao, seed);
 
   test_four_el_fock_all_electron(W_base, V_base, D, threshold);
 }

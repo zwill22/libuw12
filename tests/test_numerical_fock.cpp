@@ -8,6 +8,8 @@
 #include "numerical_fock.hpp"
 
 using uw12::utils::DensityMatrix;
+using uw12_test::epsilon;
+using uw12_test::seed;
 
 constexpr auto delta = 1e-4;
 
@@ -31,20 +33,18 @@ void run_test(const DensityMatrix& D_mat) {
   };
 
   const auto num_fock =
-      fock::numerical_fock_matrix(energy_function, D_mat, delta);
+      uw12_test::fock::numerical_fock_matrix(energy_function, D_mat, delta);
 
   for (size_t sigma = 0; sigma < n_spin; ++sigma) {
     const uw12::linalg::Mat analytic_fock = 2 * D_mat[sigma];
-    CHECK(uw12::linalg::nearly_equal(
-        analytic_fock, num_fock[sigma], test::epsilon
-    ));
+    CHECK(uw12::linalg::nearly_equal(analytic_fock, num_fock[sigma], epsilon));
   }
 }
 
 TEST_CASE("Test Fock - Test numerical Fock (Closed Shell)") {
   constexpr auto n_ao = 5;
 
-  const auto D1 = uw12::linalg::random(n_ao, n_ao, test::seed);
+  const auto D1 = uw12::linalg::random(n_ao, n_ao, seed);
   const DensityMatrix D_mat = {0.5 * (D1 + uw12::linalg::transpose(D1))};
 
   run_test(D_mat);
@@ -53,7 +53,7 @@ TEST_CASE("Test Fock - Test numerical Fock (Closed Shell)") {
 TEST_CASE("Test Fock - Test numerical Fock (Open Shell)") {
   constexpr auto n_ao = 7;
 
-  const auto Dall = uw12::linalg::random(n_ao, 2 * n_ao, test::seed);
+  const auto Dall = uw12::linalg::random(n_ao, 2 * n_ao, seed);
 
   const auto D1 = uw12::linalg::head_cols(Dall, n_ao);
   REQUIRE(uw12::linalg::n_cols(D1) == n_ao);

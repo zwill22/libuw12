@@ -7,7 +7,7 @@
 
 using namespace uw12;
 using namespace utils;
-using namespace test;
+using namespace uw12_test;
 
 using Catch::Matchers::WithinAbs;
 
@@ -235,18 +235,21 @@ TEST_CASE("Test utils - Orbitals") {
 
   const auto n_spin = spin_channels(orbitals);
   REQUIRE(n_spin == 2);
+  const std::vector<size_t> n_active = {3, 3};
 
   SECTION("Freeze core") {
-    constexpr auto n_core = 1;
+    CHECK_THROWS(freeze_core(orbitals, {5}));
+    CHECK_THROWS(freeze_core(orbitals, {5, 5}));
+    for (const auto n_a : n_active) {
+      REQUIRE(n_orb - n_a >= 0);
+    }
 
-    CHECK_THROWS(freeze_core(orbitals, 5));
-    REQUIRE(n_orb - n_core >= 0);
-
-    const auto frozen_orbitals = freeze_core(orbitals, n_core);
+    const auto frozen_orbitals = freeze_core(orbitals, n_active);
     REQUIRE(spin_channels(frozen_orbitals) == n_spin);
-    for (const auto &orb : frozen_orbitals) {
+    for (size_t sigma = 0; sigma < n_spin; ++sigma) {
+      const auto &orb = frozen_orbitals[sigma];
       CHECK(linalg::n_rows(orb) == nao);
-      CHECK(linalg::n_cols(orb) == n_orb - n_core);
+      CHECK(linalg::n_cols(orb) == n_active[sigma]);
     }
   }
 

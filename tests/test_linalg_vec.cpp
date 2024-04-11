@@ -7,7 +7,7 @@
 #include "../src/utils/linalg.hpp"
 #include "catch.hpp"
 
-using test::margin;
+using uw12_test::margin;
 using uw12::linalg::Vec;
 
 void check_equal(const Vec &vec, const std::vector<double> &vector) {

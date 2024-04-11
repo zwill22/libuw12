@@ -8,7 +8,7 @@
 #include "catch.hpp"
 
 using namespace uw12::parallel;
-using namespace test;
+using namespace uw12_test;
 
 TEST_CASE("Test Parallel - parallel_for") {
   INFO("Check parallel for returns the same result in parallel and not");

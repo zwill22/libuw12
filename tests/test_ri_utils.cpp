@@ -3,23 +3,23 @@
 //
 
 #include "../src/three_electron/ri_utils.hpp"
-
-#include "catch.hpp"
 #include "../src/utils/linalg.hpp"
+#include "catch.hpp"
 
-using uw12::linalg::n_rows;
 using uw12::linalg::n_cols;
+using uw12::linalg::n_rows;
 
 TEST_CASE("Test RI utils - Test ABS projectors") {
   constexpr size_t n_ao = 10;
   constexpr size_t n_ri = 24;
 
-  const auto s = uw12::linalg::random_pd(n_ao + n_ri, test::seed);
+  const auto s = uw12::linalg::random_pd(n_ao + n_ri, uw12_test::seed);
 
   REQUIRE(uw12::linalg::n_rows(s) == n_ao + n_ri);
   REQUIRE(uw12::linalg::n_cols(s) == n_ao + n_ri);
 
-  const auto abs_proj = uw12::three_el::ri::calculate_abs_projectors(s, n_ao, n_ri);
+  const auto abs_proj =
+      uw12::three_el::ri::calculate_abs_projectors(s, n_ao, n_ri);
 
   const auto s_inv_ao_ao = abs_proj.s_inv_ao_ao;
   REQUIRE(n_rows(s_inv_ao_ao) == n_ao);

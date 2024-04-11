@@ -12,7 +12,7 @@
 #include "../src/utils/utils.hpp"
 #include "catch.hpp"
 
-namespace test {
+namespace uw12_test {
 
 /// Setup random base integrals instance given minimum number of parameters
 ///
@@ -144,7 +144,7 @@ inline auto setup_integrals_pair(
 }
 
 inline auto setup_abs_projector(
-    const size_t n_ao, const size_t n_ri, const int S_seed = test::seed
+    const size_t n_ao, const size_t n_ri, const int S_seed = seed
 ) {
   const auto s = uw12::linalg::random_pd(n_ao + n_ri, S_seed);
 
@@ -174,7 +174,9 @@ inline auto setup_base_integrals_direct(
   );
 }
 
-inline auto setup_base_integrals_not_direct(const uw12::integrals::BaseIntegrals& W) {
+inline auto setup_base_integrals_not_direct(
+    const uw12::integrals::BaseIntegrals& W
+) {
   const auto W2_func = [&W] { return W.two_index(); };
   const auto& W3_func = [&W](const size_t A) { return W.three_index(A); };
   const auto& W3_ri_func = [&W](const size_t A) { return W.three_index_ri(A); };
@@ -190,6 +192,6 @@ inline auto setup_base_integrals_not_direct(const uw12::integrals::BaseIntegrals
   );
 }
 
-}  // namespace test
+}  // namespace uw12_test
 
 #endif  // SETUP_INTEGRALS_HPP

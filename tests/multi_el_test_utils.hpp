@@ -8,7 +8,7 @@
 #include "../src/integrals/integrals.hpp"
 #include "numerical_fock.hpp"
 
-namespace test {
+namespace uw12_test {
 
 template <typename Fock>
 auto fock_zero(const Fock &fock) {
@@ -337,18 +337,21 @@ void test_multi_el_fock_all_electron(
 
     REQUIRE((uw12::utils::spin_channels(analytic_fock) == n_spin));
 
-    const auto energy_fn =
-        [&W_base, &V_base, scale_opp_spin, &fock_fn, scale_same_spin, threshold](
-            const uw12::utils::DensityMatrix &D_mat
-        ) {
-          const auto occ_orbitals =
-              density::calculate_orbitals_from_density(D_mat, threshold);
+    const auto energy_fn = [&W_base,
+                            &V_base,
+                            scale_opp_spin,
+                            &fock_fn,
+                            scale_same_spin,
+                            threshold](const uw12::utils::DensityMatrix &D_mat
+                           ) {
+      const auto occ_orbitals =
+          density::calculate_orbitals_from_density(D_mat, threshold);
 
-          const auto W = Integrals(W_base, occ_orbitals, occ_orbitals);
-          const auto V = Integrals(V_base, occ_orbitals, occ_orbitals);
+      const auto W = Integrals(W_base, occ_orbitals, occ_orbitals);
+      const auto V = Integrals(V_base, occ_orbitals, occ_orbitals);
 
-          return fock_fn(W, V, true, true, scale_opp_spin, scale_same_spin).energy;
-        };
+      return fock_fn(W, V, true, true, scale_opp_spin, scale_same_spin).energy;
+    };
 
     REQUIRE_THAT(energy_fn(D), Catch::Matchers::WithinRel(energy, margin));
 
@@ -363,6 +366,6 @@ void test_multi_el_fock_all_electron(
   }
 }
 
-}  // namespace test
+}  // namespace uw12_test
 
 #endif  // MULTI_ELECTRON_TEST_UTILS_HPP

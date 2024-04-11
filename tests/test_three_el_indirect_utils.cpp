@@ -6,32 +6,32 @@
 #include "catch.hpp"
 #include "setup_integrals.hpp"
 
-using test::setup_abs_projector;
-using test::setup_base_integrals;
-using test::setup_base_integrals_direct;
+using uw12_test::setup_abs_projector;
+using uw12_test::setup_base_integrals;
+using uw12_test::setup_base_integrals_direct;
 
 constexpr size_t n_ao = 5;
 constexpr size_t n_df = 11;
 constexpr size_t n_ri = 17;
-constexpr auto W_seed = test::seed + 1;
-constexpr auto V_seed = test::seed;
+constexpr auto W_seed = uw12_test::seed + 1;
+constexpr auto V_seed = uw12_test::seed;
 
-const auto abs_projectors = test::setup_abs_projector(n_ao, n_ri);
+const auto abs_projectors = uw12_test::setup_abs_projector(n_ao, n_ri);
 
 TEST_CASE("Test three electron term - Indirect Utils (Indirect energy)") {
   std::vector<size_t> n_occ = {4};
   std::vector<size_t> n_active = {3};
 
   for (int i = 0; i < 2; ++i) {
-    const auto [W, V] = test::setup_integrals_pair(
-        n_ao, n_df, n_ri, n_occ, n_active, test::seed - 1
+    const auto [W, V] = uw12_test::setup_integrals_pair(
+        n_ao, n_df, n_ri, n_occ, n_active, W_seed
     );
 
     const auto e = uw12::three_el::indirect_3el_energy(W, V, abs_projectors);
 
     const auto e2 = uw12::three_el::indirect_3el_energy(V, W, abs_projectors);
 
-    CHECK_THAT(e, Catch::Matchers::WithinRel(e2, test::eps));
+    CHECK_THAT(e, Catch::Matchers::WithinRel(e2, uw12_test::eps));
     n_occ.push_back(3);
     n_active.push_back(2);
   }
@@ -61,7 +61,8 @@ TEST_CASE("Test three electron term - Indirect Utils (Indirect Fock)") {
     const auto n_spin = uw12::utils::spin_channels(n_occ);
     REQUIRE(uw12::utils::spin_channels(n_active) == n_spin);
 
-    const auto [Co, active_Co] = test::setup_orbitals(n_occ, n_active, n_ao);
+    const auto [Co, active_Co] =
+        uw12_test::setup_orbitals(n_occ, n_active, n_ao);
 
     const auto W = uw12::integrals::Integrals(W_base, Co, active_Co);
     const auto V = uw12::integrals::Integrals(V_base, Co, active_Co);
@@ -81,7 +82,7 @@ TEST_CASE("Test three electron term - Indirect Utils (Indirect Fock)") {
           W_direct, V_direct, abs_projectors, sigma
       );
 
-      CHECK(uw12::linalg::nearly_equal(fock, fock2, test::epsilon));
+      CHECK(uw12::linalg::nearly_equal(fock, fock2, uw12_test::epsilon));
     }
     n_occ.push_back(3);
     n_active.push_back(2);

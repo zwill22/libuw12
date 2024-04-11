@@ -6,12 +6,12 @@
 #include "catch.hpp"
 #include "setup_integrals.hpp"
 
-using test::epsilon;
-using test::margin;
-using test::seed;
-using test::setup_base_integrals;
-using test::setup_orbitals;
 using uw12::integrals::Integrals;
+using uw12_test::epsilon;
+using uw12_test::margin;
+using uw12_test::seed;
+using uw12_test::setup_base_integrals;
+using uw12_test::setup_orbitals;
 
 TEST_CASE("Test Four Electron Utils - Test energy spin factor") {
   using uw12::four_el::get_energy_spin_factor;

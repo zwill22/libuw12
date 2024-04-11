@@ -7,7 +7,7 @@
 
 #include "../src/utils/utils.hpp"
 
-namespace density {
+namespace uw12_test::density {
 
 /// Calculates a random density matrix with number of spin channels determined
 /// by length of `n_occ` and size `n_ao * n_ao`.
@@ -53,7 +53,7 @@ inline std::pair<uw12::linalg::Mat, uw12::linalg::Vec> orbitals_from_density(
   assert(epsilon > 0);
 
   if (uw12::linalg::nearly_equal(
-          D, uw12::linalg::zeros(n_ao, n_ao), test::epsilon
+          D, uw12::linalg::zeros(n_ao, n_ao), uw12_test::epsilon
       )) {
     return {uw12::linalg::zeros(n_ao, 1), uw12::linalg::ones(1)};
   }
@@ -90,6 +90,6 @@ inline uw12::utils::Orbitals calculate_orbitals_from_density(
 
   return uw12::utils::occupation_weighted_orbitals(orbitals, occupations);
 }
-}  // namespace density
+}  // namespace uw12_test::density
 
 #endif
