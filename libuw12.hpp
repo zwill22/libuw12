@@ -5,247 +5,150 @@
 #ifndef LIBUW12_HPP
 #define LIBUW12_HPP
 
+#include "src/integrals/base_integrals.hpp"
+#include "src/three_electron/ri_utils.hpp"
+#include "src/utils/utils.hpp"
+
 namespace uw12 {
 
-/// Calculate the UW12 energy only (Closed shell)
+/// Initialise a set of BaseIntegrals for a given inter-electron potential
+/// x_{12} using arrays for each integrals
 ///
-/// @param W3 Ptr to three index integrals \f$(\rho\sigma | w_{12} | A)\f$
+/// @param X3 Ptr to three index integrals \f$(\rho\sigma | x_{12} | A)\f$
 ///           given by an array of size `n_ao * (n_ao + 1) /2 * n_df`
-/// @param W2 Ptr to two index integrals \f$(A | w_{12} | B)\f$ given by
+/// @param X2 Ptr to two index integrals \f$(A | x_{12} | B)\f$ given by
 ///           an array of size `n_df * n_df`
-/// @param W3_ri  Ptr to three index RI integrals \f$(\mu\rho|r_{12}^{-1}|A)\f$
+/// @param X3_ri  Ptr to three index RI integrals \f$(\mu\rho|x_{12}|A)\f$
 ///               given by an array of size `n_ao * n_ri * n_df`
-/// @param V3 Ptr to three index integrals \f$(\rho\sigma|r_{12}^{-1}|A)\f$
-///           given by an array of size `n_ao * (n_ao + 1) /2 * n_df`
-/// @param V2 Ptr to two index integrals \f$(A | r_{12}^{-1} | B)\f$ given by
-///           an array of size `n_df * n_df`
-/// @param V3_ri  Ptr to three index RI integrals \f$(\mu\rho|r_{12}^{-1}|A)\f$
-///               given by an array of size `n_ao * n_ri * n_df`
-/// @param WV3  Ptr to three index integrals
-///             \f$(\rho\sigma|w_{12}r_{12}^{-1}|A)\f$ given by an array of size
-///             `n_ao * (n_ao + 1) /2 * n_df`
-/// @param WV2  Ptr to two index integrals \f$(A|w_{12}r_{12}^{-1}|B)\f$ given
-///             by an array of size `n_df * n_df`
-/// @param S2 Ptr to overlap matrix \f$(\mu | \nu)\f$ for the combined ao and
-///           auxilliary RI space array of size `(n_ao + n_ri) * (n_ao + n_ri)`
-/// @param C  Ptr to orbital coefficients of size `n_ao * n_orb`
-/// @param occ Ptr to array of occupation number of size `n_occ`
-/// @param n_ao Number of atomic orbital basis functions
-/// @param n_df Number of density-fitting basis functions
+/// @param n_ao Number of atomic orbitals
+/// @param n_df Number of density-fitting orbitals
 /// @param n_ri Number of auxilliary RI basis functions
-/// @param n_orb Number of molecular orbitals provided
+///
+/// @return BaseIntegrals
+integrals::BaseIntegrals setup_base_integrals(
+    const double* X3,
+    const double* X2,
+    const double* X3_ri,
+    size_t n_ao,
+    size_t n_df,
+    size_t n_ri
+);
+
+/// Initialise a set of BaseIntegrals for a given inter-electron potential
+/// x_{12} using arrays for each integrals.
+///
+/// @param X3 Ptr to three index integrals \f$(\rho\sigma | x_{12} | A)\f$
+///           given by an array of size `n_ao * (n_ao + 1) /2 * n_df`
+/// @param X2 Ptr to two index integrals \f$(A | x_{12} | B)\f$ given by
+///           an array of size `n_df * n_df`
+/// @param n_ao Number of atomic orbitals
+/// @param n_df Number of density-fitting orbitals
+///
+/// @return BaseIntegrals (no RI)
+integrals::BaseIntegrals setup_base_integrals(
+    const double* X3, const double* X2, size_t n_ao, size_t n_df
+);
+
+/// Setup the projectors for the ABS+ RI method
+///
+/// @param S Ptr to overlap matrix \f$(\mu | \nu)\f$ for the combined ao and
+///          auxilliary RI space array of size `(n_ao + n_ri) * (n_ao + n_ri)`
+/// @param n_ao Number of atomic orbitals
+/// @param n_ri Number of auxilliary RI orbitals
+///
+/// @return ABSProjectors
+three_el::ri::ABSProjectors setup_abs_projectors(
+    const double* S, size_t n_ao, size_t n_ri
+);
+
+/// Setup orbitals from memory
+///
+/// @param C Ptr to orbital coefficients of size `n_ao * (2 * n_orb)`
+/// @param n_ao Number of atomic orbitals
+/// @param n_orb Number of molecular orbitals provided (per spin channel
+/// @param n_spin Number of spin channels
+///
+/// @return Orbitals
+utils::Orbitals setup_orbitals(
+    const double* C, size_t n_ao, size_t n_orb, size_t n_spin
+);
+
+/// Setup orbital occupations (Closed shell)
+/// Occupations must correspond to the first `n_occ` orbitals in `C`
+///
+/// @param occ Occupation vector as an array of size `n_occ`
 /// @param n_occ Number of occupied orbitals
-/// @param n_active Number of active orbitals
-/// @param scale_same_spin Scale factor for same spin UW12 (if zero, an osUW12
-///                        calculation is performed)
+///
+/// @return Occupations
+utils::Occupations setup_occupations(const double* occ, size_t n_occ);
+
+/// Setup orbital occupations (Open shell)
+/// Occupations must correspond to orbital coefficient in `C`
+///
+/// @param occ Occupation vector as an array of size `n_occ`
+/// @param n_occ_alpha Number of occupied orbitals in spin channel alpha
+/// @param n_occ_beta Number of occupied orbitals in spin channel beta
+///
+/// @return Occupations
+utils::Occupations setup_occupations(
+    const double* occ, size_t n_occ_alpha, size_t n_occ_beta
+);
+
+/// Calculate the UW12 energy only
+///
+/// @param W BaseIntegrals for \f$w_{12}\f$ (must include RI)
+/// @param V BaseIntegrals for \f$r_{12}^{-1}\f$ (must include RI)
+/// @param WV BaseIntegrals for \f$w_{12} r_{12}^{-1}\f$ (no RI)
+/// @param abs_projectors Projectors for ABS+
+/// @param orbitals Vector of orbitals
+/// @param occ Occupation vectors for each spin channel
+/// @param n_active Vector of number of active orbitals for each spin channel
+/// @param scale_opp_spin Scale factor for osUW12
+/// @param scale_same_spin Scale factor for ssUW12
 /// @param print_level Adjust details printed (0-3) default: 0 (silent)
 ///
 /// @return UW12 energy
 double uw12_energy(
-    const double* W3,
-    const double* W2,
-    const double* W3_ri,
-    const double* V3,
-    const double* V2,
-    const double* V3_ri,
-    const double* WV3,
-    const double* WV2,
-    const double* S2,
-    const double* C,
-    const double* occ,
-    size_t n_ao,
-    size_t n_df,
-    size_t n_ri,
-    size_t n_orb,
-    size_t n_occ,
-    size_t n_active,
+    const integrals::BaseIntegrals& W,
+    const integrals::BaseIntegrals& V,
+    const integrals::BaseIntegrals& WV,
+    const three_el::ri::ABSProjectors& abs_projectors,
+    const utils::Orbitals& orbitals,
+    const utils::Occupations& occ,
+    const std::vector<size_t>& n_active,
+    double scale_opp_spin,
     double scale_same_spin,
     size_t print_level = 0
 );
 
-/// Calculate the UW12 energy only (Closed shell)
+/// Calculate the UW12 fock matrix and energy
 ///
-/// @param W3 Ptr to three index integrals \f$(\rho\sigma | w_{12} | A)\f$
-///           given by an array of size `n_ao * (n_ao + 1) /2 * n_df`
-/// @param W2 Ptr to two index integrals \f$(A | w_{12} | B)\f$ given by
-///           an array of size `n_df * n_df`
-/// @param W3_ri  Ptr to three index RI integrals \f$(\mu\rho|r_{12}^{-1}|A)\f$
-///               given by an array of size `n_ao * n_ri * n_df`
-/// @param V3 Ptr to three index integrals \f$(\rho\sigma|r_{12}^{-1}|A)\f$
-///           given by an array of size `n_ao * (n_ao + 1) /2 * n_df`
-/// @param V2 Ptr to two index integrals \f$(A | r_{12}^{-1} | B)\f$ given by
-///           an array of size `n_df * n_df`
-/// @param V3_ri  Ptr to three index RI integrals \f$(\mu\rho|r_{12}^{-1}|A)\f$
-///               given by an array of size `n_ao * n_ri * n_df`
-/// @param WV3  Ptr to three index integrals
-///             \f$(\rho\sigma|w_{12}r_{12}^{-1}|A)\f$ given by an array of size
-///             `n_ao * (n_ao + 1) /2 * n_df`
-/// @param WV2  Ptr to two index integrals \f$(A|w_{12}r_{12}^{-1}|B)\f$ given
-///             by an array of size `n_df * n_df`
-/// @param S2 Ptr to overlap matrix \f$(\mu | \nu)\f$ for the combined ao and
-///           auxilliary RI space array of size `(n_ao + n_ri) * (n_ao + n_ri)`
-/// @param C  Ptr to orbital coefficients of size `n_ao * (2 * n_orb)`
-/// @param occ Ptr to array of occupation number of size `n_occ_alpha +
-///            n_occ_beta`
-/// @param n_ao Number of atomic orbital basis functions
-/// @param n_df Number of density-fitting basis functions
-/// @param n_ri Number of auxilliary RI basis functions
-/// @param n_orb Number of molecular orbitals provided in each spin channel
-/// @param n_occ_alpha Number of occupied orbitals in spin channel alpha
-/// @param n_occ_beta Number of occupied orbitals in spin channel beta
-/// @param n_active_alpha Number of active orbitals in spin channel alpha
-/// @param n_active_beta Number of active orbitals in spin channel beta
-/// @param scale_same_spin  Scale factor for same spin UW12 (if zero, an osUW12
-///                         calculation is performed)
+/// @param fock Resulting fock matrix for UW12
+/// @param W BaseIntegrals for \f$w_{12}\f$ (must include RI)
+/// @param V BaseIntegrals for \f$r_{12}^{-1}\f$ (must include RI)
+/// @param WV BaseIntegrals for \f$w_{12} r_{12}^{-1}\f$ (no RI)
+/// @param abs_projectors Projectors for ABS+
+/// @param orbitals Vector of orbitals
+/// @param occ Occupation vectors for each spin channel
+/// @param n_active Vector of number of active orbitals for each spin channel
+/// @param scale_opp_spin Scale factor for osUW12
+/// @param scale_same_spin Scale factor for ssUW12
 /// @param print_level Adjust details printed (0-3) default: 0 (silent)
 ///
-/// @return UW12 energy
-double uw12_energy(
-    const double* W3,
-    const double* W2,
-    const double* W3_ri,
-    const double* V3,
-    const double* V2,
-    const double* V3_ri,
-    const double* WV3,
-    const double* WV2,
-    const double* S2,
-    const double* C,
-    const double* occ,
-    size_t n_ao,
-    size_t n_df,
-    size_t n_ri,
-    size_t n_orb,
-    size_t n_occ_alpha,
-    size_t n_occ_beta,
-    size_t n_active_alpha,
-    size_t n_active_beta,
+/// @return UW12 Fock matrix and energy
+double uw12_fock(
+    double* fock,
+    const integrals::BaseIntegrals& W,
+    const integrals::BaseIntegrals& V,
+    const integrals::BaseIntegrals& WV,
+    const three_el::ri::ABSProjectors& abs_projectors,
+    const utils::Orbitals& orbitals,
+    const utils::Occupations& occ,
+    const std::vector<size_t>& n_active,
+    double scale_opp_spin,
     double scale_same_spin,
     size_t print_level = 0
 );
-
-/// Calculate the UW12 fock matrix and energy (Closed shell)
-///
-/// @param fock Ptr to Fock matrix of size `n_ao * n_ao` to be filled
-/// @param W3 Ptr to three index integrals \f$(\rho\sigma | w_{12} | A)\f$
-///           given by an array of size `n_ao * (n_ao + 1) /2 * n_df`
-/// @param W2 Ptr to two index integrals \f$(A | w_{12} | B)\f$ given by
-///           an array of size `n_df * n_df`
-/// @param W3_ri  Ptr to three index RI integrals \f$(\mu\rho|r_{12}^{-1}|A)\f$
-///               given by an array of size `n_ao * n_ri * n_df`
-/// @param V3 Ptr to three index integrals \f$(\rho\sigma|r_{12}^{-1}|A)\f$
-///           given by an array of size `n_ao * (n_ao + 1) /2 * n_df`
-/// @param V2 Ptr to two index integrals \f$(A | r_{12}^{-1} | B)\f$ given by
-///           an array of size `n_df * n_df`
-/// @param V3_ri  Ptr to three index RI integrals \f$(\mu\rho|r_{12}^{-1}|A)\f$
-///               given by an array of size `n_ao * n_ri * n_df`
-/// @param WV3  Ptr to three index integrals
-///             \f$(\rho\sigma|w_{12}r_{12}^{-1}|A)\f$ given by an array of size
-///             `n_ao * (n_ao + 1) /2 * n_df`
-/// @param WV2  Ptr to two index integrals \f$(A|w_{12}r_{12}^{-1}|B)\f$ given
-///             by an array of size `n_df * n_df`
-/// @param S2 Ptr to overlap matrix \f$(\mu | \nu)\f$ for the combined ao and
-///           auxilliary RI space array of size `(n_ao + n_ri) * (n_ao + n_ri)`
-/// @param C  Ptr to orbital coefficients of size `n_ao * n_orb`
-/// @param occ Ptr to array of occupation number of size `n_occ`
-/// @param n_ao Number of atomic orbital basis functions
-/// @param n_df Number of density-fitting basis functions
-/// @param n_ri Number of auxilliary RI basis functions
-/// @param n_orb Number of molecular orbitals provided
-/// @param n_occ Number of occupied orbitals
-/// @param n_active Number of active orbitals
-/// @param scale_same_spin Scale factor for same spin UW12 (if zero, an osUW12
-///                        calculation is performed)
-/// @param print_level Adjust details printed (0-3) default: 0 (silent)
-///
-/// @return UW12 energy
-double uw12_fock(
-    double* fock,
-    const double* W3,
-    const double* W2,
-    const double* W3_ri,
-    const double* V3,
-    const double* V2,
-    const double* V3_ri,
-    const double* WV3,
-    const double* WV2,
-    const double* S2,
-    const double* C,
-    const double* occ,
-    size_t n_ao,
-    size_t n_df,
-    size_t n_ri,
-    size_t n_orb,
-    size_t n_occ,
-    size_t n_active,
-    double scale_same_spin,
-    size_t print_level
-);
-
-/// Calculate the UW12 fock matrix and energy (Open shell)
-///
-/// @param fock Ptr to Fock matrix of size `2 * n_ao * n_ao` to be filled
-/// @param W3 Ptr to three index integrals \f$(\rho\sigma | w_{12} | A)\f$
-///           given by an array of size `n_ao * (n_ao + 1) /2 * n_df`
-/// @param W2 Ptr to two index integrals \f$(A | w_{12} | B)\f$ given by
-///           an array of size `n_df * n_df`
-/// @param W3_ri  Ptr to three index RI integrals \f$(\mu\rho|r_{12}^{-1}|A)\f$
-///               given by an array of size `n_ao * n_ri * n_df`
-/// @param V3 Ptr to three index integrals \f$(\rho\sigma|r_{12}^{-1}|A)\f$
-///           given by an array of size `n_ao * (n_ao + 1) /2 * n_df`
-/// @param V2 Ptr to two index integrals \f$(A | r_{12}^{-1} | B)\f$ given by
-///           an array of size `n_df * n_df`
-/// @param V3_ri  Ptr to three index RI integrals \f$(\mu\rho|r_{12}^{-1}|A)\f$
-///               given by an array of size `n_ao * n_ri * n_df`
-/// @param WV3  Ptr to three index integrals
-///             \f$(\rho\sigma|w_{12}r_{12}^{-1}|A)\f$ given by an array of size
-///             `n_ao * (n_ao + 1) /2 * n_df`
-/// @param WV2  Ptr to two index integrals \f$(A|w_{12}r_{12}^{-1}|B)\f$ given
-///             by an array of size `n_df * n_df`
-/// @param S2 Ptr to overlap matrix \f$(\mu | \nu)\f$ for the combined ao and
-///           auxilliary RI space array of size `(n_ao + n_ri) * (n_ao + n_ri)`
-/// @param C  Ptr to orbital coefficients of size `n_ao * (2 * n_orb)`
-/// @param occ Ptr to array of occupation number of size `n_occ_alpha +
-///            n_occ_beta`
-/// @param n_ao Number of atomic orbital basis functions
-/// @param n_df Number of density-fitting basis functions
-/// @param n_ri Number of auxilliary RI basis functions
-/// @param n_orb Number of molecular orbitals provided in each spin channel
-/// @param n_occ_alpha Number of occupied orbitals in spin channel alpha
-/// @param n_occ_beta Number of occupied orbitals in spin channel beta
-/// @param n_active_alpha Number of active orbitals in spin channel alpha
-/// @param n_active_beta Number of active orbitals in spin channel beta
-/// @param scale_same_spin  Scale factor for same spin UW12 (if zero, an osUW12
-///                         calculation is performed)
-/// @param print_level Adjust details printed (0-3) default: 0 (silent)
-///
-/// @return UW12 energy
-double uw12_fock(
-    double* fock,
-    const double* W3,
-    const double* W2,
-    const double* W3_ri,
-    const double* V3,
-    const double* V2,
-    const double* V3_ri,
-    const double* WV3,
-    const double* WV2,
-    const double* S2,
-    const double* C,
-    const double* occ,
-    size_t n_ao,
-    size_t n_df,
-    size_t n_ri,
-    size_t n_orb,
-    size_t n_occ_alpha,
-    size_t n_occ_beta,
-    size_t n_active_alpha,
-    size_t n_active_beta,
-    double scale_same_spin,
-    size_t print_level
-);
-
-// TODO: More interface options
 
 }  // namespace uw12
 

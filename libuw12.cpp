@@ -14,7 +14,7 @@ auto setup_mat(const double* X, const size_t n_row, const size_t n_col) {
   return linalg::mat(const_cast<double*>(X), n_row, n_col);
 }
 
-auto setup_base_integrals_ri(
+auto setup_base_integrals(
     const double* X3,
     const double* X2,
     const double* X3_ri,
@@ -38,16 +38,26 @@ auto setup_base_integrals(
   return integrals::BaseIntegrals(X3_0, X2_0);
 }
 
+auto setup_abs_projectors(
+    const double* S, const size_t n_ao, const size_t n_ri
+) {
+  const auto S_mat = setup_mat(S, n_ao + n_ri, n_ao + n_ri);
+  return three_el::ri::calculate_abs_projectors(S_mat, n_ao, n_ri);
+}
+
 utils::Orbitals setup_orbitals(
     const double* C, const size_t n_ao, const size_t n_orb, const size_t n_spin
 ) {
+  if (n_spin != 1 && n_spin != 2) {
+    throw std::runtime_error("Number of spin channels must be 1 or 2");
+  }
+
   const auto C1 = setup_mat(C, n_ao, n_orb * n_spin);
 
   if (n_spin == 1) {
     return {C1};
   }
 
-  assert(n_spin == 2);
   assert(linalg::n_cols(C1) == n_orb * 2);
 
   const auto C_alpha = linalg::head_cols(C1, n_orb);
@@ -80,25 +90,17 @@ utils::Occupations setup_occupations(
   return {occ_alpha, occ_beta};
 }
 
-std::vector<size_t> get_n_active(
-    const size_t n_spin, const size_t n_active_alpha, const size_t n_active_beta
-) {
-  if (n_spin == 1) {
-    if (n_active_beta != 0) {
-      throw std::runtime_error(
-          "Number of spin channels is 1, but n_active_beta_provided"
-      );
-    }
-
-    return {n_active_alpha};
-  }
-
-  assert(n_spin == 2);
-
-  return {n_active_alpha, n_active_beta};
+utils::Occupations setup_occupations(const double* occ, size_t n_occ) {
+  return setup_occupations(occ, 1, n_occ, 0);
 }
 
-void sort_result(const utils::FockMatrixAndEnergy& result, double* fock) {
+utils::Occupations setup_occupations(
+    const double* occ, size_t n_occ_alpha, size_t n_occ_beta
+) {
+  return setup_occupations(occ, 2, n_occ_alpha, n_occ_beta);
+}
+
+void get_fock(const utils::FockMatrixAndEnergy& result, double* fock) {
   const auto n_spin = utils::spin_channels(result.fock);
   const auto n_ao = linalg::n_rows(result.fock[0]);
 
@@ -110,51 +112,19 @@ void sort_result(const utils::FockMatrixAndEnergy& result, double* fock) {
 }
 
 utils::FockMatrixAndEnergy uw12_fock(
-    const double* W3,
-    const double* W2,
-    const double* W3_ri,
-    const double* V3,
-    const double* V2,
-    const double* V3_ri,
-    const double* WV3,
-    const double* WV2,
-    const double* S2,
-    const double* C,
-    const double* occ,
-    const size_t n_ao,
-    const size_t n_df,
-    const size_t n_ri,
-    const size_t n_orb,
-    const size_t n_spin,
-    const size_t n_occ_alpha,
-    const size_t n_occ_beta,
-    const size_t n_active_alpha,
-    const size_t n_active_beta,
+    const integrals::BaseIntegrals& W,
+    const integrals::BaseIntegrals& V,
+    const integrals::BaseIntegrals& WV,
+    const three_el::ri::ABSProjectors& abs_projectors,
+    const utils::Orbitals& orbitals,
+    const utils::Occupations& occ,
+    const std::vector<size_t>& n_active,
     const bool calculate_fock,
+    const double scale_opp_spin,
     const double scale_same_spin,
     const size_t print_level
 ) {
-  if (n_spin != 1 && n_spin != 2) {
-    throw std::runtime_error("Number of spin channels must be 1 or 2");
-  }
-
-  const auto W = setup_base_integrals_ri(W3, W2, W3_ri, n_ao, n_df, n_ri);
-  const auto V = setup_base_integrals_ri(V3, V2, V3_ri, n_ao, n_df, n_ri);
-  const auto WV = setup_base_integrals(WV3, WV2, n_ao, n_df);
-
-  const auto S = setup_mat(S2, n_ao + n_ri, n_ao + n_ri);
-  const auto abs_projectors =
-      three_el::ri::calculate_abs_projectors(S, n_ao, n_ri);
-
-  const auto orbitals = setup_orbitals(C, n_ao, n_orb, n_spin);
-  const auto occupations =
-      setup_occupations(occ, n_spin, n_occ_alpha, n_occ_beta);
-
-  const auto n_active = get_n_active(n_spin, n_active_alpha, n_active_beta);
-
   const auto indirect_term = !utils::nearly_zero(scale_same_spin);
-
-  constexpr auto scale_opp_spin = 1.0;
 
   return form_fock(
       W,
@@ -162,7 +132,7 @@ utils::FockMatrixAndEnergy uw12_fock(
       WV,
       abs_projectors,
       orbitals,
-      occupations,
+      occ,
       n_active,
       indirect_term,
       calculate_fock,
@@ -173,209 +143,60 @@ utils::FockMatrixAndEnergy uw12_fock(
 }
 
 double uw12_energy(
-    const double* W3,
-    const double* W2,
-    const double* W3_ri,
-    const double* V3,
-    const double* V2,
-    const double* V3_ri,
-    const double* WV3,
-    const double* WV2,
-    const double* S2,
-    const double* C,
-    const double* occ,
-    const size_t n_ao,
-    const size_t n_df,
-    const size_t n_ri,
-    const size_t n_orb,
-    const size_t n_occ,
-    const size_t n_active,
+    const integrals::BaseIntegrals& W,
+    const integrals::BaseIntegrals& V,
+    const integrals::BaseIntegrals& WV,
+    const three_el::ri::ABSProjectors& abs_projectors,
+    const utils::Orbitals& orbitals,
+    const utils::Occupations& occ,
+    const std::vector<size_t>& n_active,
+    const double scale_opp_spin,
     const double scale_same_spin,
     const size_t print_level
 ) {
   return uw12_fock(
-             W3,
-             W2,
-             W3_ri,
-             V3,
-             V2,
-             V3_ri,
-             WV3,
-             WV2,
-             S2,
-             C,
+             W,
+             V,
+             WV,
+             abs_projectors,
+             orbitals,
              occ,
-             n_ao,
-             n_df,
-             n_ri,
-             n_orb,
-             1,
-             n_occ,
-             0,
              n_active,
-             0,
              false,
+             scale_opp_spin,
              scale_same_spin,
              print_level
-  )
-      .energy;
-}
-
-double uw12_energy(
-    const double* W3,
-    const double* W2,
-    const double* W3_ri,
-    const double* V3,
-    const double* V2,
-    const double* V3_ri,
-    const double* WV3,
-    const double* WV2,
-    const double* S2,
-    const double* C,
-    const double* occ,
-    const size_t n_ao,
-    const size_t n_df,
-    const size_t n_ri,
-    const size_t n_orb,
-    const size_t n_occ_alpha,
-    const size_t n_occ_beta,
-    const size_t n_active_alpha,
-    const size_t n_active_beta,
-    const double scale_same_spin,
-    const size_t print_level
-) {
-  return uw12_fock(
-             W3,
-             W2,
-             W3_ri,
-             V3,
-             V2,
-             V3_ri,
-             WV3,
-             WV2,
-             S2,
-             C,
-             occ,
-             n_ao,
-             n_df,
-             n_ri,
-             n_orb,
-             2,
-             n_occ_alpha,
-             n_occ_beta,
-             n_active_alpha,
-             n_active_beta,
-             false,
-             scale_same_spin,
-             print_level
-  )
-      .energy;
+  ).energy;
 }
 
 double uw12_fock(
     double* fock,
-    const double* W3,
-    const double* W2,
-    const double* W3_ri,
-    const double* V3,
-    const double* V2,
-    const double* V3_ri,
-    const double* WV3,
-    const double* WV2,
-    const double* S2,
-    const double* C,
-    const double* occ,
-    const size_t n_ao,
-    const size_t n_df,
-    const size_t n_ri,
-    const size_t n_orb,
-    const size_t n_occ,
-    const size_t n_active,
+    const integrals::BaseIntegrals& W,
+    const integrals::BaseIntegrals& V,
+    const integrals::BaseIntegrals& WV,
+    const three_el::ri::ABSProjectors& abs_projectors,
+    const utils::Orbitals& orbitals,
+    const utils::Occupations& occ,
+    const std::vector<size_t>& n_active,
+    const double scale_opp_spin,
     const double scale_same_spin,
     const size_t print_level
 ) {
   const auto result = uw12_fock(
-      W3,
-      W2,
-      W3_ri,
-      V3,
-      V2,
-      V3_ri,
-      WV3,
-      WV2,
-      S2,
-      C,
+      W,
+      V,
+      WV,
+      abs_projectors,
+      orbitals,
       occ,
-      n_ao,
-      n_df,
-      n_ri,
-      n_orb,
-      1,
-      n_occ,
-      0,
       n_active,
-      0,
       true,
+      scale_opp_spin,
       scale_same_spin,
       print_level
   );
 
-  sort_result(result, fock);
-
-  return result.energy;
-}
-
-double uw12_fock(
-    double* fock,
-    const double* W3,
-    const double* W2,
-    const double* W3_ri,
-    const double* V3,
-    const double* V2,
-    const double* V3_ri,
-    const double* WV3,
-    const double* WV2,
-    const double* S2,
-    const double* C,
-    const double* occ,
-    const size_t n_ao,
-    const size_t n_df,
-    const size_t n_ri,
-    const size_t n_orb,
-    const size_t n_occ_alpha,
-    const size_t n_occ_beta,
-    const size_t n_active_alpha,
-    const size_t n_active_beta,
-    const double scale_same_spin,
-    const size_t print_level
-) {
-  const auto result = uw12_fock(
-      W3,
-      W2,
-      W3_ri,
-      V3,
-      V2,
-      V3_ri,
-      WV3,
-      WV2,
-      S2,
-      C,
-      occ,
-      n_ao,
-      n_df,
-      n_ri,
-      n_orb,
-      2,
-      n_occ_alpha,
-      n_occ_beta,
-      n_active_alpha,
-      n_active_beta,
-      true,
-      scale_same_spin,
-      print_level
-  );
-
-  sort_result(result, fock);
+  get_fock(result, fock);
 
   return result.energy;
 }
