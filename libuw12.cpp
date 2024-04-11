@@ -14,7 +14,7 @@ auto setup_mat(const double* X, const size_t n_row, const size_t n_col) {
   return linalg::mat(const_cast<double*>(X), n_row, n_col);
 }
 
-auto setup_base_integrals(
+integrals::BaseIntegrals setup_base_integrals(
     const double* X3,
     const double* X2,
     const double* X3_ri,
@@ -29,7 +29,7 @@ auto setup_base_integrals(
   return integrals::BaseIntegrals(X3_0, X2_0, X3_ri_0);
 }
 
-auto setup_base_integrals(
+integrals::BaseIntegrals setup_base_integrals(
     const double* X3, const double* X2, const size_t n_ao, const size_t n_df
 ) {
   const auto X3_0 = setup_mat(X3, n_ao * (n_ao + 1) / 2, n_df);
@@ -38,7 +38,7 @@ auto setup_base_integrals(
   return integrals::BaseIntegrals(X3_0, X2_0);
 }
 
-auto setup_abs_projectors(
+three_el::ri::ABSProjectors setup_abs_projectors(
     const double* S, const size_t n_ao, const size_t n_ri
 ) {
   const auto S_mat = setup_mat(S, n_ao + n_ri, n_ao + n_ri);
