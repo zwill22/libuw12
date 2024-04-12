@@ -10,8 +10,13 @@
 #include "src/uw12.hpp"
 
 namespace uw12 {
-auto setup_mat(const double* X, const size_t n_row, const size_t n_col) {
-  return linalg::mat(const_cast<double*>(X), n_row, n_col);
+auto setup_mat(
+    const double* X,
+    const size_t n_row,
+    const size_t n_col,
+    const bool copy_data
+) {
+  return linalg::mat(const_cast<double*>(X), n_row, n_col, copy_data);
 }
 
 integrals::BaseIntegrals setup_base_integrals(
@@ -20,20 +25,25 @@ integrals::BaseIntegrals setup_base_integrals(
     const double* X3_ri,
     const size_t n_ao,
     const size_t n_df,
-    const size_t n_ri
+    const size_t n_ri,
+    const bool copy_data
 ) {
-  const auto X3_0 = setup_mat(X3, n_ao * (n_ao + 1) / 2, n_df);
-  const auto X2_0 = setup_mat(X2, n_df, n_df);
-  const auto X3_ri_0 = setup_mat(X3_ri, n_ao * n_ri, n_df);
+  const auto X3_0 = setup_mat(X3, n_ao * (n_ao + 1) / 2, n_df, copy_data);
+  const auto X2_0 = setup_mat(X2, n_df, n_df, copy_data);
+  const auto X3_ri_0 = setup_mat(X3_ri, n_ao * n_ri, n_df, copy_data);
 
   return integrals::BaseIntegrals(X3_0, X2_0, X3_ri_0);
 }
 
 integrals::BaseIntegrals setup_base_integrals(
-    const double* X3, const double* X2, const size_t n_ao, const size_t n_df
+    const double* X3,
+    const double* X2,
+    const size_t n_ao,
+    const size_t n_df,
+    const bool copy_data
 ) {
-  const auto X3_0 = setup_mat(X3, n_ao * (n_ao + 1) / 2, n_df);
-  const auto X2_0 = setup_mat(X2, n_df, n_df);
+  const auto X3_0 = setup_mat(X3, n_ao * (n_ao + 1) / 2, n_df, copy_data);
+  const auto X2_0 = setup_mat(X2, n_df, n_df, copy_data);
 
   return integrals::BaseIntegrals(X3_0, X2_0);
 }
@@ -41,7 +51,7 @@ integrals::BaseIntegrals setup_base_integrals(
 three_el::ri::ABSProjectors setup_abs_projectors(
     const double* S, const size_t n_ao, const size_t n_ri
 ) {
-  const auto S_mat = setup_mat(S, n_ao + n_ri, n_ao + n_ri);
+  const auto S_mat = setup_mat(S, n_ao + n_ri, n_ao + n_ri, false);
   return three_el::ri::calculate_abs_projectors(S_mat, n_ao, n_ri);
 }
 
@@ -52,7 +62,7 @@ utils::Orbitals setup_orbitals(
     throw std::runtime_error("Number of spin channels must be 1 or 2");
   }
 
-  const auto C1 = setup_mat(C, n_ao, n_orb * n_spin);
+  const auto C1 = setup_mat(C, n_ao, n_orb * n_spin, false);
 
   if (n_spin == 1) {
     return {C1};
@@ -72,7 +82,8 @@ utils::Occupations setup_occupations(
     const size_t n_occ_alpha,
     const size_t n_occ_beta
 ) {
-  const linalg::Vec occ_vec = setup_mat(occ, n_occ_alpha + n_occ_beta, 1);
+  const linalg::Vec occ_vec =
+      setup_mat(occ, n_occ_alpha + n_occ_beta, 1, false);
 
   if (n_spin == 1) {
     if (n_occ_beta != 0) {
@@ -90,12 +101,12 @@ utils::Occupations setup_occupations(
   return {occ_alpha, occ_beta};
 }
 
-utils::Occupations setup_occupations(const double* occ, size_t n_occ) {
+utils::Occupations setup_occupations(const double* occ, const size_t n_occ) {
   return setup_occupations(occ, 1, n_occ, 0);
 }
 
 utils::Occupations setup_occupations(
-    const double* occ, size_t n_occ_alpha, size_t n_occ_beta
+    const double* occ, const size_t n_occ_alpha, const size_t n_occ_beta
 ) {
   return setup_occupations(occ, 2, n_occ_alpha, n_occ_beta);
 }
@@ -166,7 +177,8 @@ double uw12_energy(
              scale_opp_spin,
              scale_same_spin,
              print_level
-  ).energy;
+  )
+      .energy;
 }
 
 double uw12_fock(

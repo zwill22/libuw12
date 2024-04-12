@@ -23,6 +23,7 @@ namespace uw12 {
 /// @param n_ao Number of atomic orbitals
 /// @param n_df Number of density-fitting orbitals
 /// @param n_ri Number of auxilliary RI basis functions
+/// @param copy_data Copy data when creating BaseIntegrals (default: false)
 ///
 /// @return BaseIntegrals
 integrals::BaseIntegrals setup_base_integrals(
@@ -31,7 +32,8 @@ integrals::BaseIntegrals setup_base_integrals(
     const double* X3_ri,
     size_t n_ao,
     size_t n_df,
-    size_t n_ri
+    size_t n_ri,
+    bool copy_data = false
 );
 
 /// Initialise a set of BaseIntegrals for a given inter-electron potential
@@ -43,10 +45,15 @@ integrals::BaseIntegrals setup_base_integrals(
 ///           an array of size `n_df * n_df`
 /// @param n_ao Number of atomic orbitals
 /// @param n_df Number of density-fitting orbitals
+/// @param copy_data Copy data when creating BaseIntegrals (default: false)
 ///
 /// @return BaseIntegrals (no RI)
 integrals::BaseIntegrals setup_base_integrals(
-    const double* X3, const double* X2, size_t n_ao, size_t n_df
+    const double* X3,
+    const double* X2,
+    size_t n_ao,
+    size_t n_df,
+    bool copy_data = false
 );
 
 /// Setup the projectors for the ABS+ RI method
