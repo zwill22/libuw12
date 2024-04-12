@@ -72,7 +72,7 @@ inline std::vector<size_t> load_n_active(
 
   std::vector<size_t> output = {};
   for (size_t col_idx = 0; col_idx < uw12::linalg::n_cols(mat); ++col_idx) {
-    for (size_t row_idx = 0; row_idx < uw12::linalg::n_cols(mat); ++row_idx) {
+    for (size_t row_idx = 0; row_idx < uw12::linalg::n_rows(mat); ++row_idx) {
       const auto elem = uw12::linalg::elem(mat, row_idx, col_idx);
 
       output.push_back(elem);
