@@ -1,5 +1,10 @@
 add_library(catch catch.hpp)
 target_link_libraries(catch Catch2::Catch2WithMain)
+target_include_directories(catch
+        INTERFACE
+        $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src>
+        $<BUILD_INTERFACE:${CMAKE_BINARY_DIR}/src>
+)
 
 add_executable(test_parallel test_parallel.cpp)
 target_link_libraries(test_parallel catch uw12)

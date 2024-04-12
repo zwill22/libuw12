@@ -8,7 +8,7 @@ option(BUILD_SHARED_LIBS "Build shared libraries" ON)
 
 add_library(uw12 SHARED libuw12.cpp)
 target_include_directories(uw12
-        PUBLIC
+        PRIVATE
         $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src>
         $<BUILD_INTERFACE:${CMAKE_BINARY_DIR}/src>
 )
