@@ -11,6 +11,18 @@
 
 namespace uw12 {
 
+/// A Class which manages all two- and three- index density-fitting integrals
+using integrals::BaseIntegrals;
+
+/// A Struct which contains the four projectors corresponding to each ABS+ subset
+using three_el::ri::ABSProjectors;
+
+/// A vector storing occupation numbers for each spin channel
+using utils::Occupations;
+
+/// A vector storing orbital coefficients for each spin channel
+using utils::Orbitals;
+
 /// Initialise a set of BaseIntegrals for a given inter-electron potential
 /// x_{12} using arrays for each integrals
 ///
@@ -26,7 +38,7 @@ namespace uw12 {
 /// @param copy_data Copy data when creating BaseIntegrals (default: false)
 ///
 /// @return BaseIntegrals
-integrals::BaseIntegrals setup_base_integrals(
+BaseIntegrals setup_base_integrals(
     const double* X3,
     const double* X2,
     const double* X3_ri,
@@ -48,7 +60,7 @@ integrals::BaseIntegrals setup_base_integrals(
 /// @param copy_data Copy data when creating BaseIntegrals (default: false)
 ///
 /// @return BaseIntegrals (no RI)
-integrals::BaseIntegrals setup_base_integrals(
+BaseIntegrals setup_base_integrals(
     const double* X3,
     const double* X2,
     size_t n_ao,
@@ -64,9 +76,7 @@ integrals::BaseIntegrals setup_base_integrals(
 /// @param n_ri Number of auxilliary RI orbitals
 ///
 /// @return ABSProjectors
-three_el::ri::ABSProjectors setup_abs_projectors(
-    const double* S, size_t n_ao, size_t n_ri
-);
+ABSProjectors setup_abs_projectors(const double* S, size_t n_ao, size_t n_ri);
 
 /// Setup orbitals from memory
 ///
@@ -76,7 +86,7 @@ three_el::ri::ABSProjectors setup_abs_projectors(
 /// @param n_spin Number of spin channels
 ///
 /// @return Orbitals
-utils::Orbitals setup_orbitals(
+Orbitals setup_orbitals(
     const double* C, size_t n_ao, size_t n_orb, size_t n_spin
 );
 
@@ -87,7 +97,7 @@ utils::Orbitals setup_orbitals(
 /// @param n_occ Number of occupied orbitals
 ///
 /// @return Occupations
-utils::Occupations setup_occupations(const double* occ, size_t n_occ);
+Occupations setup_occupations(const double* occ, size_t n_occ);
 
 /// Setup orbital occupations (Open shell)
 /// Occupations must correspond to orbital coefficient in `C`
@@ -97,7 +107,7 @@ utils::Occupations setup_occupations(const double* occ, size_t n_occ);
 /// @param n_occ_beta Number of occupied orbitals in spin channel beta
 ///
 /// @return Occupations
-utils::Occupations setup_occupations(
+Occupations setup_occupations(
     const double* occ, size_t n_occ_alpha, size_t n_occ_beta
 );
 
@@ -116,12 +126,12 @@ utils::Occupations setup_occupations(
 ///
 /// @return UW12 energy
 double uw12_energy(
-    const integrals::BaseIntegrals& W,
-    const integrals::BaseIntegrals& V,
-    const integrals::BaseIntegrals& WV,
-    const three_el::ri::ABSProjectors& abs_projectors,
-    const utils::Orbitals& orbitals,
-    const utils::Occupations& occ,
+    const BaseIntegrals& W,
+    const BaseIntegrals& V,
+    const BaseIntegrals& WV,
+    const ABSProjectors& abs_projectors,
+    const Orbitals& orbitals,
+    const Occupations& occ,
     const std::vector<size_t>& n_active,
     double scale_opp_spin,
     double scale_same_spin,
@@ -145,12 +155,12 @@ double uw12_energy(
 /// @return UW12 Fock matrix and energy
 double uw12_fock(
     double* fock,
-    const integrals::BaseIntegrals& W,
-    const integrals::BaseIntegrals& V,
-    const integrals::BaseIntegrals& WV,
-    const three_el::ri::ABSProjectors& abs_projectors,
-    const utils::Orbitals& orbitals,
-    const utils::Occupations& occ,
+    const BaseIntegrals& W,
+    const BaseIntegrals& V,
+    const BaseIntegrals& WV,
+    const ABSProjectors& abs_projectors,
+    const Orbitals& orbitals,
+    const Occupations& occ,
     const std::vector<size_t>& n_active,
     double scale_opp_spin,
     double scale_same_spin,
