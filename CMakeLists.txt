@@ -11,7 +11,6 @@ target_include_directories(uw12
         PUBLIC
         $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src>
         $<BUILD_INTERFACE:${CMAKE_BINARY_DIR}/src>
-        $<INSTALL_INTERFACE:$<INSTALL_PREFIX>/include>
 )
 
 # Looking for parallel threading library
