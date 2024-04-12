@@ -13,6 +13,8 @@
 #include <iostream>
 #include <random>
 #include <unsupported/Eigen/MatrixFunctions> // mat.exp()
+#else
+#error
 #endif
 #include <cassert>
 #include <cmath>
@@ -28,6 +30,8 @@ using Vec = arma::vec;
 #elif USE_EIGEN
 typedef Eigen::MatrixXd Mat;
 typedef Eigen::VectorXd Vec;
+#else
+#error
 #endif
 
 inline size_t n_elem(const Vec &vec) {
@@ -35,6 +39,8 @@ inline size_t n_elem(const Vec &vec) {
   return vec.n_elem;
 #elif USE_EIGEN
   return vec.size();
+#else
+#error
 #endif
 }
 
@@ -44,6 +50,8 @@ inline size_t n_elem(const Mat &mat) {
   return mat.n_elem;
 #elif USE_EIGEN
   return mat.size();
+#else
+#error
 #endif
 }
 
@@ -53,6 +61,8 @@ inline size_t n_rows(const Mat &mat) {
   return mat.n_rows;
 #elif USE_EIGEN
   return mat.rows();
+#else
+#error
 #endif
 }
 
@@ -62,6 +72,8 @@ inline size_t n_cols(const Mat &mat) {
   return mat.n_cols;
 #elif USE_EIGEN
   return mat.cols();
+#else
+#error
 #endif
 }
 
@@ -71,6 +83,8 @@ inline Vec vec(const size_t n_el) {
   return arma::vec(n_el);
 #elif USE_EIGEN
   return Vec(n_el);
+#else
+#error
 #endif
 }
 
@@ -83,6 +97,8 @@ inline Vec vec(const std::vector<double> &vector) {
   const auto n = vector.size();
 
   return Eigen::Map<Vec>(ptr, n);
+#else
+#error
 #endif
 }
 
@@ -92,6 +108,8 @@ inline Vec ones(const size_t n_el) {
   return arma::ones(n_el);
 #elif USE_EIGEN
   return Vec::Ones(n_el);
+#else
+#error
 #endif
 }
 
@@ -101,6 +119,8 @@ inline Vec zeros(const size_t n_el) {
   return arma::zeros(n_el);
 #elif USE_EIGEN
   return Vec::Zero(n_el);
+#else
+#error
 #endif
 }
 
@@ -109,6 +129,8 @@ inline double elem(const Vec &vec, const size_t index) {
   return vec(index);
 #elif USE_EIGEN
   return vec(index);
+#else
+#error
 #endif
 }
 
@@ -141,6 +163,8 @@ inline Mat mat(
     return mat2;
   }
   return Eigen::Map<Mat>(mem, n_row, n_col);
+#else
+#error
 #endif
 }
 
@@ -154,6 +178,8 @@ inline double elem(
   return mat(row_index, col_index);
 #elif USE_EIGEN
   return mat(row_index, col_index);
+#else
+#error
 #endif
 }
 
@@ -191,6 +217,8 @@ inline Mat mat(const size_t n_row, const size_t n_col) {
   return arma::mat(n_row, n_col);
 #elif USE_EIGEN
   return Mat(n_row, n_col);
+#else
+#error
 #endif
 }
 
@@ -200,6 +228,8 @@ inline Mat ones(const size_t n_row, const size_t n_col) {
   return arma::ones(n_row, n_col);
 #elif USE_EIGEN
   return Mat::Ones(n_row, n_col);
+#else
+#error
 #endif
 }
 
@@ -209,6 +239,8 @@ inline Mat zeros(const size_t n_row, const size_t n_col) {
   return arma::zeros(n_row, n_col);
 #elif USE_EIGEN
   return Mat::Zero(n_row, n_col);
+#else
+#error
 #endif
 }
 
@@ -218,6 +250,8 @@ inline Mat id(const size_t n) {
   return arma::eye(n, n);
 #elif USE_EIGEN
   return Mat::Identity(n, n);
+#else
+#error
 #endif
 }
 
@@ -227,6 +261,8 @@ inline Mat transpose(const Mat &mat) {
   return mat.t();
 #elif USE_EIGEN
   return mat.transpose();
+#else
+#error
 #endif
 }
 
@@ -243,6 +279,8 @@ inline Mat random(const size_t n_row, const size_t n_col, const int seed) {
   const Mat mat = Mat::NullaryExpr(n_row, n_col, uniform);
 
   return mat;
+#else
+#error
 #endif
 }
 
@@ -255,6 +293,8 @@ inline bool is_square(const Mat &mat) {
   const auto n_col = n_cols(mat);
 
   return n_row == n_col;
+#else
+#error
 #endif
 }
 
@@ -277,6 +317,8 @@ inline bool is_symmetric(const Mat &mat, const double threshold = 1e-10) {
   }
 
   return true;
+#else
+#error
 #endif
 }
 
@@ -286,6 +328,8 @@ inline bool all_positive(const Vec &vec) {
   return all(vec > 0);
 #elif USE_EIGEN
   return (vec.array() > 0).all();
+#else
+#error
 #endif
 }
 
@@ -300,6 +344,8 @@ inline Vec schur(const Vec &vec1, const Vec &vec2) {
   return vec1 % vec2;
 #elif USE_EIGEN
   return vec1.cwiseProduct(vec2);
+#else
+#error
 #endif
 }
 
@@ -322,6 +368,8 @@ inline double dot(const Mat &mat1, const Mat &mat2) {
   }
 
   return result;
+#else
+#error
 #endif
 }
 
@@ -361,6 +409,8 @@ inline Mat reshape(
 
     return mat2;
   }
+#else
+#error
 #endif
 }
 
@@ -403,6 +453,8 @@ inline Mat reshape_col(
     out.resize(n_row, n_col);
     return out;
   }
+#else
+#error
 #endif
 }
 
@@ -416,6 +468,8 @@ inline Mat p_inv(const Mat &mat, const double threshold = 1e-10) {
   decomposition.setThreshold(threshold);
 
   return decomposition.pseudoInverse();
+#else
+#error
 #endif
 }
 
@@ -426,6 +480,8 @@ inline Mat diagmat(const Vec &vec) {
   return arma::diagmat(vec);
 #elif USE_EIGEN
   return vec.asDiagonal();
+#else
+#error
 #endif
 }
 
@@ -435,6 +491,8 @@ inline Mat expmat(const Mat &mat) {
   return arma::expmat(mat);
 #elif USE_EIGEN
   return mat.exp();
+#else
+#error
 #endif
 }
 
@@ -459,6 +517,8 @@ inline Mat inv_sym_pd(const Mat &mat) {
     throw std::logic_error("Matrix is not square");
   }
   return mat.inverse();
+#else
+#error
 #endif
 }
 
@@ -484,6 +544,8 @@ inline Vec sub_vec(const Vec &vec, const size_t row1, const size_t n_row) {
   return vec.subvec(row1, row1 + n_row - 1);
 #elif USE_EIGEN
   return vec.segment(row1, n_row);
+#else
+#error
 #endif
 }
 
@@ -519,6 +581,8 @@ inline Mat sub_mat(
   return mat.submat(row1, col1, arma::size(n_row, n_col));
 #elif USE_EIGEN
   return mat.array().block(row1, col1, n_row, n_col);
+#else
+#error
 #endif
 }
 
@@ -530,6 +594,8 @@ inline double norm(const Mat &mat) {
   const Eigen::JacobiSVD svd(mat);
 
   return svd.singularValues().array().abs().maxCoeff();
+#else
+#error
 #endif
 }
 
@@ -552,6 +618,8 @@ inline Vec col(
   return reshape_col(mat, col_idx, n_row, 1, copy_data);
 #elif USE_EIGEN
   return mat.col(col_idx);
+#else
+#error
 #endif
 }
 
@@ -569,6 +637,8 @@ inline Mat row(const Mat &mat, const size_t row_idx) {
   return mat.row(row_idx);
 #elif USE_EIGEN
   return mat.row(row_idx);
+#else
+#error
 #endif
 }
 
@@ -601,6 +671,8 @@ inline Vec head(const Vec &vec, const size_t n_row) {
   return vec.head(n_row);
 #elif USE_EIGEN
   return vec.head(n_row);
+#else
+#error
 #endif
 }
 
@@ -620,6 +692,8 @@ inline Vec tail(const Vec &vec, const size_t n_row) {
   return vec.tail(n_row);
 #elif USE_EIGEN
   return vec.tail(n_row);
+#else
+#error
 #endif
 }
 
@@ -651,6 +725,8 @@ inline Mat head_cols(
   } else {
     return mat.leftCols(n_col);
   }
+#else
+#error
 #endif
 }
 
@@ -691,6 +767,8 @@ inline Mat tail_cols(
   } else {
     return mat.rightCols(n_col);
   }
+#else
+#error
 #endif
 }
 
@@ -712,6 +790,8 @@ inline Mat head_rows(const Mat &mat, const size_t n_row) {
   const auto n_col = n_cols(mat);
 
   return sub_mat(mat, 0, 0, n_row, n_col);
+#else
+#error
 #endif
 }
 
@@ -737,6 +817,8 @@ inline Mat tail_rows(const Mat &mat, const size_t n_row) {
   const auto row1 = n_row_all - n_row;
 
   return sub_mat(mat, row1, 0, n_row, n_col);
+#else
+#error
 #endif
 }
 
@@ -747,6 +829,8 @@ inline Vec vectorise(const Mat &mat) {
   return arma::vectorise(mat);
 #elif USE_EIGEN  // check memory
   return Eigen::Map<Vec>(const_cast<double *>(mat.data()), n_elem(mat));
+#else
+#error
 #endif
 }
 
@@ -759,6 +843,8 @@ inline double trace(const Mat &mat) {
   return arma::trace(mat);
 #elif USE_EIGEN
   return mat.trace();
+#else
+#error
 #endif
 }
 
@@ -773,6 +859,8 @@ inline Mat sqrt(const Mat &mat) {
   return arma::sqrt(mat);
 #elif USE_EIGEN
   return mat.array().sqrt();
+#else
+#error
 #endif
 }
 
@@ -801,6 +889,8 @@ inline void assign_cols(Mat &mat, const Mat &input, const size_t offset) {
   for (size_t i = 0; i < n; ++i) {
     mat.col(offset + i) = input.col(i);
   }
+#else
+#error
 #endif
 }
 
@@ -827,6 +917,8 @@ inline void assign_rows(Mat &mat, const Mat &input, const size_t offset) {
   for (size_t i = 0; i < n; ++i) {
     mat.row(offset + i) = input.row(i);
   }
+#else
+#error
 #endif
 }
 
@@ -850,6 +942,8 @@ inline void assign_rows(Vec &vec, const Vec &input, const size_t offset) {
   for (size_t i = 0; i < n; ++i) {
     vec(offset + i) = input(i);
   }
+#else
+#error
 #endif
 }
 
@@ -859,6 +953,8 @@ inline const double *mem_ptr(const Vec &vec) {
   return const_cast<double *>(vec.memptr());
 #elif USE_EIGEN
   return vec.data();
+#else
+#error
 #endif
 }
 
@@ -868,6 +964,8 @@ inline const double *mem_ptr(const Mat &mat) {
   return const_cast<double *>(mat.memptr());
 #elif USE_EIGEN
   return mat.data();
+#else
+#error
 #endif
 }
 
@@ -877,6 +975,8 @@ inline bool empty(const Vec &vec) {
   return vec.empty();
 #elif USE_EIGEN
   return n_elem(vec) == 0;
+#else
+#error
 #endif
 }
 
@@ -886,6 +986,8 @@ inline bool empty(const Mat &mat) {
   return mat.empty();
 #elif USE_EIGEN
   return n_elem(mat) == 0;
+#else
+#error
 #endif
 }
 
@@ -894,6 +996,8 @@ inline double max_abs(const Vec &vec) {
   return max(arma::abs(vec));
 #elif USE_EIGEN
   return vec.array().abs().maxCoeff();
+#else
+#error
 #endif
 }
 
@@ -905,6 +1009,8 @@ inline bool nearly_equal(
   return approx_equal(mat1, mat2, "both", epsilon, epsilon);
 #elif USE_EIGEN
   return mat1.array().isApprox(mat2.array(), epsilon);
+#else
+#error
 #endif
 }
 
@@ -924,6 +1030,8 @@ inline Mat each_col(const Mat &mat, const Vec &vec) {
   return mat.each_col() % vec;
 #elif USE_EIGEN
   return mat.array().colwise() * vec.array();
+#else
+#error
 #endif
 }
 
@@ -947,6 +1055,8 @@ inline Mat join_matrices(const Mat &mat1, const Mat &mat2) {
   out.rightCols(n_col_2) = mat2;
 
   return out;
+#else
+#error
 #endif
 }
 
@@ -978,6 +1088,8 @@ inline Mat load_csv(const std::string &filepath) {
     ++rows;
   }
   return Eigen::Map<Mat>(values.data(), values.size() / rows, rows).transpose();
+#else
+#error
 #endif
 }
 
@@ -1015,6 +1127,8 @@ inline std::pair<Vec, Mat> eigen_system(const Mat &mat) {
 
   vals = eigen_solver.eigenvalues();
   vecs = eigen_solver.eigenvectors();
+#else
+#error
 #endif
 
   assert(n_cols(vecs) == n_elem(vals));
@@ -1065,6 +1179,8 @@ inline std::pair<Vec, Mat> eigen_decomposition(
         idx++;
       }
     }
+#else
+#error
 #endif
 
     return {eigenvalues, eigenvectors};
