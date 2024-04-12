@@ -7,6 +7,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 option(BUILD_SHARED_LIBS "Build shared libraries" ON)
 
 add_library(uw12 SHARED libuw12.cpp)
+target_include_directories(uw12
+        PUBLIC
+        $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src>
+        $<BUILD_INTERFACE:${CMAKE_BINARY_DIR}/src>
+        $<INSTALL_INTERFACE:$<INSTALL_PREFIX>/include>
+)
 
 # Looking for parallel threading library
 set(SEARCH_PARALLEL OFF)

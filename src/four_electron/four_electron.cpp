@@ -1,9 +1,9 @@
 #include "four_electron.hpp"
 
-#include "../integrals/integrals.hpp"
-#include "../utils/linalg.hpp"
-#include "../utils/utils.hpp"
 #include "four_electron_utils.hpp"
+#include "integrals/integrals.hpp"
+#include "utils/linalg.hpp"
+#include "utils/utils.hpp"
 
 namespace uw12::four_el {
 
@@ -105,7 +105,6 @@ utils::FockMatrixAndEnergy direct_fock(
 
     // Each second spin state
     for (size_t sigmaprime = 0; sigmaprime < n_spin; sigmaprime++) {
-
       const auto energy_spin_factor = get_energy_spin_factor(
           n_spin, sigma, sigmaprime, scale_opp_spin, scale_same_spin
       );

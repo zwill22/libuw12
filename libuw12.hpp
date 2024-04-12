@@ -5,16 +5,17 @@
 #ifndef LIBUW12_HPP
 #define LIBUW12_HPP
 
-#include "src/integrals/base_integrals.hpp"
-#include "src/three_electron/ri_utils.hpp"
-#include "src/utils/utils.hpp"
+#include "integrals/base_integrals.hpp"
+#include "three_electron/ri_utils.hpp"
+#include "utils/utils.hpp"
 
 namespace uw12 {
 
 /// A Class which manages all two- and three- index density-fitting integrals
 using integrals::BaseIntegrals;
 
-/// A Struct which contains the four projectors corresponding to each ABS+ subset
+/// A Struct which contains the four projectors corresponding to each ABS+
+/// subset
 using three_el::ri::ABSProjectors;
 
 /// A vector storing occupation numbers for each spin channel

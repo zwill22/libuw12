@@ -8,8 +8,8 @@
 #include <functional>
 #include <vector>
 
-#include "../utils/linalg.hpp"
-#include "../utils/parallel.hpp"
+#include "utils/linalg.hpp"
+#include "utils/parallel.hpp"
 
 namespace uw12::integrals {
 /// Function which returns a matrix of two-index integrals

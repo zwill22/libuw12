@@ -1,9 +1,9 @@
 #include "two_electron.hpp"
 
-#include "../integrals/base_integrals.hpp"
-#include "../integrals/integrals.hpp"
-#include "../utils/linalg.hpp"
-#include "../utils/utils.hpp"
+#include "integrals/base_integrals.hpp"
+#include "integrals/integrals.hpp"
+#include "utils/linalg.hpp"
+#include "utils/utils.hpp"
 
 namespace uw12::two_el {
 // Vector of length lambda for each spin channel of

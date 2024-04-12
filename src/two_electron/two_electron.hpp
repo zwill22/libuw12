@@ -1,8 +1,8 @@
 #ifndef UW12_two_electron_HPP
 #define UW12_two_electron_HPP
 
-#include "../integrals/integrals.hpp"
-#include "../utils/utils.hpp"
+#include "integrals/base_integrals.hpp"
+#include "utils/utils.hpp"
 
 namespace uw12::two_el {
 /// Find the contribution to the energy and Fock matrix of the two

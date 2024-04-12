@@ -5,9 +5,9 @@
 #ifndef THREE_ELECTRON_DIRECT_UTILS_HPP
 #define THREE_ELECTRON_DIRECT_UTILS_HPP
 
-#include "../integrals/integrals.hpp"
-#include "../utils/utils.hpp"
+#include "integrals/integrals.hpp"
 #include "ri_utils.hpp"
+#include "utils/utils.hpp"
 
 namespace uw12::three_el {
 

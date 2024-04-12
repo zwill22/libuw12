@@ -5,9 +5,9 @@
 #ifndef UW12_INTEGRALS_HPP
 #define UW12_INTEGRALS_HPP
 
-#include "../utils/linalg.hpp"
-#include "../utils/utils.hpp"
 #include "base_integrals.hpp"
+#include "utils/linalg.hpp"
+#include "utils/utils.hpp"
 
 namespace uw12::integrals {
 /// Class for calculating and managing all integrals for df-UW12

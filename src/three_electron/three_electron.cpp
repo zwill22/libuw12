@@ -4,12 +4,12 @@
 
 #include "three_electron.hpp"
 
-#include "../four_electron/four_electron_utils.hpp"
-#include "../integrals/integrals.hpp"
-#include "../utils/utils.hpp"
 #include "direct_utils.hpp"
+#include "four_electron/four_electron_utils.hpp"
 #include "indirect_utils.hpp"
+#include "integrals/integrals.hpp"
 #include "ri_utils.hpp"
+#include "utils/utils.hpp"
 
 namespace uw12::three_el {
 

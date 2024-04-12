@@ -1,8 +1,8 @@
 #include "four_electron_utils.hpp"
 
-#include "../integrals/integrals.hpp"
-#include "../utils/linalg.hpp"
-#include "../utils/utils.hpp"
+#include "integrals/integrals.hpp"
+#include "utils/linalg.hpp"
+#include "utils/utils.hpp"
 
 namespace uw12::four_el {
 

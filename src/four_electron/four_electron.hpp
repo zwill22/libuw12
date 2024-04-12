@@ -1,7 +1,7 @@
 #ifndef UW12_four_electron_HPP
 #define UW12_four_electron_HPP
 
-#include "../integrals/integrals.hpp"
+#include "integrals/integrals.hpp"
 
 namespace uw12::four_el {
 

@@ -5,7 +5,7 @@
 #ifndef THREE_ELECTRON_HPP
 #define THREE_ELECTRON_HPP
 
-#include "../integrals/integrals.hpp"
+#include "integrals/integrals.hpp"
 #include "ri_utils.hpp"
 
 namespace uw12::three_el {

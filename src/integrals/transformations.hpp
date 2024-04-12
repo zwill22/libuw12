@@ -7,9 +7,9 @@
 
 #include <cassert>
 
-#include "../utils/linalg.hpp"
-#include "../utils/parallel.hpp"
-#include "../utils/utils.hpp"
+#include "utils/linalg.hpp"
+#include "utils/parallel.hpp"
+#include "utils/utils.hpp"
 
 namespace uw12::integrals::transformations {
 /// \brief Transform one index of the three-index density-fitting integrals from

@@ -4,9 +4,9 @@
 
 #include "indirect_utils.hpp"
 
-#include "../integrals/integrals.hpp"
-#include "../utils/linalg.hpp"
+#include "integrals/integrals.hpp"
 #include "ri_utils.hpp"
+#include "utils/linalg.hpp"
 
 namespace uw12::three_el {
 

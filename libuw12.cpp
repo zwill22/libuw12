@@ -4,10 +4,10 @@
 
 #include "libuw12.hpp"
 
-#include "src/integrals/base_integrals.hpp"
-#include "src/three_electron/ri_utils.hpp"
-#include "src/utils/utils.hpp"
-#include "src/uw12.hpp"
+#include "integrals/base_integrals.hpp"
+#include "three_electron/ri_utils.hpp"
+#include "utils/utils.hpp"
+#include "uw12.hpp"
 
 namespace uw12 {
 auto setup_mat(
@@ -19,7 +19,7 @@ auto setup_mat(
   return linalg::mat(const_cast<double*>(X), n_row, n_col, copy_data);
 }
 
-integrals::BaseIntegrals setup_base_integrals(
+BaseIntegrals setup_base_integrals(
     const double* X3,
     const double* X2,
     const double* X3_ri,
@@ -32,10 +32,10 @@ integrals::BaseIntegrals setup_base_integrals(
   const auto X2_0 = setup_mat(X2, n_df, n_df, copy_data);
   const auto X3_ri_0 = setup_mat(X3_ri, n_ao * n_ri, n_df, copy_data);
 
-  return integrals::BaseIntegrals(X3_0, X2_0, X3_ri_0);
+  return BaseIntegrals(X3_0, X2_0, X3_ri_0);
 }
 
-integrals::BaseIntegrals setup_base_integrals(
+BaseIntegrals setup_base_integrals(
     const double* X3,
     const double* X2,
     const size_t n_ao,
@@ -45,17 +45,17 @@ integrals::BaseIntegrals setup_base_integrals(
   const auto X3_0 = setup_mat(X3, n_ao * (n_ao + 1) / 2, n_df, copy_data);
   const auto X2_0 = setup_mat(X2, n_df, n_df, copy_data);
 
-  return integrals::BaseIntegrals(X3_0, X2_0);
+  return BaseIntegrals(X3_0, X2_0);
 }
 
-three_el::ri::ABSProjectors setup_abs_projectors(
+ABSProjectors setup_abs_projectors(
     const double* S, const size_t n_ao, const size_t n_ri
 ) {
   const auto S_mat = setup_mat(S, n_ao + n_ri, n_ao + n_ri, false);
   return three_el::ri::calculate_abs_projectors(S_mat, n_ao, n_ri);
 }
 
-utils::Orbitals setup_orbitals(
+Orbitals setup_orbitals(
     const double* C, const size_t n_ao, const size_t n_orb, const size_t n_spin
 ) {
   if (n_spin != 1 && n_spin != 2) {
@@ -76,7 +76,7 @@ utils::Orbitals setup_orbitals(
   return {C_alpha, C_beta};
 }
 
-utils::Occupations setup_occupations(
+Occupations setup_occupations(
     const double* occ,
     const size_t n_spin,
     const size_t n_occ_alpha,
@@ -101,11 +101,11 @@ utils::Occupations setup_occupations(
   return {occ_alpha, occ_beta};
 }
 
-utils::Occupations setup_occupations(const double* occ, const size_t n_occ) {
+Occupations setup_occupations(const double* occ, const size_t n_occ) {
   return setup_occupations(occ, 1, n_occ, 0);
 }
 
-utils::Occupations setup_occupations(
+Occupations setup_occupations(
     const double* occ, const size_t n_occ_alpha, const size_t n_occ_beta
 ) {
   return setup_occupations(occ, 2, n_occ_alpha, n_occ_beta);
@@ -123,12 +123,12 @@ void get_fock(const utils::FockMatrixAndEnergy& result, double* fock) {
 }
 
 utils::FockMatrixAndEnergy uw12_fock(
-    const integrals::BaseIntegrals& W,
-    const integrals::BaseIntegrals& V,
-    const integrals::BaseIntegrals& WV,
-    const three_el::ri::ABSProjectors& abs_projectors,
-    const utils::Orbitals& orbitals,
-    const utils::Occupations& occ,
+    const BaseIntegrals& W,
+    const BaseIntegrals& V,
+    const BaseIntegrals& WV,
+    const ABSProjectors& abs_projectors,
+    const Orbitals& orbitals,
+    const Occupations& occ,
     const std::vector<size_t>& n_active,
     const bool calculate_fock,
     const double scale_opp_spin,
@@ -154,12 +154,12 @@ utils::FockMatrixAndEnergy uw12_fock(
 }
 
 double uw12_energy(
-    const integrals::BaseIntegrals& W,
-    const integrals::BaseIntegrals& V,
-    const integrals::BaseIntegrals& WV,
-    const three_el::ri::ABSProjectors& abs_projectors,
-    const utils::Orbitals& orbitals,
-    const utils::Occupations& occ,
+    const BaseIntegrals& W,
+    const BaseIntegrals& V,
+    const BaseIntegrals& WV,
+    const ABSProjectors& abs_projectors,
+    const Orbitals& orbitals,
+    const Occupations& occ,
     const std::vector<size_t>& n_active,
     const double scale_opp_spin,
     const double scale_same_spin,
@@ -183,12 +183,12 @@ double uw12_energy(
 
 double uw12_fock(
     double* fock,
-    const integrals::BaseIntegrals& W,
-    const integrals::BaseIntegrals& V,
-    const integrals::BaseIntegrals& WV,
-    const three_el::ri::ABSProjectors& abs_projectors,
-    const utils::Orbitals& orbitals,
-    const utils::Occupations& occ,
+    const BaseIntegrals& W,
+    const BaseIntegrals& V,
+    const BaseIntegrals& WV,
+    const ABSProjectors& abs_projectors,
+    const Orbitals& orbitals,
+    const Occupations& occ,
     const std::vector<size_t>& n_active,
     const double scale_opp_spin,
     const double scale_same_spin,

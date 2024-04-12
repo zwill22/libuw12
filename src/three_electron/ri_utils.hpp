@@ -5,7 +5,7 @@
 #ifndef RI_UTILS_HPP
 #define RI_UTILS_HPP
 
-#include "../utils/linalg.hpp"
+#include "utils/linalg.hpp"
 
 namespace uw12::three_el::ri {
 

@@ -1,8 +1,8 @@
 #ifndef UW12_FOUR_ELECTRON_UTILS_HPP
 #define UW12_FOUR_ELECTRON_UTILS_HPP
 
-#include "../integrals/integrals.hpp"
-#include "../utils/utils.hpp"
+#include "integrals/integrals.hpp"
+#include "utils/utils.hpp"
 
 namespace uw12::four_el {
 

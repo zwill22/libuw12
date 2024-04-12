@@ -4,8 +4,8 @@
 
 #include "direct_utils.hpp"
 
-#include "../four_electron/four_electron_utils.hpp"
-#include "../utils/linalg.hpp"
+#include "four_electron/four_electron_utils.hpp"
+#include "utils/linalg.hpp"
 
 namespace uw12::three_el {
 
