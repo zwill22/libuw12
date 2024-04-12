@@ -4,8 +4,8 @@
 
 #include <complex>
 
-#include "../src/utils/parallel.hpp"
 #include "catch.hpp"
+#include "utils/parallel.hpp"
 
 using namespace uw12::parallel;
 using namespace uw12_test;

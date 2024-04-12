@@ -2,8 +2,8 @@
 // Created by Zack Williams on 23/02/2024.
 //
 
-#include "../src/integrals/transformations.hpp"
 #include "catch.hpp"
+#include "integrals/transformations.hpp"
 
 using namespace uw12;
 using namespace uw12::integrals::transformations;

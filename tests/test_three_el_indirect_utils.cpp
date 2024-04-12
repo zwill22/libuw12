@@ -2,9 +2,9 @@
 // Created by Zack Williams on 27/03/2024.
 //
 
-#include "../src/three_electron/indirect_utils.hpp"
 #include "catch.hpp"
 #include "setup_integrals.hpp"
+#include "three_electron/indirect_utils.hpp"
 
 using uw12_test::setup_abs_projector;
 using uw12_test::setup_base_integrals;

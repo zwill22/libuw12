@@ -5,7 +5,7 @@
 #ifndef NUMERICAL_FOCK_HPP
 #define NUMERICAL_FOCK_HPP
 
-#include "../src/utils/utils.hpp"
+#include "utils/utils.hpp"
 
 namespace uw12_test::fock {
 

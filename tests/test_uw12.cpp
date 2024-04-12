@@ -2,7 +2,7 @@
 // Created by Zack Williams on 09/04/2024.
 //
 
-#include "../src/uw12.hpp"
+#include "uw12.hpp"
 #include "catch.hpp"
 #include "setup_integrals.hpp"
 

@@ -4,11 +4,11 @@
 
 #include <csignal>
 
-#include "../src/utils/linalg.hpp"
 #include "catch.hpp"
+#include "utils/linalg.hpp"
 
-using uw12_test::margin;
 using uw12::linalg::Vec;
+using uw12_test::margin;
 
 void check_equal(const Vec &vec, const std::vector<double> &vector) {
   REQUIRE(vector.size() == uw12::linalg::n_elem(vec));

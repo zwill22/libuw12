@@ -2,12 +2,12 @@
 // Created by Zack Williams on 29/02/2024.
 //
 
-#include "../src/integrals/integrals.hpp"
-#include "../src/two_electron/two_electron.hpp"
-#include "../src/utils/linalg.hpp"
 #include "catch.hpp"
 #include "density_utils.hpp"
+#include "integrals/integrals.hpp"
 #include "numerical_fock.hpp"
+#include "two_electron/two_electron.hpp"
+#include "utils/linalg.hpp"
 
 using uw12::linalg::Mat;
 using uw12::linalg::nearly_equal;

@@ -2,9 +2,9 @@
 // Created by Zack Williams on 04/03/2024.
 //
 
-#include "../src/utils/utils.hpp"
 #include "catch.hpp"
 #include "density_utils.hpp"
+#include "utils/utils.hpp"
 
 using namespace uw12_test;
 

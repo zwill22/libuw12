@@ -5,9 +5,9 @@
 #ifndef TEST_DATA_HPP
 #define TEST_DATA_HPP
 
-#include "../src/config.hpp"
-#include "../src/integrals/base_integrals.hpp"
-#include "../src/utils/utils.hpp"
+#include "config.hpp"
+#include "integrals/base_integrals.hpp"
+#include "utils/utils.hpp"
 
 namespace uw12_test {
 

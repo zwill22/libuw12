@@ -2,8 +2,8 @@
 // Created by Zack Williams on 18/02/2024.
 //
 
-#include "../src/utils/linalg.hpp"
 #include "catch.hpp"
+#include "utils/linalg.hpp"
 
 using namespace uw12;
 using namespace uw12_test;

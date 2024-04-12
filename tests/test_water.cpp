@@ -3,7 +3,7 @@
 // Created by Zack Williams on 10/04/2024.
 //
 
-#include "../src/uw12.hpp"
+#include "uw12.hpp"
 #include "catch.hpp"
 #include "test_data.hpp"
 

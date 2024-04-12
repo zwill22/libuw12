@@ -2,8 +2,8 @@
 // Created by Zack Williams on 22/02/2024.
 //
 
-#include "../src/utils/utils.hpp"
 #include "catch.hpp"
+#include "utils/utils.hpp"
 
 using namespace uw12;
 using namespace utils;

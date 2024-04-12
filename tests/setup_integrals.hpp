@@ -5,12 +5,12 @@
 #ifndef SETUP_INTEGRALS_HPP
 #define SETUP_INTEGRALS_HPP
 
-#include "../src/integrals/base_integrals.hpp"
-#include "../src/integrals/integrals.hpp"
-#include "../src/three_electron/ri_utils.hpp"
-#include "../src/utils/linalg.hpp"
-#include "../src/utils/utils.hpp"
 #include "catch.hpp"
+#include "integrals/base_integrals.hpp"
+#include "integrals/integrals.hpp"
+#include "three_electron/ri_utils.hpp"
+#include "utils/linalg.hpp"
+#include "utils/utils.hpp"
 
 namespace uw12_test {
 

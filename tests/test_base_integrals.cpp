@@ -2,8 +2,8 @@
 // Created by Zack Williams on 25/02/2024.
 //
 
-#include "../src/integrals/base_integrals.hpp"
 #include "catch.hpp"
+#include "integrals/base_integrals.hpp"
 
 using namespace uw12::integrals;
 using namespace uw12_test;
@@ -419,7 +419,9 @@ TEST_CASE("Test integrals - base integrals") {
     CHECK(base_integrals.has_J3_ri());
 
     CHECK_THROWS(BaseIntegrals(uw12::linalg::head_rows(J30, 0), J20, J3ri0));
-    CHECK_THROWS(BaseIntegrals(uw12::linalg::head_cols(J30, n_df - 1), J20, J3ri0));
+    CHECK_THROWS(
+        BaseIntegrals(uw12::linalg::head_cols(J30, n_df - 1), J20, J3ri0)
+    );
   }
 
   SECTION("J3_0 constructor - No RI") {
@@ -507,7 +509,6 @@ TEST_CASE("Test integrals - base integrals") {
     CHECK(base_integrals.has_J3());
     CHECK_FALSE(base_integrals.has_J3_ri_0());
     CHECK_FALSE(base_integrals.has_J3_ri());
-
 
     CHECK_THROWS(BaseIntegrals(uw12::linalg::head_cols(J3, n_df - 1), df_vals));
   }

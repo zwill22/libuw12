@@ -2,8 +2,8 @@
 // Created by Zack Williams on 18/03/2024.
 //
 
-#include "../src/four_electron/four_electron_utils.hpp"
 #include "catch.hpp"
+#include "four_electron/four_electron_utils.hpp"
 #include "setup_integrals.hpp"
 
 using uw12::integrals::Integrals;

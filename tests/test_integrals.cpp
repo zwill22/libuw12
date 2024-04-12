@@ -2,8 +2,8 @@
 // Created by Zack Williams on 26/02/2024.
 //
 
-#include "../src/integrals/integrals.hpp"
 #include "catch.hpp"
+#include "integrals/integrals.hpp"
 
 using namespace uw12::utils;
 using namespace uw12::linalg;

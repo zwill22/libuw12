@@ -5,7 +5,7 @@
 #ifndef MULTI_ELECTRON_TEST_UTILS_HPP
 #define MULTI_ELECTRON_TEST_UTILS_HPP
 
-#include "../src/integrals/integrals.hpp"
+#include "integrals/integrals.hpp"
 #include "numerical_fock.hpp"
 
 namespace uw12_test {

@@ -2,11 +2,11 @@
 // Created by Zack Williams on 27/03/2024.
 //
 
-#include "../src/three_electron/three_electron.hpp"
 #include "catch.hpp"
 #include "density_utils.hpp"
 #include "multi_el_test_utils.hpp"
 #include "setup_integrals.hpp"
+#include "three_electron/three_electron.hpp"
 
 using uw12::integrals::Integrals;
 using uw12::three_el::form_fock_three_el_term_df_ri;

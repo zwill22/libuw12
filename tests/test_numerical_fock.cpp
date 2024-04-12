@@ -2,10 +2,10 @@
 // Created by Zack Williams on 06/03/2024.
 //
 
-#include "../src/utils/parallel.hpp"
-#include "../src/utils/utils.hpp"
 #include "catch.hpp"
 #include "numerical_fock.hpp"
+#include "utils/parallel.hpp"
+#include "utils/utils.hpp"
 
 using uw12::utils::DensityMatrix;
 using uw12_test::epsilon;

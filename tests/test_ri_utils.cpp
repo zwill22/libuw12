@@ -2,9 +2,9 @@
 // Created by Zack Williams on 26/03/2024.
 //
 
-#include "../src/three_electron/ri_utils.hpp"
-#include "../src/utils/linalg.hpp"
 #include "catch.hpp"
+#include "three_electron/ri_utils.hpp"
+#include "utils/linalg.hpp"
 
 using uw12::linalg::n_cols;
 using uw12::linalg::n_rows;

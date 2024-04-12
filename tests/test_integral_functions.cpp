@@ -2,8 +2,8 @@
 // Created by Zack Williams on 23/02/2024.
 //
 
-#include "../src/integrals/integral_functions.hpp"
 #include "catch.hpp"
+#include "integrals/integral_functions.hpp"
 
 using namespace uw12_test;
 

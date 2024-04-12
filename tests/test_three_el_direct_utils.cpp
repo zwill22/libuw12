@@ -2,10 +2,10 @@
 // Created by Zack Williams on 27/03/2024.
 //
 
-#include "../src/four_electron/four_electron_utils.hpp"
-#include "../src/three_electron/direct_utils.hpp"
 #include "catch.hpp"
+#include "four_electron/four_electron_utils.hpp"
 #include "setup_integrals.hpp"
+#include "three_electron/direct_utils.hpp"
 
 using uw12::integrals::Integrals;
 using uw12_test::eps;

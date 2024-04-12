@@ -5,7 +5,7 @@
 #ifndef DENSITY_UTILS_HPP
 #define DENSITY_UTILS_HPP
 
-#include "../src/utils/utils.hpp"
+#include "utils/utils.hpp"
 
 namespace uw12_test::density {
 
