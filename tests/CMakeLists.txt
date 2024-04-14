@@ -1,4 +1,4 @@
-add_library(catch catch.hpp)
+add_library(catch SHARED catch.hpp)
 target_link_libraries(catch Catch2::Catch2WithMain)
 target_include_directories(catch
         INTERFACE
