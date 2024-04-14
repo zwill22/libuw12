@@ -4,9 +4,7 @@ project(libuw12 VERSION 0.1.0 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-option(BUILD_SHARED_LIBS "Build shared libraries" ON)
-
-add_library(uw12 SHARED libuw12.cpp)
+add_library(uw12 libuw12.cpp)
 target_include_directories(uw12
         PRIVATE
         $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src>
@@ -48,7 +46,7 @@ if (USE_TBB OR SEARCH_PARALLEL)
         target_link_libraries(uw12 PUBLIC TBB::tbb TBB::tbbmalloc TBB::tbbmalloc_proxy)
 
         set(SEARCH_PARALLEL OFF)
-        add_compile_definitions(USE_TBB)
+        set(PARALLEL_KEY USE_TBB)
     else ()
         if (USE_TBB)
             message(FATAL_ERROR "TBB not found")
@@ -67,7 +65,7 @@ if (USE_OPENMP OR SEARCH_PARALLEL)
       target_link_libraries(uw12 PUBLIC OpenMP::OpenMP_CXX)
 
       set(SEARCH_PARALLEL OFF)
-      add_compile_definitions(USE_OMP)
+      set(PARALLEL_KEY USE_OMP)
     else ()
         if (USE_OPENMP)
             message(FATAL_ERROR "OpenMP not found")
@@ -80,6 +78,7 @@ endif ()
 # Set serial build
 if (BUILD_SERIAL OR SEARCH_PARALLEL)
     message(STATUS "Serial build")
+    set(PARALLEL_KEY SERIAL)
 endif ()
 
 # Looking for Linear algebra library
@@ -96,6 +95,7 @@ else ()
     set(SEARCH_LINALG ON)
 endif ()
 
+add_library(linalg INTERFACE)
 # Search for TBB
 if (USE_ARMA OR SEARCH_LINALG)
     message(STATUS "Looking for Armadillo linear algebra library...")
@@ -119,9 +119,8 @@ if (ARMADILLO_FOUND)
     message(STATUS "Armadillo version: " ${ARMADILLO_VERSION_STRING})
     message(STATUS "ARMADILLO_INCLUDE_DIRS : " ${ARMADILLO_INCLUDE_DIRS})
 
-    add_library(arma INTERFACE)
     target_compile_definitions(
-            arma
+            linalg
             INTERFACE
             ARMA_DONT_USE_WRAPPER
             ARMA_USE_LAPACK
@@ -129,15 +128,14 @@ if (ARMADILLO_FOUND)
             $<$<BOOL:${TBB_FOUND}>:ARMA_USE_TBB_ALLOC>
     )
 
-    add_compile_definitions(USE_ARMA)
+    set(LINALG_KEY USE_ARMA)
 
-    target_include_directories(arma INTERFACE ${ARMADILLO_INCLUDE_DIRS})
+    target_include_directories(linalg INTERFACE ${ARMADILLO_INCLUDE_DIRS})
 
-    target_link_libraries(uw12 PUBLIC arma)
     if (TBB_FOUND)
-        target_compile_definitions(arma INTERFACE ${TBB_DEFINITIONS})
-        target_link_libraries(arma INTERFACE ${TBB_LIBRARIES})
-        target_include_directories(arma INTERFACE ${TBB_INCLUDE_DIRS})
+        target_compile_definitions(linalg INTERFACE ${TBB_DEFINITIONS})
+        target_link_libraries(linalg INTERFACE ${TBB_LIBRARIES})
+        target_include_directories(linalg INTERFACE ${TBB_INCLUDE_DIRS})
     endif ()
 
     message(STATUS "Armadillo requires backend BLAS library to function")
@@ -158,14 +156,14 @@ if (ARMADILLO_FOUND)
         message(STATUS "MKL_VERSION: ${MKL_VERSION}")
         message(STATUS "MKL_LIBRARIES: ${MKL_LIBRARIES}")
 
-        target_link_libraries(arma INTERFACE $<LINK_ONLY:MKL::MKL>)
+        target_link_libraries(linalg INTERFACE $<LINK_ONLY:MKL::MKL>)
     else ()
         message(STATUS "MKL not found, looking for alternative BLAS implementation...")
 
         find_package(BLAS REQUIRED)
         find_package(LAPACK REQUIRED)
 
-        target_link_libraries(arma INTERFACE BLAS::BLAS LAPACK::LAPACK)
+        target_link_libraries(linalg INTERFACE BLAS::BLAS LAPACK::LAPACK)
     endif ()
 endif ()
 
@@ -176,12 +174,12 @@ if (USE_EIGEN OR SEARCH_LINALG)
     find_package(Eigen3 3.3 NO_MODULE)
 
     if (TARGET Eigen3::Eigen)
-        add_compile_definitions(USE_EIGEN)
         message(STATUS "Eigen3 found: ${Eigen3_DIR}")
 
-        target_link_libraries(uw12 PUBLIC Eigen3::Eigen)
+        target_link_libraries(linalg INTERFACE Eigen3::Eigen)
 
         set(SEARCH_LINALG OFF)
+        set(LINALG_KEY USE_EIGEN)
     else ()
         if (USE_EIGEN)
             message(FATAL_ERROR "Eigen linear algebra library not found")
@@ -195,6 +193,8 @@ endif ()
 if (SEARCH_LINALG)
     message(FATAL_ERROR "No linear algebra library found")
 endif ()
+
+target_link_libraries(uw12 PUBLIC linalg)
 
 if (NOT DEFINED USE_CATCH)
     set(USE_CATCH ON)

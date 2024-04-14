@@ -5,9 +5,9 @@
 #ifndef LIBUW12_HPP
 #define LIBUW12_HPP
 
-#include "integrals/base_integrals.hpp"
-#include "three_electron/ri_utils.hpp"
-#include "utils/utils.hpp"
+#include "src/integrals/base_integrals.hpp"
+#include "src/three_electron/ri_utils.hpp"
+#include "src/utils/utils.hpp"
 
 namespace uw12 {
 

@@ -5,6 +5,8 @@
 #ifndef UW12_LINALG_HPP
 #define UW12_LINALG_HPP
 
+#include "config.hpp"
+
 #ifdef USE_ARMA
 #include <armadillo>
 #elif USE_EIGEN
@@ -20,6 +22,7 @@
 #include <cmath>
 #include <vector>
 
+// TODO: Consider moving ARMA/EIGEN to cpp
 namespace uw12::linalg {
 #ifdef USE_ARMA
 /// Matrix object in column major ordering

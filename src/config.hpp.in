@@ -5,4 +5,7 @@
 
 constexpr char source_dir[] = "@CMAKE_SOURCE_DIR@";
 
+#define @LINALG_KEY@ 1
+#define @PARALLEL_KEY@ 1
+
 #endif
