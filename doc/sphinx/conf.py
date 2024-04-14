@@ -19,6 +19,17 @@ extensions = ['sphinx.ext.mathjax', 'breathe', 'exhale', 'sphinx_rtd_theme']
 breathe_projects = {"libuw12": "../doxygen/xml"}
 breathe_default_project = "libuw12"
 
+# Setup the exhale extension
+exhale_args = {
+    # These arguments are required
+    "containmentFolder":     "./api",
+    "rootFileName":          "library_root.rst",
+    "doxygenStripFromPath":  "..",
+    "rootFileTitle":         "Library API",
+    # Suggested optional arguments
+    "createTreeView":        True,
+}
+
 
 # Tell sphinx what the primary language being documented is.
 primary_domain = 'cpp'
