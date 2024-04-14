@@ -1,0 +1,2012 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="namespaceuw12_1_1linalg" kind="namespace" language="C++">
+    <compoundname>uw12::linalg</compoundname>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="linalg_8hpp_1a68f2784ef0658d163ecac7c0ece8457c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t uw12::linalg::n_elem</definition>
+        <argsstring>(const Vec &amp;vec)</argsstring>
+        <name>n_elem</name>
+        <qualifiedname>uw12::linalg::n_elem</qualifiedname>
+        <param>
+          <type>const Vec &amp;</type>
+          <declname>vec</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="40" column="15" bodyfile="src/utils/linalg.hpp" bodystart="40" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1abcaa1c900250e51e0d97c0ec5e25b155" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t uw12::linalg::n_elem</definition>
+        <argsstring>(const Mat &amp;mat)</argsstring>
+        <name>n_elem</name>
+        <qualifiedname>uw12::linalg::n_elem</qualifiedname>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>mat</declname>
+        </param>
+        <briefdescription>
+<para>Calculate the number of elements in a matrix. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="51" column="15" bodyfile="src/utils/linalg.hpp" bodystart="51" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1a1e44e0cefc747bdddc1cc37d22dea329" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t uw12::linalg::n_rows</definition>
+        <argsstring>(const Mat &amp;mat)</argsstring>
+        <name>n_rows</name>
+        <qualifiedname>uw12::linalg::n_rows</qualifiedname>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>mat</declname>
+        </param>
+        <briefdescription>
+<para>Calculate the number of rows in a matrix. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="62" column="15" bodyfile="src/utils/linalg.hpp" bodystart="62" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1a3d61cc13330a8fa6e0c03e0619e0d9fe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t uw12::linalg::n_cols</definition>
+        <argsstring>(const Mat &amp;mat)</argsstring>
+        <name>n_cols</name>
+        <qualifiedname>uw12::linalg::n_cols</qualifiedname>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>mat</declname>
+        </param>
+        <briefdescription>
+<para>Calculate the number of columns in a matrix. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="73" column="15" bodyfile="src/utils/linalg.hpp" bodystart="73" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1ae0c0ed3bcbd6e1d2674da18e99d27ea7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Vec</type>
+        <definition>Vec uw12::linalg::vec</definition>
+        <argsstring>(const size_t n_el)</argsstring>
+        <name>vec</name>
+        <qualifiedname>uw12::linalg::vec</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>n_el</declname>
+        </param>
+        <briefdescription>
+<para>Initialise a vec of size <computeroutput>n_el</computeroutput> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="84" column="12" bodyfile="src/utils/linalg.hpp" bodystart="84" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1a5d229563cf5c8ea66ce699fb972fa4d8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Vec</type>
+        <definition>Vec uw12::linalg::vec</definition>
+        <argsstring>(const std::vector&lt; double &gt; &amp;vector)</argsstring>
+        <name>vec</name>
+        <qualifiedname>uw12::linalg::vec</qualifiedname>
+        <param>
+          <type>const std::vector&lt; double &gt; &amp;</type>
+          <declname>vector</declname>
+        </param>
+        <briefdescription>
+<para>Initialise a vec from a std::vector&lt;double&gt; </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="95" column="12" bodyfile="src/utils/linalg.hpp" bodystart="95" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1a89ce8a7d57c14aaf09590370888ba563" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Vec</type>
+        <definition>Vec uw12::linalg::ones</definition>
+        <argsstring>(const size_t n_el)</argsstring>
+        <name>ones</name>
+        <qualifiedname>uw12::linalg::ones</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>n_el</declname>
+        </param>
+        <briefdescription>
+<para>Initialise a vec of ones of size <computeroutput>n_el</computeroutput> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="109" column="12" bodyfile="src/utils/linalg.hpp" bodystart="109" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1a98f8ef9630d5170e575b5ad7094be21d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Vec</type>
+        <definition>Vec uw12::linalg::zeros</definition>
+        <argsstring>(const size_t n_el)</argsstring>
+        <name>zeros</name>
+        <qualifiedname>uw12::linalg::zeros</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>n_el</declname>
+        </param>
+        <briefdescription>
+<para>Initialise a vec of zeros of size <computeroutput>n_el</computeroutput> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="120" column="12" bodyfile="src/utils/linalg.hpp" bodystart="120" bodyend="128"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1ab335c04341ffaee370c686f6c36666f9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double uw12::linalg::elem</definition>
+        <argsstring>(const Vec &amp;vec, const size_t index)</argsstring>
+        <name>elem</name>
+        <qualifiedname>uw12::linalg::elem</qualifiedname>
+        <param>
+          <type>const Vec &amp;</type>
+          <declname>vec</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="130" column="15" bodyfile="src/utils/linalg.hpp" bodystart="130" bodyend="138"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1aa91e942ce9a3af23f99e48a283e9f682" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Mat</type>
+        <definition>Mat uw12::linalg::mat</definition>
+        <argsstring>(double *mem, const size_t n_row, const size_t n_col, const bool copy=false)</argsstring>
+        <name>mat</name>
+        <qualifiedname>uw12::linalg::mat</qualifiedname>
+        <param>
+          <type>double *</type>
+          <declname>mem</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n_row</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n_col</declname>
+        </param>
+        <param>
+          <type>const bool</type>
+          <declname>copy</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Initialise a <computeroutput>Mat</computeroutput> object given a memory location and the size</para>
+<para>Initialise a matrix of size <computeroutput>n_row * n_col</computeroutput> given these values and a pointer to the first entry of the final matrix.</para>
+<para>No checking is done by the function to check whether the is an <computeroutput>n_row * n_col</computeroutput> array at the given location so ensure memory is assigned before using this function. TODO: Require memory checks whenever this function is called</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mem</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to first entry in array </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n_row</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of rows in final matrix </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n_col</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of columns in final matrix </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>copy</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether to copy memory or construct matrix pointing to original memory</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Mat object of size <computeroutput>n_row * n_col</computeroutput> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="157" column="12" bodyfile="src/utils/linalg.hpp" bodystart="157" bodyend="172"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1aa86a9a43b5d1ae5bc3bfb60ecc3a8e29" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double uw12::linalg::elem</definition>
+        <argsstring>(const Mat &amp;mat, const size_t row_index, const size_t col_index)</argsstring>
+        <name>elem</name>
+        <qualifiedname>uw12::linalg::elem</qualifiedname>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>mat</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>row_index</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>col_index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the (<computeroutput>row_index</computeroutput>, <computeroutput>col_index</computeroutput>) element of <computeroutput>mat</computeroutput>. (For testing)<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Matrix</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>row_index</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+param col_index <simplesect kind="return"><para>Element in position (<computeroutput>row_index</computeroutput>, <computeroutput>col_index</computeroutput>) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="177" column="15" bodyfile="src/utils/linalg.hpp" bodystart="177" bodyend="187"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1ab27337005ffb43cd541608f37ebcfd3c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void uw12::linalg::set_elem</definition>
+        <argsstring>(Mat &amp;mat, const size_t row_index, const size_t col_index, const double value)</argsstring>
+        <name>set_elem</name>
+        <qualifiedname>uw12::linalg::set_elem</qualifiedname>
+        <param>
+          <type>Mat &amp;</type>
+          <declname>mat</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>row_index</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>col_index</declname>
+        </param>
+        <param>
+          <type>const double</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets the (<computeroutput>row_index</computeroutput>, <computeroutput>col_index</computeroutput>) element of <computeroutput>mat</computeroutput> to <computeroutput>value</computeroutput>. (For testing) <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Matrix </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>row_index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>col_index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="195" column="13" bodyfile="src/utils/linalg.hpp" bodystart="195" bodyend="203"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1abc9697105633fe64c342fa1821e76e9d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void uw12::linalg::set_elem</definition>
+        <argsstring>(Vec &amp;vec, const size_t index, const double value)</argsstring>
+        <name>set_elem</name>
+        <qualifiedname>uw12::linalg::set_elem</qualifiedname>
+        <param>
+          <type>Vec &amp;</type>
+          <declname>vec</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>const double</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets the <computeroutput>index</computeroutput> element of <computeroutput>vec</computeroutput> to <computeroutput>value</computeroutput>. (For testing) <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vec</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>vec </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="209" column="13" bodyfile="src/utils/linalg.hpp" bodystart="209" bodyend="215"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1a202b43759408286c5a0c007e68a38a98" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Mat</type>
+        <definition>Mat uw12::linalg::mat</definition>
+        <argsstring>(const size_t n_row, const size_t n_col)</argsstring>
+        <name>mat</name>
+        <qualifiedname>uw12::linalg::mat</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>n_row</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n_col</declname>
+        </param>
+        <briefdescription>
+<para>Initialise a matrix of size <computeroutput>n_row</computeroutput> by <computeroutput>n_col</computeroutput> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="218" column="12" bodyfile="src/utils/linalg.hpp" bodystart="218" bodyend="226"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1a34794c92ab1110025a2ebe61dc2a60ec" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Mat</type>
+        <definition>Mat uw12::linalg::ones</definition>
+        <argsstring>(const size_t n_row, const size_t n_col)</argsstring>
+        <name>ones</name>
+        <qualifiedname>uw12::linalg::ones</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>n_row</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n_col</declname>
+        </param>
+        <briefdescription>
+<para>Initialise a matrix of ones size <computeroutput>n_row</computeroutput> by <computeroutput>n_col</computeroutput> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="229" column="12" bodyfile="src/utils/linalg.hpp" bodystart="229" bodyend="237"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1aadfbb1b1cb57f73e78ea260365d6374e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Mat</type>
+        <definition>Mat uw12::linalg::zeros</definition>
+        <argsstring>(const size_t n_row, const size_t n_col)</argsstring>
+        <name>zeros</name>
+        <qualifiedname>uw12::linalg::zeros</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>n_row</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n_col</declname>
+        </param>
+        <briefdescription>
+<para>Initialise a matrix of zeros of size <computeroutput>n_row</computeroutput> by <computeroutput>n_col</computeroutput> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="240" column="12" bodyfile="src/utils/linalg.hpp" bodystart="240" bodyend="248"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1a8ee10041bdf3843abc4ad10ba845629f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Mat</type>
+        <definition>Mat uw12::linalg::id</definition>
+        <argsstring>(const size_t n)</argsstring>
+        <name>id</name>
+        <qualifiedname>uw12::linalg::id</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+<para>Generate an identity matrix of size <computeroutput>n</computeroutput> by <computeroutput>n</computeroutput> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="251" column="12" bodyfile="src/utils/linalg.hpp" bodystart="251" bodyend="259"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1a61b03beea886b935bde8cf8b4de0b596" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Mat</type>
+        <definition>Mat uw12::linalg::transpose</definition>
+        <argsstring>(const Mat &amp;mat)</argsstring>
+        <name>transpose</name>
+        <qualifiedname>uw12::linalg::transpose</qualifiedname>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>mat</declname>
+        </param>
+        <briefdescription>
+<para>Compute the transpose of a matrix. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="262" column="12" bodyfile="src/utils/linalg.hpp" bodystart="262" bodyend="270"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1a08402d1cb8b5fef234d8b0e0e82e0013" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Mat</type>
+        <definition>Mat uw12::linalg::random</definition>
+        <argsstring>(const size_t n_row, const size_t n_col, const int seed)</argsstring>
+        <name>random</name>
+        <qualifiedname>uw12::linalg::random</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>n_row</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n_col</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>seed</declname>
+        </param>
+        <briefdescription>
+<para>Generate a random matrix of size <computeroutput>n_row * n_col</computeroutput> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="273" column="12" bodyfile="src/utils/linalg.hpp" bodystart="273" bodyend="288"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1af17a25925b5c4b1ad18829d065d9f3b6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool uw12::linalg::is_square</definition>
+        <argsstring>(const Mat &amp;mat)</argsstring>
+        <name>is_square</name>
+        <qualifiedname>uw12::linalg::is_square</qualifiedname>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>mat</declname>
+        </param>
+        <briefdescription>
+<para>Check whether a matrix is square. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="291" column="13" bodyfile="src/utils/linalg.hpp" bodystart="291" bodyend="302"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1aba500bf68b2401deb5f61a4bfe3619db" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool uw12::linalg::is_symmetric</definition>
+        <argsstring>(const Mat &amp;mat, const double threshold=1e-10)</argsstring>
+        <name>is_symmetric</name>
+        <qualifiedname>uw12::linalg::is_symmetric</qualifiedname>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>mat</declname>
+        </param>
+        <param>
+          <type>const double</type>
+          <declname>threshold</declname>
+          <defval>1e-10</defval>
+        </param>
+        <briefdescription>
+<para>Check whether a matrix is symmetric to within a threshold. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="305" column="13" bodyfile="src/utils/linalg.hpp" bodystart="305" bodyend="326"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1a94195adb9b21b483209d7f91ffb3f414" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool uw12::linalg::all_positive</definition>
+        <argsstring>(const Vec &amp;vec)</argsstring>
+        <name>all_positive</name>
+        <qualifiedname>uw12::linalg::all_positive</qualifiedname>
+        <param>
+          <type>const Vec &amp;</type>
+          <declname>vec</declname>
+        </param>
+        <briefdescription>
+<para>Check whether all elements of a vec are non-negative. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="329" column="13" bodyfile="src/utils/linalg.hpp" bodystart="329" bodyend="337"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1a7df912fcd8228f4fc774791712a9b143" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Vec</type>
+        <definition>Vec uw12::linalg::schur</definition>
+        <argsstring>(const Vec &amp;vec1, const Vec &amp;vec2)</argsstring>
+        <name>schur</name>
+        <qualifiedname>uw12::linalg::schur</qualifiedname>
+        <param>
+          <type>const Vec &amp;</type>
+          <declname>vec1</declname>
+        </param>
+        <param>
+          <type>const Vec &amp;</type>
+          <declname>vec2</declname>
+        </param>
+        <briefdescription>
+<para>Element-wise product of two vectors (Schur-product) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="340" column="12" bodyfile="src/utils/linalg.hpp" bodystart="340" bodyend="353"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1a9e99c63ba7854a12b6875a0919188d8b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double uw12::linalg::dot</definition>
+        <argsstring>(const Mat &amp;mat1, const Mat &amp;mat2)</argsstring>
+        <name>dot</name>
+        <qualifiedname>uw12::linalg::dot</qualifiedname>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>mat1</declname>
+        </param>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>mat2</declname>
+        </param>
+        <briefdescription>
+<para>Matrix dot product. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="356" column="15" bodyfile="src/utils/linalg.hpp" bodystart="356" bodyend="377"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1a73b7d1b1511aa9c3721acb4d2575a061" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Mat</type>
+        <definition>Mat uw12::linalg::reshape</definition>
+        <argsstring>(const Mat &amp;mat, const size_t n_row, const size_t n_col, const bool copy_data=false)</argsstring>
+        <name>reshape</name>
+        <qualifiedname>uw12::linalg::reshape</qualifiedname>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>mat</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n_row</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n_col</declname>
+        </param>
+        <param>
+          <type>const bool</type>
+          <declname>copy_data</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Reshape an object into a matrix of size <computeroutput>n_row * n_col</computeroutput></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input object (must have <computeroutput>n_row * n_col</computeroutput> elements) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n_row</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of rows of output matrix </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n_col</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of columns of output matrix </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>copy_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether to copy the matrix data or point to original data</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Output matrix of size <computeroutput>n_row * n_col</computeroutput> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="387" column="12" bodyfile="src/utils/linalg.hpp" bodystart="387" bodyend="418"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1a5a26aaab8de52e3b42c29f250844b225" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Mat</type>
+        <definition>Mat uw12::linalg::reshape_col</definition>
+        <argsstring>(const Mat &amp;mat, const size_t col_idx, const size_t n_row, const size_t n_col, const bool copy_data=false)</argsstring>
+        <name>reshape_col</name>
+        <qualifiedname>uw12::linalg::reshape_col</qualifiedname>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>mat</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>col_idx</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n_row</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n_col</declname>
+        </param>
+        <param>
+          <type>const bool</type>
+          <declname>copy_data</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Reshape a column of a matrix to a new matrix</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Matrix containing chosen column (must have <computeroutput>n_row * n_col</computeroutput> rows)</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>col_idx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Index of chosen column (must be a column of matrix <computeroutput>mat</computeroutput>)</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n_row</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of rows of output matrix</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n_col</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of columns of output matrix</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>copy_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether to copy the data</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Matrix of size <computeroutput>n_row * n_col</computeroutput> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="428" column="12" bodyfile="src/utils/linalg.hpp" bodystart="428" bodyend="462"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1a3ace3a300b324b23503c585b3a523b19" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Mat</type>
+        <definition>Mat uw12::linalg::p_inv</definition>
+        <argsstring>(const Mat &amp;mat, const double threshold=1e-10)</argsstring>
+        <name>p_inv</name>
+        <qualifiedname>uw12::linalg::p_inv</qualifiedname>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>mat</declname>
+        </param>
+        <param>
+          <type>const double</type>
+          <declname>threshold</declname>
+          <defval>1e-10</defval>
+        </param>
+        <briefdescription>
+<para>Calculate the pseudo-inverse of matrix <computeroutput>mat</computeroutput> using the given <computeroutput>threshold</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="465" column="12" bodyfile="src/utils/linalg.hpp" bodystart="465" bodyend="477"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1ae691d729c91f9221d77690ef2b3ee06e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Mat</type>
+        <definition>Mat uw12::linalg::diagmat</definition>
+        <argsstring>(const Vec &amp;vec)</argsstring>
+        <name>diagmat</name>
+        <qualifiedname>uw12::linalg::diagmat</qualifiedname>
+        <param>
+          <type>const Vec &amp;</type>
+          <declname>vec</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Generate a diagonal matrix of size <computeroutput>n_el * n_el</computeroutput> from a vector of size <computeroutput>n_el</computeroutput> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="481" column="12" bodyfile="src/utils/linalg.hpp" bodystart="481" bodyend="489"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1a72a115052a4c575fbf7dd0d1a92c041c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Mat</type>
+        <definition>Mat uw12::linalg::expmat</definition>
+        <argsstring>(const Mat &amp;mat)</argsstring>
+        <name>expmat</name>
+        <qualifiedname>uw12::linalg::expmat</qualifiedname>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>mat</declname>
+        </param>
+        <briefdescription>
+<para>Compute the matrix exponential of input matrix. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="492" column="12" bodyfile="src/utils/linalg.hpp" bodystart="492" bodyend="500"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1ae4e8774b49a56c231e75c93ccb8dd7a4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Mat</type>
+        <definition>Mat uw12::linalg::random_pd</definition>
+        <argsstring>(const size_t n_row, const int seed)</argsstring>
+        <name>random_pd</name>
+        <qualifiedname>uw12::linalg::random_pd</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>n_row</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>seed</declname>
+        </param>
+        <briefdescription>
+<para>Generate a random positive-definite square matrix of size <computeroutput>n_row * n_row</computeroutput> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="503" column="12" bodyfile="src/utils/linalg.hpp" bodystart="503" bodyend="512"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1ae6c304769ec242476b84d89e0c229545" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Mat</type>
+        <definition>Mat uw12::linalg::inv_sym_pd</definition>
+        <argsstring>(const Mat &amp;mat)</argsstring>
+        <name>inv_sym_pd</name>
+        <qualifiedname>uw12::linalg::inv_sym_pd</qualifiedname>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>mat</declname>
+        </param>
+        <briefdescription>
+<para>Calculate the inverse of a symmetric positive definite matrix. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="515" column="12" bodyfile="src/utils/linalg.hpp" bodystart="515" bodyend="526"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1a07778fa1b95956d02e5717bb57521b34" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Vec</type>
+        <definition>Vec uw12::linalg::sub_vec</definition>
+        <argsstring>(const Vec &amp;vec, const size_t row1, const size_t n_row)</argsstring>
+        <name>sub_vec</name>
+        <qualifiedname>uw12::linalg::sub_vec</qualifiedname>
+        <param>
+          <type>const Vec &amp;</type>
+          <declname>vec</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>row1</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n_row</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Output a contiguous sub-vector of the input vector</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vec</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input vector </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>row1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>First row of sub-vector </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n_row</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of rows of sub-vector</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Sub-vector of size <computeroutput>n_row</computeroutput> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="535" column="12" bodyfile="src/utils/linalg.hpp" bodystart="535" bodyend="553"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1a1a9e0c4022f97afb2f94fccb1ecbc13d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Mat</type>
+        <definition>Mat uw12::linalg::sub_mat</definition>
+        <argsstring>(const Mat &amp;mat, const size_t row1, const size_t col1, const size_t n_row, const size_t n_col)</argsstring>
+        <name>sub_mat</name>
+        <qualifiedname>uw12::linalg::sub_mat</qualifiedname>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>mat</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>row1</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>col1</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n_row</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n_col</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Output a sub-matrix of input matrix <computeroutput>mat</computeroutput></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input matrix </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>row1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Index of first row of sub-matrix </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>col1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Index of first column of sub-matrix </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n_row</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of rows of sub-matrix </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n_col</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of columns of sub-matrix</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Sub-matrix of size <computeroutput>n_row * n_col</computeroutput> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="564" column="12" bodyfile="src/utils/linalg.hpp" bodystart="564" bodyend="590"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1a76b984f8c35f4c1c815389d1afc01da8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double uw12::linalg::norm</definition>
+        <argsstring>(const Mat &amp;mat)</argsstring>
+        <name>norm</name>
+        <qualifiedname>uw12::linalg::norm</qualifiedname>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>mat</declname>
+        </param>
+        <briefdescription>
+<para>Calculate the norm a matrix. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="593" column="15" bodyfile="src/utils/linalg.hpp" bodystart="593" bodyend="603"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1a32649b471b2222df61673dd74aeaf352" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Vec</type>
+        <definition>Vec uw12::linalg::col</definition>
+        <argsstring>(const Mat &amp;mat, const size_t col_idx, const bool copy_data=false)</argsstring>
+        <name>col</name>
+        <qualifiedname>uw12::linalg::col</qualifiedname>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>mat</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>col_idx</declname>
+        </param>
+        <param>
+          <type>const bool</type>
+          <declname>copy_data</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get a column of input matrix <computeroutput>mat</computeroutput></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input matrix </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>col_idx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Index of column </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>copy_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether to copy the column data</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Column vector corresponding to <computeroutput>col_idx</computeroutput> column of matrix <computeroutput>mat</computeroutput> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="612" column="12" bodyfile="src/utils/linalg.hpp" bodystart="612" bodyend="627"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1a69f33abefae9de956925c5526371d802" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Mat</type>
+        <definition>Mat uw12::linalg::row</definition>
+        <argsstring>(const Mat &amp;mat, const size_t row_idx)</argsstring>
+        <name>row</name>
+        <qualifiedname>uw12::linalg::row</qualifiedname>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>mat</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>row_idx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get a row of input matrix <computeroutput>mat</computeroutput></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input matrix </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>row_idx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Index of row in <computeroutput>mat</computeroutput></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Matrix of size <computeroutput>1 * n_col</computeroutput> corresponding to <computeroutput>row_idx</computeroutput> row of <computeroutput>mat</computeroutput> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="635" column="12" bodyfile="src/utils/linalg.hpp" bodystart="635" bodyend="646"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1aa1b49fe23dbf2e1c4737a47cc46a8673" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Mat</type>
+        <definition>Mat uw12::linalg::rows</definition>
+        <argsstring>(const Mat &amp;mat, const size_t row_idx, const size_t n_row)</argsstring>
+        <name>rows</name>
+        <qualifiedname>uw12::linalg::rows</qualifiedname>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>mat</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>row_idx</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n_row</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get sub-matrix of multiple rows of input matrix</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input matrix </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>row_idx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Index of first row </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n_row</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of rows in sub-matrix</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>sub-matrix of the <computeroutput>n_row</computeroutput> rows of <computeroutput>mat</computeroutput> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="655" column="12" bodyfile="src/utils/linalg.hpp" bodystart="655" bodyend="659"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1a9f19bd67db88fb1a2ad883f1c197442a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Vec</type>
+        <definition>Vec uw12::linalg::head</definition>
+        <argsstring>(const Vec &amp;vec, const size_t n_row)</argsstring>
+        <name>head</name>
+        <qualifiedname>uw12::linalg::head</qualifiedname>
+        <param>
+          <type>const Vec &amp;</type>
+          <declname>vec</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n_row</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get first <computeroutput>n_row</computeroutput> of vector <computeroutput>vec</computeroutput></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vec</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input vector </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n_row</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of rows in sub-vector</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Sub-vector of first <computeroutput>n_row</computeroutput> of input vector </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="667" column="12" bodyfile="src/utils/linalg.hpp" bodystart="667" bodyend="680"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1a8be4aaf269260287b0fb39c314c7a5de" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Vec</type>
+        <definition>Vec uw12::linalg::tail</definition>
+        <argsstring>(const Vec &amp;vec, const size_t n_row)</argsstring>
+        <name>tail</name>
+        <qualifiedname>uw12::linalg::tail</qualifiedname>
+        <param>
+          <type>const Vec &amp;</type>
+          <declname>vec</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n_row</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get last <computeroutput>n_row</computeroutput> of vector <computeroutput>vec</computeroutput></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vec</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input vector </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n_row</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of rows in sub-vector</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Sub-vector of last <computeroutput>n_row</computeroutput> of input vector </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="688" column="12" bodyfile="src/utils/linalg.hpp" bodystart="688" bodyend="701"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1ad4bdc33b359de3fe41d1c8e4b90b01e0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Mat</type>
+        <definition>Mat uw12::linalg::head_cols</definition>
+        <argsstring>(const Mat &amp;mat, const size_t n_col, const bool copy_data=false)</argsstring>
+        <name>head_cols</name>
+        <qualifiedname>uw12::linalg::head_cols</qualifiedname>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>mat</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n_col</declname>
+        </param>
+        <param>
+          <type>const bool</type>
+          <declname>copy_data</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get sub-matrix of the first <computeroutput>n_col</computeroutput> of input matrix</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input matrix </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n_col</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of columns in sub-matrix </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>copy_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether to copy dat to make new matrix</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Sub-matrix of first <computeroutput>n_col</computeroutput> of <computeroutput>mat</computeroutput> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="710" column="12" bodyfile="src/utils/linalg.hpp" bodystart="710" bodyend="734"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1a072aea17168b45f1988b54aa953798da" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Mat</type>
+        <definition>Mat uw12::linalg::tail_cols</definition>
+        <argsstring>(const Mat &amp;mat, const size_t n_col, const bool copy_data=false)</argsstring>
+        <name>tail_cols</name>
+        <qualifiedname>uw12::linalg::tail_cols</qualifiedname>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>mat</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n_col</declname>
+        </param>
+        <param>
+          <type>const bool</type>
+          <declname>copy_data</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get sub-matrix of the last <computeroutput>n_col</computeroutput> of input matrix</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input matrix </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n_col</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of columns in sub-matrix </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>copy_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether to copy dat to make new matrix</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Sub-matrix of last <computeroutput>n_col</computeroutput> of <computeroutput>mat</computeroutput> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="743" column="12" bodyfile="src/utils/linalg.hpp" bodystart="743" bodyend="776"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1a067553b4cfaca932dd70906387213169" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Mat</type>
+        <definition>Mat uw12::linalg::head_rows</definition>
+        <argsstring>(const Mat &amp;mat, const size_t n_row)</argsstring>
+        <name>head_rows</name>
+        <qualifiedname>uw12::linalg::head_rows</qualifiedname>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>mat</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n_row</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get sub-matrix of the first <computeroutput>n_row</computeroutput> of input matrix</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input matrix </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n_row</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of row in sub-matrix</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Sub-matrix of first <computeroutput>n_row</computeroutput> of <computeroutput>mat</computeroutput> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="784" column="12" bodyfile="src/utils/linalg.hpp" bodystart="784" bodyend="799"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1ad2ac2d9f385eca51053c855b20676cbe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Mat</type>
+        <definition>Mat uw12::linalg::tail_rows</definition>
+        <argsstring>(const Mat &amp;mat, const size_t n_row)</argsstring>
+        <name>tail_rows</name>
+        <qualifiedname>uw12::linalg::tail_rows</qualifiedname>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>mat</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n_row</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get sub-matrix of the last <computeroutput>n_row</computeroutput> of input matrix</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input matrix </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n_row</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of row in sub-matrix</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Sub-matrix of last <computeroutput>n_row</computeroutput> of <computeroutput>mat</computeroutput> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="807" column="12" bodyfile="src/utils/linalg.hpp" bodystart="807" bodyend="826"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1abab4229d5ff3144bc3872843dd4a01d1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Vec</type>
+        <definition>Vec uw12::linalg::vectorise</definition>
+        <argsstring>(const Mat &amp;mat)</argsstring>
+        <name>vectorise</name>
+        <qualifiedname>uw12::linalg::vectorise</qualifiedname>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>mat</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Convert an <computeroutput>n_row * n_col</computeroutput> matrix into a vector of length <computeroutput>n_row * n_col</computeroutput> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="830" column="12" bodyfile="src/utils/linalg.hpp" bodystart="830" bodyend="838"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1ad1769bd11d282e9520227bf46a03af84" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double uw12::linalg::trace</definition>
+        <argsstring>(const Mat &amp;mat)</argsstring>
+        <name>trace</name>
+        <qualifiedname>uw12::linalg::trace</qualifiedname>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>mat</declname>
+        </param>
+        <briefdescription>
+<para>Compute the trace of matrix <computeroutput>mat</computeroutput> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="841" column="15" bodyfile="src/utils/linalg.hpp" bodystart="841" bodyend="852"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1a3560566ae345bb8d8683e9457d780531" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Mat</type>
+        <definition>Mat uw12::linalg::sqrt</definition>
+        <argsstring>(const Mat &amp;mat)</argsstring>
+        <name>sqrt</name>
+        <qualifiedname>uw12::linalg::sqrt</qualifiedname>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>mat</declname>
+        </param>
+        <briefdescription>
+<para>Calculate the element-wise square-root of the input object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="855" column="12" bodyfile="src/utils/linalg.hpp" bodystart="855" bodyend="868"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1a66d263be9a143c7c94f18a92173043ef" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void uw12::linalg::assign_cols</definition>
+        <argsstring>(Mat &amp;mat, const Mat &amp;input, const size_t offset)</argsstring>
+        <name>assign_cols</name>
+        <qualifiedname>uw12::linalg::assign_cols</qualifiedname>
+        <param>
+          <type>Mat &amp;</type>
+          <declname>mat</declname>
+        </param>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>input</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>offset</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Assign a matrix to columns of matrix <computeroutput>mat</computeroutput></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Matrix for column assignment (non-const) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>input</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input matrix (must have same number of rows as <computeroutput>mat</computeroutput>) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>First column index for assignment </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="875" column="13" bodyfile="src/utils/linalg.hpp" bodystart="875" bodyend="898"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1a00b8ab4708b2baa5ba3c87b88756c5f9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void uw12::linalg::assign_rows</definition>
+        <argsstring>(Mat &amp;mat, const Mat &amp;input, const size_t offset)</argsstring>
+        <name>assign_rows</name>
+        <qualifiedname>uw12::linalg::assign_rows</qualifiedname>
+        <param>
+          <type>Mat &amp;</type>
+          <declname>mat</declname>
+        </param>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>input</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>offset</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Assign a matrix to rows of matrix <computeroutput>mat</computeroutput></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Matrix for row assignment (non-const) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>input</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input matrix (must have same number of cols as <computeroutput>mat</computeroutput>) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>First rows index for assignment </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="905" column="13" bodyfile="src/utils/linalg.hpp" bodystart="905" bodyend="926"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1a72345c4a2535a7b43eccbd0957292011" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void uw12::linalg::assign_rows</definition>
+        <argsstring>(Vec &amp;vec, const Vec &amp;input, const size_t offset)</argsstring>
+        <name>assign_rows</name>
+        <qualifiedname>uw12::linalg::assign_rows</qualifiedname>
+        <param>
+          <type>Vec &amp;</type>
+          <declname>vec</declname>
+        </param>
+        <param>
+          <type>const Vec &amp;</type>
+          <declname>input</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>offset</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Assign a matrix to rows of vector <computeroutput>vec</computeroutput></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vec</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Vector for row assignment (non-const) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>input</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input vector </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>First index for assignment </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="933" column="13" bodyfile="src/utils/linalg.hpp" bodystart="933" bodyend="951"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1aa6a30068bdbc97ef47e43cb1a0ab2686" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const double *</type>
+        <definition>const double * uw12::linalg::mem_ptr</definition>
+        <argsstring>(const Vec &amp;vec)</argsstring>
+        <name>mem_ptr</name>
+        <qualifiedname>uw12::linalg::mem_ptr</qualifiedname>
+        <param>
+          <type>const Vec &amp;</type>
+          <declname>vec</declname>
+        </param>
+        <briefdescription>
+<para>Obtain a pointer to first element of vector. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="954" column="21" bodyfile="src/utils/linalg.hpp" bodystart="954" bodyend="962"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1ad3e17db69335ca72ebf6b61953725fd9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const double *</type>
+        <definition>const double * uw12::linalg::mem_ptr</definition>
+        <argsstring>(const Mat &amp;mat)</argsstring>
+        <name>mem_ptr</name>
+        <qualifiedname>uw12::linalg::mem_ptr</qualifiedname>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>mat</declname>
+        </param>
+        <briefdescription>
+<para>Obtain a pointer to first element of matrix. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="965" column="21" bodyfile="src/utils/linalg.hpp" bodystart="965" bodyend="973"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1a58456f6fbd82da405c644f54615a44ce" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool uw12::linalg::empty</definition>
+        <argsstring>(const Vec &amp;vec)</argsstring>
+        <name>empty</name>
+        <qualifiedname>uw12::linalg::empty</qualifiedname>
+        <param>
+          <type>const Vec &amp;</type>
+          <declname>vec</declname>
+        </param>
+        <briefdescription>
+<para>Determine whether a vector is empty. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="976" column="13" bodyfile="src/utils/linalg.hpp" bodystart="976" bodyend="984"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1a7cab1f73c25068e00087b911d64ad382" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool uw12::linalg::empty</definition>
+        <argsstring>(const Mat &amp;mat)</argsstring>
+        <name>empty</name>
+        <qualifiedname>uw12::linalg::empty</qualifiedname>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>mat</declname>
+        </param>
+        <briefdescription>
+<para>Determine whether a matrix is empty. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="987" column="13" bodyfile="src/utils/linalg.hpp" bodystart="987" bodyend="995"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1ae9b913e458fbf7a6e1ebca126c5703dd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double uw12::linalg::max_abs</definition>
+        <argsstring>(const Vec &amp;vec)</argsstring>
+        <name>max_abs</name>
+        <qualifiedname>uw12::linalg::max_abs</qualifiedname>
+        <param>
+          <type>const Vec &amp;</type>
+          <declname>vec</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="997" column="15" bodyfile="src/utils/linalg.hpp" bodystart="997" bodyend="1005"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1a46b8f5bd66dc4144e1d56d76b929c5e3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool uw12::linalg::nearly_equal</definition>
+        <argsstring>(const Mat &amp;mat1, const Mat &amp;mat2, const double epsilon)</argsstring>
+        <name>nearly_equal</name>
+        <qualifiedname>uw12::linalg::nearly_equal</qualifiedname>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>mat1</declname>
+        </param>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>mat2</declname>
+        </param>
+        <param>
+          <type>const double</type>
+          <declname>epsilon</declname>
+        </param>
+        <briefdescription>
+<para>Check whether two matrices are equal to within a tolerance <computeroutput>epsilon</computeroutput> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="1008" column="13" bodyfile="src/utils/linalg.hpp" bodystart="1008" bodyend="1018"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1ac5487f542f2a067baefeef312d215abc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Mat</type>
+        <definition>Mat uw12::linalg::each_col</definition>
+        <argsstring>(const Mat &amp;mat, const Vec &amp;vec)</argsstring>
+        <name>each_col</name>
+        <qualifiedname>uw12::linalg::each_col</qualifiedname>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>mat</declname>
+        </param>
+        <param>
+          <type>const Vec &amp;</type>
+          <declname>vec</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Multiply each column in a matrix by a column vector element-wise</para>
+<para>For each column in matrix <computeroutput>mat</computeroutput> multiply element-wise by vector <computeroutput>vec</computeroutput></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Matrix of size <computeroutput>n_row * n_col</computeroutput> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>vec</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Vector of length <computeroutput>n_row</computeroutput></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Matrix of size <computeroutput>n_row * n_col</computeroutput> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="1028" column="12" bodyfile="src/utils/linalg.hpp" bodystart="1028" bodyend="1039"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1af98950cee3b313b7202e2b67d79aad14" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Mat</type>
+        <definition>Mat uw12::linalg::join_matrices</definition>
+        <argsstring>(const Mat &amp;mat1, const Mat &amp;mat2)</argsstring>
+        <name>join_matrices</name>
+        <qualifiedname>uw12::linalg::join_matrices</qualifiedname>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>mat1</declname>
+        </param>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>mat2</declname>
+        </param>
+        <briefdescription>
+<para>Create a cube from two matrices. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="1042" column="12" bodyfile="src/utils/linalg.hpp" bodystart="1042" bodyend="1064"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1ae39c81392809b039c4a0fff74eeb2dea" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Mat</type>
+        <definition>Mat uw12::linalg::load_csv</definition>
+        <argsstring>(const std::string &amp;filepath)</argsstring>
+        <name>load_csv</name>
+        <qualifiedname>uw12::linalg::load_csv</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>filepath</declname>
+        </param>
+        <briefdescription>
+<para>Load a matrix from a csv file located at <computeroutput>file_path</computeroutput> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="1067" column="12" bodyfile="src/utils/linalg.hpp" bodystart="1067" bodyend="1097"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1ad27e75dcb52e9e2271704c34c996b606" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::pair&lt; Vec, Mat &gt;</type>
+        <definition>std::pair&lt; Vec, Mat &gt; uw12::linalg::eigen_system</definition>
+        <argsstring>(const Mat &amp;mat)</argsstring>
+        <name>eigen_system</name>
+        <qualifiedname>uw12::linalg::eigen_system</qualifiedname>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>mat</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Eigen-decomposition of a symmetric/hermitian matrix</para>
+<para>Calculate the eigenvalues and eigenvectors of an <computeroutput>n * n</computeroutput> matrix. Results are returned as a std::pair&lt;Vec, Mat&gt; containing a vector of <computeroutput>n</computeroutput> eigenvalues and a matrix of <computeroutput>n</computeroutput> eigenvectors in each column.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input matrix (must be square and symmetric)</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Eigenvalues and eigenvectors of matrix </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="1108" column="18" bodyfile="src/utils/linalg.hpp" bodystart="1108" bodyend="1141"/>
+      </memberdef>
+      <memberdef kind="function" id="linalg_8hpp_1a3751e9268a46f48d8ffe4faef29bdfbf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::pair&lt; Vec, Mat &gt;</type>
+        <definition>std::pair&lt; Vec, Mat &gt; uw12::linalg::eigen_decomposition</definition>
+        <argsstring>(const Mat &amp;matrix, const double linear_dependency_threshold, const double eigen_ld_threshold)</argsstring>
+        <name>eigen_decomposition</name>
+        <qualifiedname>uw12::linalg::eigen_decomposition</qualifiedname>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>matrix</declname>
+        </param>
+        <param>
+          <type>const double</type>
+          <declname>linear_dependency_threshold</declname>
+        </param>
+        <param>
+          <type>const double</type>
+          <declname>eigen_ld_threshold</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Eigen-decomposition of a symmetric/hermitian matrix removing linear dependent eigenvalues</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>matrix</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input matrix </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>linear_dependency_threshold</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Absolute threshold for linear-dependence </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>eigen_ld_threshold</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Eigenvalue linear dependence threshold (eigenvalues smaller than this threshold multiplied by the maximum eigenvalue are removed)</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Eigenvalues (as a vector) Eigenvectors as a matrix </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/linalg.hpp" line="1153" column="18" bodyfile="src/utils/linalg.hpp" bodystart="1153" bodyend="1193"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/utils/linalg.hpp" line="26" column="1"/>
+  </compounddef>
+</doxygen>

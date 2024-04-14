@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="dir_c4135c86bf1f897c1a24f6801c8b3302" kind="dir">
+    <compoundname>src/two_electron</compoundname>
+    <innerfile refid="two__electron_8cpp">two_electron.cpp</innerfile>
+    <innerfile refid="two__electron_8hpp">two_electron.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/two_electron/"/>
+  </compounddef>
+</doxygen>

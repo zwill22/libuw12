@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="catch_8hpp" kind="file" language="C++">
+    <compoundname>catch.hpp</compoundname>
+    <includes local="no">catch2/catch_all.hpp</includes>
+    <includedby refid="setup__integrals_8hpp" local="yes">tests/setup_integrals.hpp</includedby>
+    <includedby refid="test__base__integrals_8cpp" local="yes">tests/test_base_integrals.cpp</includedby>
+    <includedby refid="test__density__utils_8cpp" local="yes">tests/test_density_utils.cpp</includedby>
+    <includedby refid="test__four__el_8cpp" local="yes">tests/test_four_el.cpp</includedby>
+    <includedby refid="test__four__el__utils_8cpp" local="yes">tests/test_four_el_utils.cpp</includedby>
+    <includedby refid="test__integral__functions_8cpp" local="yes">tests/test_integral_functions.cpp</includedby>
+    <includedby refid="test__integral__transformations_8cpp" local="yes">tests/test_integral_transformations.cpp</includedby>
+    <includedby refid="test__integrals_8cpp" local="yes">tests/test_integrals.cpp</includedby>
+    <includedby refid="test__linalg__mat_8cpp" local="yes">tests/test_linalg_mat.cpp</includedby>
+    <includedby refid="test__linalg__mat__op_8cpp" local="yes">tests/test_linalg_mat_op.cpp</includedby>
+    <includedby refid="test__linalg__vec_8cpp" local="yes">tests/test_linalg_vec.cpp</includedby>
+    <includedby refid="test__numerical__fock_8cpp" local="yes">tests/test_numerical_fock.cpp</includedby>
+    <includedby refid="test__parallel_8cpp" local="yes">tests/test_parallel.cpp</includedby>
+    <includedby refid="test__print_8cpp" local="yes">tests/test_print.cpp</includedby>
+    <includedby refid="test__ri__utils_8cpp" local="yes">tests/test_ri_utils.cpp</includedby>
+    <includedby refid="test__three__el_8cpp" local="yes">tests/test_three_el.cpp</includedby>
+    <includedby refid="test__three__el__direct__utils_8cpp" local="yes">tests/test_three_el_direct_utils.cpp</includedby>
+    <includedby refid="test__three__el__indirect__utils_8cpp" local="yes">tests/test_three_el_indirect_utils.cpp</includedby>
+    <includedby refid="test__two__el_8cpp" local="yes">tests/test_two_el.cpp</includedby>
+    <includedby refid="test__utils_8cpp" local="yes">tests/test_utils.cpp</includedby>
+    <includedby refid="test__uw12_8cpp" local="yes">tests/test_uw12.cpp</includedby>
+    <includedby refid="test__water_8cpp" local="yes">tests/test_water.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>tests/catch.hpp</label>
+        <link refid="catch_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>catch2/catch_all.hpp</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>tests/catch.hpp</label>
+        <link refid="catch_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tests/setup_integrals.hpp</label>
+        <link refid="setup__integrals_8hpp_source"/>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespaceuw12__test">uw12_test</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Created<sp/>by<sp/>Zack<sp/>Williams<sp/>on<sp/>12/02/2024.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>CATCH_HPP</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CATCH_HPP</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;catch2/catch_all.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">uw12_test<sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>seed<sp/>=<sp/>11;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>epsilon<sp/>=<sp/>1e-10;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>margin<sp/>=<sp/>epsilon;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>eps<sp/>=<sp/>epsilon;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>uw12_test</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/></highlight><highlight class="comment">//<sp/>CATCH_HPP</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="tests/catch.hpp"/>
+  </compounddef>
+</doxygen>

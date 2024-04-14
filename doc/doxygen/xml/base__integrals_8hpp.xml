@@ -1,0 +1,331 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="base__integrals_8hpp" kind="file" language="C++">
+    <compoundname>base_integrals.hpp</compoundname>
+    <includes local="no">memory</includes>
+    <includes local="no">mutex</includes>
+    <includes refid="integral__functions_8hpp" local="yes">integral_functions.hpp</includes>
+    <includedby refid="libuw12_8cpp" local="yes">libuw12.cpp</includedby>
+    <includedby refid="libuw12_8hpp" local="yes">libuw12.hpp</includedby>
+    <includedby refid="base__integrals_8cpp" local="yes">src/integrals/base_integrals.cpp</includedby>
+    <includedby refid="integrals_8cpp" local="yes">src/integrals/integrals.cpp</includedby>
+    <includedby refid="integrals_8hpp" local="yes">src/integrals/integrals.hpp</includedby>
+    <includedby refid="two__electron_8cpp" local="yes">src/two_electron/two_electron.cpp</includedby>
+    <includedby refid="two__electron_8hpp" local="yes">src/two_electron/two_electron.hpp</includedby>
+    <includedby refid="uw12_8hpp" local="yes">src/uw12.hpp</includedby>
+    <includedby refid="setup__integrals_8hpp" local="yes">tests/setup_integrals.hpp</includedby>
+    <includedby refid="test__base__integrals_8cpp" local="yes">tests/test_base_integrals.cpp</includedby>
+    <includedby refid="test__data_8hpp" local="yes">tests/test_data.hpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>src/integrals/base_integrals.hpp</label>
+        <link refid="base__integrals_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>integral_functions.hpp</label>
+        <link refid="integral__functions_8hpp_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>utils/linalg.hpp</label>
+        <link refid="linalg_8hpp_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>utils/parallel.hpp</label>
+        <link refid="parallel_8hpp_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>cassert</label>
+      </node>
+      <node id="10">
+        <label>cmath</label>
+      </node>
+      <node id="8">
+        <label>config.hpp</label>
+      </node>
+      <node id="5">
+        <label>functional</label>
+      </node>
+      <node id="2">
+        <label>memory</label>
+      </node>
+      <node id="3">
+        <label>mutex</label>
+      </node>
+      <node id="6">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>libuw12.hpp</label>
+        <link refid="libuw12_8hpp_source"/>
+      </node>
+      <node id="4">
+        <label>src/four_electron/four_electron.hpp</label>
+        <link refid="four__electron_8hpp_source"/>
+      </node>
+      <node id="5">
+        <label>src/four_electron/four_electron_utils.hpp</label>
+        <link refid="four__electron__utils_8hpp_source"/>
+      </node>
+      <node id="1">
+        <label>src/integrals/base_integrals.hpp</label>
+        <link refid="base__integrals_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>src/integrals/integrals.hpp</label>
+        <link refid="integrals_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>src/three_electron/direct_utils.hpp</label>
+        <link refid="direct__utils_8hpp_source"/>
+      </node>
+      <node id="7">
+        <label>src/three_electron/indirect_utils.hpp</label>
+        <link refid="indirect__utils_8hpp_source"/>
+      </node>
+      <node id="8">
+        <label>src/three_electron/three_electron.hpp</label>
+        <link refid="three__electron_8hpp_source"/>
+      </node>
+      <node id="11">
+        <label>src/two_electron/two_electron.hpp</label>
+        <link refid="two__electron_8hpp_source"/>
+      </node>
+      <node id="12">
+        <label>src/uw12.hpp</label>
+        <link refid="uw12_8hpp_source"/>
+      </node>
+      <node id="9">
+        <label>tests/multi_el_test_utils.hpp</label>
+        <link refid="multi__el__test__utils_8hpp_source"/>
+      </node>
+      <node id="10">
+        <label>tests/setup_integrals.hpp</label>
+        <link refid="setup__integrals_8hpp_source"/>
+      </node>
+      <node id="13">
+        <label>tests/test_data.hpp</label>
+        <link refid="test__data_8hpp_source"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classuw12_1_1integrals_1_1_base_integrals" prot="public">uw12::integrals::BaseIntegrals</innerclass>
+    <innernamespace refid="namespaceuw12">uw12</innernamespace>
+    <innernamespace refid="namespaceuw12_1_1integrals">uw12::integrals</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>UW12_BASE_INTEGRALS_HPP</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>UW12_BASE_INTEGRALS_HPP</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mutex&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;integral_functions.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">uw12::integrals<sp/>{</highlight></codeline>
+<codeline lineno="46" refid="classuw12_1_1integrals_1_1_base_integrals" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classuw12_1_1integrals_1_1_base_integrals" kindref="compound">BaseIntegrals</ref><sp/>{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><ref refid="classuw12_1_1integrals_1_1_base_integrals_1a9eb1de999bf1bfe4af66877d7ad0eacc" kindref="member">BaseIntegrals</ref>();</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><ref refid="classuw12_1_1integrals_1_1_base_integrals_1a9eb1de999bf1bfe4af66877d7ad0eacc" kindref="member">BaseIntegrals</ref>(</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TwoIndexFn<sp/>&amp;two_index_fn,</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>ThreeIndexFn<sp/>&amp;three_index_fn,</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>ThreeIndexFn<sp/>&amp;three_index_ri_fn,</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>&amp;df_sizes,</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_ao,</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_df,</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_ri,</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>store_ao_integrals<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>store_ri_integrals<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/>);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><ref refid="classuw12_1_1integrals_1_1_base_integrals_1a9eb1de999bf1bfe4af66877d7ad0eacc" kindref="member">BaseIntegrals</ref>(</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TwoIndexFn<sp/>&amp;two_index_fn,</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>ThreeIndexFn<sp/>&amp;three_index_fn,</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>&amp;df_sizes,</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_ao,</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_df,</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>store_ao_integrals<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/>);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><ref refid="classuw12_1_1integrals_1_1_base_integrals_1a9eb1de999bf1bfe4af66877d7ad0eacc" kindref="member">BaseIntegrals</ref>(</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>linalg::Mat<sp/>&amp;J3_0,</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>linalg::Mat<sp/>&amp;J2,</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>ThreeIndexFn<sp/>&amp;<ref refid="classuw12_1_1integrals_1_1_base_integrals_1ac6a36f3a1aa6773fbad9a1b5e95c9e49" kindref="member">three_index_ri</ref>,</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>&amp;df_sizes,</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>use_ri,</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_ao,</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_df,</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_ri,</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>store_ri_integrals<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/>);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><ref refid="classuw12_1_1integrals_1_1_base_integrals_1a9eb1de999bf1bfe4af66877d7ad0eacc" kindref="member">BaseIntegrals</ref>(</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>linalg::Mat<sp/>&amp;J3_0,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>linalg::Mat<sp/>&amp;J2,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>linalg::Mat<sp/>&amp;J3_ri_0</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/>);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><ref refid="classuw12_1_1integrals_1_1_base_integrals_1a9eb1de999bf1bfe4af66877d7ad0eacc" kindref="member">BaseIntegrals</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>linalg::Mat<sp/>&amp;J3_0,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>linalg::Mat<sp/>&amp;J2);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><ref refid="classuw12_1_1integrals_1_1_base_integrals_1a9eb1de999bf1bfe4af66877d7ad0eacc" kindref="member">BaseIntegrals</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>linalg::Mat<sp/>&amp;J3,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>linalg::Vec<sp/>&amp;df_vals);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/>linalg::Mat<sp/><ref refid="classuw12_1_1integrals_1_1_base_integrals_1a3999213fbd0829555d106c4b52350f7d" kindref="member">two_index</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/>linalg::Mat<sp/><ref refid="classuw12_1_1integrals_1_1_base_integrals_1a1e2452f32149ceaa6654dac3858d5f87" kindref="member">three_index</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>A)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/>linalg::Mat<sp/><ref refid="classuw12_1_1integrals_1_1_base_integrals_1ac6a36f3a1aa6773fbad9a1b5e95c9e49" kindref="member">three_index_ri</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>A)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classuw12_1_1integrals_1_1_base_integrals_1a1a64736f1639b365b6bcebedd60396be" kindref="member">has_two_index_fn</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classuw12_1_1integrals_1_1_base_integrals_1a2b97bc418512e7dc35af87d0bd4c9656" kindref="member">has_three_index_fn</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classuw12_1_1integrals_1_1_base_integrals_1a89811266118f8a09cb579fd4a523f2bf" kindref="member">has_three_index_ri_fn</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>linalg::Mat<sp/>&amp;<ref refid="classuw12_1_1integrals_1_1_base_integrals_1af4734cedca35d2a64e1251adfecadacd" kindref="member">get_P2</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>&amp;<ref refid="classuw12_1_1integrals_1_1_base_integrals_1a802dafd3b85372cc9a36d8bc3543b00f" kindref="member">get_df_sizes</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/>std::vector&lt;size_t&gt;<sp/><ref refid="classuw12_1_1integrals_1_1_base_integrals_1abe396e5a6f9fcb17588a772443e7b0a2" kindref="member">get_df_offsets</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>linalg::Vec<sp/>&amp;<ref refid="classuw12_1_1integrals_1_1_base_integrals_1a2048e3b5a82c3dc3988ba4870462c515" kindref="member">get_df_vals</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>linalg::Mat<sp/>&amp;<ref refid="classuw12_1_1integrals_1_1_base_integrals_1a79fdc48d839b361675d67735593f9722" kindref="member">get_J3_0</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>linalg::Mat<sp/>&amp;<ref refid="classuw12_1_1integrals_1_1_base_integrals_1a1f0d2125f139a3d0decbfe0bca3a2899" kindref="member">get_J3</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>linalg::Mat<sp/>&amp;<ref refid="classuw12_1_1integrals_1_1_base_integrals_1a6c25f78e914174babcb6df50041b8138" kindref="member">get_J3_ri_0</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>linalg::Mat<sp/>&amp;<ref refid="classuw12_1_1integrals_1_1_base_integrals_1ab65cfd13ca9ad560f8c5fb0200c2c4a8" kindref="member">get_J3_ri</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classuw12_1_1integrals_1_1_base_integrals_1a5576cb061d7969113afe667112550fc6" kindref="member">get_number_ao</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classuw12_1_1integrals_1_1_base_integrals_1ae772428a9f3c4ba40cdd38e0576db166" kindref="member">get_number_df</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classuw12_1_1integrals_1_1_base_integrals_1acd0ce59b7c8f336427107b4f3e65c658" kindref="member">get_number_ri</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classuw12_1_1integrals_1_1_base_integrals_1ab884b93cff3d85812bd43781b0144fad" kindref="member">storing_ri</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classuw12_1_1integrals_1_1_base_integrals_1a629b76d0ae6d75c02e967a58d159909f" kindref="member">storing_ao</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classuw12_1_1integrals_1_1_base_integrals_1aa666287be33e63bfff633d23d7de4d2f" kindref="member">has_P2</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classuw12_1_1integrals_1_1_base_integrals_1a2793c518f348e9a5c0d048e411d22c08" kindref="member">has_df_vals</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classuw12_1_1integrals_1_1_base_integrals_1a4a12f1008a6170c30d2ca2c90d16930e" kindref="member">has_J3_0</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classuw12_1_1integrals_1_1_base_integrals_1a657551cc3e591b1368d1e3f31963da34" kindref="member">has_J3</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classuw12_1_1integrals_1_1_base_integrals_1a2d4436c84bf32bb8b111c7539a5fa723" kindref="member">has_J3_ri</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classuw12_1_1integrals_1_1_base_integrals_1aeacaadb51a45b4e5db625cf1c2da9705" kindref="member">has_J3_ri_0</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><ref refid="classuw12_1_1integrals_1_1_base_integrals_1a9eb1de999bf1bfe4af66877d7ad0eacc" kindref="member">BaseIntegrals</ref>(</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>TwoIndexFn<sp/>two_index_fn_,</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ThreeIndexFn<sp/>three_index_fn_,</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ThreeIndexFn<sp/>three_index_ri_fn_,</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>&amp;df_sizes_,</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_ao_,</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_df_,</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_ri_,</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>store_ao_integrals_,</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>store_ri_integrals_,</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>two_index_fn_provided_,</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>three_index_fn_provided_,</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>three_index_ri_fn_provided_,</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;linalg::Mat&gt;<sp/>&amp;J3_0_<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;linalg::Mat&gt;<sp/>&amp;J3_<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;linalg::Mat&gt;<sp/>&amp;J2_<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;linalg::Vec&gt;<sp/>&amp;df_vals_<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;linalg::Mat&gt;<sp/>&amp;J3_ri_0_<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/>);</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>set_J2_values()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"></highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/>TwoIndexFn<sp/>two_index_fn;</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/>ThreeIndexFn<sp/>three_index_fn;</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/>ThreeIndexFn<sp/>three_index_fn_ri;</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"></highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_ao{};</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_df{};</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_ri{};</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/>std::vector&lt;size_t&gt;<sp/>df_sizes;</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/>std::shared_ptr&lt;linalg::Mat&gt;<sp/>J3_0;</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/>std::shared_ptr&lt;linalg::Mat&gt;<sp/>J3;</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/>std::shared_ptr&lt;linalg::Mat&gt;<sp/>J3_ri_0;</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/>std::shared_ptr&lt;linalg::Mat&gt;<sp/>J3_ri;</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/>std::shared_ptr&lt;linalg::Mat&gt;<sp/>P2;</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/>std::shared_ptr&lt;linalg::Vec&gt;<sp/>df_vals;</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"></highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/>std::shared_ptr&lt;std::mutex&gt;<sp/>J3_lock;</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/>std::shared_ptr&lt;std::mutex&gt;<sp/>J3_ri_lock;</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/>std::shared_ptr&lt;std::mutex&gt;<sp/>eig_lock;</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"></highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>two_index_fn_provided{};</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>three_index_fn_provided{};</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>three_index_ri_fn_provided{};</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"></highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>store_ao_integrals{};</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>store_ri_integrals{};</highlight></codeline>
+<codeline lineno="293"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="294"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>uw12::integrals</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="295"><highlight class="normal"></highlight></codeline>
+<codeline lineno="296"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/></highlight><highlight class="comment">//<sp/>UW12_BASE_INTEGRALS_HPP</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="src/integrals/base_integrals.hpp"/>
+  </compounddef>
+</doxygen>

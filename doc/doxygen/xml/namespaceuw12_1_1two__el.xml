@@ -1,0 +1,223 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="namespaceuw12_1_1two__el" kind="namespace" language="C++">
+    <compoundname>uw12::two_el</compoundname>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="two__electron_8cpp_1a4ea833ce7c7614eaf7f1f1e13df1d25a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; linalg::Vec &gt;</type>
+        <definition>std::vector&lt; linalg::Vec &gt; uw12::two_el::calculate_WV_tilde_D</definition>
+        <argsstring>(const std::vector&lt; linalg::Vec &gt; &amp;WV_D, const integrals::Integrals &amp;WV)</argsstring>
+        <name>calculate_WV_tilde_D</name>
+        <qualifiedname>uw12::two_el::calculate_WV_tilde_D</qualifiedname>
+        <param>
+          <type>const std::vector&lt; linalg::Vec &gt; &amp;</type>
+          <declname>WV_D</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_integrals" kindref="compound">integrals::Integrals</ref> &amp;</type>
+          <declname>WV</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/two_electron/two_electron.cpp" line="11" column="13" bodyfile="src/two_electron/two_electron.cpp" bodystart="11" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="two__electron_8cpp_1ac727c9ff9abc33b5b712a9796043c7a7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>linalg::Mat</type>
+        <definition>linalg::Mat uw12::two_el::calculate_direct_fock</definition>
+        <argsstring>(const integrals::Integrals &amp;WV, const linalg::Vec &amp;WV_tilde_D)</argsstring>
+        <name>calculate_direct_fock</name>
+        <qualifiedname>uw12::two_el::calculate_direct_fock</qualifiedname>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_integrals" kindref="compound">integrals::Integrals</ref> &amp;</type>
+          <declname>WV</declname>
+        </param>
+        <param>
+          <type>const linalg::Vec &amp;</type>
+          <declname>WV_tilde_D</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/two_electron/two_electron.cpp" line="26" column="13" bodyfile="src/two_electron/two_electron.cpp" bodystart="26" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="two__electron_8cpp_1a8669cbd685e9b5c15b824b204b523162" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structuw12_1_1utils_1_1_fock_matrix_and_energy" kindref="compound">utils::FockMatrixAndEnergy</ref></type>
+        <definition>utils::FockMatrixAndEnergy uw12::two_el::direct_fock</definition>
+        <argsstring>(const integrals::Integrals &amp;WV, const bool calculate_fock, const double scale_opp_spin, const double scale_same_spin)</argsstring>
+        <name>direct_fock</name>
+        <qualifiedname>uw12::two_el::direct_fock</qualifiedname>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_integrals" kindref="compound">integrals::Integrals</ref> &amp;</type>
+          <declname>WV</declname>
+        </param>
+        <param>
+          <type>const bool</type>
+          <declname>calculate_fock</declname>
+        </param>
+        <param>
+          <type>const double</type>
+          <declname>scale_opp_spin</declname>
+        </param>
+        <param>
+          <type>const double</type>
+          <declname>scale_same_spin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/two_electron/two_electron.cpp" line="37" column="28" bodyfile="src/two_electron/two_electron.cpp" bodystart="37" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="two__electron_8cpp_1ac2721db6eeb2daaf932c8d5fe511fcae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structuw12_1_1utils_1_1_fock_matrix_and_energy" kindref="compound">utils::FockMatrixAndEnergy</ref></type>
+        <definition>utils::FockMatrixAndEnergy uw12::two_el::indirect_fock</definition>
+        <argsstring>(const integrals::Integrals &amp;WV, const bool calculate_fock)</argsstring>
+        <name>indirect_fock</name>
+        <qualifiedname>uw12::two_el::indirect_fock</qualifiedname>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_integrals" kindref="compound">integrals::Integrals</ref> &amp;</type>
+          <declname>WV</declname>
+        </param>
+        <param>
+          <type>const bool</type>
+          <declname>calculate_fock</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/two_electron/two_electron.cpp" line="87" column="28" bodyfile="src/two_electron/two_electron.cpp" bodystart="87" bodyend="132"/>
+      </memberdef>
+      <memberdef kind="function" id="two__electron_8cpp_1a1b6153c8c43b4068eb6d4d41d211d9c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structuw12_1_1utils_1_1_fock_matrix_and_energy" kindref="compound">utils::FockMatrixAndEnergy</ref></type>
+        <definition>utils::FockMatrixAndEnergy uw12::two_el::form_fock_two_el_df</definition>
+        <argsstring>(const integrals::BaseIntegrals &amp;WV, const utils::Orbitals &amp;active_Co, const bool indirect_term, const bool calculate_fock, const double scale_opp_spin, const double scale_same_spin)</argsstring>
+        <name>form_fock_two_el_df</name>
+        <qualifiedname>uw12::two_el::form_fock_two_el_df</qualifiedname>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_base_integrals" kindref="compound">integrals::BaseIntegrals</ref> &amp;</type>
+          <declname>WV</declname>
+        </param>
+        <param>
+          <type>const utils::Orbitals &amp;</type>
+          <declname>active_Co</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>indirect_term</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>calculate_fock</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>scale_opp_spin</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>scale_same_spin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Find the contribution to the energy and Fock matrix of the two electron term of UW12.</para>
+<para>The two electron UW12 Fock matrix and energy are calculated using density fitting. In this method, the direct (+) and indirect (-) contributions are calculated separately with the energies given by  <formula id="123">\begin{align*}
+E_{c, 2el,+}^{UW12} &amp;= \frac{1}{2} \sum_{C} \sum_{ij} \left( ii \left|
+w_{12}^{s_{ij}} r_{12}^{-1} \right| C \right) \left( \tilde{C} \left|
+w_{12}^{s_{i j}} r_{12}^{-1} \right| jj \right) \newline
+E_{c, 2el,-}^{UW12} &amp;= - \frac{1}{2} \sum_{C} \sum_{ij} \left( ij \left|
+w_{12}^{1} r_{12}^{-1} \right| C \right) \left( \tilde{C} \left| w_{12}^{1}
+r_{12}^{-1} \right| ij \right),
+\end{align*}</formula> where:  <formula id="124">\[
+\left( \tilde{A} \left| w_{12}^{s_{i j}} r_{12}^{-1} \right| ij \right) =
+\sum_A M_{AB}^{-1} \left( B \left| w_{12}^{s_{i j}} r_{12}^{-1} \right| ij
+\right)
+\]</formula> The corresponding Fock matrix contributions are given by:  <formula id="125">\begin{align*}
+\frac{\partial E_{c, 2el,+}^{UW12}}{\partial D_{\alpha \beta}^{\sigma}} &amp;=
+\sum_{C} \sum_{j} \left( \alpha \beta \left|
+w_{12}^{\delta_{\sigma_{j} \sigma}} r_{12}^{-1} \right| C \right) \left(
+\tilde{C} \left| w_{12}^{\delta_{\sigma_{j} \sigma}} r_{12}^{-1} \right|
+jj \right) \newline
+\frac{\partial E_{c, 2el, -}^{UW12}}{\partial D_{\alpha \beta}^{\sigma}} &amp;=
+- \sum_{j} \delta_{\sigma_{j} \sigma} \sum_{C} \left( \alpha j \left|
+w_{12}^{1} r_{12}^{-1} \right| C \right) \left( \tilde{C} \left| w_{12}^{1}
+r_{12}^{-1} \right| \beta j \right)
+\end{align*}</formula></para>
+<para>The indirect term contains only same-spin contributions. Therefore, for <formula id="12">$w^{s=1}(r) = 0$</formula> (opposite spin only), there is no indirect contribution.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>WV</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Integrals <formula id="126">$(ab|r^{-1}w(r)|A)$</formula> and <formula id="127">$(A|r^{-1}w(r)|B)$</formula> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>active_Co</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Frozen core occupation weighted orbitals </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>indirect_term</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether to compute the indirect term </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>calculate_fock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether to calculate the Fock matrix contribution </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>scale_opp_spin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Scale factor for <formula id="128">$ w^0 (r) $</formula> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>scale_same_spin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Scale factor for <formula id="129">$ w^1 (r) $</formula></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Two electron UW12 Fock matrix and energy contribution </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/two_electron/two_electron.cpp" line="134" column="28" bodyfile="src/two_electron/two_electron.cpp" bodystart="134" bodyend="153" declfile="src/two_electron/two_electron.hpp" declline="53" declcolumn="28"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/two_electron/two_electron.cpp" line="8" column="1"/>
+  </compounddef>
+</doxygen>

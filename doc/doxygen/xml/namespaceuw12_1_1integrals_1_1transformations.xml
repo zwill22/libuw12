@@ -1,0 +1,207 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="namespaceuw12_1_1integrals_1_1transformations" kind="namespace" language="C++">
+    <compoundname>uw12::integrals::transformations</compoundname>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="transformations_8hpp_1a871353e2cb3a028815d663fb714e3c4e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>linalg::Mat</type>
+        <definition>linalg::Mat uw12::integrals::transformations::mo_transform_one_index_full</definition>
+        <argsstring>(const linalg::Mat &amp;J3, const linalg::Mat &amp;C)</argsstring>
+        <name>mo_transform_one_index_full</name>
+        <qualifiedname>uw12::integrals::transformations::mo_transform_one_index_full</qualifiedname>
+        <param>
+          <type>const linalg::Mat &amp;</type>
+          <declname>J3</declname>
+        </param>
+        <param>
+          <type>const linalg::Mat &amp;</type>
+          <declname>C</declname>
+        </param>
+        <briefdescription>
+<para>Transform one index of the three-index density-fitting integrals from the ao basis to mo orbitals using orbital matrix <computeroutput>C</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Transform one index of the matrix <computeroutput>J3</computeroutput> of three-index density-fitting integrals <formula id="53">$(\mu\nu | A)$</formula> for ao indices <formula id="54">$\mu, \nu$</formula> to the space of orbitals <computeroutput>k</computeroutput> resulting in a matrix of three-index integrals <formula id="55">$(\mu k | A)$</formula> for df index <computeroutput>A</computeroutput>.</para>
+<para>The density-fitting integrals <computeroutput>J3</computeroutput> are in matrix form with <computeroutput>n_ao * (n_ao + 1) /2</computeroutput> rows and <computeroutput>nA</computeroutput> columns. The orbital coefficient matrix <computeroutput>C</computeroutput> should be of size <computeroutput>n_ao * n_occ</computeroutput> for number of ao basis functions <computeroutput>n_ao</computeroutput> and number of occupied orbitals <computeroutput>n_occ</computeroutput>. The resulting matrix is of size <computeroutput>(n_ao * n_occ) * nA</computeroutput>.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>J3</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Three-index density-fitting integrals <formula id="56">$(\mu\nu|A)$</formula> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>C</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Orbital coefficients <formula id="57">$C_{\mu k}$</formula></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>One-index transformed df integrals <formula id="58">$(\mu k|A)$</formula> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/transformations.hpp" line="33" column="20" bodyfile="src/integrals/transformations.hpp" bodystart="33" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="transformations_8hpp_1a40a78bc93eb7557ae63fc903f6f8327b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>linalg::Mat</type>
+        <definition>linalg::Mat uw12::integrals::transformations::transform_first_index</definition>
+        <argsstring>(const linalg::Mat &amp;J3, const linalg::Mat &amp;C)</argsstring>
+        <name>transform_first_index</name>
+        <qualifiedname>uw12::integrals::transformations::transform_first_index</qualifiedname>
+        <param>
+          <type>const linalg::Mat &amp;</type>
+          <declname>J3</declname>
+        </param>
+        <param>
+          <type>const linalg::Mat &amp;</type>
+          <declname>C</declname>
+        </param>
+        <briefdescription>
+<para>Transform first index of a three-index density-fitting integrals object from the ao basis using orbital matrix <computeroutput>C</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Transform the first index of the matrix <computeroutput>J3</computeroutput> of three-index density-fitting integrals <formula id="59">$(\mu k| A)$</formula> for ao index <formula id="60">$\mu$</formula> to orbitals <computeroutput>i</computeroutput> in mo space resulting in a matrix of three-index integrals <formula id="61">$(i k | A)$</formula> for df index <computeroutput>A</computeroutput>.</para>
+<para>The density-fitting integrals <computeroutput>J3</computeroutput> are in matrix form with <computeroutput>n_ao * n2</computeroutput> rows and <computeroutput>n3</computeroutput> columns. The orbital coefficient matrix <computeroutput>C</computeroutput> should be of size <computeroutput>n_ao * n_i</computeroutput> for number of ao basis functions <computeroutput>n_ao</computeroutput> and number of <computeroutput>i</computeroutput> orbitals <computeroutput>n_i</computeroutput>. The resulting matrix is of size <computeroutput>(n_i * n2) * n3</computeroutput>.</para>
+<para>No restriction is placed on size of <computeroutput>n2</computeroutput> and <computeroutput>n3</computeroutput> so may relate to any orbitals space. Unlike mo_transform_one_index_full, each column in J3 is a full matrix vectorised rather than the lower trianglar part of a symmetric matrix.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>J3</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Three-index density-fitting integrals <formula id="58">$(\mu k|A)$</formula> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>C</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Orbital coefficients <formula id="62">$C_{\mu i}$</formula></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>First-index mo transformed df integrals <formula id="63">$(i k|A)$</formula> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/transformations.hpp" line="79" column="20" bodyfile="src/integrals/transformations.hpp" bodystart="79" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="transformations_8hpp_1a1d3715152872c2cd46616d7f9081e958" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>linalg::Mat</type>
+        <definition>linalg::Mat uw12::integrals::transformations::transform_second_index</definition>
+        <argsstring>(const linalg::Mat &amp;J3, const linalg::Mat &amp;C)</argsstring>
+        <name>transform_second_index</name>
+        <qualifiedname>uw12::integrals::transformations::transform_second_index</qualifiedname>
+        <param>
+          <type>const linalg::Mat &amp;</type>
+          <declname>J3</declname>
+        </param>
+        <param>
+          <type>const linalg::Mat &amp;</type>
+          <declname>C</declname>
+        </param>
+        <briefdescription>
+<para>Transform second index of a three-index density-fitting integrals object from the ao basis using orbital matrix <computeroutput>C</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Transform the second index of the matrix <computeroutput>J3</computeroutput> of three-index density-fitting integrals <formula id="64">$(p \mu| A)$</formula> for ao index <formula id="60">$\mu$</formula> to the space of orbitals <computeroutput>i</computeroutput> resulting in a matrix of three-index integrals <formula id="65">$(p i | A)$</formula> for df index <computeroutput>A</computeroutput>.</para>
+<para>The density-fitting integrals <computeroutput>J3</computeroutput> are in matrix form with <computeroutput>n1 * n_ao</computeroutput> rows and <computeroutput>n3</computeroutput> columns. The orbital coefficient matrix <computeroutput>C</computeroutput> should be of size <computeroutput>n_ao * n_i</computeroutput> for number of ao basis functions <computeroutput>n_ao</computeroutput> and number of <computeroutput>i</computeroutput> orbitals <computeroutput>n_i</computeroutput>. The resulting matrix is of size <computeroutput>(n1 * n_i) * n3</computeroutput>.</para>
+<para>No restriction is placed on size of <computeroutput>n1</computeroutput> and <computeroutput>n3</computeroutput> so may relate to any orbitals space. This function is not compatible with results of mo_transform_one_index_full. Should only be used to transform the second index an asymmetric matrix.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>J3</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Three-index density-fitting integrals <formula id="66">$(a \mu|A)$</formula> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>C</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Orbital coefficients <formula id="62">$C_{\mu i}$</formula></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Second-index mo transformed df integrals <formula id="67">$(a i|A)$</formula> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/transformations.hpp" line="130" column="20" bodyfile="src/integrals/transformations.hpp" bodystart="130" bodyend="158"/>
+      </memberdef>
+      <memberdef kind="function" id="transformations_8hpp_1afb3ce141848b42aa45aff812ab8f0298" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>linalg::Mat</type>
+        <definition>linalg::Mat uw12::integrals::transformations::mo_transform_two_index_full</definition>
+        <argsstring>(const linalg::Mat &amp;J3, const linalg::Mat &amp;C_left, const linalg::Mat &amp;C_right)</argsstring>
+        <name>mo_transform_two_index_full</name>
+        <qualifiedname>uw12::integrals::transformations::mo_transform_two_index_full</qualifiedname>
+        <param>
+          <type>const linalg::Mat &amp;</type>
+          <declname>J3</declname>
+        </param>
+        <param>
+          <type>const linalg::Mat &amp;</type>
+          <declname>C_left</declname>
+        </param>
+        <param>
+          <type>const linalg::Mat &amp;</type>
+          <declname>C_right</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Directly transform the three-index density-fitting integrals from the ao basis to mo space using orbital matrices <computeroutput>C_left</computeroutput> and <computeroutput>C_right</computeroutput>.</para>
+<para>Transform both ao indices of the matrix <computeroutput>J3</computeroutput> of three-index density-fitting integrals <formula id="53">$(\mu\nu | A)$</formula> for ao indices <formula id="54">$\mu, \nu$</formula> to the space of orbitals <computeroutput>k</computeroutput> and <computeroutput>i</computeroutput> resulting in a matrix of three-index integrals <formula id="61">$(i k | A)$</formula> for df index <computeroutput>A</computeroutput>.</para>
+<para>The density-fitting integrals <computeroutput>J3</computeroutput> are in matrix form with <computeroutput>n_ao * (n_ao + 1) /2</computeroutput> rows and <computeroutput>nA</computeroutput> columns. The orbital coefficient matrices <computeroutput>C_left</computeroutput> and <computeroutput>C_right</computeroutput> should be of sizes <computeroutput>n_ao * n_i</computeroutput> and <computeroutput>n_ao * n_k</computeroutput> respectively. For number of ao basis functions <computeroutput>n_ao</computeroutput> and number of <computeroutput>i</computeroutput> and <computeroutput>k</computeroutput> orbitals <computeroutput>n_i</computeroutput> and <computeroutput>n_k</computeroutput> respectively. The resulting matrix is of size <computeroutput>(n_i * n_k) * nA</computeroutput>.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>J3</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Three-index density-fitting integrals <formula id="56">$(\mu\nu|A)$</formula> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>C_left</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Orbital coefficients <formula id="62">$C_{\mu i}$</formula> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>C_right</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Orbital coefficients <formula id="57">$C_{\mu k}$</formula></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Two-index mo transformed df integrals <formula id="63">$(i k|A)$</formula> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/transformations.hpp" line="180" column="20" bodyfile="src/integrals/transformations.hpp" bodystart="180" bodyend="192"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/integrals/transformations.hpp" line="14" column="1"/>
+  </compounddef>
+</doxygen>

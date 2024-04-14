@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="dir_6ce324e869b3a7fa2de81dce37859b2a" kind="dir">
+    <compoundname>src/three_electron</compoundname>
+    <innerfile refid="direct__utils_8cpp">direct_utils.cpp</innerfile>
+    <innerfile refid="direct__utils_8hpp">direct_utils.hpp</innerfile>
+    <innerfile refid="indirect__utils_8cpp">indirect_utils.cpp</innerfile>
+    <innerfile refid="indirect__utils_8hpp">indirect_utils.hpp</innerfile>
+    <innerfile refid="ri__utils_8hpp">ri_utils.hpp</innerfile>
+    <innerfile refid="three__electron_8cpp">three_electron.cpp</innerfile>
+    <innerfile refid="three__electron_8hpp">three_electron.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/three_electron/"/>
+  </compounddef>
+</doxygen>

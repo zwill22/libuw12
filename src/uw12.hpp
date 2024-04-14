@@ -9,6 +9,7 @@
 #include "three_electron/ri_utils.hpp"
 #include "utils/utils.hpp"
 
+/// @mainpage
 /// Functionality relating to the UW12 correlation method
 ///
 /// The UW12 correlation energy is defined as:

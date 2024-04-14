@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structuw12_1_1three__el_1_1ri_1_1_a_b_s_projectors" kind="struct" language="C++" prot="public">
+    <compoundname>uw12::three_el::ri::ABSProjectors</compoundname>
+    <includes refid="ri__utils_8hpp" local="no">ri_utils.hpp</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structuw12_1_1three__el_1_1ri_1_1_a_b_s_projectors_1abdd13bbde80527b8a20f3ceeeb0ecff2" prot="public" static="no" mutable="no">
+        <type>linalg::Mat</type>
+        <definition>linalg::Mat uw12::three_el::ri::ABSProjectors::s_inv_ri_ri</definition>
+        <argsstring></argsstring>
+        <name>s_inv_ri_ri</name>
+        <qualifiedname>uw12::three_el::ri::ABSProjectors::s_inv_ri_ri</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/three_electron/ri_utils.hpp" line="21" column="15" bodyfile="src/three_electron/ri_utils.hpp" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structuw12_1_1three__el_1_1ri_1_1_a_b_s_projectors_1aa6398ebbcd752652e4bef2b60d5b7afe" prot="public" static="no" mutable="no">
+        <type>linalg::Mat</type>
+        <definition>linalg::Mat uw12::three_el::ri::ABSProjectors::s_inv_ri_ao</definition>
+        <argsstring></argsstring>
+        <name>s_inv_ri_ao</name>
+        <qualifiedname>uw12::three_el::ri::ABSProjectors::s_inv_ri_ao</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/three_electron/ri_utils.hpp" line="22" column="15" bodyfile="src/three_electron/ri_utils.hpp" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structuw12_1_1three__el_1_1ri_1_1_a_b_s_projectors_1aa00181537c8a5aa63d02a0f7e6d35e1d" prot="public" static="no" mutable="no">
+        <type>linalg::Mat</type>
+        <definition>linalg::Mat uw12::three_el::ri::ABSProjectors::s_inv_ao_ri</definition>
+        <argsstring></argsstring>
+        <name>s_inv_ao_ri</name>
+        <qualifiedname>uw12::three_el::ri::ABSProjectors::s_inv_ao_ri</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/three_electron/ri_utils.hpp" line="23" column="15" bodyfile="src/three_electron/ri_utils.hpp" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structuw12_1_1three__el_1_1ri_1_1_a_b_s_projectors_1a50e9161276ddc5c66f1b5647ef7b382f" prot="public" static="no" mutable="no">
+        <type>linalg::Mat</type>
+        <definition>linalg::Mat uw12::three_el::ri::ABSProjectors::s_inv_ao_ao</definition>
+        <argsstring></argsstring>
+        <name>s_inv_ao_ao</name>
+        <qualifiedname>uw12::three_el::ri::ABSProjectors::s_inv_ao_ao</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/three_electron/ri_utils.hpp" line="24" column="15" bodyfile="src/three_electron/ri_utils.hpp" bodystart="24" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Structure containing the submatrices of the inverse overlap of the combined <computeroutput>ao</computeroutput> and <computeroutput>ri</computeroutput> space</para>
+<para>Contains the four sub-matrices <formula id="91">$[S^{-1}]_{\mu\nu}$</formula>, <formula id="92">$[S^{-1}]_{\mu\sigma}$</formula>, <formula id="93">$[S^{-1}]_{\rho\nu}$</formula>, <formula id="94">$[S^{-1}]_{\rho\sigma}$</formula> for <formula id="95">$\rho\sigma$</formula> in <computeroutput>ao</computeroutput> and <formula id="96">$\mu\nu$</formula> in <computeroutput>ri</computeroutput> used in the Auxiliary Basis Set + (ABS+) scheme. Along with the eigenvalues and eigenvectors of <formula id="97">$S_{\mu\nu}$</formula>. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>Mat</label>
+      </node>
+      <node id="1">
+        <label>uw12::three_el::ri::ABSProjectors</label>
+        <link refid="structuw12_1_1three__el_1_1ri_1_1_a_b_s_projectors"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>s_inv_ao_ao</edgelabel>
+          <edgelabel>s_inv_ao_ri</edgelabel>
+          <edgelabel>s_inv_ri_ao</edgelabel>
+          <edgelabel>s_inv_ri_ri</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/three_electron/ri_utils.hpp" line="20" column="1" bodyfile="src/three_electron/ri_utils.hpp" bodystart="20" bodyend="25"/>
+    <listofallmembers>
+      <member refid="structuw12_1_1three__el_1_1ri_1_1_a_b_s_projectors_1a50e9161276ddc5c66f1b5647ef7b382f" prot="public" virt="non-virtual"><scope>uw12::three_el::ri::ABSProjectors</scope><name>s_inv_ao_ao</name></member>
+      <member refid="structuw12_1_1three__el_1_1ri_1_1_a_b_s_projectors_1aa00181537c8a5aa63d02a0f7e6d35e1d" prot="public" virt="non-virtual"><scope>uw12::three_el::ri::ABSProjectors</scope><name>s_inv_ao_ri</name></member>
+      <member refid="structuw12_1_1three__el_1_1ri_1_1_a_b_s_projectors_1aa6398ebbcd752652e4bef2b60d5b7afe" prot="public" virt="non-virtual"><scope>uw12::three_el::ri::ABSProjectors</scope><name>s_inv_ri_ao</name></member>
+      <member refid="structuw12_1_1three__el_1_1ri_1_1_a_b_s_projectors_1abdd13bbde80527b8a20f3ceeeb0ecff2" prot="public" virt="non-virtual"><scope>uw12::three_el::ri::ABSProjectors</scope><name>s_inv_ri_ri</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="namespaceuw12_1_1print" kind="namespace" language="C++">
+    <compoundname>uw12::print</compoundname>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="print_8hpp_1a3a43ec0a5608c841adfdb7586030585b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void uw12::print::print_character_line</definition>
+        <argsstring>(const char character, const size_t n)</argsstring>
+        <name>print_character_line</name>
+        <qualifiedname>uw12::print::print_character_line</qualifiedname>
+        <param>
+          <type>const char</type>
+          <declname>character</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/print.hpp" line="13" column="13" bodyfile="src/utils/print.hpp" bodystart="13" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="function" id="print_8hpp_1a2ffebf215ecf1a678f7c2164f1c02c13" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void uw12::print::print_header</definition>
+        <argsstring>(const std::string &amp;string, const size_t width=48)</argsstring>
+        <name>print_header</name>
+        <qualifiedname>uw12::print::print_header</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>string</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>width</declname>
+          <defval>48</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/print.hpp" line="20" column="13" bodyfile="src/utils/print.hpp" bodystart="20" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="print_8hpp_1a08fd5459ef65a901c8c64a7a9f9a5d04" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void uw12::print::print_result</definition>
+        <argsstring>(const std::string &amp;string, const double result, const size_t width=32)</argsstring>
+        <name>print_result</name>
+        <qualifiedname>uw12::print::print_result</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>string</declname>
+        </param>
+        <param>
+          <type>const double</type>
+          <declname>result</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>width</declname>
+          <defval>32</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/print.hpp" line="27" column="13" bodyfile="src/utils/print.hpp" bodystart="27" bodyend="42"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/utils/print.hpp" line="12" column="1"/>
+  </compounddef>
+</doxygen>

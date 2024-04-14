@@ -1,0 +1,853 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="test__four__el_8cpp" kind="file" language="C++">
+    <compoundname>test_four_el.cpp</compoundname>
+    <includes refid="catch_8hpp" local="yes">catch.hpp</includes>
+    <includes refid="density__utils_8hpp" local="yes">density_utils.hpp</includes>
+    <includes refid="four__electron_8hpp" local="yes">four_electron/four_electron.hpp</includes>
+    <includes refid="multi__el__test__utils_8hpp" local="yes">multi_el_test_utils.hpp</includes>
+    <includes refid="setup__integrals_8hpp" local="yes">setup_integrals.hpp</includes>
+    <incdepgraph>
+      <node id="11">
+        <label>four_electron/four_electron.hpp</label>
+        <link refid="four__electron_8hpp_source"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>base_integrals.hpp</label>
+        <link refid="base__integrals_8hpp_source"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>integral_functions.hpp</label>
+        <link refid="integral__functions_8hpp_source"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>integrals/integrals.hpp</label>
+        <link refid="integrals_8hpp_source"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>three_electron/ri_utils.hpp</label>
+        <link refid="ri__utils_8hpp_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>linalg.hpp</label>
+        <link refid="linalg_8hpp_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>utils/parallel.hpp</label>
+        <link refid="parallel_8hpp_source"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>utils/utils.hpp</label>
+        <link refid="utils_8hpp_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>catch.hpp</label>
+        <link refid="catch_8hpp_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>density_utils.hpp</label>
+        <link refid="density__utils_8hpp_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>multi_el_test_utils.hpp</label>
+        <link refid="multi__el__test__utils_8hpp_source"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>numerical_fock.hpp</label>
+        <link refid="numerical__fock_8hpp_source"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>setup_integrals.hpp</label>
+        <link refid="setup__integrals_8hpp_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>tests/test_four_el.cpp</label>
+        <link refid="test__four__el_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>cassert</label>
+      </node>
+      <node id="3">
+        <label>catch2/catch_all.hpp</label>
+      </node>
+      <node id="10">
+        <label>cmath</label>
+      </node>
+      <node id="8">
+        <label>config.hpp</label>
+      </node>
+      <node id="17">
+        <label>functional</label>
+      </node>
+      <node id="14">
+        <label>memory</label>
+      </node>
+      <node id="15">
+        <label>mutex</label>
+      </node>
+      <node id="6">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="test__four__el_8cpp_1a1133cc94b709a13ce7617c36a86096b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void run_os_tests</definition>
+        <argsstring>(const Integrals &amp;W, const Integrals &amp;V)</argsstring>
+        <name>run_os_tests</name>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_integrals" kindref="compound">Integrals</ref> &amp;</type>
+          <declname>W</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_integrals" kindref="compound">Integrals</ref> &amp;</type>
+          <declname>V</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_four_el.cpp" line="18" column="6" bodyfile="tests/test_four_el.cpp" bodystart="18" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="test__four__el_8cpp_1aa4c64f01989991e4d0bacecc0b88df12" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void run_ss_test</definition>
+        <argsstring>(const Integrals &amp;W, const Integrals &amp;V)</argsstring>
+        <name>run_ss_test</name>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_integrals" kindref="compound">Integrals</ref> &amp;</type>
+          <declname>W</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_integrals" kindref="compound">Integrals</ref> &amp;</type>
+          <declname>V</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_four_el.cpp" line="22" column="6" bodyfile="tests/test_four_el.cpp" bodystart="22" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="test__four__el_8cpp_1aad76573961466e91c181e760fa995acf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void run_test_full</definition>
+        <argsstring>(const Integrals &amp;W, const Integrals &amp;V)</argsstring>
+        <name>run_test_full</name>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_integrals" kindref="compound">Integrals</ref> &amp;</type>
+          <declname>W</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_integrals" kindref="compound">Integrals</ref> &amp;</type>
+          <declname>V</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_four_el.cpp" line="26" column="6" bodyfile="tests/test_four_el.cpp" bodystart="26" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="test__four__el_8cpp_1a8d69aa8e8f319619d30a9f59cc415c3b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TEST_CASE</definition>
+        <argsstring>(&quot;Test four electron term - Closed Shell (opposite spin only)&quot;)</argsstring>
+        <name>TEST_CASE</name>
+        <param>
+          <type>&quot;Test four electron term - Closed Shell (opposite spin only)&quot;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_four_el.cpp" line="30" column="1" bodyfile="tests/test_four_el.cpp" bodystart="30" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="test__four__el_8cpp_1a8b05d97950ca53e6e9588d9c95a79322" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TEST_CASE</definition>
+        <argsstring>(&quot;Test four electron term - Closed Shell (same spin only)&quot;)</argsstring>
+        <name>TEST_CASE</name>
+        <param>
+          <type>&quot;Test four electron term - Closed Shell (same spin only)&quot;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_four_el.cpp" line="43" column="1" bodyfile="tests/test_four_el.cpp" bodystart="43" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="test__four__el_8cpp_1a382d82f3c826914a02135682207f5c30" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TEST_CASE</definition>
+        <argsstring>(&quot;Test four electron term - Closed Shell (full expression)&quot;)</argsstring>
+        <name>TEST_CASE</name>
+        <param>
+          <type>&quot;Test four electron term - Closed Shell (full expression)&quot;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_four_el.cpp" line="56" column="1" bodyfile="tests/test_four_el.cpp" bodystart="56" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="test__four__el_8cpp_1afc14ca757c2a186494afa0c7c0a0d110" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void check_equality_open_closed_spin</definition>
+        <argsstring>(const uw12::integrals::BaseIntegrals &amp;W_base, const uw12::integrals::BaseIntegrals &amp;V_base, const uw12::utils::Orbitals &amp;Co, const uw12::utils::Orbitals &amp;active_Co)</argsstring>
+        <name>check_equality_open_closed_spin</name>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_base_integrals" kindref="compound">uw12::integrals::BaseIntegrals</ref> &amp;</type>
+          <declname>W_base</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_base_integrals" kindref="compound">uw12::integrals::BaseIntegrals</ref> &amp;</type>
+          <declname>V_base</declname>
+        </param>
+        <param>
+          <type>const uw12::utils::Orbitals &amp;</type>
+          <declname>Co</declname>
+        </param>
+        <param>
+          <type>const uw12::utils::Orbitals &amp;</type>
+          <declname>active_Co</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_four_el.cpp" line="69" column="6" bodyfile="tests/test_four_el.cpp" bodystart="69" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="test__four__el_8cpp_1a3e199343f055a0a2f6b31b7625871775" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TEST_CASE</definition>
+        <argsstring>(&quot;Test four electron term - equality of open and closed shell expressions&quot;)</argsstring>
+        <name>TEST_CASE</name>
+        <param>
+          <type>&quot;Test four electron term - equality of open and closed shell expressions&quot;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_four_el.cpp" line="80" column="1" bodyfile="tests/test_four_el.cpp" bodystart="80" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="test__four__el_8cpp_1aa0120fb31efb4fa91650b32e4e3cef5f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto get_integral_fn</definition>
+        <argsstring>(const size_t n_ao, const size_t n_df)</argsstring>
+        <name>get_integral_fn</name>
+        <param>
+          <type>const size_t</type>
+          <declname>n_ao</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n_df</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_four_el.cpp" line="97" column="6" bodyfile="tests/test_four_el.cpp" bodystart="97" bodyend="105"/>
+      </memberdef>
+      <memberdef kind="function" id="test__four__el_8cpp_1a3e819a2cf48aa9ff1b382a8a7c9cc301" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TEST_CASE</definition>
+        <argsstring>(&quot;Test four electron term - Closed Shell (Check cases)&quot;)</argsstring>
+        <name>TEST_CASE</name>
+        <param>
+          <type>&quot;Test four electron term - Closed Shell (Check cases)&quot;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_four_el.cpp" line="107" column="1" bodyfile="tests/test_four_el.cpp" bodystart="107" bodyend="116"/>
+      </memberdef>
+      <memberdef kind="function" id="test__four__el_8cpp_1a63dfc78cdd3348905ef686629f4160f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TEST_CASE</definition>
+        <argsstring>(&quot;Test four electron term - Open Shell (opposite spin only)&quot;)</argsstring>
+        <name>TEST_CASE</name>
+        <param>
+          <type>&quot;Test four electron term - Open Shell (opposite spin only)&quot;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_four_el.cpp" line="118" column="1" bodyfile="tests/test_four_el.cpp" bodystart="118" bodyend="129"/>
+      </memberdef>
+      <memberdef kind="function" id="test__four__el_8cpp_1ad3a788efeb10b975bb1769d76d7accf3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TEST_CASE</definition>
+        <argsstring>(&quot;Test four electron term - Open Shell (same spin only)&quot;)</argsstring>
+        <name>TEST_CASE</name>
+        <param>
+          <type>&quot;Test four electron term - Open Shell (same spin only)&quot;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_four_el.cpp" line="131" column="1" bodyfile="tests/test_four_el.cpp" bodystart="131" bodyend="142"/>
+      </memberdef>
+      <memberdef kind="function" id="test__four__el_8cpp_1a309cf71731bea05601c0babcabe8b03e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TEST_CASE</definition>
+        <argsstring>(&quot;Test four electron term - Open Shell (full expression)&quot;)</argsstring>
+        <name>TEST_CASE</name>
+        <param>
+          <type>&quot;Test four electron term - Open Shell (full expression)&quot;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_four_el.cpp" line="144" column="1" bodyfile="tests/test_four_el.cpp" bodystart="144" bodyend="155"/>
+      </memberdef>
+      <memberdef kind="function" id="test__four__el_8cpp_1ab450b244cc5a86778e6ffa2dd4951c6e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TEST_CASE</definition>
+        <argsstring>(&quot;Test four electron term - Open Shell (All electron case)&quot;)</argsstring>
+        <name>TEST_CASE</name>
+        <param>
+          <type>&quot;Test four electron term - Open Shell (All electron case)&quot;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_four_el.cpp" line="157" column="1" bodyfile="tests/test_four_el.cpp" bodystart="157" bodyend="169"/>
+      </memberdef>
+      <memberdef kind="function" id="test__four__el_8cpp_1a98e12cd4a310f572168e8d1329198187" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TEST_CASE</definition>
+        <argsstring>(&quot;Test four electron term - Open Shell (No active orbitals)&quot;)</argsstring>
+        <name>TEST_CASE</name>
+        <param>
+          <type>&quot;Test four electron term - Open Shell (No active orbitals)&quot;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_four_el.cpp" line="171" column="1" bodyfile="tests/test_four_el.cpp" bodystart="171" bodyend="182"/>
+      </memberdef>
+      <memberdef kind="function" id="test__four__el_8cpp_1a2149cceb6cc2035fc12dd23940681881" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename FockFn</type>
+          </param>
+          <param>
+            <type>typename IntegralFn</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void check_open_shell_no_occupied_orbitals</definition>
+        <argsstring>(const FockFn &amp;fock_fn, const IntegralFn &amp;integral_fn, const uw12::linalg::Mat &amp;fock0)</argsstring>
+        <name>check_open_shell_no_occupied_orbitals</name>
+        <param>
+          <type>const FockFn &amp;</type>
+          <declname>fock_fn</declname>
+        </param>
+        <param>
+          <type>const IntegralFn &amp;</type>
+          <declname>integral_fn</declname>
+        </param>
+        <param>
+          <type>const uw12::linalg::Mat &amp;</type>
+          <declname>fock0</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_four_el.cpp" line="185" column="6" bodyfile="tests/test_four_el.cpp" bodystart="185" bodyend="242"/>
+      </memberdef>
+      <memberdef kind="function" id="test__four__el_8cpp_1a20cca54d7a6dbdd21cff0c5994c2e224" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TEST_CASE</definition>
+        <argsstring>(&quot;Test four electron term - Open Shell (No occupied orbitals)&quot;)</argsstring>
+        <name>TEST_CASE</name>
+        <param>
+          <type>&quot;Test four electron term - Open Shell (No occupied orbitals)&quot;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_four_el.cpp" line="244" column="1" bodyfile="tests/test_four_el.cpp" bodystart="244" bodyend="255"/>
+      </memberdef>
+      <memberdef kind="function" id="test__four__el_8cpp_1a0d0640128b46b916240a2b3ba70194d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void test_four_el_fock_all_electron</definition>
+        <argsstring>(const uw12::integrals::BaseIntegrals &amp;W_base, const uw12::integrals::BaseIntegrals &amp;V_base, const uw12::utils::DensityMatrix &amp;D, const double threshold)</argsstring>
+        <name>test_four_el_fock_all_electron</name>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_base_integrals" kindref="compound">uw12::integrals::BaseIntegrals</ref> &amp;</type>
+          <declname>W_base</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_base_integrals" kindref="compound">uw12::integrals::BaseIntegrals</ref> &amp;</type>
+          <declname>V_base</declname>
+        </param>
+        <param>
+          <type>const uw12::utils::DensityMatrix &amp;</type>
+          <declname>D</declname>
+        </param>
+        <param>
+          <type>const double</type>
+          <declname>threshold</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_four_el.cpp" line="257" column="6" bodyfile="tests/test_four_el.cpp" bodystart="257" bodyend="266"/>
+      </memberdef>
+      <memberdef kind="function" id="test__four__el_8cpp_1a3a36e5bb43c660999f8cc6e249bd8227" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TEST_CASE</definition>
+        <argsstring>(&quot;Test four electron term - Test Fock matrix (Closed Shell)&quot;)</argsstring>
+        <name>TEST_CASE</name>
+        <param>
+          <type>&quot;Test four electron term - Test Fock matrix (Closed Shell)&quot;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_four_el.cpp" line="268" column="1" bodyfile="tests/test_four_el.cpp" bodystart="268" bodyend="281"/>
+      </memberdef>
+      <memberdef kind="function" id="test__four__el_8cpp_1a38d3df0b2b2cfd1ce5bab332f2431128" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TEST_CASE</definition>
+        <argsstring>(&quot;Test four electron term - Test Fock matrix (Open Shell)&quot;)</argsstring>
+        <name>TEST_CASE</name>
+        <param>
+          <type>&quot;Test four electron term - Test Fock matrix (Open Shell)&quot;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_four_el.cpp" line="283" column="1" bodyfile="tests/test_four_el.cpp" bodystart="283" bodyend="296"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Created<sp/>by<sp/>Zack<sp/>Williams<sp/>on<sp/>18/03/2024.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;catch.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;density_utils.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;four_electron/four_electron.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;multi_el_test_utils.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;setup_integrals.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">uw12::four_el::form_fock_four_el_df;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="classuw12_1_1integrals_1_1_integrals" kindref="compound">uw12::integrals::Integrals</ref>;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">uw12_test::eps;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">uw12_test::epsilon;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">uw12_test::margin;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">uw12_test::seed;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>run_os_tests(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classuw12_1_1integrals_1_1_integrals" kindref="compound">Integrals</ref><sp/>&amp;W,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classuw12_1_1integrals_1_1_integrals" kindref="compound">Integrals</ref><sp/>&amp;V)<sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/>uw12_test::run_os_tests(W,<sp/>V,<sp/>form_fock_four_el_df);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>run_ss_test(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classuw12_1_1integrals_1_1_integrals" kindref="compound">Integrals</ref><sp/>&amp;W,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classuw12_1_1integrals_1_1_integrals" kindref="compound">Integrals</ref><sp/>&amp;V)<sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/>uw12_test::run_ss_test(W,<sp/>V,<sp/>form_fock_four_el_df);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>run_test_full(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classuw12_1_1integrals_1_1_integrals" kindref="compound">Integrals</ref><sp/>&amp;W,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classuw12_1_1integrals_1_1_integrals" kindref="compound">Integrals</ref><sp/>&amp;V)<sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/>uw12_test::run_test_full(W,<sp/>V,<sp/>form_fock_four_el_df);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal">TEST_CASE(</highlight><highlight class="stringliteral">&quot;Test<sp/>four<sp/>electron<sp/>term<sp/>-<sp/>Closed<sp/>Shell<sp/>(opposite<sp/>spin<sp/>only)&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_ao<sp/>=<sp/>11;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_df<sp/>=<sp/>23;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>n_occ<sp/>=<sp/>{5};</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>n_active<sp/>=<sp/>{4};</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>[W,<sp/>V]<sp/>=</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>uw12_test::setup_integrals_pair(n_ao,<sp/>n_df,<sp/>n_occ,<sp/>n_active,<sp/>seed<sp/>+<sp/>1);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/>run_os_tests(W,<sp/>V);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal">TEST_CASE(</highlight><highlight class="stringliteral">&quot;Test<sp/>four<sp/>electron<sp/>term<sp/>-<sp/>Closed<sp/>Shell<sp/>(same<sp/>spin<sp/>only)&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_ao<sp/>=<sp/>11;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_df<sp/>=<sp/>23;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>n_occ<sp/>=<sp/>{5};</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>n_active<sp/>=<sp/>{4};</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>[W,<sp/>V]<sp/>=</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>uw12_test::setup_integrals_pair(n_ao,<sp/>n_df,<sp/>n_occ,<sp/>n_active,<sp/>seed<sp/>+<sp/>1);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/>run_ss_test(W,<sp/>V);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal">TEST_CASE(</highlight><highlight class="stringliteral">&quot;Test<sp/>four<sp/>electron<sp/>term<sp/>-<sp/>Closed<sp/>Shell<sp/>(full<sp/>expression)&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_ao<sp/>=<sp/>11;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_df<sp/>=<sp/>23;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>n_occ<sp/>=<sp/>{5};</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>n_active<sp/>=<sp/>{4};</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>[W,<sp/>V]<sp/>=</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>uw12_test::setup_integrals_pair(n_ao,<sp/>n_df,<sp/>n_occ,<sp/>n_active,<sp/>seed<sp/>+<sp/>1);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/>run_test_full(W,<sp/>V);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>check_equality_open_closed_spin(</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classuw12_1_1integrals_1_1_base_integrals" kindref="compound">uw12::integrals::BaseIntegrals</ref><sp/>&amp;W_base,</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classuw12_1_1integrals_1_1_base_integrals" kindref="compound">uw12::integrals::BaseIntegrals</ref><sp/>&amp;V_base,</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uw12::utils::Orbitals<sp/>&amp;Co,</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uw12::utils::Orbitals<sp/>&amp;active_Co</highlight></codeline>
+<codeline lineno="74"><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/>uw12_test::check_equality_open_closed_spin(</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>W_base,<sp/>V_base,<sp/>Co,<sp/>active_Co,<sp/>form_fock_four_el_df</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/>);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal">TEST_CASE(</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Test<sp/>four<sp/>electron<sp/>term<sp/>-<sp/>equality<sp/>of<sp/>open<sp/>and<sp/>closed<sp/>shell<sp/>expressions&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_ao<sp/>=<sp/>11;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_df<sp/>=<sp/>23;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>n_occ<sp/>=<sp/>{5};</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>n_active<sp/>=<sp/>{4};</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>W_base<sp/>=<sp/>uw12_test::setup_base_integrals(n_ao,<sp/>n_df,<sp/>seed<sp/>+<sp/>1);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>V_base<sp/>=<sp/>uw12_test::setup_base_integrals(n_ao,<sp/>n_df,<sp/>seed);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>[Co,<sp/>active_Co]<sp/>=<sp/>uw12_test::setup_orbitals(n_occ,<sp/>n_active,<sp/>n_ao);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/>check_equality_open_closed_spin(W_base,<sp/>V_base,<sp/>Co,<sp/>active_Co);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>get_integral_fn(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_ao,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_df)<sp/>{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>[n_ao,<sp/>n_df](</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>&amp;n_occ,</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>&amp;n_active,</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>seed</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)<sp/>{</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>uw12_test::setup_integrals_pair(n_ao,<sp/>n_df,<sp/>n_occ,<sp/>n_active,<sp/>seed);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/>};</highlight></codeline>
+<codeline lineno="105"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal">TEST_CASE(</highlight><highlight class="stringliteral">&quot;Test<sp/>four<sp/>electron<sp/>term<sp/>-<sp/>Closed<sp/>Shell<sp/>(Check<sp/>cases)&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_ao<sp/>=<sp/>11;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_df<sp/>=<sp/>23;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>fock0<sp/>=<sp/>uw12::linalg::zeros(n_ao,<sp/>n_ao);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>integral_fn<sp/>=<sp/>get_integral_fn(n_ao,<sp/>n_df);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/>uw12_test::check_closed_shell_cases(integral_fn,<sp/>form_fock_four_el_df,<sp/>fock0);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal">TEST_CASE(</highlight><highlight class="stringliteral">&quot;Test<sp/>four<sp/>electron<sp/>term<sp/>-<sp/>Open<sp/>Shell<sp/>(opposite<sp/>spin<sp/>only)&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_ao<sp/>=<sp/>11;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_df<sp/>=<sp/>23;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>n_occ<sp/>=<sp/>{5,<sp/>4};</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>n_active<sp/>=<sp/>{4,<sp/>3};</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>[W,<sp/>V]<sp/>=</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>uw12_test::setup_integrals_pair(n_ao,<sp/>n_df,<sp/>n_occ,<sp/>n_active,<sp/>seed<sp/>+<sp/>1);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/>run_os_tests(W,<sp/>V);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal">TEST_CASE(</highlight><highlight class="stringliteral">&quot;Test<sp/>four<sp/>electron<sp/>term<sp/>-<sp/>Open<sp/>Shell<sp/>(same<sp/>spin<sp/>only)&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_ao<sp/>=<sp/>11;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_df<sp/>=<sp/>23;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>n_occ<sp/>=<sp/>{5,<sp/>4};</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>n_active<sp/>=<sp/>{4,<sp/>3};</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>[W,<sp/>V]<sp/>=</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>uw12_test::setup_integrals_pair(n_ao,<sp/>n_df,<sp/>n_occ,<sp/>n_active,<sp/>seed<sp/>+<sp/>1);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/>run_ss_test(W,<sp/>V);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal">TEST_CASE(</highlight><highlight class="stringliteral">&quot;Test<sp/>four<sp/>electron<sp/>term<sp/>-<sp/>Open<sp/>Shell<sp/>(full<sp/>expression)&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_ao<sp/>=<sp/>11;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_df<sp/>=<sp/>23;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>n_occ<sp/>=<sp/>{5,<sp/>4};</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>n_active<sp/>=<sp/>{4,<sp/>3};</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>[W,<sp/>V]<sp/>=</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>uw12_test::setup_integrals_pair(n_ao,<sp/>n_df,<sp/>n_occ,<sp/>n_active,<sp/>seed<sp/>+<sp/>1);</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/>run_test_full(W,<sp/>V);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal">TEST_CASE(</highlight><highlight class="stringliteral">&quot;Test<sp/>four<sp/>electron<sp/>term<sp/>-<sp/>Open<sp/>Shell<sp/>(All<sp/>electron<sp/>case)&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_ao<sp/>=<sp/>11;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_df<sp/>=<sp/>23;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>n_occ<sp/>=<sp/>{5,<sp/>4};</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>n_active<sp/>=<sp/>{5,<sp/>4};</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>[W,<sp/>V]<sp/>=</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>uw12_test::setup_integrals_pair(n_ao,<sp/>n_df,<sp/>n_occ,<sp/>n_active,<sp/>seed<sp/>+<sp/>1);</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>Add<sp/>test</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/>form_fock_four_el_df(W,<sp/>V,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/>1.0,<sp/>0.5);</highlight></codeline>
+<codeline lineno="169"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal">TEST_CASE(</highlight><highlight class="stringliteral">&quot;Test<sp/>four<sp/>electron<sp/>term<sp/>-<sp/>Open<sp/>Shell<sp/>(No<sp/>active<sp/>orbitals)&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_ao<sp/>=<sp/>11;</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_df<sp/>=<sp/>23;</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>fock0<sp/>=<sp/>uw12::linalg::zeros(n_ao,<sp/>n_ao);</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>integral_fn<sp/>=<sp/>get_integral_fn(n_ao,<sp/>n_df);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/>uw12_test::check_open_shell_no_active_orbitals(</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>form_fock_four_el_df,<sp/>integral_fn,<sp/>fock0</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/>);</highlight></codeline>
+<codeline lineno="182"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>FockFn,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>IntegralFn&gt;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>check_open_shell_no_occupied_orbitals(</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>FockFn<sp/>&amp;fock_fn,</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>IntegralFn<sp/>&amp;integral_fn,</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uw12::linalg::Mat<sp/>&amp;fock0</highlight></codeline>
+<codeline lineno="189"><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/>SECTION(</highlight><highlight class="stringliteral">&quot;Alpha<sp/>channel&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>n_occ<sp/>=<sp/>{3,<sp/>0};</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>n_active<sp/>=<sp/>{2,<sp/>0};</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>[W,<sp/>V]<sp/>=<sp/>integral_fn(n_occ,<sp/>n_active,<sp/>seed<sp/>+<sp/>1);</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>[os_fock,<sp/>os_energy]<sp/>=<sp/>fock_fn(W,<sp/>V,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/>1.0,<sp/>0);</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>REQUIRE((uw12::utils::spin_channels(os_fock)<sp/>==<sp/>2));</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>sigma<sp/>=<sp/>0;<sp/>sigma<sp/>&lt;<sp/>2;<sp/>++sigma)<sp/>{</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>CHECK(uw12::linalg::nearly_equal(os_fock[sigma],<sp/>fock0,<sp/>epsilon));</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/>CHECK_THAT(os_energy,<sp/>Catch::Matchers::WithinAbs(0,<sp/>margin));</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>[ss_fock,<sp/>ss_energy]<sp/>=<sp/>fock_fn(W,<sp/>V,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/>0,<sp/>0.5);</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/>REQUIRE((uw12::utils::spin_channels(ss_fock)<sp/>==<sp/>2));</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/>CHECK_FALSE(uw12::linalg::nearly_equal(ss_fock[0],<sp/>fock0,<sp/>epsilon));</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/>CHECK(uw12::linalg::nearly_equal(ss_fock[1],<sp/>fock0,<sp/>epsilon));</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/>SECTION(</highlight><highlight class="stringliteral">&quot;Beta<sp/>channel)&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>n_occ<sp/>=<sp/>{0,<sp/>3};</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>n_active<sp/>=<sp/>{0,<sp/>2};</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>[W,<sp/>V]<sp/>=<sp/>integral_fn(n_occ,<sp/>n_active,<sp/>seed<sp/>+<sp/>1);</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>[os_fock,<sp/>os_energy]<sp/>=<sp/>fock_fn(W,<sp/>V,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/>1.0,<sp/>0);</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/>REQUIRE((uw12::utils::spin_channels(os_fock)<sp/>==<sp/>2));</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>sigma<sp/>=<sp/>0;<sp/>sigma<sp/>&lt;<sp/>2;<sp/>++sigma)<sp/>{</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>CHECK(uw12::linalg::nearly_equal(os_fock[sigma],<sp/>fock0,<sp/>epsilon));</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/>CHECK_THAT(os_energy,<sp/>Catch::Matchers::WithinAbs(0,<sp/>margin));</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>[ss_fock,<sp/>ss_energy]<sp/>=<sp/>fock_fn(W,<sp/>V,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/>0,<sp/>0.5);</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/>REQUIRE((ss_fock.size()<sp/>==<sp/>2));</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/>CHECK(uw12::linalg::nearly_equal(ss_fock[0],<sp/>fock0,<sp/>epsilon));</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/>CHECK_FALSE(uw12::linalg::nearly_equal(ss_fock[1],<sp/>fock0,<sp/>epsilon));</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/>SECTION(</highlight><highlight class="stringliteral">&quot;Both<sp/>channels&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>[W,<sp/>V]<sp/>=<sp/>integral_fn({0,<sp/>0},<sp/>{0,<sp/>0},<sp/>seed<sp/>+<sp/>1);</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>[fock,<sp/>energy]<sp/>=<sp/>fock_fn(W,<sp/>V,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/>1.0,<sp/>0);</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/>REQUIRE((uw12::utils::spin_channels(fock)<sp/>==<sp/>2));</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>sigma<sp/>=<sp/>0;<sp/>sigma<sp/>&lt;<sp/>2;<sp/>++sigma)<sp/>{</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>CHECK(uw12::linalg::nearly_equal(fock[sigma],<sp/>fock0,<sp/>epsilon));</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/>CHECK_THAT(energy,<sp/>Catch::Matchers::WithinAbs(0,<sp/>margin));</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="242"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal">TEST_CASE(</highlight><highlight class="stringliteral">&quot;Test<sp/>four<sp/>electron<sp/>term<sp/>-<sp/>Open<sp/>Shell<sp/>(No<sp/>occupied<sp/>orbitals)&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_ao<sp/>=<sp/>11;</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_df<sp/>=<sp/>23;</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>fock0<sp/>=<sp/>uw12::linalg::zeros(n_ao,<sp/>n_ao);</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>integral_fn<sp/>=<sp/>get_integral_fn(n_ao,<sp/>n_df);</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/>check_open_shell_no_occupied_orbitals(</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>form_fock_four_el_df,<sp/>integral_fn,<sp/>fock0</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/>);</highlight></codeline>
+<codeline lineno="255"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight></codeline>
+<codeline lineno="257"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>test_four_el_fock_all_electron(</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classuw12_1_1integrals_1_1_base_integrals" kindref="compound">uw12::integrals::BaseIntegrals</ref><sp/>&amp;W_base,</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classuw12_1_1integrals_1_1_base_integrals" kindref="compound">uw12::integrals::BaseIntegrals</ref><sp/>&amp;V_base,</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uw12::utils::DensityMatrix<sp/>&amp;D,</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>threshold</highlight></codeline>
+<codeline lineno="262"><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/>uw12_test::test_multi_el_fock_all_electron(</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>form_fock_four_el_df,<sp/>W_base,<sp/>V_base,<sp/>D,<sp/>threshold</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/>);</highlight></codeline>
+<codeline lineno="266"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"></highlight></codeline>
+<codeline lineno="268"><highlight class="normal">TEST_CASE(</highlight><highlight class="stringliteral">&quot;Test<sp/>four<sp/>electron<sp/>term<sp/>-<sp/>Test<sp/>Fock<sp/>matrix<sp/>(Closed<sp/>Shell)&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_ao<sp/>=<sp/>11;</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_df<sp/>=<sp/>23;</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>threshold<sp/>=<sp/>1e-3;</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"></highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>n_occ<sp/>=<sp/>{5};</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"></highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>W_base<sp/>=<sp/>uw12_test::setup_base_integrals(n_ao,<sp/>n_df,<sp/>seed<sp/>+<sp/>1);</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>V_base<sp/>=<sp/>uw12_test::setup_base_integrals(n_ao,<sp/>n_df,<sp/>seed);</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"></highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>D<sp/>=<sp/>uw12_test::density::random_density_matrix(n_occ,<sp/>n_ao,<sp/>seed);</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"></highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/>test_four_el_fock_all_electron(W_base,<sp/>V_base,<sp/>D,<sp/>threshold);</highlight></codeline>
+<codeline lineno="281"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"></highlight></codeline>
+<codeline lineno="283"><highlight class="normal">TEST_CASE(</highlight><highlight class="stringliteral">&quot;Test<sp/>four<sp/>electron<sp/>term<sp/>-<sp/>Test<sp/>Fock<sp/>matrix<sp/>(Open<sp/>Shell)&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_ao<sp/>=<sp/>11;</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_df<sp/>=<sp/>23;</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>threshold<sp/>=<sp/>1e-3;</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"></highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>n_occ<sp/>=<sp/>{5,<sp/>4};</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"></highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>W_base<sp/>=<sp/>uw12_test::setup_base_integrals(n_ao,<sp/>n_df,<sp/>seed<sp/>+<sp/>1);</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>V_base<sp/>=<sp/>uw12_test::setup_base_integrals(n_ao,<sp/>n_df,<sp/>seed);</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"></highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>D<sp/>=<sp/>uw12_test::density::random_density_matrix(n_occ,<sp/>n_ao,<sp/>seed);</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"></highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/>test_four_el_fock_all_electron(W_base,<sp/>V_base,<sp/>D,<sp/>threshold);</highlight></codeline>
+<codeline lineno="296"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="tests/test_four_el.cpp"/>
+  </compounddef>
+</doxygen>

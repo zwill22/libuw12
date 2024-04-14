@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="class_auto_restore_rdbuf" kind="class" language="C++" prot="public">
+    <compoundname>AutoRestoreRdbuf</compoundname>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_auto_restore_rdbuf_1aab07e355891ec3483e045945f119c805" prot="private" static="no" mutable="no">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; AutoRestoreRdbuf::out</definition>
+        <argsstring></argsstring>
+        <name>out</name>
+        <qualifiedname>AutoRestoreRdbuf::out</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_print.cpp" line="17" column="16" bodyfile="tests/test_print.cpp" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_auto_restore_rdbuf_1a950769c0a3aedac0a5884e70064273f4" prot="private" static="no" mutable="no">
+        <type>std::streambuf *</type>
+        <definition>std::streambuf* AutoRestoreRdbuf::old</definition>
+        <argsstring></argsstring>
+        <name>old</name>
+        <qualifiedname>AutoRestoreRdbuf::old</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_print.cpp" line="18" column="18" bodyfile="tests/test_print.cpp" bodystart="18" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_auto_restore_rdbuf_1a25b06c42d85d27f96f38dc953974b058" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>AutoRestoreRdbuf::AutoRestoreRdbuf</definition>
+        <argsstring>(std::ostream &amp;out)</argsstring>
+        <name>AutoRestoreRdbuf</name>
+        <qualifiedname>AutoRestoreRdbuf::AutoRestoreRdbuf</qualifiedname>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>out</declname>
+        </param>
+        <briefdescription>
+<para>Constructor which sets output to out while saving old RdBuf to be restored at destruction. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>out</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>output stream </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_print.cpp" line="23" column="12" bodyfile="tests/test_print.cpp" bodystart="23" bodyend="23"/>
+      </memberdef>
+      <memberdef kind="function" id="class_auto_restore_rdbuf_1aa489cca6ffa62f66f62e629ac4ce8fc1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>AutoRestoreRdbuf::AutoRestoreRdbuf</definition>
+        <argsstring>(const AutoRestoreRdbuf &amp;)=delete</argsstring>
+        <name>AutoRestoreRdbuf</name>
+        <qualifiedname>AutoRestoreRdbuf::AutoRestoreRdbuf</qualifiedname>
+        <param>
+          <type>const <ref refid="class_auto_restore_rdbuf" kindref="compound">AutoRestoreRdbuf</ref> &amp;</type>
+        </param>
+        <briefdescription>
+<para>Const copy constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_print.cpp" line="26" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="class_auto_restore_rdbuf_1a2b66fce7f81a601834e29afe7cb164ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>AutoRestoreRdbuf::AutoRestoreRdbuf</definition>
+        <argsstring>(AutoRestoreRdbuf &amp;&amp;)=delete</argsstring>
+        <name>AutoRestoreRdbuf</name>
+        <qualifiedname>AutoRestoreRdbuf::AutoRestoreRdbuf</qualifiedname>
+        <param>
+          <type><ref refid="class_auto_restore_rdbuf" kindref="compound">AutoRestoreRdbuf</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+<para>Non-const copy constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_print.cpp" line="29" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="class_auto_restore_rdbuf_1a64f5553f041ea295fdaaa8f31216804b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>AutoRestoreRdbuf::~AutoRestoreRdbuf</definition>
+        <argsstring>()</argsstring>
+        <name>~AutoRestoreRdbuf</name>
+        <qualifiedname>AutoRestoreRdbuf::~AutoRestoreRdbuf</qualifiedname>
+        <briefdescription>
+<para>Destructor which restores old output path. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_print.cpp" line="32" column="3" bodyfile="tests/test_print.cpp" bodystart="32" bodyend="32"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Class to deal with restoring iostream output following redirection to buffer Solution from <ulink url="https://stackoverflow.com/questions/74755467/unable-to-use-redirected-stdcout-in-catch2">https://stackoverflow.com/questions/74755467/unable-to-use-redirected-stdcout-in-catch2</ulink>. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="tests/test_print.cpp" line="16" column="1" bodyfile="tests/test_print.cpp" bodystart="16" bodyend="33"/>
+    <listofallmembers>
+      <member refid="class_auto_restore_rdbuf_1a25b06c42d85d27f96f38dc953974b058" prot="public" virt="non-virtual"><scope>AutoRestoreRdbuf</scope><name>AutoRestoreRdbuf</name></member>
+      <member refid="class_auto_restore_rdbuf_1aa489cca6ffa62f66f62e629ac4ce8fc1" prot="public" virt="non-virtual"><scope>AutoRestoreRdbuf</scope><name>AutoRestoreRdbuf</name></member>
+      <member refid="class_auto_restore_rdbuf_1a2b66fce7f81a601834e29afe7cb164ff" prot="public" virt="non-virtual"><scope>AutoRestoreRdbuf</scope><name>AutoRestoreRdbuf</name></member>
+      <member refid="class_auto_restore_rdbuf_1a950769c0a3aedac0a5884e70064273f4" prot="private" virt="non-virtual"><scope>AutoRestoreRdbuf</scope><name>old</name></member>
+      <member refid="class_auto_restore_rdbuf_1aab07e355891ec3483e045945f119c805" prot="private" virt="non-virtual"><scope>AutoRestoreRdbuf</scope><name>out</name></member>
+      <member refid="class_auto_restore_rdbuf_1a64f5553f041ea295fdaaa8f31216804b" prot="public" virt="non-virtual"><scope>AutoRestoreRdbuf</scope><name>~AutoRestoreRdbuf</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

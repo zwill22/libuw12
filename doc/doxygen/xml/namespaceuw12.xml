@@ -1,0 +1,1114 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="namespaceuw12" kind="namespace" language="C++">
+    <compoundname>uw12</compoundname>
+    <innernamespace refid="namespaceuw12_1_1four__el">uw12::four_el</innernamespace>
+    <innernamespace refid="namespaceuw12_1_1integrals">uw12::integrals</innernamespace>
+    <innernamespace refid="namespaceuw12_1_1linalg">uw12::linalg</innernamespace>
+    <innernamespace refid="namespaceuw12_1_1parallel">uw12::parallel</innernamespace>
+    <innernamespace refid="namespaceuw12_1_1print">uw12::print</innernamespace>
+    <innernamespace refid="namespaceuw12_1_1three__el">uw12::three_el</innernamespace>
+    <innernamespace refid="namespaceuw12_1_1two__el">uw12::two_el</innernamespace>
+    <innernamespace refid="namespaceuw12_1_1utils">uw12::utils</innernamespace>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="uw12_8cpp_1a8df89de3f66e5701804abef99482b89b" prot="public" static="no">
+        <type>linalg::Vec</type>
+        <definition>using uw12::Vec =  linalg::Vec</definition>
+        <argsstring></argsstring>
+        <name>Vec</name>
+        <qualifiedname>uw12::Vec</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/uw12.cpp" line="14" column="1" bodyfile="src/uw12.cpp" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="uw12_8cpp_1a65921b486634378d12d6176a74686a5f" prot="public" static="no">
+        <type>linalg::Mat</type>
+        <definition>using uw12::Matrix =  linalg::Mat</definition>
+        <argsstring></argsstring>
+        <name>Matrix</name>
+        <qualifiedname>uw12::Matrix</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/uw12.cpp" line="15" column="1" bodyfile="src/uw12.cpp" bodystart="15" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="libuw12_8cpp_1a5a8dd2643f769bae0570f64d081ebcc5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto uw12::setup_mat</definition>
+        <argsstring>(const double *X, const size_t n_row, const size_t n_col, const bool copy_data)</argsstring>
+        <name>setup_mat</name>
+        <qualifiedname>uw12::setup_mat</qualifiedname>
+        <param>
+          <type>const double *</type>
+          <declname>X</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n_row</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n_col</declname>
+        </param>
+        <param>
+          <type>const bool</type>
+          <declname>copy_data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libuw12.cpp" line="13" column="6" bodyfile="libuw12.cpp" bodystart="13" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="libuw12_8cpp_1a523be58b40b537698ed1c460ae9882ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classuw12_1_1integrals_1_1_base_integrals" kindref="compound">BaseIntegrals</ref></type>
+        <definition>BaseIntegrals uw12::setup_base_integrals</definition>
+        <argsstring>(const double *X3, const double *X2, const double *X3_ri, const size_t n_ao, const size_t n_df, const size_t n_ri, const bool copy_data)</argsstring>
+        <name>setup_base_integrals</name>
+        <qualifiedname>uw12::setup_base_integrals</qualifiedname>
+        <param>
+          <type>const double *</type>
+          <declname>X3</declname>
+        </param>
+        <param>
+          <type>const double *</type>
+          <declname>X2</declname>
+        </param>
+        <param>
+          <type>const double *</type>
+          <declname>X3_ri</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n_ao</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n_df</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n_ri</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>copy_data</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Initialise a set of BaseIntegrals for a given inter-electron potential x_{12} using arrays for each integrals</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>X3</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Ptr to three index integrals <formula id="0">$(\rho\sigma | x_{12} | A)$</formula> given by an array of size <computeroutput>n_ao * (n_ao + 1) /2 * n_df</computeroutput> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>X2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Ptr to two index integrals <formula id="1">$(A | x_{12} | B)$</formula> given by an array of size <computeroutput>n_df * n_df</computeroutput> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>X3_ri</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Ptr to three index RI integrals <formula id="2">$(\mu\rho|x_{12}|A)$</formula> given by an array of size <computeroutput>n_ao * n_ri * n_df</computeroutput> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n_ao</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of atomic orbitals </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n_df</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of density-fitting orbitals </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n_ri</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of auxilliary RI basis functions </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>copy_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Copy data when creating BaseIntegrals (default: false)</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>BaseIntegrals </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libuw12.cpp" line="22" column="15" bodyfile="libuw12.cpp" bodystart="22" bodyend="36" declfile="libuw12.hpp" declline="42" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="libuw12_8cpp_1ab66529f26f53f305374b682ac6520f70" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classuw12_1_1integrals_1_1_base_integrals" kindref="compound">BaseIntegrals</ref></type>
+        <definition>BaseIntegrals uw12::setup_base_integrals</definition>
+        <argsstring>(const double *X3, const double *X2, const size_t n_ao, const size_t n_df, const bool copy_data)</argsstring>
+        <name>setup_base_integrals</name>
+        <qualifiedname>uw12::setup_base_integrals</qualifiedname>
+        <param>
+          <type>const double *</type>
+          <declname>X3</declname>
+        </param>
+        <param>
+          <type>const double *</type>
+          <declname>X2</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n_ao</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n_df</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>copy_data</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Initialise a set of BaseIntegrals for a given inter-electron potential x_{12} using arrays for each integrals.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>X3</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Ptr to three index integrals <formula id="0">$(\rho\sigma | x_{12} | A)$</formula> given by an array of size <computeroutput>n_ao * (n_ao + 1) /2 * n_df</computeroutput> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>X2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Ptr to two index integrals <formula id="1">$(A | x_{12} | B)$</formula> given by an array of size <computeroutput>n_df * n_df</computeroutput> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n_ao</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of atomic orbitals </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n_df</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of density-fitting orbitals </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>copy_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Copy data when creating BaseIntegrals (default: false)</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>BaseIntegrals (no RI) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libuw12.cpp" line="38" column="15" bodyfile="libuw12.cpp" bodystart="38" bodyend="49" declfile="libuw12.hpp" declline="64" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="libuw12_8cpp_1a1d897c75cae29d33dceb12fec3549da3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structuw12_1_1three__el_1_1ri_1_1_a_b_s_projectors" kindref="compound">ABSProjectors</ref></type>
+        <definition>ABSProjectors uw12::setup_abs_projectors</definition>
+        <argsstring>(const double *S, const size_t n_ao, const size_t n_ri)</argsstring>
+        <name>setup_abs_projectors</name>
+        <qualifiedname>uw12::setup_abs_projectors</qualifiedname>
+        <param>
+          <type>const double *</type>
+          <declname>S</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n_ao</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n_ri</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Setup the projectors for the ABS+ RI method</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>S</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Ptr to overlap matrix <formula id="3">$(\mu | \nu)$</formula> for the combined ao and auxilliary RI space array of size <computeroutput>(n_ao + n_ri) * (n_ao + n_ri)</computeroutput> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n_ao</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of atomic orbitals </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n_ri</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of auxilliary RI orbitals</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>ABSProjectors </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libuw12.cpp" line="51" column="15" bodyfile="libuw12.cpp" bodystart="51" bodyend="56" declfile="libuw12.hpp" declline="80" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="libuw12_8cpp_1a1a7fa9f16bb120c96531133f1c7f1e36" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Orbitals</type>
+        <definition>Orbitals uw12::setup_orbitals</definition>
+        <argsstring>(const double *C, const size_t n_ao, const size_t n_orb, const size_t n_spin)</argsstring>
+        <name>setup_orbitals</name>
+        <qualifiedname>uw12::setup_orbitals</qualifiedname>
+        <param>
+          <type>const double *</type>
+          <declname>C</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n_ao</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n_orb</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n_spin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Setup orbitals from memory</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>C</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Ptr to orbital coefficients of size <computeroutput>n_ao * (2 * n_orb)</computeroutput> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n_ao</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of atomic orbitals </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n_orb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of molecular orbitals provided (per spin channel </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n_spin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of spin channels</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Orbitals </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libuw12.cpp" line="58" column="10" bodyfile="libuw12.cpp" bodystart="58" bodyend="77" declfile="libuw12.hpp" declline="90" declcolumn="10"/>
+      </memberdef>
+      <memberdef kind="function" id="libuw12_8cpp_1ad9b7ec38ceed16d74e2b9cc544de356c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Occupations</type>
+        <definition>Occupations uw12::setup_occupations</definition>
+        <argsstring>(const double *occ, const size_t n_spin, const size_t n_occ_alpha, const size_t n_occ_beta)</argsstring>
+        <name>setup_occupations</name>
+        <qualifiedname>uw12::setup_occupations</qualifiedname>
+        <param>
+          <type>const double *</type>
+          <declname>occ</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n_spin</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n_occ_alpha</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n_occ_beta</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libuw12.cpp" line="79" column="13" bodyfile="libuw12.cpp" bodystart="79" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="function" id="libuw12_8cpp_1a16493ade5ba132344730443af7d31a32" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Occupations</type>
+        <definition>Occupations uw12::setup_occupations</definition>
+        <argsstring>(const double *occ, const size_t n_occ)</argsstring>
+        <name>setup_occupations</name>
+        <qualifiedname>uw12::setup_occupations</qualifiedname>
+        <param>
+          <type>const double *</type>
+          <declname>occ</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n_occ</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Setup orbital occupations (Closed shell) Occupations must correspond to the first <computeroutput>n_occ</computeroutput> orbitals in <computeroutput>C</computeroutput></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>occ</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Occupation vector as an array of size <computeroutput>n_occ</computeroutput> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n_occ</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of occupied orbitals</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Occupations </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libuw12.cpp" line="104" column="13" bodyfile="libuw12.cpp" bodystart="104" bodyend="106" declfile="libuw12.hpp" declline="101" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="libuw12_8cpp_1a12070aebbc8e46285c03d4369d3412b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Occupations</type>
+        <definition>Occupations uw12::setup_occupations</definition>
+        <argsstring>(const double *occ, const size_t n_occ_alpha, const size_t n_occ_beta)</argsstring>
+        <name>setup_occupations</name>
+        <qualifiedname>uw12::setup_occupations</qualifiedname>
+        <param>
+          <type>const double *</type>
+          <declname>occ</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n_occ_alpha</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n_occ_beta</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Setup orbital occupations (Open shell) Occupations must correspond to orbital coefficient in <computeroutput>C</computeroutput></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>occ</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Occupation vector as an array of size <computeroutput>n_occ</computeroutput> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n_occ_alpha</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of occupied orbitals in spin channel alpha </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n_occ_beta</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of occupied orbitals in spin channel beta</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Occupations </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libuw12.cpp" line="108" column="13" bodyfile="libuw12.cpp" bodystart="108" bodyend="112" declfile="libuw12.hpp" declline="111" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="libuw12_8cpp_1a2c8ecc164ba4a8480bd269e8238b76a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void uw12::get_fock</definition>
+        <argsstring>(const utils::FockMatrixAndEnergy &amp;result, double *fock)</argsstring>
+        <name>get_fock</name>
+        <qualifiedname>uw12::get_fock</qualifiedname>
+        <param>
+          <type>const <ref refid="structuw12_1_1utils_1_1_fock_matrix_and_energy" kindref="compound">utils::FockMatrixAndEnergy</ref> &amp;</type>
+          <declname>result</declname>
+        </param>
+        <param>
+          <type>double *</type>
+          <declname>fock</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libuw12.cpp" line="114" column="6" bodyfile="libuw12.cpp" bodystart="114" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="function" id="libuw12_8cpp_1abcce1d4397081c321ab17e40b6267c0d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structuw12_1_1utils_1_1_fock_matrix_and_energy" kindref="compound">utils::FockMatrixAndEnergy</ref></type>
+        <definition>utils::FockMatrixAndEnergy uw12::uw12_fock</definition>
+        <argsstring>(const BaseIntegrals &amp;W, const BaseIntegrals &amp;V, const BaseIntegrals &amp;WV, const ABSProjectors &amp;abs_projectors, const Orbitals &amp;orbitals, const Occupations &amp;occ, const std::vector&lt; size_t &gt; &amp;n_active, const bool calculate_fock, const double scale_opp_spin, const double scale_same_spin, const size_t print_level)</argsstring>
+        <name>uw12_fock</name>
+        <qualifiedname>uw12::uw12_fock</qualifiedname>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_base_integrals" kindref="compound">BaseIntegrals</ref> &amp;</type>
+          <declname>W</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_base_integrals" kindref="compound">BaseIntegrals</ref> &amp;</type>
+          <declname>V</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_base_integrals" kindref="compound">BaseIntegrals</ref> &amp;</type>
+          <declname>WV</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structuw12_1_1three__el_1_1ri_1_1_a_b_s_projectors" kindref="compound">ABSProjectors</ref> &amp;</type>
+          <declname>abs_projectors</declname>
+        </param>
+        <param>
+          <type>const Orbitals &amp;</type>
+          <declname>orbitals</declname>
+        </param>
+        <param>
+          <type>const Occupations &amp;</type>
+          <declname>occ</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; size_t &gt; &amp;</type>
+          <declname>n_active</declname>
+        </param>
+        <param>
+          <type>const bool</type>
+          <declname>calculate_fock</declname>
+        </param>
+        <param>
+          <type>const double</type>
+          <declname>scale_opp_spin</declname>
+        </param>
+        <param>
+          <type>const double</type>
+          <declname>scale_same_spin</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>print_level</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libuw12.cpp" line="125" column="28" bodyfile="libuw12.cpp" bodystart="125" bodyend="154"/>
+      </memberdef>
+      <memberdef kind="function" id="libuw12_8cpp_1a64aad069415c9bee9a9ccf5504a713b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double uw12::uw12_energy</definition>
+        <argsstring>(const BaseIntegrals &amp;W, const BaseIntegrals &amp;V, const BaseIntegrals &amp;WV, const ABSProjectors &amp;abs_projectors, const Orbitals &amp;orbitals, const Occupations &amp;occ, const std::vector&lt; size_t &gt; &amp;n_active, const double scale_opp_spin, const double scale_same_spin, const size_t print_level)</argsstring>
+        <name>uw12_energy</name>
+        <qualifiedname>uw12::uw12_energy</qualifiedname>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_base_integrals" kindref="compound">BaseIntegrals</ref> &amp;</type>
+          <declname>W</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_base_integrals" kindref="compound">BaseIntegrals</ref> &amp;</type>
+          <declname>V</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_base_integrals" kindref="compound">BaseIntegrals</ref> &amp;</type>
+          <declname>WV</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structuw12_1_1three__el_1_1ri_1_1_a_b_s_projectors" kindref="compound">ABSProjectors</ref> &amp;</type>
+          <declname>abs_projectors</declname>
+        </param>
+        <param>
+          <type>const Orbitals &amp;</type>
+          <declname>orbitals</declname>
+        </param>
+        <param>
+          <type>const Occupations &amp;</type>
+          <declname>occ</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; size_t &gt; &amp;</type>
+          <declname>n_active</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>scale_opp_spin</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>scale_same_spin</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>print_level</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Calculate the UW12 energy only</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>W</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>BaseIntegrals for <formula id="4">$w_{12}$</formula> (must include RI) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>V</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>BaseIntegrals for <formula id="5">$r_{12}^{-1}$</formula> (must include RI) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>WV</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>BaseIntegrals for <formula id="6">$w_{12} r_{12}^{-1}$</formula> (no RI) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>abs_projectors</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Projectors for ABS+ </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>orbitals</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Vector of orbitals </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>occ</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Occupation vectors for each spin channel </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n_active</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Vector of number of active orbitals for each spin channel </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>scale_opp_spin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Scale factor for osUW12 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>scale_same_spin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Scale factor for ssUW12 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>print_level</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Adjust details printed (0-3) default: 0 (silent)</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>UW12 energy </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libuw12.cpp" line="156" column="8" bodyfile="libuw12.cpp" bodystart="156" bodyend="182" declfile="libuw12.hpp" declline="129" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="libuw12_8cpp_1aeb2f8e96280ac9020f99a1352644c2fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double uw12::uw12_fock</definition>
+        <argsstring>(double *fock, const BaseIntegrals &amp;W, const BaseIntegrals &amp;V, const BaseIntegrals &amp;WV, const ABSProjectors &amp;abs_projectors, const Orbitals &amp;orbitals, const Occupations &amp;occ, const std::vector&lt; size_t &gt; &amp;n_active, const double scale_opp_spin, const double scale_same_spin, const size_t print_level)</argsstring>
+        <name>uw12_fock</name>
+        <qualifiedname>uw12::uw12_fock</qualifiedname>
+        <param>
+          <type>double *</type>
+          <declname>fock</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_base_integrals" kindref="compound">BaseIntegrals</ref> &amp;</type>
+          <declname>W</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_base_integrals" kindref="compound">BaseIntegrals</ref> &amp;</type>
+          <declname>V</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_base_integrals" kindref="compound">BaseIntegrals</ref> &amp;</type>
+          <declname>WV</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structuw12_1_1three__el_1_1ri_1_1_a_b_s_projectors" kindref="compound">ABSProjectors</ref> &amp;</type>
+          <declname>abs_projectors</declname>
+        </param>
+        <param>
+          <type>const Orbitals &amp;</type>
+          <declname>orbitals</declname>
+        </param>
+        <param>
+          <type>const Occupations &amp;</type>
+          <declname>occ</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; size_t &gt; &amp;</type>
+          <declname>n_active</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>scale_opp_spin</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>scale_same_spin</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>print_level</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Calculate the UW12 fock matrix and energy</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>fock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Resulting fock matrix for UW12 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>W</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>BaseIntegrals for <formula id="4">$w_{12}$</formula> (must include RI) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>V</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>BaseIntegrals for <formula id="5">$r_{12}^{-1}$</formula> (must include RI) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>WV</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>BaseIntegrals for <formula id="6">$w_{12} r_{12}^{-1}$</formula> (no RI) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>abs_projectors</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Projectors for ABS+ </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>orbitals</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Vector of orbitals </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>occ</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Occupation vectors for each spin channel </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n_active</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Vector of number of active orbitals for each spin channel </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>scale_opp_spin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Scale factor for osUW12 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>scale_same_spin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Scale factor for ssUW12 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>print_level</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Adjust details printed (0-3) default: 0 (silent)</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>UW12 Fock matrix and energy </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libuw12.cpp" line="184" column="8" bodyfile="libuw12.cpp" bodystart="184" bodyend="214" declfile="libuw12.hpp" declline="157" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="uw12_8cpp_1ac6c712d2cea8096968cd7fc4efe6da35" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structuw12_1_1utils_1_1_fock_matrix_and_energy" kindref="compound">FockMatrixAndEnergy</ref></type>
+        <definition>FockMatrixAndEnergy uw12::form_fock</definition>
+        <argsstring>(const BaseIntegrals &amp;W, const BaseIntegrals &amp;V, const BaseIntegrals &amp;WV, const ABSProjectors &amp;abs_projectors, const Orbitals &amp;orbitals, const utils::Occupations &amp;occupations, const std::vector&lt; size_t &gt; &amp;n_active, const bool indirect_term, const bool calculate_fock, const double scale_opp_spin, const double scale_same_spin, const size_t print_level)</argsstring>
+        <name>form_fock</name>
+        <qualifiedname>uw12::form_fock</qualifiedname>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_base_integrals" kindref="compound">BaseIntegrals</ref> &amp;</type>
+          <declname>W</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_base_integrals" kindref="compound">BaseIntegrals</ref> &amp;</type>
+          <declname>V</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_base_integrals" kindref="compound">BaseIntegrals</ref> &amp;</type>
+          <declname>WV</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structuw12_1_1three__el_1_1ri_1_1_a_b_s_projectors" kindref="compound">ABSProjectors</ref> &amp;</type>
+          <declname>abs_projectors</declname>
+        </param>
+        <param>
+          <type>const Orbitals &amp;</type>
+          <declname>orbitals</declname>
+        </param>
+        <param>
+          <type>const utils::Occupations &amp;</type>
+          <declname>occupations</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; size_t &gt; &amp;</type>
+          <declname>n_active</declname>
+        </param>
+        <param>
+          <type>const bool</type>
+          <declname>indirect_term</declname>
+        </param>
+        <param>
+          <type>const bool</type>
+          <declname>calculate_fock</declname>
+        </param>
+        <param>
+          <type>const double</type>
+          <declname>scale_opp_spin</declname>
+        </param>
+        <param>
+          <type>const double</type>
+          <declname>scale_same_spin</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>print_level</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/uw12.cpp" line="22" column="21" bodyfile="src/uw12.cpp" bodystart="22" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="uw12_8hpp_1ab7d8c4a7a698b2a0270d086dd613368b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structuw12_1_1utils_1_1_fock_matrix_and_energy" kindref="compound">utils::FockMatrixAndEnergy</ref></type>
+        <definition>utils::FockMatrixAndEnergy uw12::form_fock</definition>
+        <argsstring>(const integrals::BaseIntegrals &amp;W, const integrals::BaseIntegrals &amp;V, const integrals::BaseIntegrals &amp;WV, const three_el::ri::ABSProjectors &amp;abs_projectors, const utils::Orbitals &amp;orbitals, const utils::Occupations &amp;occupations, const std::vector&lt; size_t &gt; &amp;n_active, bool indirect_term, bool calculate_fock, double scale_opp_spin, double scale_same_spin, size_t print_level=0)</argsstring>
+        <name>form_fock</name>
+        <qualifiedname>uw12::form_fock</qualifiedname>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_base_integrals" kindref="compound">integrals::BaseIntegrals</ref> &amp;</type>
+          <declname>W</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_base_integrals" kindref="compound">integrals::BaseIntegrals</ref> &amp;</type>
+          <declname>V</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_base_integrals" kindref="compound">integrals::BaseIntegrals</ref> &amp;</type>
+          <declname>WV</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structuw12_1_1three__el_1_1ri_1_1_a_b_s_projectors" kindref="compound">three_el::ri::ABSProjectors</ref> &amp;</type>
+          <declname>abs_projectors</declname>
+        </param>
+        <param>
+          <type>const utils::Orbitals &amp;</type>
+          <declname>orbitals</declname>
+        </param>
+        <param>
+          <type>const utils::Occupations &amp;</type>
+          <declname>occupations</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; size_t &gt; &amp;</type>
+          <declname>n_active</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>indirect_term</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>calculate_fock</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>scale_opp_spin</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>scale_same_spin</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>print_level</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Find the contribution to the energy and Fock matrix of UW12</para>
+<para>This function calculates the UW12 energy and Fock matrix contribution by calculating the two, three and four electron components. The two and four electron components are calculated using density fitting, the integrals for which are given to this function. The three electron term is calculated using density-fitted RI.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>W</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Density-fitting integrals and eigenvalues for <formula id="4">$w_{12}$</formula> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>V</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Density-fitting integrals and eigenvalues for <formula id="151">$v_{12}$</formula> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>WV</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Density-fitting integrals for <formula id="152">$w_{12}v_{12}$</formula> (No RI) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>abs_projectors</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Projectors for ABS+ (inverse overlaps matrices between ri and ao space) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>orbitals</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Orbital coefficients in the form of a std::vector of matrices with number of rows specified by the size number of ao basis functions and number of columns specified by number of (occupied) orbitals with one matrix for each spin channel. The first <computeroutput>n_occ</computeroutput> columns are treated as the occupied orbital coefficients, with <computeroutput>n_occ</computeroutput> determined by <computeroutput>occupations</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>occupations</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Occupation numbers for the orbitals in the form of a std::vector of Vecs of size <computeroutput>n_occ</computeroutput> for each spin channel </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n_active</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Vector of the number of active orbitals in each spin channel </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>indirect_term</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Calculate the indirect (exchange) term </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>calculate_fock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Calculate the Fock matrix contribution </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>scale_opp_spin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Scale <formula id="153">$w^0 (r)$</formula> by a factor <formula id="19">$\kappa_0$</formula> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>scale_same_spin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Scale <formula id="154">$w^1 (r)$</formula> by a factor <formula id="20">$\kappa_1$</formula> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>print_level</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Adjust details printed (0-3) default: 0 (silent)</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Fock matrix and energy for UW12 </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/uw12.hpp" line="129" column="28" declfile="src/uw12.hpp" declline="129" declcolumn="28"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libuw12.cpp" line="12" column="1"/>
+  </compounddef>
+</doxygen>

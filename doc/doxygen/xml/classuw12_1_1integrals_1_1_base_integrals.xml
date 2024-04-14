@@ -1,0 +1,1147 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classuw12_1_1integrals_1_1_base_integrals" kind="class" language="C++" prot="public">
+    <compoundname>uw12::integrals::BaseIntegrals</compoundname>
+    <includes refid="base__integrals_8hpp" local="no">base_integrals.hpp</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classuw12_1_1integrals_1_1_base_integrals_1a2e5680737f1edc97f31e7dfaece0d029" prot="private" static="no" mutable="no">
+        <type>TwoIndexFn</type>
+        <definition>TwoIndexFn uw12::integrals::BaseIntegrals::two_index_fn</definition>
+        <argsstring></argsstring>
+        <name>two_index_fn</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::two_index_fn</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="254" column="14" bodyfile="src/integrals/base_integrals.hpp" bodystart="254" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classuw12_1_1integrals_1_1_base_integrals_1aabcf4836308821c80ee1314feced62c5" prot="private" static="no" mutable="no">
+        <type>ThreeIndexFn</type>
+        <definition>ThreeIndexFn uw12::integrals::BaseIntegrals::three_index_fn</definition>
+        <argsstring></argsstring>
+        <name>three_index_fn</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::three_index_fn</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="255" column="16" bodyfile="src/integrals/base_integrals.hpp" bodystart="255" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classuw12_1_1integrals_1_1_base_integrals_1a3b64460c1d835c5cd92467220de34333" prot="private" static="no" mutable="no">
+        <type>ThreeIndexFn</type>
+        <definition>ThreeIndexFn uw12::integrals::BaseIntegrals::three_index_fn_ri</definition>
+        <argsstring></argsstring>
+        <name>three_index_fn_ri</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::three_index_fn_ri</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="256" column="16" bodyfile="src/integrals/base_integrals.hpp" bodystart="256" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classuw12_1_1integrals_1_1_base_integrals_1a7ba8fd69a914de17ec02145c6c8f8d6a" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t uw12::integrals::BaseIntegrals::n_ao</definition>
+        <argsstring></argsstring>
+        <name>n_ao</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::n_ao</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="258" column="10" bodyfile="src/integrals/base_integrals.hpp" bodystart="258" bodyend="258"/>
+      </memberdef>
+      <memberdef kind="variable" id="classuw12_1_1integrals_1_1_base_integrals_1a9dde0f319e5cc331552b59fac7b48145" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t uw12::integrals::BaseIntegrals::n_df</definition>
+        <argsstring></argsstring>
+        <name>n_df</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::n_df</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="259" column="10" bodyfile="src/integrals/base_integrals.hpp" bodystart="259" bodyend="259"/>
+      </memberdef>
+      <memberdef kind="variable" id="classuw12_1_1integrals_1_1_base_integrals_1a8621bcd403fcbad58f030a871cecf60b" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t uw12::integrals::BaseIntegrals::n_ri</definition>
+        <argsstring></argsstring>
+        <name>n_ri</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::n_ri</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="260" column="10" bodyfile="src/integrals/base_integrals.hpp" bodystart="260" bodyend="260"/>
+      </memberdef>
+      <memberdef kind="variable" id="classuw12_1_1integrals_1_1_base_integrals_1a22fe6f9f5d838ab8c7647118cc260a9c" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; size_t &gt;</type>
+        <definition>std::vector&lt;size_t&gt; uw12::integrals::BaseIntegrals::df_sizes</definition>
+        <argsstring></argsstring>
+        <name>df_sizes</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::df_sizes</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Vector of df basis set shell sizes where the length is the number of df basis set shells </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="264" column="15" bodyfile="src/integrals/base_integrals.hpp" bodystart="264" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classuw12_1_1integrals_1_1_base_integrals_1a8d7609d530e628b9684a3685bd025ec9" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; linalg::Mat &gt;</type>
+        <definition>std::shared_ptr&lt;linalg::Mat&gt; uw12::integrals::BaseIntegrals::J3_0</definition>
+        <argsstring></argsstring>
+        <name>J3_0</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::J3_0</qualifiedname>
+        <briefdescription>
+<para>Three-index integrals in the original df basis space. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="267" column="19" bodyfile="src/integrals/base_integrals.hpp" bodystart="267" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classuw12_1_1integrals_1_1_base_integrals_1a3d32a8573de2096598317f3920a12bba" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; linalg::Mat &gt;</type>
+        <definition>std::shared_ptr&lt;linalg::Mat&gt; uw12::integrals::BaseIntegrals::J3</definition>
+        <argsstring></argsstring>
+        <name>J3</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::J3</qualifiedname>
+        <briefdescription>
+<para>Three-index integrals in the space of <computeroutput>df_vals</computeroutput> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="269" column="19" bodyfile="src/integrals/base_integrals.hpp" bodystart="269" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classuw12_1_1integrals_1_1_base_integrals_1a2adbf8a4e372ba9a3ba2fbd30590af4e" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; linalg::Mat &gt;</type>
+        <definition>std::shared_ptr&lt;linalg::Mat&gt; uw12::integrals::BaseIntegrals::J3_ri_0</definition>
+        <argsstring></argsstring>
+        <name>J3_ri_0</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::J3_ri_0</qualifiedname>
+        <briefdescription>
+<para>Three-index ri integrals in the original basis space. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="271" column="19" bodyfile="src/integrals/base_integrals.hpp" bodystart="271" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classuw12_1_1integrals_1_1_base_integrals_1a115fd9c6feee8006b8499a96fd28f725" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; linalg::Mat &gt;</type>
+        <definition>std::shared_ptr&lt;linalg::Mat&gt; uw12::integrals::BaseIntegrals::J3_ri</definition>
+        <argsstring></argsstring>
+        <name>J3_ri</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::J3_ri</qualifiedname>
+        <briefdescription>
+<para>Three-index ri integrals in the space of <computeroutput>df_vals</computeroutput> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="273" column="19" bodyfile="src/integrals/base_integrals.hpp" bodystart="273" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classuw12_1_1integrals_1_1_base_integrals_1a653641c86801b099b39506485c42f741" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; linalg::Mat &gt;</type>
+        <definition>std::shared_ptr&lt;linalg::Mat&gt; uw12::integrals::BaseIntegrals::P2</definition>
+        <argsstring></argsstring>
+        <name>P2</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::P2</qualifiedname>
+        <briefdescription>
+<para>Projector from original df basis space to space of <computeroutput>df_vals</computeroutput> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="275" column="19" bodyfile="src/integrals/base_integrals.hpp" bodystart="275" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classuw12_1_1integrals_1_1_base_integrals_1ac28c4b53327bd3241cb51226e88dd7b8" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; linalg::Vec &gt;</type>
+        <definition>std::shared_ptr&lt;linalg::Vec&gt; uw12::integrals::BaseIntegrals::df_vals</definition>
+        <argsstring></argsstring>
+        <name>df_vals</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::df_vals</qualifiedname>
+        <briefdescription>
+<para>Density-fitting eigenvalues. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="277" column="19" bodyfile="src/integrals/base_integrals.hpp" bodystart="277" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classuw12_1_1integrals_1_1_base_integrals_1a5f0977085a71375d0a41265d1fc0f6e3" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; std::mutex &gt;</type>
+        <definition>std::shared_ptr&lt;std::mutex&gt; uw12::integrals::BaseIntegrals::J3_lock</definition>
+        <argsstring></argsstring>
+        <name>J3_lock</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::J3_lock</qualifiedname>
+        <briefdescription>
+<para>Locks to prevent parallel calculation of matrices. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="280" column="19" bodyfile="src/integrals/base_integrals.hpp" bodystart="280" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classuw12_1_1integrals_1_1_base_integrals_1a639e3ee7ef0eb57406f4f312bb702abe" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; std::mutex &gt;</type>
+        <definition>std::shared_ptr&lt;std::mutex&gt; uw12::integrals::BaseIntegrals::J3_ri_lock</definition>
+        <argsstring></argsstring>
+        <name>J3_ri_lock</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::J3_ri_lock</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="281" column="19" bodyfile="src/integrals/base_integrals.hpp" bodystart="281" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classuw12_1_1integrals_1_1_base_integrals_1ad9329018c5744e8d7eed3c2ed5ada357" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; std::mutex &gt;</type>
+        <definition>std::shared_ptr&lt;std::mutex&gt; uw12::integrals::BaseIntegrals::eig_lock</definition>
+        <argsstring></argsstring>
+        <name>eig_lock</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::eig_lock</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="282" column="19" bodyfile="src/integrals/base_integrals.hpp" bodystart="282" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classuw12_1_1integrals_1_1_base_integrals_1a5ea5b1db8d5fe884b8b3b48445709d49" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool uw12::integrals::BaseIntegrals::two_index_fn_provided</definition>
+        <argsstring></argsstring>
+        <name>two_index_fn_provided</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::two_index_fn_provided</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+<para>Booleans check that integral functions have been provided. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="285" column="8" bodyfile="src/integrals/base_integrals.hpp" bodystart="285" bodyend="285"/>
+      </memberdef>
+      <memberdef kind="variable" id="classuw12_1_1integrals_1_1_base_integrals_1ab38fb222154fee6895e376819972b47e" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool uw12::integrals::BaseIntegrals::three_index_fn_provided</definition>
+        <argsstring></argsstring>
+        <name>three_index_fn_provided</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::three_index_fn_provided</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="286" column="8" bodyfile="src/integrals/base_integrals.hpp" bodystart="286" bodyend="286"/>
+      </memberdef>
+      <memberdef kind="variable" id="classuw12_1_1integrals_1_1_base_integrals_1a95e327525ba42106a72cf181a68202d9" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool uw12::integrals::BaseIntegrals::three_index_ri_fn_provided</definition>
+        <argsstring></argsstring>
+        <name>three_index_ri_fn_provided</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::three_index_ri_fn_provided</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="287" column="8" bodyfile="src/integrals/base_integrals.hpp" bodystart="287" bodyend="287"/>
+      </memberdef>
+      <memberdef kind="variable" id="classuw12_1_1integrals_1_1_base_integrals_1aef07a5b8d48346bbad6889f397645498" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool uw12::integrals::BaseIntegrals::store_ao_integrals</definition>
+        <argsstring></argsstring>
+        <name>store_ao_integrals</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::store_ao_integrals</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+<para>Whether storing ao integrals is expected. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="290" column="8" bodyfile="src/integrals/base_integrals.hpp" bodystart="290" bodyend="290"/>
+      </memberdef>
+      <memberdef kind="variable" id="classuw12_1_1integrals_1_1_base_integrals_1a54b1ea0196523330817b53ce38ada309" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool uw12::integrals::BaseIntegrals::store_ri_integrals</definition>
+        <argsstring></argsstring>
+        <name>store_ri_integrals</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::store_ri_integrals</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+<para>Whether storing ri integrals is expected. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="292" column="8" bodyfile="src/integrals/base_integrals.hpp" bodystart="292" bodyend="292"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classuw12_1_1integrals_1_1_base_integrals_1a9eb1de999bf1bfe4af66877d7ad0eacc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>uw12::integrals::BaseIntegrals::BaseIntegrals</definition>
+        <argsstring>()</argsstring>
+        <name>BaseIntegrals</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::BaseIntegrals</qualifiedname>
+        <briefdescription>
+<para>Default constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="49" column="3" bodyfile="src/integrals/base_integrals.cpp" bodystart="188" bodyend="202"/>
+      </memberdef>
+      <memberdef kind="function" id="classuw12_1_1integrals_1_1_base_integrals_1a7a26bbc4d1185812dffe08a39056a6e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>uw12::integrals::BaseIntegrals::BaseIntegrals</definition>
+        <argsstring>(const TwoIndexFn &amp;two_index_fn, const ThreeIndexFn &amp;three_index_fn, const ThreeIndexFn &amp;three_index_ri_fn, const std::vector&lt; size_t &gt; &amp;df_sizes, size_t n_ao, size_t n_df, size_t n_ri, bool store_ao_integrals=true, bool store_ri_integrals=true)</argsstring>
+        <name>BaseIntegrals</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::BaseIntegrals</qualifiedname>
+        <param>
+          <type>const TwoIndexFn &amp;</type>
+          <declname>two_index_fn</declname>
+        </param>
+        <param>
+          <type>const ThreeIndexFn &amp;</type>
+          <declname>three_index_fn</declname>
+        </param>
+        <param>
+          <type>const ThreeIndexFn &amp;</type>
+          <declname>three_index_ri_fn</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; size_t &gt; &amp;</type>
+          <declname>df_sizes</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n_ao</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n_df</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n_ri</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>store_ao_integrals</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>store_ri_integrals</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Standard constructor using functions to calculate integrals. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="52" column="3" bodyfile="src/integrals/base_integrals.cpp" bodystart="204" bodyend="228"/>
+      </memberdef>
+      <memberdef kind="function" id="classuw12_1_1integrals_1_1_base_integrals_1aeca61d54e8a755d7c67a013e76fcf3e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>uw12::integrals::BaseIntegrals::BaseIntegrals</definition>
+        <argsstring>(const TwoIndexFn &amp;two_index_fn, const ThreeIndexFn &amp;three_index_fn, const std::vector&lt; size_t &gt; &amp;df_sizes, size_t n_ao, size_t n_df, bool store_ao_integrals=true)</argsstring>
+        <name>BaseIntegrals</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::BaseIntegrals</qualifiedname>
+        <param>
+          <type>const TwoIndexFn &amp;</type>
+          <declname>two_index_fn</declname>
+        </param>
+        <param>
+          <type>const ThreeIndexFn &amp;</type>
+          <declname>three_index_fn</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; size_t &gt; &amp;</type>
+          <declname>df_sizes</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n_ao</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n_df</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>store_ao_integrals</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Wrapper for above constructor with no ri. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="65" column="3" bodyfile="src/integrals/base_integrals.cpp" bodystart="230" bodyend="251"/>
+      </memberdef>
+      <memberdef kind="function" id="classuw12_1_1integrals_1_1_base_integrals_1ab3cec88b205ddc42588384588d4a20fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>uw12::integrals::BaseIntegrals::BaseIntegrals</definition>
+        <argsstring>(const linalg::Mat &amp;J3_0, const linalg::Mat &amp;J2, const ThreeIndexFn &amp;three_index_ri, const std::vector&lt; size_t &gt; &amp;df_sizes, bool use_ri, size_t n_ao, size_t n_df, size_t n_ri, bool store_ri_integrals=false)</argsstring>
+        <name>BaseIntegrals</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::BaseIntegrals</qualifiedname>
+        <param>
+          <type>const linalg::Mat &amp;</type>
+          <declname>J3_0</declname>
+        </param>
+        <param>
+          <type>const linalg::Mat &amp;</type>
+          <declname>J2</declname>
+        </param>
+        <param>
+          <type>const ThreeIndexFn &amp;</type>
+          <declname>three_index_ri</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; size_t &gt; &amp;</type>
+          <declname>df_sizes</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>use_ri</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n_ao</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n_df</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n_ri</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>store_ri_integrals</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructor used if the standard three-index integrals <computeroutput>J3_0</computeroutput> and the two-index density-fitting integrals are already calculated. In this case, <computeroutput>J2</computeroutput> is immediately decomposed into <computeroutput>P2</computeroutput> and <computeroutput>df_vals</computeroutput>, and <computeroutput>J3_0</computeroutput> is stored. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="78" column="3" bodyfile="src/integrals/base_integrals.cpp" bodystart="253" bodyend="280"/>
+      </memberdef>
+      <memberdef kind="function" id="classuw12_1_1integrals_1_1_base_integrals_1a0a906501ad8af4249a90c4076c81023b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>uw12::integrals::BaseIntegrals::BaseIntegrals</definition>
+        <argsstring>(const linalg::Mat &amp;J3_0, const linalg::Mat &amp;J2, const linalg::Mat &amp;J3_ri_0)</argsstring>
+        <name>BaseIntegrals</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::BaseIntegrals</qualifiedname>
+        <param>
+          <type>const linalg::Mat &amp;</type>
+          <declname>J3_0</declname>
+        </param>
+        <param>
+          <type>const linalg::Mat &amp;</type>
+          <declname>J2</declname>
+        </param>
+        <param>
+          <type>const linalg::Mat &amp;</type>
+          <declname>J3_ri_0</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructor used if the standard three-index integrals <computeroutput>J3_0</computeroutput> and the two-index density-fitting integrals are already calculated. As well as the ri integrals J3_ri_0. In this case, <computeroutput>J2</computeroutput> is immediately decomposed into <computeroutput>P2</computeroutput> and <computeroutput>df_vals</computeroutput>, and <computeroutput>J3_0</computeroutput> is stored. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="94" column="3" bodyfile="src/integrals/base_integrals.cpp" bodystart="282" bodyend="303"/>
+      </memberdef>
+      <memberdef kind="function" id="classuw12_1_1integrals_1_1_base_integrals_1a7c4c31695fd5f773bda89a0c34bbcacf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>uw12::integrals::BaseIntegrals::BaseIntegrals</definition>
+        <argsstring>(const linalg::Mat &amp;J3_0, const linalg::Mat &amp;J2)</argsstring>
+        <name>BaseIntegrals</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::BaseIntegrals</qualifiedname>
+        <param>
+          <type>const linalg::Mat &amp;</type>
+          <declname>J3_0</declname>
+        </param>
+        <param>
+          <type>const linalg::Mat &amp;</type>
+          <declname>J2</declname>
+        </param>
+        <briefdescription>
+<para>Wrapper for previous constructor without ri. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="99" column="3" bodyfile="src/integrals/base_integrals.cpp" bodystart="305" bodyend="306"/>
+      </memberdef>
+      <memberdef kind="function" id="classuw12_1_1integrals_1_1_base_integrals_1af237eedb617e7a4581f3855cb2b2234d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>uw12::integrals::BaseIntegrals::BaseIntegrals</definition>
+        <argsstring>(const linalg::Mat &amp;J3, const linalg::Vec &amp;df_vals)</argsstring>
+        <name>BaseIntegrals</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::BaseIntegrals</qualifiedname>
+        <param>
+          <type>const linalg::Mat &amp;</type>
+          <declname>J3</declname>
+        </param>
+        <param>
+          <type>const linalg::Vec &amp;</type>
+          <declname>df_vals</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructor if the three-index integrals in the density-fitting eigenspace are already available. Since no basis sets or projection matrix <computeroutput>P2</computeroutput> can be specified, this constructor cannot be used for RI. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="104" column="3" bodyfile="src/integrals/base_integrals.cpp" bodystart="308" bodyend="326"/>
+      </memberdef>
+      <memberdef kind="function" id="classuw12_1_1integrals_1_1_base_integrals_1a3999213fbd0829555d106c4b52350f7d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>linalg::Mat</type>
+        <definition>linalg::Mat uw12::integrals::BaseIntegrals::two_index</definition>
+        <argsstring>() const</argsstring>
+        <name>two_index</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::two_index</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Call the two_index_fn to return the two-index density fitting integrals <formula id="44">$(A|w|B)$</formula>, the resulting square matrix should be of size <computeroutput>n_df * n_df</computeroutput> where <computeroutput>n_df</computeroutput> is the number of density_fitting basis functions </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="109" column="16" bodyfile="src/integrals/base_integrals.cpp" bodystart="328" bodyend="334"/>
+      </memberdef>
+      <memberdef kind="function" id="classuw12_1_1integrals_1_1_base_integrals_1a1e2452f32149ceaa6654dac3858d5f87" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>linalg::Mat</type>
+        <definition>linalg::Mat uw12::integrals::BaseIntegrals::three_index</definition>
+        <argsstring>(size_t A) const</argsstring>
+        <name>three_index</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::three_index</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>A</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Call the three_index_fn to obtain the three index density-fitting integrals in the ao basis for the density-fitting basis shell index <computeroutput>A</computeroutput></para>
+<para>The resulting matrix should have <computeroutput>n_ao * (n_ao + 1) / 2</computeroutput> rows and <computeroutput>nA</computeroutput> columns, where <computeroutput>n_ao</computeroutput> is the number of ao basis functions and <computeroutput>nA</computeroutput> is the number of basis functions in density-fitting basis shell <computeroutput>A</computeroutput>.</para>
+<para>Each column contains the upper triangular elements of a real symmetric matrix of size <computeroutput>n_ao * n_ao</computeroutput>, the full matrix may be obtained using <computeroutput>linalg::square</computeroutput>.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>A</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Index of density-fitting shell</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Density-fitting integrals <formula id="45">$(\rho\sigma | w | A)$</formula> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="125" column="16" bodyfile="src/integrals/base_integrals.cpp" bodystart="336" bodyend="342"/>
+      </memberdef>
+      <memberdef kind="function" id="classuw12_1_1integrals_1_1_base_integrals_1ac6a36f3a1aa6773fbad9a1b5e95c9e49" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>linalg::Mat</type>
+        <definition>linalg::Mat uw12::integrals::BaseIntegrals::three_index_ri</definition>
+        <argsstring>(size_t A) const</argsstring>
+        <name>three_index_ri</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::three_index_ri</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>A</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Call the three_index_fn to obtain the three index density-fitting ri integrals in the ao basis and ri basis for the density-fitting basis shell index <computeroutput>A</computeroutput></para>
+<para>The resulting matrix should have <computeroutput>n_ri * n_ao</computeroutput> rows and <computeroutput>nA</computeroutput> columns, where <computeroutput>n_ao</computeroutput> is the number of ao basis functions, <computeroutput>n_ri</computeroutput> is the number of ri basis functions and <computeroutput>nA</computeroutput> is the number of basis functions in density-fitting basis shell <computeroutput>A</computeroutput>.</para>
+<para>Each column contains a matrix of size <computeroutput>n_ri * n_ao</computeroutput>.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>A</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Index of density-fitting shell</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Density-fitting ri integrals <formula id="46">$(\mu\rho | w | A)$</formula> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="141" column="16" bodyfile="src/integrals/base_integrals.cpp" bodystart="344" bodyend="350"/>
+      </memberdef>
+      <memberdef kind="function" id="classuw12_1_1integrals_1_1_base_integrals_1a1a64736f1639b365b6bcebedd60396be" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool uw12::integrals::BaseIntegrals::has_two_index_fn</definition>
+        <argsstring>() const</argsstring>
+        <name>has_two_index_fn</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::has_two_index_fn</qualifiedname>
+        <briefdescription>
+<para>Check whether a <computeroutput>two_index_fn</computeroutput> is provided. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="144" column="9" bodyfile="src/integrals/base_integrals.cpp" bodystart="352" bodyend="352"/>
+      </memberdef>
+      <memberdef kind="function" id="classuw12_1_1integrals_1_1_base_integrals_1a2b97bc418512e7dc35af87d0bd4c9656" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool uw12::integrals::BaseIntegrals::has_three_index_fn</definition>
+        <argsstring>() const</argsstring>
+        <name>has_three_index_fn</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::has_three_index_fn</qualifiedname>
+        <briefdescription>
+<para>Check whether a <computeroutput>three_index_fn</computeroutput> is provided. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="147" column="9" bodyfile="src/integrals/base_integrals.cpp" bodystart="354" bodyend="356"/>
+      </memberdef>
+      <memberdef kind="function" id="classuw12_1_1integrals_1_1_base_integrals_1a89811266118f8a09cb579fd4a523f2bf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool uw12::integrals::BaseIntegrals::has_three_index_ri_fn</definition>
+        <argsstring>() const</argsstring>
+        <name>has_three_index_ri_fn</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::has_three_index_ri_fn</qualifiedname>
+        <briefdescription>
+<para>Check whether a <computeroutput>three_index_ri_fn</computeroutput> is provided. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="150" column="9" bodyfile="src/integrals/base_integrals.cpp" bodystart="358" bodyend="360"/>
+      </memberdef>
+      <memberdef kind="function" id="classuw12_1_1integrals_1_1_base_integrals_1af4734cedca35d2a64e1251adfecadacd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const linalg::Mat &amp;</type>
+        <definition>const linalg::Mat &amp; uw12::integrals::BaseIntegrals::get_P2</definition>
+        <argsstring>() const</argsstring>
+        <name>get_P2</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::get_P2</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return the projection matrix <computeroutput>P2</computeroutput>. If not already calculated, the two-index matrix <computeroutput>J2</computeroutput> is calculated and decomposed into <computeroutput>P2</computeroutput> and <computeroutput>df_vals</computeroutput>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="155" column="22" bodyfile="src/integrals/base_integrals.cpp" bodystart="375" bodyend="390"/>
+      </memberdef>
+      <memberdef kind="function" id="classuw12_1_1integrals_1_1_base_integrals_1a802dafd3b85372cc9a36d8bc3543b00f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::vector&lt; size_t &gt; &amp;</type>
+        <definition>const std::vector&lt; size_t &gt; &amp; uw12::integrals::BaseIntegrals::get_df_sizes</definition>
+        <argsstring>() const</argsstring>
+        <name>get_df_sizes</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::get_df_sizes</qualifiedname>
+        <briefdescription>
+<para>Obtain the vector of density-fitting basis set shell sizes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="158" column="22" bodyfile="src/integrals/base_integrals.cpp" bodystart="405" bodyend="413"/>
+      </memberdef>
+      <memberdef kind="function" id="classuw12_1_1integrals_1_1_base_integrals_1abe396e5a6f9fcb17588a772443e7b0a2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; size_t &gt;</type>
+        <definition>std::vector&lt; size_t &gt; uw12::integrals::BaseIntegrals::get_df_offsets</definition>
+        <argsstring>() const</argsstring>
+        <name>get_df_offsets</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::get_df_offsets</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Obtain the vector of density-fitting basis set shell offsets. This vector is determined using <computeroutput>df_sizes</computeroutput> and is of length <computeroutput>n_sh</computeroutput> for number of df basis set shells. Th vector determines the first column index in the final <computeroutput>J3</computeroutput> matrix where the first column of a given df shell is assigned. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="164" column="16" bodyfile="src/integrals/base_integrals.cpp" bodystart="415" bodyend="435"/>
+      </memberdef>
+      <memberdef kind="function" id="classuw12_1_1integrals_1_1_base_integrals_1a2048e3b5a82c3dc3988ba4870462c515" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const linalg::Vec &amp;</type>
+        <definition>const linalg::Vec &amp; uw12::integrals::BaseIntegrals::get_df_vals</definition>
+        <argsstring>() const</argsstring>
+        <name>get_df_vals</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::get_df_vals</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return the density-fitting eigenvalues <computeroutput>df_vals</computeroutput>. If not already calculated, the two-index matrix <computeroutput>J2</computeroutput> is calculated and decomposed into <computeroutput>P2</computeroutput> and <computeroutput>df_vals</computeroutput>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="169" column="22" bodyfile="src/integrals/base_integrals.cpp" bodystart="392" bodyend="403"/>
+      </memberdef>
+      <memberdef kind="function" id="classuw12_1_1integrals_1_1_base_integrals_1a79fdc48d839b361675d67735593f9722" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const linalg::Mat &amp;</type>
+        <definition>const linalg::Mat &amp; uw12::integrals::BaseIntegrals::get_J3_0</definition>
+        <argsstring>() const</argsstring>
+        <name>get_J3_0</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::get_J3_0</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return the three-index integrals <computeroutput>J3</computeroutput> in the original space of density-fitting function. If stored, a reference to the shared pointer is returned, otherwise an error is thrown. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="174" column="22" bodyfile="src/integrals/base_integrals.cpp" bodystart="437" bodyend="444"/>
+      </memberdef>
+      <memberdef kind="function" id="classuw12_1_1integrals_1_1_base_integrals_1a1f0d2125f139a3d0decbfe0bca3a2899" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const linalg::Mat &amp;</type>
+        <definition>const linalg::Mat &amp; uw12::integrals::BaseIntegrals::get_J3</definition>
+        <argsstring>() const</argsstring>
+        <name>get_J3</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::get_J3</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return the three-index integrals <computeroutput>J3</computeroutput> in the space of density-fitting eigenvalues. If stored, a reference to the shared pointer is returned. If not stored, the integrals are calculated. If <computeroutput>J3_0</computeroutput> is stored, this is transformed to the space of <computeroutput>df_vals</computeroutput>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="180" column="22" bodyfile="src/integrals/base_integrals.cpp" bodystart="446" bodyend="480"/>
+      </memberdef>
+      <memberdef kind="function" id="classuw12_1_1integrals_1_1_base_integrals_1a6c25f78e914174babcb6df50041b8138" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const linalg::Mat &amp;</type>
+        <definition>const linalg::Mat &amp; uw12::integrals::BaseIntegrals::get_J3_ri_0</definition>
+        <argsstring>() const</argsstring>
+        <name>get_J3_ri_0</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::get_J3_ri_0</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return the three-index integrals <computeroutput>J3_ri</computeroutput> in the original space of density-fitting functions. If stored, a reference to the shared pointer is returned, otherwise an error is thrown. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="185" column="22" bodyfile="src/integrals/base_integrals.cpp" bodystart="482" bodyend="489"/>
+      </memberdef>
+      <memberdef kind="function" id="classuw12_1_1integrals_1_1_base_integrals_1ab65cfd13ca9ad560f8c5fb0200c2c4a8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const linalg::Mat &amp;</type>
+        <definition>const linalg::Mat &amp; uw12::integrals::BaseIntegrals::get_J3_ri</definition>
+        <argsstring>() const</argsstring>
+        <name>get_J3_ri</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::get_J3_ri</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return the three-index ri integrals <computeroutput>J3_ri</computeroutput> in the space of density-fitting eigenvalues. If stored, a reference to the shared pointer is returned. If not stored, the integrals are calculated and stored.</para>
+<para>The size of the <computeroutput>ri</computeroutput> basis can be large, storing these integrals should be avoided for large systems. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="193" column="22" bodyfile="src/integrals/base_integrals.cpp" bodystart="491" bodyend="526"/>
+      </memberdef>
+      <memberdef kind="function" id="classuw12_1_1integrals_1_1_base_integrals_1a5576cb061d7969113afe667112550fc6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t uw12::integrals::BaseIntegrals::get_number_ao</definition>
+        <argsstring>() const</argsstring>
+        <name>get_number_ao</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::get_number_ao</qualifiedname>
+        <briefdescription>
+<para>Get the number of ao basis functions. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="196" column="11" bodyfile="src/integrals/base_integrals.cpp" bodystart="528" bodyend="528"/>
+      </memberdef>
+      <memberdef kind="function" id="classuw12_1_1integrals_1_1_base_integrals_1ae772428a9f3c4ba40cdd38e0576db166" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t uw12::integrals::BaseIntegrals::get_number_df</definition>
+        <argsstring>() const</argsstring>
+        <name>get_number_df</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::get_number_df</qualifiedname>
+        <briefdescription>
+<para>Get the number of df basis functions. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="199" column="11" bodyfile="src/integrals/base_integrals.cpp" bodystart="530" bodyend="530"/>
+      </memberdef>
+      <memberdef kind="function" id="classuw12_1_1integrals_1_1_base_integrals_1acd0ce59b7c8f336427107b4f3e65c658" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t uw12::integrals::BaseIntegrals::get_number_ri</definition>
+        <argsstring>() const</argsstring>
+        <name>get_number_ri</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::get_number_ri</qualifiedname>
+        <briefdescription>
+<para>Get the number of ri basis functions. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="202" column="11" bodyfile="src/integrals/base_integrals.cpp" bodystart="532" bodyend="532"/>
+      </memberdef>
+      <memberdef kind="function" id="classuw12_1_1integrals_1_1_base_integrals_1ab884b93cff3d85812bd43781b0144fad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool uw12::integrals::BaseIntegrals::storing_ri</definition>
+        <argsstring>() const</argsstring>
+        <name>storing_ri</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::storing_ri</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Check whether <computeroutput>ri</computeroutput> integrals should be stored. If false a warning is given when calling <computeroutput>get_J3_ri</computeroutput> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="206" column="9" bodyfile="src/integrals/base_integrals.cpp" bodystart="536" bodyend="536"/>
+      </memberdef>
+      <memberdef kind="function" id="classuw12_1_1integrals_1_1_base_integrals_1a629b76d0ae6d75c02e967a58d159909f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool uw12::integrals::BaseIntegrals::storing_ao</definition>
+        <argsstring>() const</argsstring>
+        <name>storing_ao</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::storing_ao</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Check whether <computeroutput>ao</computeroutput> integrals should be stored. If false a warning is given when calling <computeroutput>get_J3_ao</computeroutput>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="210" column="9" bodyfile="src/integrals/base_integrals.cpp" bodystart="534" bodyend="534"/>
+      </memberdef>
+      <memberdef kind="function" id="classuw12_1_1integrals_1_1_base_integrals_1aa666287be33e63bfff633d23d7de4d2f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool uw12::integrals::BaseIntegrals::has_P2</definition>
+        <argsstring>() const</argsstring>
+        <name>has_P2</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::has_P2</qualifiedname>
+        <briefdescription>
+<para>Check whether <computeroutput>P2</computeroutput> is stored. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="213" column="9" bodyfile="src/integrals/base_integrals.cpp" bodystart="538" bodyend="538"/>
+      </memberdef>
+      <memberdef kind="function" id="classuw12_1_1integrals_1_1_base_integrals_1a2793c518f348e9a5c0d048e411d22c08" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool uw12::integrals::BaseIntegrals::has_df_vals</definition>
+        <argsstring>() const</argsstring>
+        <name>has_df_vals</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::has_df_vals</qualifiedname>
+        <briefdescription>
+<para>Check whether <computeroutput>df_vals</computeroutput> is stored. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="216" column="9" bodyfile="src/integrals/base_integrals.cpp" bodystart="540" bodyend="540"/>
+      </memberdef>
+      <memberdef kind="function" id="classuw12_1_1integrals_1_1_base_integrals_1a4a12f1008a6170c30d2ca2c90d16930e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool uw12::integrals::BaseIntegrals::has_J3_0</definition>
+        <argsstring>() const</argsstring>
+        <name>has_J3_0</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::has_J3_0</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Check whether the standard density-fitting integrals in the space of the density-fitting basis set. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="220" column="9" bodyfile="src/integrals/base_integrals.cpp" bodystart="542" bodyend="542"/>
+      </memberdef>
+      <memberdef kind="function" id="classuw12_1_1integrals_1_1_base_integrals_1a657551cc3e591b1368d1e3f31963da34" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool uw12::integrals::BaseIntegrals::has_J3</definition>
+        <argsstring>() const</argsstring>
+        <name>has_J3</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::has_J3</qualifiedname>
+        <briefdescription>
+<para>Check whether <computeroutput>J3</computeroutput> is stored. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="223" column="9" bodyfile="src/integrals/base_integrals.cpp" bodystart="544" bodyend="544"/>
+      </memberdef>
+      <memberdef kind="function" id="classuw12_1_1integrals_1_1_base_integrals_1a2d4436c84bf32bb8b111c7539a5fa723" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool uw12::integrals::BaseIntegrals::has_J3_ri</definition>
+        <argsstring>() const</argsstring>
+        <name>has_J3_ri</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::has_J3_ri</qualifiedname>
+        <briefdescription>
+<para>Check whether <computeroutput>J3_ri</computeroutput> is stored. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="226" column="9" bodyfile="src/integrals/base_integrals.cpp" bodystart="546" bodyend="546"/>
+      </memberdef>
+      <memberdef kind="function" id="classuw12_1_1integrals_1_1_base_integrals_1aeacaadb51a45b4e5db625cf1c2da9705" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool uw12::integrals::BaseIntegrals::has_J3_ri_0</definition>
+        <argsstring>() const</argsstring>
+        <name>has_J3_ri_0</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::has_J3_ri_0</qualifiedname>
+        <briefdescription>
+<para>Check whether <computeroutput>J3_ri_0</computeroutput> is stored. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="229" column="9" bodyfile="src/integrals/base_integrals.cpp" bodystart="548" bodyend="548"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classuw12_1_1integrals_1_1_base_integrals_1a03a2993f332069ae6dbb549cfd104428" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>uw12::integrals::BaseIntegrals::BaseIntegrals</definition>
+        <argsstring>(TwoIndexFn two_index_fn_, ThreeIndexFn three_index_fn_, ThreeIndexFn three_index_ri_fn_, const std::vector&lt; size_t &gt; &amp;df_sizes_, size_t n_ao_, size_t n_df_, size_t n_ri_, bool store_ao_integrals_, bool store_ri_integrals_, bool two_index_fn_provided_, bool three_index_fn_provided_, bool three_index_ri_fn_provided_, const std::shared_ptr&lt; linalg::Mat &gt; &amp;J3_0_=nullptr, const std::shared_ptr&lt; linalg::Mat &gt; &amp;J3_=nullptr, const std::shared_ptr&lt; linalg::Mat &gt; &amp;J2_=nullptr, const std::shared_ptr&lt; linalg::Vec &gt; &amp;df_vals_=nullptr, const std::shared_ptr&lt; linalg::Mat &gt; &amp;J3_ri_0_=nullptr)</argsstring>
+        <name>BaseIntegrals</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::BaseIntegrals</qualifiedname>
+        <param>
+          <type>TwoIndexFn</type>
+          <declname>two_index_fn_</declname>
+        </param>
+        <param>
+          <type>ThreeIndexFn</type>
+          <declname>three_index_fn_</declname>
+        </param>
+        <param>
+          <type>ThreeIndexFn</type>
+          <declname>three_index_ri_fn_</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; size_t &gt; &amp;</type>
+          <declname>df_sizes_</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n_ao_</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n_df_</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n_ri_</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>store_ao_integrals_</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>store_ri_integrals_</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>two_index_fn_provided_</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>three_index_fn_provided_</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>three_index_ri_fn_provided_</declname>
+        </param>
+        <param>
+          <type>const std::shared_ptr&lt; linalg::Mat &gt; &amp;</type>
+          <declname>J3_0_</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>const std::shared_ptr&lt; linalg::Mat &gt; &amp;</type>
+          <declname>J3_</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>const std::shared_ptr&lt; linalg::Mat &gt; &amp;</type>
+          <declname>J2_</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>const std::shared_ptr&lt; linalg::Vec &gt; &amp;</type>
+          <declname>df_vals_</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>const std::shared_ptr&lt; linalg::Mat &gt; &amp;</type>
+          <declname>J3_ri_0_</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="232" column="3" bodyfile="src/integrals/base_integrals.cpp" bodystart="40" bodyend="186"/>
+      </memberdef>
+      <memberdef kind="function" id="classuw12_1_1integrals_1_1_base_integrals_1a059e011e9fffddf00d856b3154b34271" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void uw12::integrals::BaseIntegrals::set_J2_values</definition>
+        <argsstring>() const</argsstring>
+        <name>set_J2_values</name>
+        <qualifiedname>uw12::integrals::BaseIntegrals::set_J2_values</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/integrals/base_integrals.hpp" line="252" column="8" bodyfile="src/integrals/base_integrals.cpp" bodystart="362" bodyend="373"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Class for calculating and storing ao/ri integrals for density-fitted UW12 calculations</para>
+<para>Density-fitting a two-electron integral is usually performed using:  <formula id="33">\[
+(\mu\nu|\rho\sigma) = \sum_{AB} J_{\mu\nu, A}^{0} [ J_2^{-1} ]_{A,B}
+J_{B, \rho\sigma}^{0}
+\]</formula> where <formula id="34">$J_{\mu\nu, A}^{0} = (\mu\nu | A)$</formula> are the three-index integrals in the space of the density-fitting basis <computeroutput>A</computeroutput>.</para>
+<para>For numerical stability, the two-index integrals in the UW12 approximation are decomposed as:  <formula id="35">\[
+J_2^{-1} &amp;= J_2^{-1} J_2 J_2^{-1} = J_2^{-1} Q \Lambda Q^{T} J_2^{-1}
+\]</formula> where <formula id="36">$\Lambda, Q$</formula> are the matrices of eigenvalues and eigenvectors of <formula id="37">$J_2$</formula>. By setting <formula id="38">$P_2 = J_2^{-1} Q = Q \Lambda^{-1}$</formula>. The two-electron integrals may be evaluated as:  <formula id="39">\[
+(\mu\nu | \rho\sigma) = \sum_{A} J_{\mu\nu}^A \Lambda_{A} J_{\rho\sigma}^B
+\]</formula> where <formula id="40">$J_{\mu\nu}^A = \sum_B J_{\mu\nu, B}^0 P_{BA}$</formula> are the three-index integrals in the eigen-space of <computeroutput>A</computeroutput>.</para>
+<para>This class can be used to calculate and store the integrals <computeroutput>J3</computeroutput> ( <formula id="41">$J_{\mu\nu}^{A}$</formula>), <computeroutput>P2</computeroutput> ( <formula id="42">$J_2^{-1} Q$</formula>), and the eigenvalues <computeroutput>df_vals</computeroutput> ( <formula id="43">$\Lambda_A$</formula>). In addition, if using the density-fitted RI approach, the RI analogue of <computeroutput>J3</computeroutput> may also be accessed.</para>
+<para>If the original <computeroutput>J3_0</computeroutput> integrals are given, these will be stored and used to calculate the transformed <computeroutput>J3</computeroutput> integrals when requested.</para>
+<para>Unless supplied, no three-index integrals are stored unless requested. </para>
+    </detaileddescription>
+    <location file="src/integrals/base_integrals.hpp" line="46" column="1" bodyfile="src/integrals/base_integrals.hpp" bodystart="46" bodyend="293"/>
+    <listofallmembers>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1a9eb1de999bf1bfe4af66877d7ad0eacc" prot="public" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>BaseIntegrals</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1a7a26bbc4d1185812dffe08a39056a6e4" prot="public" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>BaseIntegrals</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1aeca61d54e8a755d7c67a013e76fcf3e3" prot="public" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>BaseIntegrals</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1ab3cec88b205ddc42588384588d4a20fb" prot="public" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>BaseIntegrals</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1a0a906501ad8af4249a90c4076c81023b" prot="public" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>BaseIntegrals</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1a7c4c31695fd5f773bda89a0c34bbcacf" prot="public" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>BaseIntegrals</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1af237eedb617e7a4581f3855cb2b2234d" prot="public" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>BaseIntegrals</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1a03a2993f332069ae6dbb549cfd104428" prot="private" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>BaseIntegrals</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1a22fe6f9f5d838ab8c7647118cc260a9c" prot="private" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>df_sizes</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1ac28c4b53327bd3241cb51226e88dd7b8" prot="private" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>df_vals</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1ad9329018c5744e8d7eed3c2ed5ada357" prot="private" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>eig_lock</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1abe396e5a6f9fcb17588a772443e7b0a2" prot="public" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>get_df_offsets</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1a802dafd3b85372cc9a36d8bc3543b00f" prot="public" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>get_df_sizes</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1a2048e3b5a82c3dc3988ba4870462c515" prot="public" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>get_df_vals</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1a1f0d2125f139a3d0decbfe0bca3a2899" prot="public" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>get_J3</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1a79fdc48d839b361675d67735593f9722" prot="public" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>get_J3_0</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1ab65cfd13ca9ad560f8c5fb0200c2c4a8" prot="public" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>get_J3_ri</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1a6c25f78e914174babcb6df50041b8138" prot="public" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>get_J3_ri_0</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1a5576cb061d7969113afe667112550fc6" prot="public" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>get_number_ao</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1ae772428a9f3c4ba40cdd38e0576db166" prot="public" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>get_number_df</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1acd0ce59b7c8f336427107b4f3e65c658" prot="public" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>get_number_ri</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1af4734cedca35d2a64e1251adfecadacd" prot="public" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>get_P2</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1a2793c518f348e9a5c0d048e411d22c08" prot="public" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>has_df_vals</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1a657551cc3e591b1368d1e3f31963da34" prot="public" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>has_J3</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1a4a12f1008a6170c30d2ca2c90d16930e" prot="public" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>has_J3_0</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1a2d4436c84bf32bb8b111c7539a5fa723" prot="public" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>has_J3_ri</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1aeacaadb51a45b4e5db625cf1c2da9705" prot="public" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>has_J3_ri_0</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1aa666287be33e63bfff633d23d7de4d2f" prot="public" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>has_P2</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1a2b97bc418512e7dc35af87d0bd4c9656" prot="public" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>has_three_index_fn</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1a89811266118f8a09cb579fd4a523f2bf" prot="public" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>has_three_index_ri_fn</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1a1a64736f1639b365b6bcebedd60396be" prot="public" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>has_two_index_fn</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1a3d32a8573de2096598317f3920a12bba" prot="private" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>J3</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1a8d7609d530e628b9684a3685bd025ec9" prot="private" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>J3_0</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1a5f0977085a71375d0a41265d1fc0f6e3" prot="private" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>J3_lock</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1a115fd9c6feee8006b8499a96fd28f725" prot="private" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>J3_ri</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1a2adbf8a4e372ba9a3ba2fbd30590af4e" prot="private" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>J3_ri_0</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1a639e3ee7ef0eb57406f4f312bb702abe" prot="private" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>J3_ri_lock</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1a7ba8fd69a914de17ec02145c6c8f8d6a" prot="private" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>n_ao</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1a9dde0f319e5cc331552b59fac7b48145" prot="private" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>n_df</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1a8621bcd403fcbad58f030a871cecf60b" prot="private" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>n_ri</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1a653641c86801b099b39506485c42f741" prot="private" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>P2</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1a059e011e9fffddf00d856b3154b34271" prot="private" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>set_J2_values</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1aef07a5b8d48346bbad6889f397645498" prot="private" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>store_ao_integrals</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1a54b1ea0196523330817b53ce38ada309" prot="private" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>store_ri_integrals</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1a629b76d0ae6d75c02e967a58d159909f" prot="public" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>storing_ao</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1ab884b93cff3d85812bd43781b0144fad" prot="public" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>storing_ri</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1a1e2452f32149ceaa6654dac3858d5f87" prot="public" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>three_index</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1aabcf4836308821c80ee1314feced62c5" prot="private" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>three_index_fn</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1ab38fb222154fee6895e376819972b47e" prot="private" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>three_index_fn_provided</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1a3b64460c1d835c5cd92467220de34333" prot="private" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>three_index_fn_ri</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1ac6a36f3a1aa6773fbad9a1b5e95c9e49" prot="public" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>three_index_ri</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1a95e327525ba42106a72cf181a68202d9" prot="private" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>three_index_ri_fn_provided</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1a3999213fbd0829555d106c4b52350f7d" prot="public" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>two_index</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1a2e5680737f1edc97f31e7dfaece0d029" prot="private" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>two_index_fn</name></member>
+      <member refid="classuw12_1_1integrals_1_1_base_integrals_1a5ea5b1db8d5fe884b8b3b48445709d49" prot="private" virt="non-virtual"><scope>uw12::integrals::BaseIntegrals</scope><name>two_index_fn_provided</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="dir_a50b49bc3b7c12e387f10bfc5a719320" kind="dir">
+    <compoundname>src/integrals</compoundname>
+    <innerfile refid="base__integrals_8cpp">base_integrals.cpp</innerfile>
+    <innerfile refid="base__integrals_8hpp">base_integrals.hpp</innerfile>
+    <innerfile refid="integral__functions_8hpp">integral_functions.hpp</innerfile>
+    <innerfile refid="integrals_8cpp">integrals.cpp</innerfile>
+    <innerfile refid="integrals_8hpp">integrals.hpp</innerfile>
+    <innerfile refid="transformations_8hpp">transformations.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/integrals/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,153 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="namespaceuw12__test_1_1density" kind="namespace" language="C++">
+    <compoundname>uw12_test::density</compoundname>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="density__utils_8hpp_1a308688a60398e5bea02a843ad5ded02d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uw12::utils::DensityMatrix</type>
+        <definition>uw12::utils::DensityMatrix uw12_test::density::random_density_matrix</definition>
+        <argsstring>(const std::vector&lt; size_t &gt; &amp;n_occ, const size_t n_ao, const int seed)</argsstring>
+        <name>random_density_matrix</name>
+        <qualifiedname>uw12_test::density::random_density_matrix</qualifiedname>
+        <param>
+          <type>const std::vector&lt; size_t &gt; &amp;</type>
+          <declname>n_occ</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n_ao</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>seed</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Calculates a random density matrix with number of spin channels determined by length of <computeroutput>n_occ</computeroutput> and size <computeroutput>n_ao * n_ao</computeroutput>.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>n_occ</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Occupied orbitals for each spin channel </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n_ao</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>seed</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/density_utils.hpp" line="20" column="35" bodyfile="tests/density_utils.hpp" bodystart="20" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="density__utils_8hpp_1a1cc894e8171310d02e7d6b3b9de8805c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::pair&lt; uw12::linalg::Mat, uw12::linalg::Vec &gt;</type>
+        <definition>std::pair&lt; uw12::linalg::Mat, uw12::linalg::Vec &gt; uw12_test::density::orbitals_from_density</definition>
+        <argsstring>(const uw12::linalg::Mat &amp;D, const double epsilon)</argsstring>
+        <name>orbitals_from_density</name>
+        <qualifiedname>uw12_test::density::orbitals_from_density</qualifiedname>
+        <param>
+          <type>const uw12::linalg::Mat &amp;</type>
+          <declname>D</declname>
+        </param>
+        <param>
+          <type>const double</type>
+          <declname>epsilon</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Calculates the orbitals from a single density matrix <computeroutput>D</computeroutput></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>D</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Density matrix for a single spin channel </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>epsilon</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Threshold for zero occupation</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Orbitals and occupations </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/density_utils.hpp" line="48" column="18" bodyfile="tests/density_utils.hpp" bodystart="48" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="density__utils_8hpp_1a7e1bf5ac76b5353dfc97d3f4ac59fa36" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uw12::utils::Orbitals</type>
+        <definition>uw12::utils::Orbitals uw12_test::density::calculate_orbitals_from_density</definition>
+        <argsstring>(const uw12::utils::DensityMatrix &amp;D, const double epsilon)</argsstring>
+        <name>calculate_orbitals_from_density</name>
+        <qualifiedname>uw12_test::density::calculate_orbitals_from_density</qualifiedname>
+        <param>
+          <type>const uw12::utils::DensityMatrix &amp;</type>
+          <declname>D</declname>
+        </param>
+        <param>
+          <type>const double</type>
+          <declname>epsilon</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Calculates the occupation weighted orbitals from a density matrix</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>D</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Density matrix </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>epsilon</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Threshold for zero occupation</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Occupation weighted orbitals </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/density_utils.hpp" line="77" column="30" bodyfile="tests/density_utils.hpp" bodystart="77" bodyend="92"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="tests/density_utils.hpp" line="10" column="1"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="example_2_r_e_a_d_m_e_8md" kind="file" language="Markdown">
+    <compoundname>README.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>UW12<sp/>Example</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>directory<sp/>contains<sp/>a<sp/>working<sp/>example<sp/>for<sp/>a<sp/>water<sp/>molecule.<sp/>Two-<sp/>and</highlight></codeline>
+<codeline><highlight class="normal">three-index<sp/>density<sp/>fitting<sp/>integrals<sp/>are<sp/>all<sp/>pre-calculated<sp/>and<sp/>taken</highlight></codeline>
+<codeline><highlight class="normal">from<sp/>the<sp/>`test_data`<sp/>directory.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Build</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">To<sp/>build<sp/>this,<sp/>make<sp/>sure<sp/>you<sp/>have<sp/>built<sp/>libuw12.<sp/>Then<sp/>using<sp/>cmake<sp/>in<sp/>this<sp/>directory</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>.<sp/>-Bbuild<sp/>-DCMAKE_LIBRARY_PATH=&quot;/path/to/directory/containing/libuw12.so&quot;<sp/>-DCMAKE_INCLUDE_PATH=&quot;/path/to/directory/containing/libuw12.hpp&quot;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">where<sp/>the<sp/>-I<sp/>and<sp/>-L<sp/>flags<sp/>are<sp/>used<sp/>to<sp/>point<sp/>to<sp/>the<sp/>libuw12<sp/>header<sp/>and<sp/>library,<sp/>respectively,<sp/>if<sp/>these<sp/>are<sp/>not<sp/>already<sp/>in<sp/>your<sp/>path.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">To<sp/>then<sp/>build<sp/>the<sp/>library<sp/>and<sp/>run<sp/>the<sp/>test:</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>build</highlight></codeline>
+<codeline><highlight class="normal">make</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+    </programlisting>
+    <location file="example/README.md"/>
+  </compounddef>
+</doxygen>

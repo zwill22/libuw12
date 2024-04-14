@@ -1,0 +1,912 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="namespaceuw12__test" kind="namespace" language="C++">
+    <compoundname>uw12_test</compoundname>
+    <innerclass refid="structuw12__test_1_1_test_data" prot="public">uw12_test::TestData</innerclass>
+    <innernamespace refid="namespaceuw12__test_1_1density">uw12_test::density</innernamespace>
+    <innernamespace refid="namespaceuw12__test_1_1fock">uw12_test::fock</innernamespace>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="catch_8hpp_1a9ec1a3f2c36b4c3e16a2aa815d7b2d50" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr auto</type>
+        <definition>constexpr auto uw12_test::seed</definition>
+        <argsstring></argsstring>
+        <name>seed</name>
+        <qualifiedname>uw12_test::seed</qualifiedname>
+        <initializer>= 11</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/catch.hpp" line="11" column="16" bodyfile="tests/catch.hpp" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="catch_8hpp_1ad1020507d318c96d31e73841e6511b08" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr auto</type>
+        <definition>constexpr auto uw12_test::epsilon</definition>
+        <argsstring></argsstring>
+        <name>epsilon</name>
+        <qualifiedname>uw12_test::epsilon</qualifiedname>
+        <initializer>= 1e-10</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/catch.hpp" line="12" column="16" bodyfile="tests/catch.hpp" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="catch_8hpp_1a6c9933b9b37e816811c65e8f72a4ccbc" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr auto</type>
+        <definition>constexpr auto uw12_test::margin</definition>
+        <argsstring></argsstring>
+        <name>margin</name>
+        <qualifiedname>uw12_test::margin</qualifiedname>
+        <initializer>= epsilon</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/catch.hpp" line="13" column="16" bodyfile="tests/catch.hpp" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="catch_8hpp_1adb5e32858b9d47a6a49c51d7e9c01f80" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr auto</type>
+        <definition>constexpr auto uw12_test::eps</definition>
+        <argsstring></argsstring>
+        <name>eps</name>
+        <qualifiedname>uw12_test::eps</qualifiedname>
+        <initializer>= epsilon</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/catch.hpp" line="14" column="16" bodyfile="tests/catch.hpp" bodystart="14" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="multi__el__test__utils_8hpp_1a0fa8cbde1395deacc8f1a620371adf22" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Fock</type>
+          </param>
+        </templateparamlist>
+        <type>auto</type>
+        <definition>auto uw12_test::fock_zero</definition>
+        <argsstring>(const Fock &amp;fock)</argsstring>
+        <name>fock_zero</name>
+        <qualifiedname>uw12_test::fock_zero</qualifiedname>
+        <param>
+          <type>const Fock &amp;</type>
+          <declname>fock</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/multi_el_test_utils.hpp" line="14" column="6" bodyfile="tests/multi_el_test_utils.hpp" bodystart="14" bodyend="23"/>
+      </memberdef>
+      <memberdef kind="function" id="multi__el__test__utils_8hpp_1a0fa137ab78e3128b4217a250a1d6d10f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename FockFn</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void uw12_test::run_os_tests</definition>
+        <argsstring>(const uw12::integrals::Integrals &amp;W, const uw12::integrals::Integrals &amp;V, const FockFn &amp;func)</argsstring>
+        <name>run_os_tests</name>
+        <qualifiedname>uw12_test::run_os_tests</qualifiedname>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_integrals" kindref="compound">uw12::integrals::Integrals</ref> &amp;</type>
+          <declname>W</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_integrals" kindref="compound">uw12::integrals::Integrals</ref> &amp;</type>
+          <declname>V</declname>
+        </param>
+        <param>
+          <type>const FockFn &amp;</type>
+          <declname>func</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/multi_el_test_utils.hpp" line="26" column="6" bodyfile="tests/multi_el_test_utils.hpp" bodystart="26" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="multi__el__test__utils_8hpp_1a473f401e06a29cd71f2293107d975f78" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename FockFn</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void uw12_test::run_ss_test</definition>
+        <argsstring>(const uw12::integrals::Integrals &amp;W, const uw12::integrals::Integrals &amp;V, const FockFn &amp;func)</argsstring>
+        <name>run_ss_test</name>
+        <qualifiedname>uw12_test::run_ss_test</qualifiedname>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_integrals" kindref="compound">uw12::integrals::Integrals</ref> &amp;</type>
+          <declname>W</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_integrals" kindref="compound">uw12::integrals::Integrals</ref> &amp;</type>
+          <declname>V</declname>
+        </param>
+        <param>
+          <type>const FockFn &amp;</type>
+          <declname>func</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/multi_el_test_utils.hpp" line="98" column="6" bodyfile="tests/multi_el_test_utils.hpp" bodystart="98" bodyend="153"/>
+      </memberdef>
+      <memberdef kind="function" id="multi__el__test__utils_8hpp_1aff7453c501f9c663e1bf954564731b5c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename FockFn</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void uw12_test::run_test_full</definition>
+        <argsstring>(const uw12::integrals::Integrals &amp;W, const uw12::integrals::Integrals &amp;V, const FockFn &amp;func)</argsstring>
+        <name>run_test_full</name>
+        <qualifiedname>uw12_test::run_test_full</qualifiedname>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_integrals" kindref="compound">uw12::integrals::Integrals</ref> &amp;</type>
+          <declname>W</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_integrals" kindref="compound">uw12::integrals::Integrals</ref> &amp;</type>
+          <declname>V</declname>
+        </param>
+        <param>
+          <type>const FockFn &amp;</type>
+          <declname>func</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/multi_el_test_utils.hpp" line="156" column="6" bodyfile="tests/multi_el_test_utils.hpp" bodystart="156" bodyend="181"/>
+      </memberdef>
+      <memberdef kind="function" id="multi__el__test__utils_8hpp_1a3ee91264301b9812b35f720fe0cb7b73" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename FockFn</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void uw12_test::check_equality_open_closed_spin</definition>
+        <argsstring>(const uw12::integrals::BaseIntegrals &amp;W_base, const uw12::integrals::BaseIntegrals &amp;V_base, const uw12::utils::Orbitals &amp;Co, const uw12::utils::Orbitals &amp;active_Co, const FockFn &amp;func)</argsstring>
+        <name>check_equality_open_closed_spin</name>
+        <qualifiedname>uw12_test::check_equality_open_closed_spin</qualifiedname>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_base_integrals" kindref="compound">uw12::integrals::BaseIntegrals</ref> &amp;</type>
+          <declname>W_base</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_base_integrals" kindref="compound">uw12::integrals::BaseIntegrals</ref> &amp;</type>
+          <declname>V_base</declname>
+        </param>
+        <param>
+          <type>const uw12::utils::Orbitals &amp;</type>
+          <declname>Co</declname>
+        </param>
+        <param>
+          <type>const uw12::utils::Orbitals &amp;</type>
+          <declname>active_Co</declname>
+        </param>
+        <param>
+          <type>const FockFn &amp;</type>
+          <declname>func</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/multi_el_test_utils.hpp" line="184" column="6" bodyfile="tests/multi_el_test_utils.hpp" bodystart="184" bodyend="215"/>
+      </memberdef>
+      <memberdef kind="function" id="multi__el__test__utils_8hpp_1ae38519dfb994cc6fecf8e051f6ed8247" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename FockFn</type>
+          </param>
+          <param>
+            <type>typename IntegralFn</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void uw12_test::check_closed_shell_cases</definition>
+        <argsstring>(const IntegralFn &amp;setup_integral_fn, const FockFn &amp;fock_fn, const uw12::linalg::Mat &amp;fock0)</argsstring>
+        <name>check_closed_shell_cases</name>
+        <qualifiedname>uw12_test::check_closed_shell_cases</qualifiedname>
+        <param>
+          <type>const IntegralFn &amp;</type>
+          <declname>setup_integral_fn</declname>
+        </param>
+        <param>
+          <type>const FockFn &amp;</type>
+          <declname>fock_fn</declname>
+        </param>
+        <param>
+          <type>const uw12::linalg::Mat &amp;</type>
+          <declname>fock0</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/multi_el_test_utils.hpp" line="218" column="6" bodyfile="tests/multi_el_test_utils.hpp" bodystart="218" bodyend="254"/>
+      </memberdef>
+      <memberdef kind="function" id="multi__el__test__utils_8hpp_1a6c71ef38a7fc1ab092135ca8a83c09f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename FockFn</type>
+          </param>
+          <param>
+            <type>typename IntegralFn</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void uw12_test::check_open_shell_no_active_orbitals</definition>
+        <argsstring>(const FockFn &amp;fock_fn, const IntegralFn &amp;integral_fn, const uw12::linalg::Mat &amp;fock0)</argsstring>
+        <name>check_open_shell_no_active_orbitals</name>
+        <qualifiedname>uw12_test::check_open_shell_no_active_orbitals</qualifiedname>
+        <param>
+          <type>const FockFn &amp;</type>
+          <declname>fock_fn</declname>
+        </param>
+        <param>
+          <type>const IntegralFn &amp;</type>
+          <declname>integral_fn</declname>
+        </param>
+        <param>
+          <type>const uw12::linalg::Mat &amp;</type>
+          <declname>fock0</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/multi_el_test_utils.hpp" line="257" column="6" bodyfile="tests/multi_el_test_utils.hpp" bodystart="257" bodyend="311"/>
+      </memberdef>
+      <memberdef kind="function" id="multi__el__test__utils_8hpp_1a81762df69e630fe674789b79d05973c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename FockFn</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void uw12_test::test_multi_el_fock_all_electron</definition>
+        <argsstring>(const FockFn &amp;fock_fn, const uw12::integrals::BaseIntegrals &amp;W_base, const uw12::integrals::BaseIntegrals &amp;V_base, const uw12::utils::DensityMatrix &amp;D, const double threshold, const double delta=1e-4, const double rel_eps=0.5)</argsstring>
+        <name>test_multi_el_fock_all_electron</name>
+        <qualifiedname>uw12_test::test_multi_el_fock_all_electron</qualifiedname>
+        <param>
+          <type>const FockFn &amp;</type>
+          <declname>fock_fn</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_base_integrals" kindref="compound">uw12::integrals::BaseIntegrals</ref> &amp;</type>
+          <declname>W_base</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_base_integrals" kindref="compound">uw12::integrals::BaseIntegrals</ref> &amp;</type>
+          <declname>V_base</declname>
+        </param>
+        <param>
+          <type>const uw12::utils::DensityMatrix &amp;</type>
+          <declname>D</declname>
+        </param>
+        <param>
+          <type>const double</type>
+          <declname>threshold</declname>
+        </param>
+        <param>
+          <type>const double</type>
+          <declname>delta</declname>
+          <defval>1e-4</defval>
+        </param>
+        <param>
+          <type>const double</type>
+          <declname>rel_eps</declname>
+          <defval>0.5</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/multi_el_test_utils.hpp" line="314" column="6" bodyfile="tests/multi_el_test_utils.hpp" bodystart="314" bodyend="367"/>
+      </memberdef>
+      <memberdef kind="function" id="setup__integrals_8hpp_1a736d965fe63546c37f9e6c68850849cb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto uw12_test::setup_base_integrals</definition>
+        <argsstring>(const size_t n_ao, const size_t n_df, const int J_seed=seed)</argsstring>
+        <name>setup_base_integrals</name>
+        <qualifiedname>uw12_test::setup_base_integrals</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>n_ao</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n_df</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>J_seed</declname>
+          <defval>seed</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Setup random base integrals instance given minimum number of parameters</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>n_ao</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of atomic orbitals </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n_df</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of density-fitting orbitals </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>J_seed</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Seed for rng</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Base integrals </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/setup_integrals.hpp" line="24" column="13" bodyfile="tests/setup_integrals.hpp" bodystart="24" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="setup__integrals_8hpp_1ae717c34aba8de172da2704ca95e20efd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto uw12_test::setup_base_integrals</definition>
+        <argsstring>(const size_t n_ao, const size_t n_df, const size_t n_ri, const int J_seed=seed)</argsstring>
+        <name>setup_base_integrals</name>
+        <qualifiedname>uw12_test::setup_base_integrals</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>n_ao</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n_df</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n_ri</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>J_seed</declname>
+          <defval>seed</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Setup random RI base integrals instance given minimum number of parameters</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>n_ao</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of atomic orbitals </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n_df</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of density-fitting orbitals </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n_ri</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of orbitals in auxilliary RI basis </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>J_seed</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Seed for rng</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Base integrals (with RI) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/setup_integrals.hpp" line="41" column="13" bodyfile="tests/setup_integrals.hpp" bodystart="41" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="setup__integrals_8hpp_1a6a37f52a36649eacc3752ab8bc537377" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto uw12_test::setup_orbitals</definition>
+        <argsstring>(const std::vector&lt; size_t &gt; &amp;n_occ, const std::vector&lt; size_t &gt; &amp;n_active, const size_t n_ao, const int C_seed=seed)</argsstring>
+        <name>setup_orbitals</name>
+        <qualifiedname>uw12_test::setup_orbitals</qualifiedname>
+        <param>
+          <type>const std::vector&lt; size_t &gt; &amp;</type>
+          <declname>n_occ</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; size_t &gt; &amp;</type>
+          <declname>n_active</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n_ao</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>C_seed</declname>
+          <defval>seed</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Generate a set of random occupied orbitals and active orbitals</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>n_occ</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of occupied orbitals in each spin channel </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n_active</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of active orbitals in each spin channel </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n_ao</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of atomic orbitals </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>C_seed</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Seed for rng for orbitals</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Pair of occupied and active orbitals </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/setup_integrals.hpp" line="62" column="13" bodyfile="tests/setup_integrals.hpp" bodystart="62" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="setup__integrals_8hpp_1aab429800b36fbcc885e8f43fa9d87bd7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Func</type>
+          </param>
+        </templateparamlist>
+        <type>auto</type>
+        <definition>auto uw12_test::setup_integrals_pair</definition>
+        <argsstring>(const Func &amp;func, const size_t n_ao, const size_t n_df, const std::vector&lt; size_t &gt; &amp;n_occ, const std::vector&lt; size_t &gt; &amp;n_active, const int W_seed=seed, const int V_seed=seed, const int C_seed=seed)</argsstring>
+        <name>setup_integrals_pair</name>
+        <qualifiedname>uw12_test::setup_integrals_pair</qualifiedname>
+        <param>
+          <type>const Func &amp;</type>
+          <declname>func</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n_ao</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n_df</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; size_t &gt; &amp;</type>
+          <declname>n_occ</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; size_t &gt; &amp;</type>
+          <declname>n_active</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>W_seed</declname>
+          <defval>seed</defval>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>V_seed</declname>
+          <defval>seed</defval>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>C_seed</declname>
+          <defval>seed</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/setup_integrals.hpp" line="88" column="6" bodyfile="tests/setup_integrals.hpp" bodystart="88" bodyend="107"/>
+      </memberdef>
+      <memberdef kind="function" id="setup__integrals_8hpp_1a7b4c9f2d5856258a34856ce59beac508" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto uw12_test::setup_integrals_pair</definition>
+        <argsstring>(const size_t n_ao, const size_t n_df, const std::vector&lt; size_t &gt; &amp;n_occ, const std::vector&lt; size_t &gt; &amp;n_active, const int W_seed=seed, const int V_seed=seed, const int C_seed=seed)</argsstring>
+        <name>setup_integrals_pair</name>
+        <qualifiedname>uw12_test::setup_integrals_pair</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>n_ao</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n_df</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; size_t &gt; &amp;</type>
+          <declname>n_occ</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; size_t &gt; &amp;</type>
+          <declname>n_active</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>W_seed</declname>
+          <defval>seed</defval>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>V_seed</declname>
+          <defval>seed</defval>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>C_seed</declname>
+          <defval>seed</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/setup_integrals.hpp" line="109" column="13" bodyfile="tests/setup_integrals.hpp" bodystart="109" bodyend="125"/>
+      </memberdef>
+      <memberdef kind="function" id="setup__integrals_8hpp_1a58922b1d456f1a23847a9e647b94a898" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto uw12_test::setup_integrals_pair</definition>
+        <argsstring>(const size_t n_ao, const size_t n_df, const size_t n_ri, const std::vector&lt; size_t &gt; &amp;n_occ, const std::vector&lt; size_t &gt; &amp;n_active, const int W_seed=seed, const int V_seed=seed, const int C_seed=seed)</argsstring>
+        <name>setup_integrals_pair</name>
+        <qualifiedname>uw12_test::setup_integrals_pair</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>n_ao</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n_df</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n_ri</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; size_t &gt; &amp;</type>
+          <declname>n_occ</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; size_t &gt; &amp;</type>
+          <declname>n_active</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>W_seed</declname>
+          <defval>seed</defval>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>V_seed</declname>
+          <defval>seed</defval>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>C_seed</declname>
+          <defval>seed</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/setup_integrals.hpp" line="127" column="13" bodyfile="tests/setup_integrals.hpp" bodystart="127" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="setup__integrals_8hpp_1a02fd0fd6f4aa75c21f401473703f4a13" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto uw12_test::setup_abs_projector</definition>
+        <argsstring>(const size_t n_ao, const size_t n_ri, const int S_seed=seed)</argsstring>
+        <name>setup_abs_projector</name>
+        <qualifiedname>uw12_test::setup_abs_projector</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>n_ao</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n_ri</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>S_seed</declname>
+          <defval>seed</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/setup_integrals.hpp" line="146" column="13" bodyfile="tests/setup_integrals.hpp" bodystart="146" bodyend="152"/>
+      </memberdef>
+      <memberdef kind="function" id="setup__integrals_8hpp_1a9cb1f89407af516bbf19c9462d275981" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto uw12_test::setup_base_integrals_direct</definition>
+        <argsstring>(const uw12::integrals::BaseIntegrals &amp;W, const uw12::linalg::Mat &amp;W2)</argsstring>
+        <name>setup_base_integrals_direct</name>
+        <qualifiedname>uw12_test::setup_base_integrals_direct</qualifiedname>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_base_integrals" kindref="compound">uw12::integrals::BaseIntegrals</ref> &amp;</type>
+          <declname>W</declname>
+        </param>
+        <param>
+          <type>const uw12::linalg::Mat &amp;</type>
+          <declname>W2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/setup_integrals.hpp" line="154" column="13" bodyfile="tests/setup_integrals.hpp" bodystart="154" bodyend="175"/>
+      </memberdef>
+      <memberdef kind="function" id="setup__integrals_8hpp_1a45e6369fa78bfdddd84f8189236f8202" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto uw12_test::setup_base_integrals_not_direct</definition>
+        <argsstring>(const uw12::integrals::BaseIntegrals &amp;W)</argsstring>
+        <name>setup_base_integrals_not_direct</name>
+        <qualifiedname>uw12_test::setup_base_integrals_not_direct</qualifiedname>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_base_integrals" kindref="compound">uw12::integrals::BaseIntegrals</ref> &amp;</type>
+          <declname>W</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/setup_integrals.hpp" line="177" column="13" bodyfile="tests/setup_integrals.hpp" bodystart="177" bodyend="193"/>
+      </memberdef>
+      <memberdef kind="function" id="test__data_8hpp_1abda811e2e9f452418122d5d1bbf63fc6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>char</type>
+        <definition>char uw12_test::separator</definition>
+        <argsstring>()</argsstring>
+        <name>separator</name>
+        <qualifiedname>uw12_test::separator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_data.hpp" line="14" column="13" bodyfile="tests/test_data.hpp" bodystart="14" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="test__data_8hpp_1a6b105591ba6ee693abe888819972df29" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Output</type>
+          </param>
+        </templateparamlist>
+        <type>Output</type>
+        <definition>Output uw12_test::load</definition>
+        <argsstring>(const std::string &amp;identifier, const std::string &amp;filepath, const size_t n_spin)</argsstring>
+        <name>load</name>
+        <qualifiedname>uw12_test::load</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>identifier</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>filepath</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n_spin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_data.hpp" line="23" column="8" bodyfile="tests/test_data.hpp" bodystart="23" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="test__data_8hpp_1ab400c7a9120ed2b73fb147bd117a0404" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uw12::utils::Orbitals</type>
+        <definition>uw12::utils::Orbitals uw12_test::load_orbitals</definition>
+        <argsstring>(const std::string &amp;filepath, const size_t n_spin)</argsstring>
+        <name>load_orbitals</name>
+        <qualifiedname>uw12_test::load_orbitals</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>filepath</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n_spin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_data.hpp" line="46" column="30" bodyfile="tests/test_data.hpp" bodystart="46" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="test__data_8hpp_1a1fad6c8fa311a61fe6f2a05be2968b9c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uw12::utils::Occupations</type>
+        <definition>uw12::utils::Occupations uw12_test::load_occ</definition>
+        <argsstring>(const std::string &amp;filepath, const size_t n_spin)</argsstring>
+        <name>load_occ</name>
+        <qualifiedname>uw12_test::load_occ</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>filepath</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n_spin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_data.hpp" line="52" column="33" bodyfile="tests/test_data.hpp" bodystart="52" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="test__data_8hpp_1a3a9cca2a40cd9e6d09f3791a6eae3162" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uw12::utils::FockMatrix</type>
+        <definition>uw12::utils::FockMatrix uw12_test::load_fock</definition>
+        <argsstring>(const std::string &amp;filepath, const size_t n_spin)</argsstring>
+        <name>load_fock</name>
+        <qualifiedname>uw12_test::load_fock</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>filepath</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n_spin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_data.hpp" line="58" column="32" bodyfile="tests/test_data.hpp" bodystart="58" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="test__data_8hpp_1a7fc37a674d25928868a2cf1f85dbf881" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; size_t &gt;</type>
+        <definition>std::vector&lt; size_t &gt; uw12_test::load_n_active</definition>
+        <argsstring>(const std::string &amp;filepath, const std::string &amp;suffix)</argsstring>
+        <name>load_n_active</name>
+        <qualifiedname>uw12_test::load_n_active</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>filepath</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>suffix</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_data.hpp" line="64" column="20" bodyfile="tests/test_data.hpp" bodystart="64" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="test__data_8hpp_1a473b0e9707778f176409f19087d2c5da" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double uw12_test::load_energy</definition>
+        <argsstring>(const std::string &amp;filepath, const std::string &amp;suffix)</argsstring>
+        <name>load_energy</name>
+        <qualifiedname>uw12_test::load_energy</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>filepath</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>suffix</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_data.hpp" line="87" column="15" bodyfile="tests/test_data.hpp" bodystart="87" bodyend="97"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="tests/catch.hpp" line="10" column="1"/>
+  </compounddef>
+</doxygen>

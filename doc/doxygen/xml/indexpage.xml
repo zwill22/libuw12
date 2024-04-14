@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="indexpage" kind="page">
+    <compoundname>index</compoundname>
+    <title>libuw12</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Functionality relating to the UW12 correlation method</para>
+<para>The UW12 correlation energy is defined as:  <formula id="131">\[
+E_c^{UW12} = \frac{1}{2} \sum_{ij ab} \left\langle i j \left\vert
+w^{s_{ij}}_{12} \right\vert \overline{ab} \right\rangle \left\langle a b
+\left\vert r_{12}^{-1}\right\vert i j \right\rangle
+\]</formula> Where <formula id="132">$\vert \overline{ab} \rangle = \vert ab \rangle - \vert ba
+\rangle$</formula>, <formula id="133">$ij$</formula> are occupied orbitals, <formula id="134">$ab$</formula> are unoccupied (virtual) orbitals, <formula id="135">$ r_{12} = \vert \vec{r}_1 - \vec{r}_2 \vert $</formula>, with two-electron geminal operator <formula id="136">$ w^s_{12} $</formula> for total spin <formula id="137">$s_{ij} =
+\delta_{\sigma_i \sigma_j}$</formula>.</para>
+<para>By removing the sum over the virtual orbitals, the energy can be rewritten as  <formula id="138">\[
+E_c^{UW12} = E_{c, 2el}^{UW12} + E_{c, 3el}^{UW12} + E_{c, 4el}^{UW12},
+\]</formula> for two, three and four electron terms defined by:  <formula id="139">\begin{align*}
+E_{c, 2el}^{UW12} &amp;= \frac{1}{2} \sum_{ij} \left\langle \overline{ij}
+\left\vert w^{s_{ij}}_{12} r_{12}^{-1}\right\vert i j \right\rangle \newline
+E_{c, 3el}^{UW12} &amp;= - \sum_{ijk} \left\langle \overline{ij} k \left\vert
+w^{s_{ij}}_{12} r_{23}^{-1}\right\vert k j i \right\rangle \newline
+E_{c, 4 el}^{UW12} &amp;= \frac{1}{2} \sum_{ij kl} \left\langle i j \left\vert
+w^{s_{ij}}_{12}\right\vert \overline{kl} \right\rangle \left\langle kl
+\left\vert r_{12}^{-1} \right\vert ij \right\rangle
+\end{align*}</formula></para>
+<para>In the frozen core approximation, indices i,j run only over the correlated (active) orbitals; whilst k,l indices summed over all occupied orbitals including the frozen core orbitals.</para>
+<sect3 id="index_1autotoc_md12">
+<title>Fock contributions</title><para>Since UW12 is self-consistent, the Fock matrix elements <formula id="140">$F_{\alpha \beta}^{\sigma}$</formula> may also be calculated, where  <formula id="141">\[
+F_{\alpha \beta}^{\sigma} = \frac{1}{2} \left[ \frac{\partial E}{\partial
+D_{\alpha \beta}^{\sigma}} + \frac{\partial E}{\partial
+D_{\beta \alpha}^{\sigma}} \right],
+\]</formula> for real symmetric density matrix <formula id="142">$D_{\alpha \beta}^{\sigma}$</formula>. The contributions for which are given by:  <formula id="143">\begin{align*}
+\frac{\partial E_{c, 2 el}^{UW 12}}{\partial D_{\alpha \beta}^{\sigma}}
+&amp;= \sum_{j} \left\langle \overline{\alpha j} \left\vert
+w^{\delta_{\sigma_j \sigma}}_{12} r_{12}^{-1}\right\vert \beta j
+\right\rangle \newline
+\frac{\partial E_{c, 3 el}^{UW12}}{\partial D_{\alpha \beta}^{\sigma}}
+&amp;= - \sum_{jk} \left\langle \overline{\alpha j} k \left\vert w_{12}
+r_{23}^{-1} \right\vert k j \beta \right\rangle - \sum_{i k} \left\langle
+\overline{i \alpha} k \left\vert w_{12} r_{23}^{-1}\right\vert k \beta i
+\right\rangle - \sum_{i j} \left\langle \overline{i j} \alpha
+\left\vert w_{12} r_{23}^{-1}\right\vert \beta j i \right\rangle \newline
+\frac{\partial E_{c, 4el}^{UW12}}{\partial D_{\alpha \beta}^{\sigma}} &amp;=
+\sum_{jkl} \left\langle \alpha j \left\vert w^{\delta_{\sigma_j
+\sigma}}_{12} \right\vert \overline{k l} \right\rangle \left\langle k l
+\left\vert r_{12}^{-1}\right\vert \beta j \right\rangle + \sum_{ijk}
+\left\langle i j \left\vert w^{\delta_{\sigma_j \sigma}}_{12} \right\vert
+\overline{\alpha k} \right\rangle \left\langle k \beta \left\vert
+r_{12}^{-1} \right\vert i j \right\rangle
+\end{align*}</formula></para>
+<para>In the full core version, the two terms in the four electron term are the same. This is a result of the symmetry between orbitals i,j and k,l. Similarly for the direct portion of the first and third terms in the three electron Fock contribution. However, for frozen core the terms are no longer the same and must be calculated separately.</para>
+</sect3>
+<sect3 id="index_1autotoc_md13">
+<title>Geminal Function</title><para>The geminal function <formula id="4">$w_{12}$</formula> is given as a function of the inter-electron distance <formula id="144">$r_{12}$</formula>. The function is implemented as a sum of Gaussian terms  <formula id="145">\[
+w^s (r) = \sum_i c_i^s \exp \left[ - \gamma_i r^2 \right]
+\]</formula> specified by coefficients <formula id="146">$c_i^s$</formula> and exponents <formula id="147">$\gamma_i$</formula>. The structure of the theory allows two sets of coefficients for opposite ( <formula id="148">$s = 0$</formula>) and same ( <formula id="149">$s = 1$</formula>) spin contributions. Though the standard implementation has <formula id="150">$w^{s=1} (r) = \kappa w^{s=0} (r)$</formula> for same spin scale factor <formula id="20">$\kappa_1$</formula>. </para>
+</sect3>
+    </detaileddescription>
+    <location file="src/uw12.hpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,961 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="test__three__el_8cpp" kind="file" language="C++">
+    <compoundname>test_three_el.cpp</compoundname>
+    <includes refid="catch_8hpp" local="yes">catch.hpp</includes>
+    <includes refid="density__utils_8hpp" local="yes">density_utils.hpp</includes>
+    <includes refid="multi__el__test__utils_8hpp" local="yes">multi_el_test_utils.hpp</includes>
+    <includes refid="setup__integrals_8hpp" local="yes">setup_integrals.hpp</includes>
+    <includes refid="three__electron_8hpp" local="yes">three_electron/three_electron.hpp</includes>
+    <incdepgraph>
+      <node id="13">
+        <label>base_integrals.hpp</label>
+        <link refid="base__integrals_8hpp_source"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>integral_functions.hpp</label>
+        <link refid="integral__functions_8hpp_source"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>integrals/integrals.hpp</label>
+        <link refid="integrals_8hpp_source"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>three_electron/ri_utils.hpp</label>
+        <link refid="ri__utils_8hpp_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>three_electron/three_electron.hpp</label>
+        <link refid="three__electron_8hpp_source"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>linalg.hpp</label>
+        <link refid="linalg_8hpp_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>utils/parallel.hpp</label>
+        <link refid="parallel_8hpp_source"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>utils/utils.hpp</label>
+        <link refid="utils_8hpp_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>catch.hpp</label>
+        <link refid="catch_8hpp_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>density_utils.hpp</label>
+        <link refid="density__utils_8hpp_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>multi_el_test_utils.hpp</label>
+        <link refid="multi__el__test__utils_8hpp_source"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>numerical_fock.hpp</label>
+        <link refid="numerical__fock_8hpp_source"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>setup_integrals.hpp</label>
+        <link refid="setup__integrals_8hpp_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>tests/test_three_el.cpp</label>
+        <link refid="test__three__el_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>cassert</label>
+      </node>
+      <node id="3">
+        <label>catch2/catch_all.hpp</label>
+      </node>
+      <node id="10">
+        <label>cmath</label>
+      </node>
+      <node id="8">
+        <label>config.hpp</label>
+      </node>
+      <node id="17">
+        <label>functional</label>
+      </node>
+      <node id="14">
+        <label>memory</label>
+      </node>
+      <node id="15">
+        <label>mutex</label>
+      </node>
+      <node id="6">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="test__three__el_8cpp_1adefd5805721e032fad7b25a27158353a" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr size_t</type>
+        <definition>constexpr size_t n_ao</definition>
+        <argsstring></argsstring>
+        <name>n_ao</name>
+        <initializer>= 15</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_three_el.cpp" line="16" column="18" bodyfile="tests/test_three_el.cpp" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test__three__el_8cpp_1a0eb835f4391cded2e322c67bab2f84a1" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr size_t</type>
+        <definition>constexpr size_t n_df</definition>
+        <argsstring></argsstring>
+        <name>n_df</name>
+        <initializer>= 17</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_three_el.cpp" line="17" column="18" bodyfile="tests/test_three_el.cpp" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test__three__el_8cpp_1afd6e0157cc93983112c1ecb52e009ceb" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr size_t</type>
+        <definition>constexpr size_t n_ri</definition>
+        <argsstring></argsstring>
+        <name>n_ri</name>
+        <initializer>= 23</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_three_el.cpp" line="18" column="18" bodyfile="tests/test_three_el.cpp" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test__three__el_8cpp_1a2b797201e3bb2508d84e5d1f55c61c56" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr auto</type>
+        <definition>constexpr auto threshold</definition>
+        <argsstring></argsstring>
+        <name>threshold</name>
+        <initializer>= 1e-3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_three_el.cpp" line="20" column="16" bodyfile="tests/test_three_el.cpp" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test__three__el_8cpp_1a9ac328331bdb42de91c51a93e33b40a2" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr auto</type>
+        <definition>constexpr auto W_seed</definition>
+        <argsstring></argsstring>
+        <name>W_seed</name>
+        <initializer>= uw12_test::seed + 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_three_el.cpp" line="22" column="16" bodyfile="tests/test_three_el.cpp" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test__three__el_8cpp_1a94b91a907a534d14bd9324688f7942a0" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr auto</type>
+        <definition>constexpr auto V_seed</definition>
+        <argsstring></argsstring>
+        <name>V_seed</name>
+        <initializer>= uw12_test::seed</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_three_el.cpp" line="23" column="16" bodyfile="tests/test_three_el.cpp" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test__three__el_8cpp_1a41d106865b1c8d7d1c65bc8b21aa7a17" prot="public" static="no" mutable="no">
+        <type>const auto</type>
+        <definition>const auto abs_projectors</definition>
+        <argsstring></argsstring>
+        <name>abs_projectors</name>
+        <initializer>= uw12_test::setup_abs_projector(n_ao, n_ri)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_three_el.cpp" line="25" column="12" bodyfile="tests/test_three_el.cpp" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test__three__el_8cpp_1aac189eaf88936f7b04a6212fad7d83cb" prot="public" static="no" mutable="no">
+        <type>const auto</type>
+        <definition>const auto fock0</definition>
+        <argsstring></argsstring>
+        <name>fock0</name>
+        <initializer>= uw12::linalg::zeros(n_ao, n_ao)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_three_el.cpp" line="26" column="12" bodyfile="tests/test_three_el.cpp" bodystart="26" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="test__three__el_8cpp_1a8f9c446dc176995004f10fb92b89c6c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto get_fock_fn</definition>
+        <argsstring>(const ABSProjectors &amp;abs_projectors)</argsstring>
+        <name>get_fock_fn</name>
+        <param>
+          <type>const <ref refid="structuw12_1_1three__el_1_1ri_1_1_a_b_s_projectors" kindref="compound">ABSProjectors</ref> &amp;</type>
+          <declname>abs_projectors</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_three_el.cpp" line="28" column="6" bodyfile="tests/test_three_el.cpp" bodystart="28" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="test__three__el_8cpp_1a4a88044463ad447c04cba36e0a2b6509" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto get_integral_fn</definition>
+        <argsstring>()</argsstring>
+        <name>get_integral_fn</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_three_el.cpp" line="49" column="6" bodyfile="tests/test_three_el.cpp" bodystart="49" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="test__three__el_8cpp_1a5bffca41094f8eb821ed99279d3d6b6f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void run_os_tests</definition>
+        <argsstring>(const Integrals &amp;W, const Integrals &amp;V, const ABSProjectors &amp;abs_projectors)</argsstring>
+        <name>run_os_tests</name>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_integrals" kindref="compound">Integrals</ref> &amp;</type>
+          <declname>W</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_integrals" kindref="compound">Integrals</ref> &amp;</type>
+          <declname>V</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structuw12_1_1three__el_1_1ri_1_1_a_b_s_projectors" kindref="compound">ABSProjectors</ref> &amp;</type>
+          <declname>abs_projectors</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_three_el.cpp" line="59" column="6" bodyfile="tests/test_three_el.cpp" bodystart="59" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="test__three__el_8cpp_1ac643468179406933d6e1afee57147b4a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void run_ss_tests</definition>
+        <argsstring>(const Integrals &amp;W, const Integrals &amp;V, const ABSProjectors &amp;abs_projectors)</argsstring>
+        <name>run_ss_tests</name>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_integrals" kindref="compound">Integrals</ref> &amp;</type>
+          <declname>W</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_integrals" kindref="compound">Integrals</ref> &amp;</type>
+          <declname>V</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structuw12_1_1three__el_1_1ri_1_1_a_b_s_projectors" kindref="compound">ABSProjectors</ref> &amp;</type>
+          <declname>abs_projectors</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_three_el.cpp" line="67" column="6" bodyfile="tests/test_three_el.cpp" bodystart="67" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="test__three__el_8cpp_1a1432d5332a3d814ad7d0f3ddb16e220e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void run_test_full</definition>
+        <argsstring>(const Integrals &amp;W, const Integrals &amp;V, const ABSProjectors &amp;abs_projectors)</argsstring>
+        <name>run_test_full</name>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_integrals" kindref="compound">Integrals</ref> &amp;</type>
+          <declname>W</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_integrals" kindref="compound">Integrals</ref> &amp;</type>
+          <declname>V</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structuw12_1_1three__el_1_1ri_1_1_a_b_s_projectors" kindref="compound">ABSProjectors</ref> &amp;</type>
+          <declname>abs_projectors</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_three_el.cpp" line="75" column="6" bodyfile="tests/test_three_el.cpp" bodystart="75" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="test__three__el_8cpp_1a76584a5ed7e909b2b54ab5a7d2872c50" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TEST_CASE</definition>
+        <argsstring>(&quot;Test three electron term - Closed Shell (opposite spin only)&quot;)</argsstring>
+        <name>TEST_CASE</name>
+        <param>
+          <type>&quot;Test three electron term - Closed Shell (opposite spin only)&quot;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_three_el.cpp" line="82" column="1" bodyfile="tests/test_three_el.cpp" bodystart="82" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="test__three__el_8cpp_1a933f9a24ebdb7f1d338e4201653f4ef9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TEST_CASE</definition>
+        <argsstring>(&quot;Test three electron term - Closed Shell (same spin only)&quot;)</argsstring>
+        <name>TEST_CASE</name>
+        <param>
+          <type>&quot;Test three electron term - Closed Shell (same spin only)&quot;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_three_el.cpp" line="93" column="1" bodyfile="tests/test_three_el.cpp" bodystart="93" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="function" id="test__three__el_8cpp_1a32c193711d2e6d442b8fd1c1b99e6bac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TEST_CASE</definition>
+        <argsstring>(&quot;Test three electron term - Closed Shell (full expression)&quot;)</argsstring>
+        <name>TEST_CASE</name>
+        <param>
+          <type>&quot;Test three electron term - Closed Shell (full expression)&quot;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_three_el.cpp" line="104" column="1" bodyfile="tests/test_three_el.cpp" bodystart="104" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="test__three__el_8cpp_1aff09ee0e8cc811fec2862303b2444633" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TEST_CASE</definition>
+        <argsstring>(&quot;Test three electron term - equality of open and closed shell expressions&quot;)</argsstring>
+        <name>TEST_CASE</name>
+        <param>
+          <type>&quot;Test three electron term - equality of open and closed shell expressions&quot;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_three_el.cpp" line="115" column="1" bodyfile="tests/test_three_el.cpp" bodystart="115" bodyend="131"/>
+      </memberdef>
+      <memberdef kind="function" id="test__three__el_8cpp_1abd1079ba2b3bc2164c647c41a539f60b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TEST_CASE</definition>
+        <argsstring>(&quot;Test three electron term - Closed Shell (Check cases)&quot;)</argsstring>
+        <name>TEST_CASE</name>
+        <param>
+          <type>&quot;Test three electron term - Closed Shell (Check cases)&quot;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_three_el.cpp" line="133" column="1" bodyfile="tests/test_three_el.cpp" bodystart="133" bodyend="139"/>
+      </memberdef>
+      <memberdef kind="function" id="test__three__el_8cpp_1a994e0356415a4896e053d259a9eda782" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TEST_CASE</definition>
+        <argsstring>(&quot;Test three electron term - Open Shell (opposite spin only)&quot;)</argsstring>
+        <name>TEST_CASE</name>
+        <param>
+          <type>&quot;Test three electron term - Open Shell (opposite spin only)&quot;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_three_el.cpp" line="141" column="1" bodyfile="tests/test_three_el.cpp" bodystart="141" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="function" id="test__three__el_8cpp_1a28dda9ea670ece248bc67f68ea89d9f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TEST_CASE</definition>
+        <argsstring>(&quot;Test three electron term - Open Shell (same spin only)&quot;)</argsstring>
+        <name>TEST_CASE</name>
+        <param>
+          <type>&quot;Test three electron term - Open Shell (same spin only)&quot;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_three_el.cpp" line="152" column="1" bodyfile="tests/test_three_el.cpp" bodystart="152" bodyend="161"/>
+      </memberdef>
+      <memberdef kind="function" id="test__three__el_8cpp_1a11df313bbf84088fd47eba7d12eb8b4b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TEST_CASE</definition>
+        <argsstring>(&quot;Test three electron term - Open Shell (full expression)&quot;)</argsstring>
+        <name>TEST_CASE</name>
+        <param>
+          <type>&quot;Test three electron term - Open Shell (full expression)&quot;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_three_el.cpp" line="163" column="1" bodyfile="tests/test_three_el.cpp" bodystart="163" bodyend="172"/>
+      </memberdef>
+      <memberdef kind="function" id="test__three__el_8cpp_1a45e264752f54224c2378d155a0588e73" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TEST_CASE</definition>
+        <argsstring>(&quot;Test three electron term - Open Shell (All electron case)&quot;)</argsstring>
+        <name>TEST_CASE</name>
+        <param>
+          <type>&quot;Test three electron term - Open Shell (All electron case)&quot;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_three_el.cpp" line="174" column="1" bodyfile="tests/test_three_el.cpp" bodystart="174" bodyend="184"/>
+      </memberdef>
+      <memberdef kind="function" id="test__three__el_8cpp_1a6e668b1fcefbdf191069d8e1533b8d94" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TEST_CASE</definition>
+        <argsstring>(&quot;Test three electron term - Open Shell (No active orbitals)&quot;)</argsstring>
+        <name>TEST_CASE</name>
+        <param>
+          <type>&quot;Test three electron term - Open Shell (No active orbitals)&quot;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_three_el.cpp" line="186" column="1" bodyfile="tests/test_three_el.cpp" bodystart="186" bodyend="191"/>
+      </memberdef>
+      <memberdef kind="function" id="test__three__el_8cpp_1a2149cceb6cc2035fc12dd23940681881" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename FockFn</type>
+          </param>
+          <param>
+            <type>typename IntegralFn</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void check_open_shell_no_occupied_orbitals</definition>
+        <argsstring>(const FockFn &amp;fock_fn, const IntegralFn &amp;integral_fn, const uw12::linalg::Mat &amp;fock0)</argsstring>
+        <name>check_open_shell_no_occupied_orbitals</name>
+        <param>
+          <type>const FockFn &amp;</type>
+          <declname>fock_fn</declname>
+        </param>
+        <param>
+          <type>const IntegralFn &amp;</type>
+          <declname>integral_fn</declname>
+        </param>
+        <param>
+          <type>const uw12::linalg::Mat &amp;</type>
+          <declname>fock0</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_three_el.cpp" line="194" column="6" bodyfile="tests/test_three_el.cpp" bodystart="194" bodyend="254"/>
+      </memberdef>
+      <memberdef kind="function" id="test__three__el_8cpp_1a2c58264dca075effdb81a390141574a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TEST_CASE</definition>
+        <argsstring>(&quot;Test three electron term - Open Shell (No occupied orbitals)&quot;)</argsstring>
+        <name>TEST_CASE</name>
+        <param>
+          <type>&quot;Test three electron term - Open Shell (No occupied orbitals)&quot;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_three_el.cpp" line="256" column="1" bodyfile="tests/test_three_el.cpp" bodystart="256" bodyend="261"/>
+      </memberdef>
+      <memberdef kind="function" id="test__three__el_8cpp_1abee7fd5a4742f2624fed1fae0ca2d8b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void test_three_el_fock_all_electron</definition>
+        <argsstring>(const uw12::integrals::BaseIntegrals &amp;W_base, const uw12::integrals::BaseIntegrals &amp;V_base, const uw12::utils::DensityMatrix &amp;D, const double threshold)</argsstring>
+        <name>test_three_el_fock_all_electron</name>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_base_integrals" kindref="compound">uw12::integrals::BaseIntegrals</ref> &amp;</type>
+          <declname>W_base</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classuw12_1_1integrals_1_1_base_integrals" kindref="compound">uw12::integrals::BaseIntegrals</ref> &amp;</type>
+          <declname>V_base</declname>
+        </param>
+        <param>
+          <type>const uw12::utils::DensityMatrix &amp;</type>
+          <declname>D</declname>
+        </param>
+        <param>
+          <type>const double</type>
+          <declname>threshold</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_three_el.cpp" line="263" column="6" bodyfile="tests/test_three_el.cpp" bodystart="263" bodyend="274"/>
+      </memberdef>
+      <memberdef kind="function" id="test__three__el_8cpp_1afaca5dc25538f135619aea2b440dc23e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TEST_CASE</definition>
+        <argsstring>(&quot;Test three electron term - Test Fock matrix (Closed Shell)&quot;)</argsstring>
+        <name>TEST_CASE</name>
+        <param>
+          <type>&quot;Test three electron term - Test Fock matrix (Closed Shell)&quot;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_three_el.cpp" line="276" column="1" bodyfile="tests/test_three_el.cpp" bodystart="276" bodyend="285"/>
+      </memberdef>
+      <memberdef kind="function" id="test__three__el_8cpp_1a690370a7a2005ecadb01153eabf85653" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TEST_CASE</definition>
+        <argsstring>(&quot;Test three electron term - Test Fock matrix (Open Shell)&quot;)</argsstring>
+        <name>TEST_CASE</name>
+        <param>
+          <type>&quot;Test three electron term - Test Fock matrix (Open Shell)&quot;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/test_three_el.cpp" line="287" column="1" bodyfile="tests/test_three_el.cpp" bodystart="287" bodyend="296"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Created<sp/>by<sp/>Zack<sp/>Williams<sp/>on<sp/>27/03/2024.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;catch.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;density_utils.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;multi_el_test_utils.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;setup_integrals.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;three_electron/three_electron.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="classuw12_1_1integrals_1_1_integrals" kindref="compound">uw12::integrals::Integrals</ref>;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">uw12::three_el::form_fock_three_el_term_df_ri;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="structuw12_1_1three__el_1_1ri_1_1_a_b_s_projectors" kindref="compound">uw12::three_el::ri::ABSProjectors</ref>;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">uw12_test::density::random_density_matrix;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_ao<sp/>=<sp/>15;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_df<sp/>=<sp/>17;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_ri<sp/>=<sp/>23;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>threshold<sp/>=<sp/>1e-3;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>W_seed<sp/>=<sp/>uw12_test::seed<sp/>+<sp/>1;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>V_seed<sp/>=<sp/>uw12_test::seed;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>abs_projectors<sp/>=<sp/>uw12_test::setup_abs_projector(n_ao,<sp/>n_ri);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>fock0<sp/>=<sp/>uw12::linalg::zeros(n_ao,<sp/>n_ao);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>get_fock_fn(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structuw12_1_1three__el_1_1ri_1_1_a_b_s_projectors" kindref="compound">ABSProjectors</ref>&amp;<sp/>abs_projectors)<sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>[&amp;abs_projectors](</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classuw12_1_1integrals_1_1_integrals" kindref="compound">Integrals</ref>&amp;<sp/>X,</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classuw12_1_1integrals_1_1_integrals" kindref="compound">Integrals</ref>&amp;<sp/>Y,</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>indirect_term,</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>calculate_fock,</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>scale_opp_spin,</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>scale_same_spin</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)<sp/>{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>form_fock_three_el_term_df_ri(</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>X,</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Y,</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>abs_projectors,</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>indirect_term,</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>calculate_fock,</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>scale_opp_spin,</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>scale_same_spin</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/>};</highlight></codeline>
+<codeline lineno="47"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>get_integral_fn()<sp/>{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>[](</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;&amp;<sp/>n_occ,</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;&amp;<sp/>n_active,</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>seed)<sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>uw12_test::setup_integrals_pair(</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>n_ao,<sp/>n_df,<sp/>n_ri,<sp/>n_occ,<sp/>n_active,<sp/>seed</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/>};</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>run_os_tests(</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classuw12_1_1integrals_1_1_integrals" kindref="compound">Integrals</ref>&amp;<sp/>W,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classuw12_1_1integrals_1_1_integrals" kindref="compound">Integrals</ref>&amp;<sp/>V,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structuw12_1_1three__el_1_1ri_1_1_a_b_s_projectors" kindref="compound">ABSProjectors</ref>&amp;<sp/>abs_projectors</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>fock_fn<sp/>=<sp/>get_fock_fn(abs_projectors);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>uw12_test::run_os_tests(W,<sp/>V,<sp/>fock_fn);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>run_ss_tests(</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classuw12_1_1integrals_1_1_integrals" kindref="compound">Integrals</ref>&amp;<sp/>W,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classuw12_1_1integrals_1_1_integrals" kindref="compound">Integrals</ref>&amp;<sp/>V,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structuw12_1_1three__el_1_1ri_1_1_a_b_s_projectors" kindref="compound">ABSProjectors</ref>&amp;<sp/>abs_projectors</highlight></codeline>
+<codeline lineno="69"><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>fock_fn<sp/>=<sp/>get_fock_fn(abs_projectors);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>uw12_test::run_ss_test(W,<sp/>V,<sp/>fock_fn);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>run_test_full(</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classuw12_1_1integrals_1_1_integrals" kindref="compound">Integrals</ref>&amp;<sp/>W,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classuw12_1_1integrals_1_1_integrals" kindref="compound">Integrals</ref>&amp;<sp/>V,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structuw12_1_1three__el_1_1ri_1_1_a_b_s_projectors" kindref="compound">ABSProjectors</ref>&amp;<sp/>abs_projectors</highlight></codeline>
+<codeline lineno="77"><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>fock_fn<sp/>=<sp/>get_fock_fn(abs_projectors);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>uw12_test::run_test_full(W,<sp/>V,<sp/>fock_fn);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal">TEST_CASE(</highlight><highlight class="stringliteral">&quot;Test<sp/>three<sp/>electron<sp/>term<sp/>-<sp/>Closed<sp/>Shell<sp/>(opposite<sp/>spin<sp/>only)&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>n_occ<sp/>=<sp/>{5};</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>n_active<sp/>=<sp/>{4};</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>[W,<sp/>V]<sp/>=<sp/>uw12_test::setup_integrals_pair(</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>n_ao,<sp/>n_df,<sp/>n_ri,<sp/>n_occ,<sp/>n_active,<sp/>W_seed</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/>);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/>run_os_tests(W,<sp/>V,<sp/>abs_projectors);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal">TEST_CASE(</highlight><highlight class="stringliteral">&quot;Test<sp/>three<sp/>electron<sp/>term<sp/>-<sp/>Closed<sp/>Shell<sp/>(same<sp/>spin<sp/>only)&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>n_occ<sp/>=<sp/>{5};</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>n_active<sp/>=<sp/>{4};</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>[W,<sp/>V]<sp/>=<sp/>uw12_test::setup_integrals_pair(</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>n_ao,<sp/>n_df,<sp/>n_ri,<sp/>n_occ,<sp/>n_active,<sp/>W_seed</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/>);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/>run_ss_tests(W,<sp/>V,<sp/>abs_projectors);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal">TEST_CASE(</highlight><highlight class="stringliteral">&quot;Test<sp/>three<sp/>electron<sp/>term<sp/>-<sp/>Closed<sp/>Shell<sp/>(full<sp/>expression)&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>n_occ<sp/>=<sp/>{5};</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>n_active<sp/>=<sp/>{4};</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>[W,<sp/>V]<sp/>=<sp/>uw12_test::setup_integrals_pair(</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>n_ao,<sp/>n_df,<sp/>n_ri,<sp/>n_occ,<sp/>n_active,<sp/>W_seed</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/>);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/>run_test_full(W,<sp/>V,<sp/>abs_projectors);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal">TEST_CASE(</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Test<sp/>three<sp/>electron<sp/>term<sp/>-<sp/>equality<sp/>of<sp/>open<sp/>and<sp/>closed<sp/>shell<sp/>expressions&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>n_occ<sp/>=<sp/>{5};</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>n_active<sp/>=<sp/>{4};</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>W_base<sp/>=<sp/>uw12_test::setup_base_integrals(n_ao,<sp/>n_df,<sp/>n_ri,<sp/>W_seed);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>V_base<sp/>=<sp/>uw12_test::setup_base_integrals(n_ao,<sp/>n_df,<sp/>n_ri,<sp/>V_seed);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>[Co,<sp/>active_Co]<sp/>=<sp/>uw12_test::setup_orbitals(n_occ,<sp/>n_active,<sp/>n_ao);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>fock_fn<sp/>=<sp/>get_fock_fn(abs_projectors);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/>uw12_test::check_equality_open_closed_spin(</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>W_base,<sp/>V_base,<sp/>Co,<sp/>active_Co,<sp/>fock_fn</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/>);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal">TEST_CASE(</highlight><highlight class="stringliteral">&quot;Test<sp/>three<sp/>electron<sp/>term<sp/>-<sp/>Closed<sp/>Shell<sp/>(Check<sp/>cases)&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>integral_fn<sp/>=<sp/>get_integral_fn();</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>fock_fn<sp/>=<sp/>get_fock_fn(abs_projectors);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/>uw12_test::check_closed_shell_cases(integral_fn,<sp/>fock_fn,<sp/>fock0);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal">TEST_CASE(</highlight><highlight class="stringliteral">&quot;Test<sp/>three<sp/>electron<sp/>term<sp/>-<sp/>Open<sp/>Shell<sp/>(opposite<sp/>spin<sp/>only)&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>n_occ<sp/>=<sp/>{5,<sp/>4};</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>n_active<sp/>=<sp/>{4,<sp/>3};</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>[W,<sp/>V]<sp/>=<sp/>uw12_test::setup_integrals_pair(</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>n_ao,<sp/>n_df,<sp/>n_ri,<sp/>n_occ,<sp/>n_active,<sp/>W_seed</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/>);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/>run_os_tests(W,<sp/>V,<sp/>abs_projectors);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal">TEST_CASE(</highlight><highlight class="stringliteral">&quot;Test<sp/>three<sp/>electron<sp/>term<sp/>-<sp/>Open<sp/>Shell<sp/>(same<sp/>spin<sp/>only)&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>n_occ<sp/>=<sp/>{5,<sp/>4};</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>n_active<sp/>=<sp/>{4,<sp/>3};</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>[W,<sp/>V]<sp/>=<sp/>uw12_test::setup_integrals_pair(</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>n_ao,<sp/>n_df,<sp/>n_ri,<sp/>n_occ,<sp/>n_active,<sp/>W_seed</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/>);</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/>run_ss_tests(W,<sp/>V,<sp/>abs_projectors);</highlight></codeline>
+<codeline lineno="161"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal">TEST_CASE(</highlight><highlight class="stringliteral">&quot;Test<sp/>three<sp/>electron<sp/>term<sp/>-<sp/>Open<sp/>Shell<sp/>(full<sp/>expression)&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>n_occ<sp/>=<sp/>{5,<sp/>4};</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>n_active<sp/>=<sp/>{4,<sp/>3};</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>[W,<sp/>V]<sp/>=<sp/>uw12_test::setup_integrals_pair(</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>n_ao,<sp/>n_df,<sp/>n_ri,<sp/>n_occ,<sp/>n_active,<sp/>W_seed</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/>);</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/>run_test_full(W,<sp/>V,<sp/>abs_projectors);</highlight></codeline>
+<codeline lineno="172"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal">TEST_CASE(</highlight><highlight class="stringliteral">&quot;Test<sp/>three<sp/>electron<sp/>term<sp/>-<sp/>Open<sp/>Shell<sp/>(All<sp/>electron<sp/>case)&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>n_occ<sp/>=<sp/>{5,<sp/>4};</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>n_active<sp/>=<sp/>{5,<sp/>4};</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>[W,<sp/>V]<sp/>=<sp/>uw12_test::setup_integrals_pair(</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>n_ao,<sp/>n_df,<sp/>n_ri,<sp/>n_occ,<sp/>n_active,<sp/>W_seed</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/>);</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>Add<sp/>an<sp/>actual<sp/>test<sp/>here</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/>form_fock_three_el_term_df_ri(W,<sp/>V,<sp/>abs_projectors,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/>1.0,<sp/>0.5);</highlight></codeline>
+<codeline lineno="184"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal">TEST_CASE(</highlight><highlight class="stringliteral">&quot;Test<sp/>three<sp/>electron<sp/>term<sp/>-<sp/>Open<sp/>Shell<sp/>(No<sp/>active<sp/>orbitals)&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>integral_fn<sp/>=<sp/>get_integral_fn();</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>fock_fn<sp/>=<sp/>get_fock_fn(abs_projectors);</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/>uw12_test::check_open_shell_no_active_orbitals(fock_fn,<sp/>integral_fn,<sp/>fock0);</highlight></codeline>
+<codeline lineno="191"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>FockFn,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>IntegralFn&gt;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>check_open_shell_no_occupied_orbitals(</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>FockFn&amp;<sp/>fock_fn,</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>IntegralFn&amp;<sp/>integral_fn,</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uw12::linalg::Mat&amp;<sp/>fock0</highlight></codeline>
+<codeline lineno="198"><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">uw12_test::epsilon;</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">uw12_test::margin;</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/>SECTION(</highlight><highlight class="stringliteral">&quot;Alpha<sp/>channel&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>n_occ<sp/>=<sp/>{3,<sp/>0};</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>n_active<sp/>=<sp/>{2,<sp/>0};</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>[W,<sp/>V]<sp/>=<sp/>integral_fn(n_occ,<sp/>n_active,<sp/>W_seed);</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>[os_fock,<sp/>os_energy]<sp/>=<sp/>fock_fn(W,<sp/>V,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/>1.0,<sp/>0);</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/>REQUIRE((uw12::utils::spin_channels(os_fock)<sp/>==<sp/>2));</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/>CHECK(uw12::linalg::nearly_equal(os_fock[0],<sp/>fock0,<sp/>epsilon));</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/>CHECK_FALSE(uw12::linalg::nearly_equal(os_fock[1],<sp/>fock0,<sp/>epsilon));</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/>CHECK_THAT(os_energy,<sp/>Catch::Matchers::WithinAbs(0,<sp/>margin));</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>[ss_fock,<sp/>ss_energy]<sp/>=<sp/>fock_fn(W,<sp/>V,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/>0,<sp/>0.5);</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/>REQUIRE((uw12::utils::spin_channels(ss_fock)<sp/>==<sp/>2));</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/>CHECK_FALSE(uw12::linalg::nearly_equal(ss_fock[0],<sp/>fock0,<sp/>epsilon));</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/>CHECK(uw12::linalg::nearly_equal(ss_fock[1],<sp/>fock0,<sp/>epsilon));</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/>SECTION(</highlight><highlight class="stringliteral">&quot;Beta<sp/>channel)&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>n_occ<sp/>=<sp/>{0,<sp/>3};</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>n_active<sp/>=<sp/>{0,<sp/>2};</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>[W,<sp/>V]<sp/>=<sp/>integral_fn(n_occ,<sp/>n_active,<sp/>W_seed);</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>[os_fock,<sp/>os_energy]<sp/>=<sp/>fock_fn(W,<sp/>V,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/>1.0,<sp/>0);</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/>REQUIRE((uw12::utils::spin_channels(os_fock)<sp/>==<sp/>2));</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/>CHECK_FALSE(uw12::linalg::nearly_equal(os_fock[0],<sp/>fock0,<sp/>epsilon));</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/>CHECK(uw12::linalg::nearly_equal(os_fock[1],<sp/>fock0,<sp/>epsilon));</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/>CHECK_THAT(os_energy,<sp/>Catch::Matchers::WithinAbs(0,<sp/>margin));</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>[ss_fock,<sp/>ss_energy]<sp/>=<sp/>fock_fn(W,<sp/>V,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/>0,<sp/>0.5);</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/>REQUIRE((ss_fock.size()<sp/>==<sp/>2));</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/>CHECK(uw12::linalg::nearly_equal(ss_fock[0],<sp/>fock0,<sp/>epsilon));</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/>CHECK_FALSE(uw12::linalg::nearly_equal(ss_fock[1],<sp/>fock0,<sp/>epsilon));</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"></highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/>SECTION(</highlight><highlight class="stringliteral">&quot;Both<sp/>channels&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>[W,<sp/>V]<sp/>=<sp/>integral_fn({0,<sp/>0},<sp/>{0,<sp/>0},<sp/>W_seed);</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"></highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>[fock,<sp/>energy]<sp/>=<sp/>fock_fn(W,<sp/>V,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/>1.0,<sp/>0);</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/>REQUIRE((uw12::utils::spin_channels(fock)<sp/>==<sp/>2));</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>sigma<sp/>=<sp/>0;<sp/>sigma<sp/>&lt;<sp/>2;<sp/>++sigma)<sp/>{</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>CHECK(uw12::linalg::nearly_equal(fock[sigma],<sp/>fock0,<sp/>epsilon));</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/>CHECK_THAT(energy,<sp/>Catch::Matchers::WithinAbs(0,<sp/>margin));</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="254"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal">TEST_CASE(</highlight><highlight class="stringliteral">&quot;Test<sp/>three<sp/>electron<sp/>term<sp/>-<sp/>Open<sp/>Shell<sp/>(No<sp/>occupied<sp/>orbitals)&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>integral_fn<sp/>=<sp/>get_integral_fn();</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>fock_fn<sp/>=<sp/>get_fock_fn(abs_projectors);</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"></highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/>check_open_shell_no_occupied_orbitals(fock_fn,<sp/>integral_fn,<sp/>fock0);</highlight></codeline>
+<codeline lineno="261"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>test_three_el_fock_all_electron(</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classuw12_1_1integrals_1_1_base_integrals" kindref="compound">uw12::integrals::BaseIntegrals</ref>&amp;<sp/>W_base,</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classuw12_1_1integrals_1_1_base_integrals" kindref="compound">uw12::integrals::BaseIntegrals</ref>&amp;<sp/>V_base,</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uw12::utils::DensityMatrix&amp;<sp/>D,</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>threshold</highlight></codeline>
+<codeline lineno="268"><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>fock_fn<sp/>=<sp/>get_fock_fn(abs_projectors);</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"></highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/>uw12_test::test_multi_el_fock_all_electron(</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>fock_fn,<sp/>W_base,<sp/>V_base,<sp/>D,<sp/>threshold</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/>);</highlight></codeline>
+<codeline lineno="274"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"></highlight></codeline>
+<codeline lineno="276"><highlight class="normal">TEST_CASE(</highlight><highlight class="stringliteral">&quot;Test<sp/>three<sp/>electron<sp/>term<sp/>-<sp/>Test<sp/>Fock<sp/>matrix<sp/>(Closed<sp/>Shell)&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>n_occ<sp/>=<sp/>{5};</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"></highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>W_base<sp/>=<sp/>uw12_test::setup_base_integrals(n_ao,<sp/>n_df,<sp/>n_ri,<sp/>W_seed);</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>V_base<sp/>=<sp/>uw12_test::setup_base_integrals(n_ao,<sp/>n_df,<sp/>n_ri,<sp/>V_seed);</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"></highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>D<sp/>=<sp/>random_density_matrix(n_occ,<sp/>n_ao,<sp/>uw12_test::seed);</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"></highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/>test_three_el_fock_all_electron(W_base,<sp/>V_base,<sp/>D,<sp/>threshold);</highlight></codeline>
+<codeline lineno="285"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"></highlight></codeline>
+<codeline lineno="287"><highlight class="normal">TEST_CASE(</highlight><highlight class="stringliteral">&quot;Test<sp/>three<sp/>electron<sp/>term<sp/>-<sp/>Test<sp/>Fock<sp/>matrix<sp/>(Open<sp/>Shell)&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;size_t&gt;<sp/>n_occ<sp/>=<sp/>{5,<sp/>4};</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"></highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>W_base<sp/>=<sp/>uw12_test::setup_base_integrals(n_ao,<sp/>n_df,<sp/>n_ri,<sp/>W_seed);</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>V_base<sp/>=<sp/>uw12_test::setup_base_integrals(n_ao,<sp/>n_df,<sp/>n_ri,<sp/>V_seed);</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"></highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>D<sp/>=<sp/>random_density_matrix(n_occ,<sp/>n_ao,<sp/>uw12_test::seed);</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"></highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/>test_three_el_fock_all_electron(W_base,<sp/>V_base,<sp/>D,<sp/>threshold);</highlight></codeline>
+<codeline lineno="296"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="tests/test_three_el.cpp"/>
+  </compounddef>
+</doxygen>

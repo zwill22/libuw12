@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structuw12_1_1utils_1_1_fock_matrix_and_energy" kind="struct" language="C++" prot="public">
+    <compoundname>uw12::utils::FockMatrixAndEnergy</compoundname>
+    <includes refid="utils_8hpp" local="no">utils.hpp</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structuw12_1_1utils_1_1_fock_matrix_and_energy_1a086f4a8ecac2e53121c433b3f52aef7d" prot="public" static="no" mutable="no">
+        <type>FockMatrix</type>
+        <definition>FockMatrix uw12::utils::FockMatrixAndEnergy::fock</definition>
+        <argsstring></argsstring>
+        <name>fock</name>
+        <qualifiedname>uw12::utils::FockMatrixAndEnergy::fock</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/utils.hpp" line="143" column="14" bodyfile="src/utils/utils.hpp" bodystart="143" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structuw12_1_1utils_1_1_fock_matrix_and_energy_1a363c1bfa080207a24ebe1272df917d58" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double uw12::utils::FockMatrixAndEnergy::energy</definition>
+        <argsstring></argsstring>
+        <name>energy</name>
+        <qualifiedname>uw12::utils::FockMatrixAndEnergy::energy</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/utils.hpp" line="144" column="10" bodyfile="src/utils/utils.hpp" bodystart="144" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Struct to store Fock matrix and energy contributions. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/utils/utils.hpp" line="142" column="1" bodyfile="src/utils/utils.hpp" bodystart="142" bodyend="145"/>
+    <listofallmembers>
+      <member refid="structuw12_1_1utils_1_1_fock_matrix_and_energy_1a363c1bfa080207a24ebe1272df917d58" prot="public" virt="non-virtual"><scope>uw12::utils::FockMatrixAndEnergy</scope><name>energy</name></member>
+      <member refid="structuw12_1_1utils_1_1_fock_matrix_and_energy_1a086f4a8ecac2e53121c433b3f52aef7d" prot="public" virt="non-virtual"><scope>uw12::utils::FockMatrixAndEnergy</scope><name>fock</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
