@@ -16,7 +16,7 @@ release = '0.1.0'
 
 extensions = ['sphinx.ext.mathjax', 'breathe', 'exhale', 'sphinx_rtd_theme']
 
-breathe_projects = {"libuw12": "../doxygen/xml"}
+breathe_projects = {"libuw12": "../doxygen/xml/"}
 breathe_default_project = "libuw12"
 
 # Setup the exhale extension
