@@ -14,7 +14,7 @@ release = '0.1.0'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ['sphinx.ext.mathjax', 'breathe', 'exhale']
+extensions = ['sphinx.ext.mathjax', 'breathe', 'exhale', 'sphinx_rtd_theme']
 
 breathe_projects = {"libuw12": "../doxygen/xml"}
 breathe_default_project = "libuw12"
