@@ -27,7 +27,7 @@ exhale_args = {
     "containmentFolder":     "./api",
     "rootFileName":          "library_root.rst",
     "doxygenStripFromPath":  "..",
-    "rootFileTitle":         "Library API",
+    "rootFileTitle":         "libuw12 API",
     # Suggested optional arguments
     "createTreeView":        True,
     "exhaleExecutesDoxygen": True,
@@ -36,7 +36,8 @@ exhale_args = {
     TOC_INCLUDE_HEADINGS = 2
     EXTRACT_ALL = NO
     EXTRACT_LOCAL_CLASSES = NO
-    EXCLUDE_PATTERNS = "*test*" "example"
+    EXCLUDE_PATTERNS = "*test*" "example" "cmake" "doc"
+    PROJECT_NAME = "libuw12"
     ''')
 }
 

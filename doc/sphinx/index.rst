@@ -11,13 +11,13 @@ About
 =======
 
 libuw12 is an open-source library for calculating UW12 energies and the associated Fock
-contribution for a given set of integrals.
+contribution for a given set of integrals. This has bee
 
 .. toctree::
    :maxdepth: 2
 
-   :caption Contents:
-
+   introduction
+   installation
    api/library_root
 
 
