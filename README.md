@@ -1,6 +1,6 @@
 # LibUW12
 
-![workflow_status](https://github.com/zwill22/libuw12/actions/workflows/cmake-ubuntu.yml/badge.svg)
+[![CMake on Ubuntu](https://github.com/zwill22/libuw12/actions/workflows/cmake-ubutu.yml/badge.svg)](https://github.com/zwill22/libuw12/actions/workflows/cmake-ubutu.yml)
 [![Documentation Status](https://readthedocs.org/projects/libuw12/badge/?version=latest)](https://libuw12.readthedocs.io/en/latest/?badge=latest)
 
 LibUW12 is a C++ library for the evaluation of the UW12 Fock matrix and energy, using a combination of density-fitting
