@@ -1,5 +1,8 @@
 # LibUW12
 
+![workflow_status](https://github.com/zwill22/libuw12/actions/workflows/cmake-ubuntu.yml/badge.svg)
+[![Documentation Status](https://readthedocs.org/projects/libuw12/badge/?version=latest)](https://libuw12.readthedocs.io/en/latest/?badge=latest)
+
 LibUW12 is a C++ library for the evaluation of the UW12 Fock matrix and energy, using a combination of density-fitting
 and resolution of the identity (RI). This library does not calculate the two- and three-index density-fitting
 integrals for either the atomic orbital space or the auxiliary RI space. These therefore must be provided to the 
@@ -21,7 +24,7 @@ Any issues with this library should be raised here; contributions and suggestion
 
 ## Documentation
 
-Please refer to the main documentation.
+Please refer to the main documentation [here](http://libuw12.readthedocs.io/)
 
 ## Examples
 
