@@ -70,16 +70,17 @@ class Integrals {
   /// WV_D = Sum_j ( lambda | w | jj ) for each lambda for each spin channel
   [[nodiscard]] std::vector<linalg::Vec> get_X_D() const;
 
-  /// Wrapper functions to access integrals from `BaseIntegrals` {
+  /// Wrapper for ::BaseIntegrals::get_P2()
   [[nodiscard]] const linalg::Mat &get_P2() const;
 
+  /// Wrapper for ::BaseIntegrals::get_df_vals()
   [[nodiscard]] const linalg::Vec &get_df_vals() const;
 
+  /// Wrapper for ::BaseIntegrals::get_J3()
   [[nodiscard]] const linalg::Mat &get_J3() const;
 
+  /// Wrapper for ::BaseIntegrals::get_J3_ri()
   [[nodiscard]] const linalg::Mat &get_J3_ri() const;
-
-  /// }
 
   /// Calculate the number of spin channels based on the orbitals provided
   [[nodiscard]] size_t spin_channels() const;

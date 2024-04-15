@@ -21,7 +21,7 @@ namespace uw12::integrals {
 /// For numerical stability, the two-index integrals in the UW12 approximation
 /// are decomposed as:
 /// \f[
-/// J_2^{-1} &= J_2^{-1} J_2 J_2^{-1} = J_2^{-1} Q \Lambda Q^{T} J_2^{-1}
+/// J_2^{-1} = J_2^{-1} J_2 J_2^{-1} = J_2^{-1} Q \Lambda Q^{T} J_2^{-1}
 /// \f]
 /// where \f$\Lambda, Q\f$ are the matrices of eigenvalues and eigenvectors of
 /// \f$J_2\f$.

@@ -171,9 +171,13 @@ inline Mat mat(
 #endif
 }
 
-/// Returns the (`row_index`, `col_index`) element of `mat`. (For
-/// testing) @param mat Matrix @param row_index @param col_index @return Element
-/// in position (`row_index`, `col_index`)
+/// Returns the (`row_index`, `col_index`) element of `mat`. (For testing)
+///
+/// @param mat Matrix
+/// @param row_index
+/// @param col_index
+///
+/// @return Element in position (`row_index`, `col_index`)
 inline double elem(
     const Mat &mat, const size_t row_index, const size_t col_index
 ) {

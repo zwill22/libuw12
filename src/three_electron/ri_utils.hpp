@@ -18,9 +18,13 @@ namespace uw12::three_el::ri {
 /// in `ri` used in the Auxiliary Basis Set + (ABS+) scheme. Along with the
 /// eigenvalues and eigenvectors of \f$S_{\mu\nu}\f$.
 struct ABSProjectors {
+  /// RI-RI projector
   linalg::Mat s_inv_ri_ri;
+  /// RI-AO projector
   linalg::Mat s_inv_ri_ao;
+  /// AO-RI projector
   linalg::Mat s_inv_ao_ri;
+  /// AO-AO projector
   linalg::Mat s_inv_ao_ao;
 };
 

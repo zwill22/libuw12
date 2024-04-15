@@ -140,7 +140,9 @@ using FockMatrix = MatVec;
 
 /// Struct to store Fock matrix and energy contributions
 struct FockMatrixAndEnergy {
+  /// Fock matrix
   FockMatrix fock;
+  /// Energy
   double energy;
 };
 
