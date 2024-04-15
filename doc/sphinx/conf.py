@@ -6,6 +6,8 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
+import textwrap
+
 project = 'libuw12'
 copyright = '2024, Z. M. Williams'
 author = 'Z. M. Williams'
@@ -28,6 +30,14 @@ exhale_args = {
     "rootFileTitle":         "Library API",
     # Suggested optional arguments
     "createTreeView":        True,
+    "exhaleExecutesDoxygen": True,
+    "exhaleDoxygenStdin":   textwrap.dedent('''
+    INPUT = ../../
+    TOC_INCLUDE_HEADINGS = 2
+    EXTRACT_ALL = NO
+    EXTRACT_LOCAL_CLASSES = NO
+    EXCLUDE_PATTERNS = "*test*" "example"
+    ''')
 }
 
 
@@ -60,18 +70,3 @@ html_theme = 'sphinx_rtd_theme'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = []
-
-# Custom sidebar templates, must be a dictionary that maps document names
-# to template names.
-#
-# This is required for the alabaster theme
-# refs: http://alabaster.readthedocs.io/en/latest/installation.html#sidebars
-html_sidebars = {
-    '**': [
-        'about.html',
-        'navigation.html',
-        'relations.html',  # needs 'show_related': True theme option to display
-        'searchbox.html',
-        'donate.html',
-    ]
-}

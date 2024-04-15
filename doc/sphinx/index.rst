@@ -3,13 +3,22 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to libuw12's documentation!
-===================================
+=====================================
+libuw12: C++ UW12 library
+=====================================
+
+About
+=======
+
+libuw12 is an open-source library for calculating UW12 energies and the associated Fock
+contribution for a given set of integrals.
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
 
+   :caption Contents:
+
+   api/library_root
 
 
 Indices and tables
