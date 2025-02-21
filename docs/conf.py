@@ -20,6 +20,7 @@ exhale_args = {
     # Suggested optional arguments
     "createTreeView":        True,
     "exhaleExecutesDoxygen": True,
+    "verboseBuild": True,
     "exhaleDoxygenStdin":   textwrap.dedent('''
     INPUT = ../
     TOC_INCLUDE_HEADINGS = 2
