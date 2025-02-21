@@ -13,12 +13,11 @@ build:
 
 # Build documentation in the "doc/" directory with Sphinx
 sphinx:
-  configuration: doc/sphinx/conf.py
-  fail_on_warning: true
+  configuration: docs/conf.py
 
 # Optional but recommended, declare the Python requirements required
 # to build your documentation
 # See https://docs.readthedocs.io/en/stable/guides/reproducible-builds.html
 python:
   install:
-    - requirements: doc/sphinx/requirements.txt
+    - requirements: docs/requirements.txt
