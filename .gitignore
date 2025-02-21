@@ -33,3 +33,5 @@ cmake-build-*
 *.exe
 *.out
 *.app
+
+build/
