@@ -1,0 +1,23 @@
+CREATE_SUBDIRS         = NO
+FULL_PATH_NAMES        = YES
+STRIP_FROM_PATH = .
+RECURSIVE              = YES
+GENERATE_HTML          = NO
+GENERATE_LATEX         = NO
+GENERATE_XML           = YES
+XML_PROGRAMLISTING     = YES
+ALIASES                = "rst=\verbatim embed:rst:leading-asterisk"
+ALIASES               += "endrst=\endverbatim"
+ENABLE_PREPROCESSING   = YES
+MACRO_EXPANSION        = YES
+EXPAND_ONLY_PREDEF     = NO
+SKIP_FUNCTION_MACROS   = NO
+PREDEFINED             = DOXYGEN_DOCUMENTATION_BUILD
+PREDEFINED            += DOXYGEN_SHOULD_SKIP_THIS
+INPUT = .
+TOC_INCLUDE_HEADINGS = 2
+EXTRACT_ALL = NO
+EXTRACT_LOCAL_CLASSES = NO
+EXCLUDE_PATTERNS = "*test*" "example" "cmake" "docs"
+PROJECT_NAME = "libuw12"
+OUTPUT_DIRECTORY = "docs/_doxygen"
