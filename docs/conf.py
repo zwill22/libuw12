@@ -18,7 +18,7 @@ breathe_default_project = "libuw12"
 
 exhale_args = {
     # These arguments are required
-    "containmentFolder": "./api",
+    "containmentFolder": "./_api",
     "rootFileName": "library_root.rst",
     "doxygenStripFromPath": "..",
     "rootFileTitle": "libuw12 API",
@@ -31,7 +31,7 @@ exhale_args = {
     TOC_INCLUDE_HEADINGS = 2
     EXTRACT_ALL = NO
     EXTRACT_LOCAL_CLASSES = NO
-    EXCLUDE_PATTERNS = "*test*" "example" "cmake" "docs"
+    EXCLUDE_PATTERNS = "tests" "example" "cmake" "docs"
     PROJECT_NAME = "libuw12"
     FILE_PATTERNS = *.hpp *.h *.md
     USE_MATHJAX = TRUE

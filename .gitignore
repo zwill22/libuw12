@@ -37,4 +37,5 @@ cmake-build-*
 build/
 docs/_build
 docs/_html
-docs/api
+docs/_doxygen
+docs/_api
