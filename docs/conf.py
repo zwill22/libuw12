@@ -10,7 +10,7 @@ extensions = [
     "breathe",
     "exhale",
     "sphinx_rtd_theme",
-    "myst_parser",
+    "myst_parser"
 ]
 
 breathe_projects = {"libuw12": "./_doxygen/xml/"}

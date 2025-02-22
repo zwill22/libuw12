@@ -226,4 +226,4 @@ if (USE_CATCH)
     endif ()
 endif ()
 
-add_subdirectory(doc)
+add_subdirectory(docs)
