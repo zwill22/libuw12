@@ -13,9 +13,6 @@ extensions = [
     "myst_parser"
 ]
 
-breathe_projects = {"libuw12": "./_doxygen/xml/"}
-breathe_default_project = "libuw12"
-
 # Setup the exhale extension
 exhale_args = {
     # These arguments are required
@@ -36,6 +33,9 @@ exhale_args = {
     PROJECT_NAME = "libuw12"
     """),
 }
+
+breathe_projects = {"libuw12": "./_doxygen/xml/"}
+breathe_default_project = "libuw12"
 
 templates_path = ["_templates"]
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
