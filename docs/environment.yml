@@ -1,8 +1,8 @@
-name: RTD
+name: RTDbuild
 channels:
  - conda-forge
 dependencies:
-  python>=3.12
+  python==3.12
   sphinx>=4.5.0
   doxygen>=1.13
   graphviz>=12.2.1

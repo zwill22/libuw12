@@ -5,8 +5,8 @@ build:
   tools:
     python: "mambaforge-latest"
 
-sphinx:
-  configuration: docs/conf.py
-
 conda:
   environment: docs/environment.yml
+
+sphinx:
+  configuration: docs/conf.py
