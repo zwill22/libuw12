@@ -15,30 +15,6 @@ integrals for either the atomic orbital space or the auxiliary RI space. These t
 library using the BaseIntegrals class.
 Any issues with this library should be raised here; contributions and suggestions are also welcome.
 
-Citing libuw12
-================
-
-
-If you use this library in your program and find it helpful, any feedback would be greatly appreciated.
-If you publish results using this library, please cite Z. M. Williams's thesis, which includes details of the
-implementation:
-
-[Development of Density Functional Correlation Theories Based on the Unsöld Approximation](https://hdl.handle.net/1983/1584f2c3-21a7-4162-abdc-3aca04e7bfd2),
-Williams, Z. M. (Author). 23 Jan 2024
-
-In addition, previous work on UW12 can also be cited:
-
-Z. M. Williams and F. R. Manby, 2021. DOI: [10.26434/chemrxiv-2021-tnw0w](https://doi.org/10.26434/chemrxiv-2021-tnw0w)
-
-Z. M. Williams, T. C. Wiles and F. R. Manby, J. Chem. Theory Comput., 2020, 16, 6176– 6194. DOI: [10.1021/acs.jctc.0c00442](https://doi.org/10.1021/acs.jctc.0c00442)
-
-[Novel, Low-Cost Computational Methods for Predicting the Electronic Structure of Molecules](https://hdl.handle.net/1983/79d98b4e-05f2-44a7-b6e8-d29bec4a8c73),
-Wiles, T. C. W. (Author). 28 Nov 2019
-
-T. C. Wiles and F. R. Manby, J. Chem. Theory Comput., 2018, 14, 4590-4599. DOI: [10.1021/acs.jctc.8b00337](https://doi.org/10.1021/acs.jctc.8b00337)
-
-A full bibtex citation can be found in `citation.bib` in the main directory.
-
 Requirements
 ============
 

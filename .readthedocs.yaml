@@ -4,9 +4,6 @@ build:
   os: ubuntu-lts-latest
   tools:
     python: "mambaforge-latest"
-  jobs:
-    pre_build:
-      - doxygen Doxyfile
 
 conda:
   environment: docs/environment.yml

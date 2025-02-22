@@ -1,3 +1,5 @@
+import textwrap
+
 project = "libuw12"
 copyright = "2024, Z. M. Williams"
 author = "Z. M. Williams"
@@ -8,21 +10,32 @@ extensions = [
     "breathe",
     "exhale",
     "sphinx_rtd_theme",
-    "myst_parser"
+    "myst_parser",
 ]
 
 breathe_projects = {"libuw12": "./_doxygen/xml/"}
 breathe_default_project = "libuw12"
 
-# Setup the exhale extension
 exhale_args = {
     # These arguments are required
     "containmentFolder": "./api",
     "rootFileName": "library_root.rst",
     "doxygenStripFromPath": "..",
     "rootFileTitle": "libuw12 API",
+    # Suggested optional arguments
     "createTreeView": True,
-    "verboseBuild": True
+    "exhaleExecutesDoxygen": True,
+    "verboseBuild": True,
+    "exhaleDoxygenStdin": textwrap.dedent("""
+    INPUT = ../
+    TOC_INCLUDE_HEADINGS = 2
+    EXTRACT_ALL = NO
+    EXTRACT_LOCAL_CLASSES = NO
+    EXCLUDE_PATTERNS = "*test*" "example" "cmake" "docs"
+    PROJECT_NAME = "libuw12"
+    FILE_PATTERNS = *.hpp *.h *.md
+    USE_MATHJAX = TRUE
+    """),
 }
 
 templates_path = ["_templates"]
