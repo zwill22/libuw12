@@ -38,4 +38,4 @@ build/
 docs/_build
 docs/_html
 docs/_doxygen
-docs/_api
+docs/api

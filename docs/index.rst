@@ -16,7 +16,7 @@ contribution for a given set of integrals.
 
    introduction
    installation
-   _api/library_root
+   api/library_root
 
 
 .. seealso::

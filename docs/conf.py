@@ -18,7 +18,7 @@ breathe_default_project = "libuw12"
 
 exhale_args = {
     # These arguments are required
-    "containmentFolder": "./_api",
+    "containmentFolder": "./api",
     "rootFileName": "library_root.rst",
     "doxygenStripFromPath": "..",
     "rootFileTitle": "libuw12 API",
