@@ -50,3 +50,11 @@ todo_include_todos = False
 
 html_theme = "sphinx_rtd_theme"
 html_static_path = ["_static"]
+
+html_context = {
+    "display_github": True,
+    "github_user": "zwill22",
+    "github_repo": "libuw12",
+    "conf_py_path": "/docs/",
+    "github_version": "main"
+}
