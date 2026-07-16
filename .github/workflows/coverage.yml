@@ -1,0 +1,92 @@
+name: Generate CodeCov Report
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v7
+
+      - name: setup python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.14"
+
+      - name: install dependencies
+        shell: bash
+        run: |
+          sudo apt update
+          sudo apt install -y cmake libblas-dev liblapack-dev
+
+      - name: cache arma
+        uses: actions/cache@v6
+        with:
+          path: ./armadillo-12.8.0
+          key: ${{matrix.os}}-arma-12.8.0
+          restore-keys: ${{matrix.os}}-arma-
+
+      - name: download armadillo
+        if: steps.cache-arma.outputs.cache-hit != 'true'
+        shell: bash
+        run: |
+          wget --no-check-certificate https://sourceforge.net/projects/arma/files/armadillo-12.8.0.tar.xz
+          tar xf armadillo-12.8.0.tar.xz
+
+      - name: install tbb
+        shell: bash
+        run: sudo apt install -y libtbb-dev
+
+      - name: setup pip
+        run: python -m pip install --upgrade pip
+
+      - name: install gcovr
+        run: |
+          python -m pip install gcovr
+
+      - name: cache catch2
+        uses: actions/cache@v6
+        with:
+          path: ./Catch2
+          key: ubuntu-latest-catch2-
+          restore-keys: ubuntu-latest-catch2-
+
+      - name: build catch2
+        if: steps.cache-catch.outputs.cache-hit != 'true'
+        run: |
+          git clone https://github.com/catchorg/Catch2.git --depth 1
+          cd Catch2
+          cmake -Bbuild -H. -DBUILD_TESTING=OFF
+          sudo cmake --build build/ --target install
+          cd ..
+
+      - name: install catch2
+        run: |
+          cd Catch2
+          sudo cmake --build build/ --target install
+          cd ..
+
+      - name: Configure CMake
+        run: cmake -B ${{github.workspace}}/build -DARMADILLO_INCLUDE_DIR="armadillo-12.8.0/include"
+
+      - name: Build
+        run: cmake --build ${{github.workspace}}/Build
+        
+      - name: Test
+        run: |
+          ctest -C all --output-on-failure
+          gcovr -e CMakeFiles --cobertura-pretty --cobertura coverage.xml
+          cat coverage.xml
+
+      - name: Upload results to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
