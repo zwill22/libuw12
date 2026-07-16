@@ -39,3 +39,5 @@ docs/_build
 docs/_html
 docs/_doxygen
 docs/api
+
+.DS_Store
