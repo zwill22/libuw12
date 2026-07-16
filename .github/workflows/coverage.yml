@@ -71,15 +71,15 @@ jobs:
       - name: install catch2
         run: |
           cd Catch2
-          sudo cmake --build build/ --target install
+          sudo cmake --build build --target install
           cd ..
 
       - name: Configure CMake
-        run: cmake -B ${{github.workspace}}/build -DARMADILLO_INCLUDE_DIR="armadillo-12.8.0/include"
+        run: cmake -B ${{github.workspace}} -DARMADILLO_INCLUDE_DIR="armadillo-12.8.0/include" -DCMAKE_CXX_COMPILER=g++ -DCMAKE_CXX_FLAGS="--coverage -g -O0"
 
       - name: Build
-        run: cmake --build ${{github.workspace}}/Build
-        
+        run: cmake --build ${{github.workspace}}
+
       - name: Test
         run: |
           ctest -C all --output-on-failure

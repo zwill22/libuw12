@@ -5,6 +5,9 @@
 [![GitHub][github-badge]][github]
 [![GitHub Actions][github-actions-badge]][github-actions]
 [![Tests][test-badge]][tests]
+[![Coverage Upload][coverage-upload-badge]][coverage-upload]
+[![Codecov][codecov-badge]][codecov]
+[![Coverage][coverage-badge]][coverage]
 [![Read the Docs][rtd-badge]][rtd]
 [![Documentation Status][doc-badge]][docs]
 [![License][license-badge]][license]
@@ -65,6 +68,9 @@ A full bibtex citation can be found in `citation.bib` in the main directory.
 [github-badge]: https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white
 [github-actions-badge]: https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white
 [test-badge]: https://img.shields.io/github/actions/workflow/status/zwill22/libuw12/test.yml?style=for-the-badge&logo=github
+[coverage-upload-badge]: https://img.shields.io/github/actions/workflow/status/zwill22/libuw12/coverage.yml?style=for-the-badge&logo=github&label=Coverage%20Upload
+[codecov-badge]: https://img.shields.io/badge/Codecov-F01F7A?logo=codecov&logoColor=fff&style=for-the-badge
+[coverage-badge]: https://img.shields.io/codecov/c/github/zwill22/libuw12?style=for-the-badge&logo=codecov
 [rtd-badge]: https://img.shields.io/badge/Read%20the%20Docs-8CA1AF?logo=readthedocs&logoColor=fff&style=for-the-badge
 [doc-badge]: https://img.shields.io/readthedocs/libuw12?style=for-the-badge&logo=readthedocs
 [license-badge]: https://img.shields.io/github/license/zwill22/libuw12?style=for-the-badge
@@ -75,6 +81,7 @@ A full bibtex citation can be found in `citation.bib` in the main directory.
 [github]: https://github.com/zwill22/libuw12
 [github-actions]: https://github.com/zwill22/libuw12/actions
 [tests]: https://github.com/zwill22/libuw12/actions/workflows/tests.yml
+[coverage-upload]: https://github.com/zwill22/libuw12/actions/workflows/coverage.yml
 [rtd]: https://about.readthedocs.com/
 [docs]: https://libuw12.readthedocs.io/en/latest/?badge=latest
 [license]: https://github.com/zwill22/libuw12/blob/main/LICENSE
@@ -84,3 +91,5 @@ A full bibtex citation can be found in `citation.bib` in the main directory.
 [paper]: https://doi.org/10.1021/acs.jctc.0c00442
 [thesis-tim]: https://research-information.bris.ac.uk/en/studentTheses/novel-low-cost-computational-methods-for-predicting-the-electroni/
 [paper-tim]: https://doi.org/10.1021/acs.jctc.8b00337
+[codecov]: https://about.codecov.io/
+[coverage]: https://codecov.io/gh/zwill22/libuw12
