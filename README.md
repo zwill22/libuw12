@@ -11,6 +11,7 @@
 [![Read the Docs][rtd-badge]][rtd]
 [![Documentation Status][doc-badge]][docs]
 [![License][license-badge]][license]
+[![No AI][noai-badge]][thesis]
 
 LibUW12 is a C++ library for the evaluation of the UW12 Fock matrix and energy, using a combination of density-fitting
 and resolution of the identity (RI). This library does not calculate the two- and three-index density-fitting
@@ -74,6 +75,7 @@ A full bibtex citation can be found in `citation.bib` in the main directory.
 [rtd-badge]: https://img.shields.io/badge/Read%20the%20Docs-8CA1AF?logo=readthedocs&logoColor=fff&style=for-the-badge
 [doc-badge]: https://img.shields.io/readthedocs/libuw12?style=for-the-badge&logo=readthedocs
 [license-badge]: https://img.shields.io/github/license/zwill22/libuw12?style=for-the-badge
+[noai-badge]: https://custom-icon-badges.demolab.com/badge/No%20AI-2f2f2f?logo=non-ai&logoColor=white&style=for-the-badge
 
 <!-- Links -->
 
